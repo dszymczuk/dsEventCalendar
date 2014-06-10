@@ -4,6 +4,7 @@
         <field name="calendarID" type="I">
             <key/>
             <unsigned/>
+            <autoincrement/>
         </field>
         <field name="title" type="C" size="255">
         </field>
@@ -12,6 +13,7 @@
         <field name="eventID" type="I">
             <key/>
             <unsigned/>
+            <autoincrement/>
         </field>
         <field name="calendarID" type="I">
             <unsigned/>

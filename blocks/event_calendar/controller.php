@@ -24,6 +24,7 @@ class EventCalendarBlockController extends BlockController {
 	
 	public function on_page_view() {
 
+        //die($this->calendarID);
     }
     
     function save($data) {
@@ -31,6 +32,17 @@ class EventCalendarBlockController extends BlockController {
 		$args['calendarID'] = isset($data['calendarID']) ? intval($data['calendarID']) : 0;
 		parent::save($args);
 	}
-	
+
+
+    private function getEventsForCalendar($calendarID)
+    {
+//        $events = array();
+//
+//
+//
+//        $json_events = json_encode($events);
+//        die(var_dump($json_events));
+    }
+
 }
 ?>

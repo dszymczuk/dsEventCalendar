@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<schema version="0.3">
+    <table name="dsEventCalendar">
+        <field name="calendarID" type="I">
+            <key/>
+            <unsigned/>
+        </field>
+        <field name="title" type="C" size="255">
+        </field>
+    </table>
+    <table name="dsEventCalendarEvents">
+        <field name="eventID" type="I">
+            <key/>
+            <unsigned/>
+        </field>
+        <field name="calendarID" type="I">
+            <unsigned/>
+        </field>
+        <field name="date" type="T">
+        </field>
+        <field name="type" type="C" size="255">
+        </field>
+        <field name="title" type="C" size="255">
+        </field>
+        <field name="description" type="X">
+        </field>
+        <field name="url" type="X">
+        </field>
+    </table>
+</schema>

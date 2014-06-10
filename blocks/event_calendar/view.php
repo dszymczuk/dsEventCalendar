@@ -5,5 +5,6 @@ defined('C5_EXECUTE') or die(_("Access Denied."));
 	$cID = $c->getCollectionID();
 
 ?>
-
-view: <?php echo $calendarID; ?>
+<div id="eventTest">
+    view: <?php echo $calendarID; ?>
+</div>

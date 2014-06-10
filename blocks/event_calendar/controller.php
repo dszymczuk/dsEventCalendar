@@ -28,8 +28,8 @@ class EventCalendarBlockController extends BlockController {
     
     function save($data) {
 //		$args['shortname'] = isset($data['shortname']) ? trim($data['shortname']) : '';
-//		$args['protocol'] = isset($data['protocol']) ? intval($data['protocol']) : 0;
-//		parent::save($args);
+		$args['calendarID'] = isset($data['calendarID']) ? intval($data['calendarID']) : 0;
+		parent::save($args);
 	}
 	
 }

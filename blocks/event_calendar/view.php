@@ -6,6 +6,4 @@ defined('C5_EXECUTE') or die(_("Access Denied."));
 
 ?>
 
-
-view
-
+view: <?php echo $calendarID; ?>

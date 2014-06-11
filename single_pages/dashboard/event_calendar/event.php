@@ -50,7 +50,6 @@ $form = Loader::helper('form');
             <div class="clearfix">
                 <div style="margin-top: 10px;">
                     <input class="btn" type="submit" value="<?php echo t('Add event') ?>">
-
                 </div>
             </div>
         </fieldset>
@@ -58,7 +57,7 @@ $form = Loader::helper('form');
 
 <script>
     $(document).ready(function(){
-        $('#event_date').datepicker();
+        $('#event_date').datepicker({ dateFormat: "yy-mm-dd" });
     });
 </script>
 

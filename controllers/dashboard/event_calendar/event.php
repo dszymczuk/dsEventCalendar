@@ -1,17 +1,69 @@
 <?php  defined('C5_EXECUTE') or die("Access Denied.");
 
-class DashboardEventCalendarEventController extends Controller {
+class DashboardEventCalendarEventController extends Controller
+{
 
-	public $helpers = array('form');
-	
-	public function on_before_render() {
+    public $helpers = array('form');
+
+    public function on_before_render()
+    {
 //		$this->addHeaderItem(Loader::helper('html')->css('dashboard/multilingual.css','multilingual'));
-	}
-	
-	public function view() {
+    }
+
+    public function view()
+    {
+        if (!empty($_POST)) {
 
 
-	}
+            $isSomeValueEmpty = false;
+            foreach ($_POST as $key => $value) {
+                if ($value === "") {
+                    $isSomeValueEmpty = true;
+                }
+            }
+
+            if (!$isSomeValueEmpty) {
+                $db = Loader::db();
+                $this->post('event_title');
+                $this->post('event_date');
+                $this->post('event_type');
+                $this->post('event_description');
+                $this->post('event_url');
+
+                $sql = "INSERT INTO dsEventCalendarEvents (calendarID,title,date,type,description,url) VALUES (?,?,?,?,?,?)";
+
+                $args = array(
+                    0,
+                    $this->post('event_title'),
+                    $this->post('event_date'),
+                    $this->post('event_type'),
+                    $this->post('event_description'),
+                    $this->post('event_url')
+                );
+                $db->Execute($sql, $args);
+
+                /*
+                 * calendarID
+                    date
+                    type
+                    title
+                    description
+                    url
+                 */
+                $this->set('success', 'Event: ' . $this->post('event_title') . ' has been added');
+
+                $this->set('event_title', "");
+                $this->set('event_date', "");
+                $this->set('event_type', "");
+                $this->set('event_description', "");
+                $this->set('event_url', "");
+                unset($_POST);
+            } else {
+                $this->set('error', 'Error while adding. Maybe some values were empty?');
+            }
+        }
+
+    }
 
     public function add()
     {

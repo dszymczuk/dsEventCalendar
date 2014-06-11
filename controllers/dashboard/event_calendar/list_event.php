@@ -11,5 +11,6 @@ class DashboardEventCalendarListEventController extends Controller {
 	public function view() {
 
 
+
 	}
 }

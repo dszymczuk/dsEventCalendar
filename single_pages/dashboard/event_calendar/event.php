@@ -8,7 +8,6 @@ $form = Loader::helper('form');
 
     <div class="btn-group" style="margin-top: 15px;">
         <a class="btn" href="<?php echo View::url('dashboard//event_calendar/list_event') ?>">Return to event list</a>
-
     </div>
 
     <form method="post" id="ccm-multilingual-page-report-form" style="margin-top: 35px;">
@@ -19,6 +18,16 @@ $form = Loader::helper('form');
             </div>
         </fieldset>
 
+        <fieldset>
+            <label><?php echo t('Calendar') ?></label>
+            <div style="margin-top: 15px;">
+                <select name="event_calendarID" id="event_calendarID" value="<?php echo $event_calendarID; ?>">
+                    <?php foreach($calendars as $c): ?>
+                    <option value="<?php echo $c['calendarID'] ?>"><?php echo $c['title'] ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+        </fieldset>
 
         <fieldset>
             <label><?php echo t('Event date') ?></label>
@@ -44,7 +53,6 @@ $form = Loader::helper('form');
                 <input type="text" name="event_url" id="event_url" value="<?php echo $event_url; ?>">
             </div>
         </fieldset>
-
 
         <fieldset>
             <div class="clearfix">

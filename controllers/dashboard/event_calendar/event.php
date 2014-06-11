@@ -12,6 +12,7 @@ class DashboardEventCalendarEventController extends Controller
 
     public function view()
     {
+        $db = Loader::db();
         if (!empty($_POST)) {
 
 
@@ -23,7 +24,7 @@ class DashboardEventCalendarEventController extends Controller
             }
 
             if (!$isSomeValueEmpty) {
-                $db = Loader::db();
+
                 $this->post('event_title');
                 $this->post('event_date');
                 $this->post('event_type');
@@ -33,7 +34,7 @@ class DashboardEventCalendarEventController extends Controller
                 $sql = "INSERT INTO dsEventCalendarEvents (calendarID,title,date,type,description,url) VALUES (?,?,?,?,?,?)";
 
                 $args = array(
-                    0,
+                    $this->post('event_calendarID'),
                     $this->post('event_title'),
                     $this->post('event_date'),
                     $this->post('event_type'),
@@ -50,7 +51,7 @@ class DashboardEventCalendarEventController extends Controller
                     description
                     url
                  */
-                $this->set('success', 'Event: ' . $this->post('event_title') . ' has been added');
+
 
                 $this->set('event_title', "");
                 $this->set('event_date', "");
@@ -58,10 +59,16 @@ class DashboardEventCalendarEventController extends Controller
                 $this->set('event_description', "");
                 $this->set('event_url', "");
                 unset($_POST);
+                $this->set('success', 'Event: ' . $this->post('event_title') . ' has been added');
             } else {
                 $this->set('error', 'Error while adding. Maybe some values were empty?');
             }
         }
+
+
+        $calendars = $db->GetAll("SELECT * FROM dsEventCalendar");
+        $this->set('calendars',$calendars);
+
 
     }
 

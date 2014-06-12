@@ -18,6 +18,10 @@ class DashboardEventCalendarListCalendarController extends Controller {
         if(isset($_POST) && is_numeric($_POST['id']))
         {
             $db = Loader::db();
+
+            $sql = "DELETE FROM dsEventCalendarEvents WHERE calendarID = ".$_POST['id'];
+            $db->Execute($sql);
+
             $sql = "DELETE FROM dsEventCalendar WHERE calendarID = ".$_POST['id'];
             $db->Execute($sql);
             die("OK");

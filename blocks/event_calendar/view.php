@@ -7,4 +7,5 @@ defined('C5_EXECUTE') or die(_("Access Denied."));
 ?>
 <div id="eventTest">
     view: <?php echo $calendarID; ?>
+    view: <?php var_dump($events); ?>
 </div>

@@ -24,6 +24,8 @@ class EventCalendarBlockController extends BlockController {
 	
 	public function on_page_view() {
 
+        $json_events = $this->getEventsForCalendar($this->calendarID);
+        $this->set('events',$json_events);
         //die($this->calendarID);
     }
     
@@ -33,15 +35,28 @@ class EventCalendarBlockController extends BlockController {
 		parent::save($args);
 	}
 
+    function add()
+    {
+        $db = Loader::db();
+        $calendars = $db->GetAll("SELECT * FROM dsEventCalendar");
+        $this->set('calendars',$calendars);
+    }
+
+    function edit()
+    {
+        $db = Loader::db();
+        $calendars = $db->GetAll("SELECT * FROM dsEventCalendar");
+        $this->set('calendars',$calendars);
+        $this->set('calendarID',$this->calendarID);
+    }
+
 
     private function getEventsForCalendar($calendarID)
     {
-//        $events = array();
-//
-//
-//
-//        $json_events = json_encode($events);
-//        die(var_dump($json_events));
+        $db = Loader::db();
+        $events = $db->GetAll("SELECT * FROM dsEventCalendarEvents WHERE calendarID = ".$calendarID);
+        return json_encode($events);
+
     }
 
 }

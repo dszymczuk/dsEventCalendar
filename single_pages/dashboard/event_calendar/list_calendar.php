@@ -4,10 +4,10 @@
 <?php echo Loader::helper('concrete/dashboard')->getDashboardPaneHeaderWrapper(t('Event Calendar')); ?>
 <h3><?php echo t('List of calendars') ?></h3>
 
-<?php foreach ($calendars as $c): ?>
+<?php foreach ($calendars as $cal): ?>
     <div>
-        <input type="text" value="<?php echo $c['calendarID']; ?>">
-        <?php echo $c['title']; ?>
+        <input type="text" value="<?php echo $cal['calendarID']; ?>">
+        <?php echo $cal['title']; ?>
         <button class="btn btn-danger delete">Usuń</button>
     </div>
 <?php endforeach; ?>

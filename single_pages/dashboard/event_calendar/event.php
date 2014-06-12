@@ -22,8 +22,8 @@ $form = Loader::helper('form');
             <label><?php echo t('Calendar') ?></label>
             <div style="margin-top: 15px;">
                 <select name="event_calendarID" id="event_calendarID" value="<?php echo $event_calendarID; ?>">
-                    <?php foreach($calendars as $c): ?>
-                    <option value="<?php echo $c['calendarID'] ?>"><?php echo $c['title'] ?></option>
+                    <?php foreach($calendars as $cal): ?>
+                    <option value="<?php echo $cal['calendarID'] ?>"><?php echo $cal['title'] ?></option>
                     <?php endforeach; ?>
                 </select>
             </div>
@@ -65,7 +65,10 @@ $form = Loader::helper('form');
 
 <script>
     $(document).ready(function(){
-        $('#event_date').datepicker({ dateFormat: "yy-mm-dd" });
+        $('#event_date').datepicker({
+            dateFormat: "yy-mm-dd",
+            firstDay: 1
+        }).datepicker('setDate', new Date());
     });
 </script>
 

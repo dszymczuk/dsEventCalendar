@@ -65,9 +65,11 @@ $form = Loader::helper('form');
 
 <script>
     $(document).ready(function(){
-        $('#event_date').datepicker({
-            dateFormat: "yy-mm-dd",
-            firstDay: 1
+        $('#event_date').datetimepicker({
+            lang: 'pl',
+            dateFormat: "yy-mm-dd H:i",
+            todayButton: true,
+            dayOfWeekStart: 1
         }).datepicker('setDate', new Date());
     });
 </script>

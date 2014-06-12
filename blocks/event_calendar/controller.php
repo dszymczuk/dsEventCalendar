@@ -21,9 +21,8 @@ class EventCalendarBlockController extends BlockController {
 	public function __construct($b = null){ 
 		parent::__construct($b);
 	}
-	
-	public function on_page_view() {
 
+	public function on_page_view() {
         $json_events = $this->getEventsForCalendar($this->calendarID);
         $this->set('events',$json_events);
         //die($this->calendarID);

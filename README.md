@@ -16,3 +16,14 @@ License
 ----
 
 MIT
+
+TODO - near
+----
+* validation
+* filtration
+* success / error messages
+
+TODO - far
+----
+* multiday events
+* manage events from calendar

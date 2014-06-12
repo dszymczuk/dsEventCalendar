@@ -7,7 +7,8 @@ class DashboardEventCalendarCalendarController extends Controller
 
     public function on_before_render()
     {
-//		$this->addHeaderItem(Loader::helper('html')->css('dashboard/multilingual.css','multilingual'));
+//		$this->addHeaderItem(Loader::helper('html')->css('dashboard/dsEventCalendar.css','dsEventCalendar'));
+//		$this->addHeaderItem(Loader::helper('html')->javascript('dashboard/dsEventCalendar.css','dsEventCalendar'));
     }
 
     public function view()

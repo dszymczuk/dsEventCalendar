@@ -18,7 +18,9 @@ defined('C5_EXECUTE') or die(_("Access Denied."));
 <div id="eventCalendarInline<?php echo $rand; ?>"></div>
 <script>
     $(document).ready(function() {
-        var eventsInline= <?php echo $events; ?> ;
+        var eventsInline = {} ;
+        eventsInline = <?php echo $events; ?> ;
+
 
         $("#eventCalendarInline<?php echo $rand; ?>").eventCalendar({
             jsonData: eventsInline,

@@ -25,7 +25,6 @@ class EventCalendarBlockController extends BlockController {
 	public function on_page_view() {
         $json_events = $this->getEventsForCalendar($this->calendarID);
         $this->set('events',$json_events);
-        //die($this->calendarID);
     }
     
     function save($data) {

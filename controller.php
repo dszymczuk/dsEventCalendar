@@ -14,7 +14,7 @@ class dsEventCalendarPackage extends Package
 
     protected $pkgHandle = 'dsEventCalendar';
     protected $appVersionRequired = '5.6.0';
-    protected $pkgVersion = '0.1.4.2';
+    protected $pkgVersion = '0.1.4.4';
 
     public function getPackageDescription()
     {
@@ -30,14 +30,14 @@ class dsEventCalendarPackage extends Package
     {
         $pkg = parent::install();
         BlockType::installBlockTypeFromPackage('event_calendar', $pkg);
-        $this->installSP($this);
+        $this->installSP($pkg);
     }
 
     public function upgrade()
     {
         $currentVersion = $this->getPackageVersion();
         parent::upgrade();
-        BlockType::installBlockTypeFromPackage('event_calendar', $this);
+        //BlockType::installBlockTypeFromPackage('event_calendar', $this);
         $this->installSP($this, $currentVersion);
     }
 

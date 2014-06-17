@@ -49,13 +49,30 @@
     </tbody>
 </table>
 
-
+<!--<div id="dialog-confirm" title="Empty the recycle bin?" style="display: none">-->
+<!--    <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>These items will be permanently deleted and cannot be recovered. Are you sure?</p>-->
+<!--</div>-->
 
 <?php echo Loader::helper('concrete/dashboard')->getDashboardPaneFooterWrapper(); ?>
 
 <script>
     $(document).ready(function () {
 
+
+//        $(function() {
+//            $( "#dialog-confirm" ).dialog({
+//                resizable: false,
+//                modal: true,
+//                buttons: {
+//                    "Delete all items": function() {
+//                        $( this ).dialog( "close" );
+//                    },
+//                    Cancel: function() {
+//                        $( this ).dialog( "close" );
+//                    }
+//                }
+//            });
+//        });
 
 
         $(".delete").click(function () {

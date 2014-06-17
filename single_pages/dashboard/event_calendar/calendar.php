@@ -7,23 +7,25 @@ $form = Loader::helper('form');
 
 
     <div class="btn-group" style="margin-top: 15px;">
-        <a class="btn" href="<?php echo View::url('dashboard//event_calendar/list_calendar') ?>">Return to calendar list</a>
+        <a class="btn" href="<?php echo View::url('dashboard//event_calendar/list_calendar') ?>">Return to calendar
+            list</a>
 
     </div>
 
-    <form method="post" id="ccm-multilingual-page-report-form" style="margin-top: 35px;">
-        <fieldset>
-            <label><?php echo t('Calendar title') ?></label>
+    <form class="form-horizontal" method="post" id="ccm-multilingual-page-report-form" style="margin-top: 35px;">
+        <fieldset class="control-group">
+            <label class="control-label"><?php echo t('Calendar title') ?></label>
 
-            <div style="margin-top: 15px;">
+            <div class="controls">
                 <input type="text" name="calendar_title" id="calendar_title" value="<?php echo $calendar_title; ?>">
             </div>
         </fieldset>
-        <fieldset>
+
+
+        <fieldset class="control-group offset2">
             <div class="clearfix">
                 <div style="margin-top: 10px;">
-                    <input class="btn" type="submit" value="<?php echo t('Add calendar') ?>">
-
+                    <input class="btn btn-success" type="submit" value="<?php echo t('Add calendar') ?>">
                 </div>
             </div>
         </fieldset>

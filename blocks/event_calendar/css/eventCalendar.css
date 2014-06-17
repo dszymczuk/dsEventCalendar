@@ -1,107 +1,85 @@
 /*= CORE CSS */
-/* line 3, ../sass/eventCalendar.scss */
-.hidden {
-  display: none;
-}
+.hidden { display:none; }
 
-/* line 7, ../sass/eventCalendar.scss */
-.eventCalendar-wrap {
-  position: relative;
-  overflow: hidden;
+.eventCalendar-wrap { 
+	position:relative; 
+	overflow:hidden;
 }
-/* line 10, ../sass/eventCalendar.scss */
-.eventCalendar-wrap .arrow {
-  position: absolute;
-  z-index: 5;
-  top: 3px;
+.eventCalendar-wrap .arrow { 
+	position:absolute; 
+	z-index:5; 
+	top:3px;
 }
-/* line 15, ../sass/eventCalendar.scss */
-.eventCalendar-wrap .prev {
-  left: 3px;
-}
-/* line 18, ../sass/eventCalendar.scss */
-.eventCalendar-wrap .next {
-  right: 3px;
-}
-
-/* line 23, ../sass/eventCalendar.scss */
+	.eventCalendar-wrap .prev {
+		left:3px;
+	}
+	.eventCalendar-wrap .next {
+		right:3px;
+	}
+	
 .eventsCalendar-currentTitle .monthTitle {
-  display: block;
-  text-align: center;
+	display:block;
+	text-align:center;
 }
-
-/* line 28, ../sass/eventCalendar.scss */
-.eventsCalendar-monthWrap {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 2;
+	.eventsCalendar-monthWrap {
+		position:absolute;
+		top:0; left:0;
+		z-index:2;
+	}
+		.eventsCalendar-monthWrap.currentMonth { 
+			z-index:1;
+		}	
+.eventsCalendar-daysList { 
+	display:table;
+	width:100%;
 }
-/* line 33, ../sass/eventCalendar.scss */
-.eventsCalendar-monthWrap.currentMonth {
-  z-index: 1;
-}
-
-/* line 38, ../sass/eventCalendar.scss */
-.eventsCalendar-daysList {
-  display: table;
-  width: 100%;
-}
-/* line 41, ../sass/eventCalendar.scss */
-.eventsCalendar-daysList.showAsWeek {
-  display: block;
-}
-/* line 44, ../sass/eventCalendar.scss */
-.eventsCalendar-daysList li {
-  display: table-cell;
-}
-/* line 46, ../sass/eventCalendar.scss */
-.eventsCalendar-daysList li.dayWithEvents {
-  background: rgba(0, 0, 0, 0.15);
-}
-/* line 49, ../sass/eventCalendar.scss */
-.eventsCalendar-daysList li.current {
-  background: rgba(0, 0, 0, 0.35);
-}
-/* line 53, ../sass/eventCalendar.scss */
-.eventsCalendar-daysList.showAsWeek li {
-  display: block;
-  float: left;
-  width: 14.28%;
-  height: 20px;
-}
-/* line 59, ../sass/eventCalendar.scss */
-.eventsCalendar-daysList li a {
-  padding: 0;
-  display: block;
-  text-align: center;
-  font-size: 8px;
-  min-width: 7px;
-}
-
-/* line 68, ../sass/eventCalendar.scss */
+	.eventsCalendar-daysList.showAsWeek {
+		display:block;
+	}
+	
+	.eventsCalendar-daysList li {
+		display:table-cell;
+	}
+		.eventsCalendar-daysList li.dayWithEvents {
+			background:rgba(0,0,0,0.15);
+		} 
+		.eventsCalendar-daysList li.current {
+			background:rgba(0,0,0,0.35);
+		} 
+		.eventsCalendar-daysList.showAsWeek li {
+			display:block;
+			float:left;
+			width:14.28%;
+			height:20px;
+		}
+	.eventsCalendar-daysList li a {
+		padding:0;
+		display:block;
+		text-align:center;
+		font-size:8px;
+		min-width:7px;
+	}
 .eventsCalendar-loading {
-  display: block;
-  min-width: 100px;
-  height: 40px;
-  line-height: 40px;
-}
-
-/* line 75, ../sass/eventCalendar.scss */
+	display:block;
+	min-width:100px;
+	height:40px;
+	line-height:40px;
+}	
 .eventsCalendar-list {
-  position: relative;
-  z-index: 1;
-}
-/* line 78, ../sass/eventCalendar.scss */
-.eventsCalendar-list.oldEventList {
-  z-index: 2;
-}
+	position:relative;
+	z-index:1;
+	
+}	
+	.eventsCalendar-list.oldEventList {
+		z-index:2;
+	}
+	.eventsCalendar-subtitle {
+		padding-left:5px;
+		font-weight:bold;
+		font-size:120%;
+	}
+/* end of core CSS */	
+	
 
-/* line 83, ../sass/eventCalendar.scss */
-.eventsCalendar-subtitle {
-  padding-left: 5px;
-  font-weight: bold;
-  font-size: 120%;
-}
 
-/* end of core CSS */
+	

@@ -19,7 +19,7 @@ class DashboardEventCalendarEventController extends Controller
 
             $isSomeValueEmpty = false;
             foreach ($_POST as $key => $value) {
-                if ($value === "") {
+                if ($value === "" && $key !== 'event_url') {
                     $isSomeValueEmpty = true;
                 }
             }
@@ -59,8 +59,8 @@ class DashboardEventCalendarEventController extends Controller
                 $this->set('event_type', "");
                 $this->set('event_description', "");
                 $this->set('event_url', "");
-                unset($_POST);
                 $this->set('success', 'Event: ' . $this->post('event_title') . ' has been added');
+                unset($_POST);
             } else {
                 $this->set('error', 'Error while adding. Maybe some values were empty?');
             }

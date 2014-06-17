@@ -7,15 +7,17 @@ defined('C5_EXECUTE') or die(_("Access Denied."));
     $rand = rand(1000,2000);
 
 ?>
-<div id="eventTest">
-    view: <?php echo $calendarID; ?>
-    view: <?php var_dump($events); ?>
-</div>
 
-
+<?php if($c->isEditMode()): ?>
+    <div class="eventCalendarInfo">
+        Edit mode for calendar: "<?php echo $calendar[0]['title'] ?>".
+    </div>
+<?php endif ?>
 
 
 <div id="eventCalendarInline<?php echo $rand; ?>"></div>
+
+<?php if(!$c->isEditMode()): ?>
 <script>
     $(document).ready(function() {
         var eventsInline = {} ;
@@ -28,3 +30,4 @@ defined('C5_EXECUTE') or die(_("Access Denied."));
         });
     });
 </script>
+<?php endif ?>

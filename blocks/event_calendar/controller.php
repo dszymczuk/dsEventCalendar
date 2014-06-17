@@ -23,6 +23,10 @@ class EventCalendarBlockController extends BlockController {
 	}
 
 	public function on_page_view() {
+        $db = Loader::db();
+        $calendar = $db->GetAll("SELECT * FROM dsEventCalendar WHERE calendarID=".$this->calendarID);
+        $this->set('calendar',$calendar);
+
         $json_events = $this->getEventsForCalendar($this->calendarID);
         $this->set('events',$json_events);
     }

@@ -9,7 +9,7 @@ class DashboardEventCalendarListCalendarController extends Controller {
 
     public function view() {
         $db = Loader::db();
-        $calendars = $db->GetAll("SELECT * FROM dsEventCalendar");
+        $calendars = $db->GetAll("SELECT EC.*, count(ECE.eventID) as total_events FROM dsEventCalendar AS EC LEFT JOIN dsEventCalendarEvents AS ECE ON ECE.calendarID = EC.calendarID group by EC.calendarID");
         $this->set('calendars',$calendars);
     }
 

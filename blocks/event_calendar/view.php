@@ -26,7 +26,8 @@ defined('C5_EXECUTE') or die(_("Access Denied."));
 
         $("#eventCalendarInline<?php echo $rand; ?>").eventCalendar({
             jsonData: eventsInline,
-            jsonDateFormat: 'human'
+            jsonDateFormat: 'human',
+            showDescription: true
         });
     });
 </script>

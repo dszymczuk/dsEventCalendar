@@ -6,7 +6,7 @@ $form = Loader::helper('form');
 <h3><?php echo t('Add / edit event') ?></h3>
 
 
-<?php if(empty($calendars)): ?>
+<?php if(empty($calendars) && $event_ID === null): ?>
     <div class="alert alert-info">
         There is no calendars to add new event. Go to Add calendar to add new calendar.
     </div>
@@ -68,7 +68,7 @@ $form = Loader::helper('form');
     <fieldset class="control-group offset2">
         <div class="clearfix">
             <div style="margin-top: 10px;">
-                <input class="btn btn-success" type="submit" value="<?php echo t('Add event') ?>">
+                <input class="<?php echo $button['class'] ?>" type="submit" value="<?php echo $button['label'] ?>">
             </div>
         </div>
     </fieldset>

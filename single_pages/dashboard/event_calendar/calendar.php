@@ -25,7 +25,7 @@ $form = Loader::helper('form');
         <fieldset class="control-group offset2">
             <div class="clearfix">
                 <div style="margin-top: 10px;">
-                    <input class="btn btn-success" type="submit" value="<?php echo t('Add calendar') ?>">
+                    <input class="<?php echo $button['class'] ?>" type="submit" value="<?php echo $button['label'] ?>">
                 </div>
             </div>
         </fieldset>

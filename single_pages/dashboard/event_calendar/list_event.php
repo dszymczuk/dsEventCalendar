@@ -54,7 +54,7 @@
             <td><?php echo $e['description']; ?></td>
             <td><?php echo $e['url']; ?></td>
             <td><?php echo $e['title_cal']; ?></td>
-            <td><a href="#" class="btn btn-warning edit">Edit</a>
+            <td><a href="<?php echo View::url('dashboard/event_calendar/event/update/'.$e['eventID']) ?>" class="btn btn-warning edit">Edit</a>
                 <button class="btn btn-danger delete">Delete</button>
             </td>
         </tr>

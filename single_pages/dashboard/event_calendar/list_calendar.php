@@ -48,7 +48,7 @@
                 <?php endif; ?>
 
             </td>
-            <td><a href="#" class="btn btn-warning edit">Edit</a>
+            <td><a href="<?php echo View::url('dashboard/event_calendar/calendar/update/'.$cal['calendarID']) ?>" class="btn btn-warning edit">Edit</a>
                 <button class="btn btn-danger delete">Delete</button>
             </td>
         </tr>

@@ -70,27 +70,21 @@ class DashboardEventCalendarEventController extends Controller
         $calendars = $db->GetAll("SELECT * FROM dsEventCalendar");
         $this->set('calendars',$calendars);
 
+        $this->set('button',array(
+            'class' => 'btn btn-success',
+            'label' => 'Add event'
+        ));
 
     }
 
-    public function add()
+    public function update($event_id)
     {
-//        if($_POST['calendar_title'] !== "")
-//        {
-//            $db = Loader::db();
-//
-//            $args = array(
-//                $this->post('calendar_title'),
-//                $this->post('hours'),
-//                $this->post('description'),
-//                Loader::helper('form/date_time')->translate('date_conducted')
-//            );
-//
-//            $this->redirect('/dashboard/event_calendar/list_calendar');
-//        }
-//        else
-//        {
-//            $this->redirect('/dashboard/event_calendar/calendar');
-//        }
+        
+
+        $this->set('event_ID',$event_id);
+        $this->set('button',array(
+            'class' => 'btn btn-warning',
+            'label' => 'Edit event'
+        ));
     }
 }

@@ -9,9 +9,16 @@ defined('C5_EXECUTE') or die(_("Access Denied."));
 ?>
 
 <?php if($c->isEditMode()): ?>
-    <div class="eventCalendarInfo">
-        Edit mode for calendar: "<?php echo $calendar[0]['title'] ?>".
-    </div>
+    <?php if($calendar[0]['title'] === null): ?>
+        <div class="eventCalendarInfo">
+            No calendar choose
+        </div>
+    <?php else: ?>
+        <div class="eventCalendarInfo">
+            Edit mode for calendar: <?php echo $calendar[0]['title'] ?>
+        </div>
+    <?php endif; ?>
+
 <?php endif ?>
 
 

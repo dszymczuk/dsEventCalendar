@@ -12,6 +12,13 @@
 <h3><?php echo t('List of events') ?></h3>
 
 
+<?php if(empty($events)): ?>
+    <div class="alert alert-info">
+        There is no events. Go to Add event to add new event.
+    </div>
+<?php else: ?>
+
+
 <table id="listevent" class="display" cellspacing="0" width="100%">
     <thead>
     <tr>
@@ -56,7 +63,6 @@
     </tbody>
 </table>
 
-<?php echo Loader::helper('concrete/dashboard')->getDashboardPaneFooterWrapper(); ?>
 
 <script>
     $(document).ready(function () {
@@ -117,3 +123,7 @@
         });
     });
 </script>
+
+<?php endif; ?>
+
+<?php echo Loader::helper('concrete/dashboard')->getDashboardPaneFooterWrapper(); ?>

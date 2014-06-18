@@ -2,15 +2,23 @@
 defined('C5_EXECUTE') or die(_("Access Denied."));
 ?>
 
-<label for="calendarID"><?php echo t('Calendar') ?></label>
+<?php var_dump($calendars); ?>
 
-<div style="margin-top: 15px;">
-    <select name="calendarID" id="calendarID">
-        <?php foreach ($calendars as $cal): ?>
-            <option value="<?php echo $cal['calendarID'] ?>"><?php echo $cal['title'] ?></option>
-        <?php endforeach; ?>
-    </select>
-</div>
+<?php if(empty($calendars)): ?>
+    <div class="alert alert-info">
+        No calendar exist. Add from one from dashboard.
+    </div>
+<?php else: ?>
+    <div style="margin-top: 15px;">
+        <select name="calendarID" id="calendarID">
+            <?php foreach ($calendars as $cal): ?>
+                <option value="<?php echo $cal['calendarID'] ?>"><?php echo $cal['title'] ?></option>
+            <?php endforeach; ?>
+        </select>
+    </div>
+<?php endif; ?>
+
+
 
 
 

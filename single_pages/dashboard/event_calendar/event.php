@@ -6,6 +6,13 @@ $form = Loader::helper('form');
 <h3><?php echo t('Add / edit event') ?></h3>
 
 
+<?php if(empty($calendars)): ?>
+    <div class="alert alert-info">
+        There is no calendars to add new event. Go to Add calendar to add new calendar.
+    </div>
+<?php else: ?>
+
+
 <div class="btn-group" style="margin-top: 10px;">
     <a class="btn" href="<?php echo View::url('dashboard//event_calendar/list_event') ?>">Return to event list</a>
 </div>
@@ -77,6 +84,8 @@ $form = Loader::helper('form');
         }).datepicker('setDate', new Date());
     });
 </script>
+
+<?php endif; ?>
 
 <?php echo Loader::helper('concrete/dashboard')->getDashboardPaneFooterWrapper(); ?>
 

@@ -11,6 +11,13 @@
 
 <h3><?php echo t('List of calendars') ?></h3>
 
+<?php if(empty($calendars)): ?>
+    <div class="alert alert-info">
+        There is no calendars. Go to Add calendar to add new calendar.
+    </div>
+<?php else: ?>
+
+
 <table id="listcalendar" class="table table-bordered table-hover" cellspacing="0" width="100%">
     <thead>
     <tr>
@@ -53,7 +60,7 @@
 <!--    <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>These items will be permanently deleted and cannot be recovered. Are you sure?</p>-->
 <!--</div>-->
 
-<?php echo Loader::helper('concrete/dashboard')->getDashboardPaneFooterWrapper(); ?>
+
 
 <script>
     $(document).ready(function () {
@@ -103,3 +110,7 @@
         });
     });
 </script>
+
+<?php endif; ?>
+
+<?php echo Loader::helper('concrete/dashboard')->getDashboardPaneFooterWrapper(); ?>

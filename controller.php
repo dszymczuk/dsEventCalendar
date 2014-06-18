@@ -3,7 +3,7 @@ defined('C5_EXECUTE') or die(_("Access Denied."));
 
 /*
  *
- * Event Calndera use this scrit for view:
+ * Event Calndera use this script for view:
  * http://www.vissit.com/jquery-event-calendar-plugin-english-version
  *
  */
@@ -13,7 +13,7 @@ class dsEventCalendarPackage extends Package
 
 
     protected $pkgHandle = 'dsEventCalendar';
-    protected $appVersionRequired = '5.6.0';
+    protected $appVersionRequired = '5.5.0';
     protected $pkgVersion = '0.1.4.4';
 
     public function getPackageDescription()
@@ -37,7 +37,6 @@ class dsEventCalendarPackage extends Package
     {
         $currentVersion = $this->getPackageVersion();
         parent::upgrade();
-        //BlockType::installBlockTypeFromPackage('event_calendar', $this);
         $this->installSP($this, $currentVersion);
     }
 

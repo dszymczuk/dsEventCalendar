@@ -2,68 +2,70 @@
 ?>
 
 <?php echo Loader::helper('concrete/dashboard')->getDashboardPaneHeaderWrapper(t('Event Calendar')); ?>
-<div class="alert alert-success" id="success" style="display: none">
-    Calendar with all events was deleted
-</div>
-<div class="alert alert-danger" id="error" style="display: none">
-    Something wrong in delete. Try again
-</div>
+    <div class="alert alert-success" id="success" style="display: none">
+        <?php echo t('Calendar with all events was deleted') ?>
+    </div>
+    <div class="alert alert-danger" id="error" style="display: none">
+        <?php echo t('Something wrong in delete. Try again') ?>
+    </div>
 
-<h3><?php echo t('List of calendars') ?></h3>
+    <h3><?php echo t('List of calendars') ?></h3>
 
-<?php if(empty($calendars)): ?>
+<?php if (empty($calendars)): ?>
     <div class="alert alert-info">
-        There is no calendars. Go to Add calendar to add new calendar.
+        <?php echo t('There is no calendars. Go to Add calendar to add new calendar.') ?>
     </div>
 <?php else: ?>
 
 
-<table id="listcalendar" class="table table-bordered table-hover" cellspacing="0" width="100%">
-    <thead>
-    <tr>
-        <th>Calendar title</th>
-        <th>Events in calendar</th>
-        <th>Options</th>
-    </tr>
-    </thead>
-
-    <tfoot>
-    <tr>
-        <th>Calendar title</th>
-        <th>Events in calendar</th>
-        <th>Options</th>
-    </tr>
-    </tfoot>
-
-    <tbody>
-    <?php foreach ($calendars as $cal): ?>
+    <table id="listcalendar" class="table table-bordered table-hover" cellspacing="0" width="100%">
+        <thead>
         <tr>
-            <td><input class="calendarID" type="text" value="<?php echo $cal['calendarID']; ?>"><?php echo $cal['title']; ?>
-            </td>
-            <td>
-                <?php if($cal['total_events'] > 0): ?>
-                    <span class="badge badge-important"><?php echo $cal['total_events']; ?></span>
-                <?php else: ?>
-                    <span class="badge badge-success"><?php echo $cal['total_events']; ?></span>
-                <?php endif; ?>
-
-            </td>
-            <td><a href="<?php echo View::url('dashboard/event_calendar/calendar/update/'.$cal['calendarID']) ?>" class="btn btn-warning edit">Edit</a>
-                <button class="btn btn-danger delete">Delete</button>
-            </td>
+            <th><?php echo t('Calendar title') ?></th>
+            <th><?php echo t('Events in calendar') ?></th>
+            <th><?php echo t('Options') ?></th>
         </tr>
-    <?php endforeach; ?>
-    </tbody>
-</table>
+        </thead>
 
-<!--<div id="dialog-confirm" title="Empty the recycle bin?" style="display: none">-->
-<!--    <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>These items will be permanently deleted and cannot be recovered. Are you sure?</p>-->
-<!--</div>-->
+        <tfoot>
+        <tr>
+            <th><?php echo t('Calendar title') ?></th>
+            <th><?php echo t('Events in calendar') ?></th>
+            <th><?php echo t('Options') ?></th>
+        </tr>
+        </tfoot>
+
+        <tbody>
+        <?php foreach ($calendars as $cal): ?>
+            <tr>
+                <td><input class="calendarID" type="text"
+                           value="<?php echo $cal['calendarID']; ?>"><?php echo $cal['title']; ?>
+                </td>
+                <td>
+                    <?php if ($cal['total_events'] > 0): ?>
+                        <span class="badge badge-important"><?php echo $cal['total_events']; ?></span>
+                    <?php else: ?>
+                        <span class="badge badge-success"><?php echo $cal['total_events']; ?></span>
+                    <?php endif; ?>
+
+                </td>
+                <td><a href="<?php echo View::url('dashboard/event_calendar/calendar/update/' . $cal['calendarID']) ?>"
+                       class="btn btn-warning edit"><?php echo t('Edit') ?></a>
+                    <button class="btn btn-danger delete"><?php echo t('Delete') ?></button>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+        </tbody>
+    </table>
+
+    <!--<div id="dialog-confirm" title="Empty the recycle bin?" style="display: none">-->
+    <!--    <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>These items will be permanently deleted and cannot be recovered. Are you sure?</p>-->
+    <!--</div>-->
 
 
 
-<script>
-    $(document).ready(function () {
+    <script>
+        $(document).ready(function () {
 
 
 //        $(function() {
@@ -82,34 +84,35 @@
 //        });
 
 
-        $(".delete").click(function () {
-            var elem = $(this);
-            var count_evetns = elem.closest('tr').children('td').children('span.badge').html();
-            console.log(count_evetns);
-            var conf = confirm("Are you sure to delete this calendar with all events? Events in this calendar: "+count_evetns);
-            if (conf) {
-                var id = elem.closest('tr').children('td').children('input.calendarID').val();
-                elem.closest('tr').addClass('toRemove');
-                console.log(id);
-                $('.toRemove').remove();
+            $(".delete").click(function () {
+                var elem = $(this);
+                var count_evetns = elem.closest('tr').children('td').children('span.badge').html();
+                console.log(count_evetns);
+                var conf = confirm("Are you sure to delete this calendar with all events? Events in this calendar: " + count_evetns);
+                if (conf) {
+                    var id = elem.closest('tr').children('td').children('input.calendarID').val();
+                    elem.closest('tr').addClass('toRemove');
+                    console.log(id);
+                    $('.toRemove').remove();
 //                $.ajax({
 //                    type: "POST",
-<!--                    url: "--><?php //echo $this->url('dashboard/event_calendar/list_calendar/delete'); ?><!--",-->
+                    <!--                    url: "-->
+                    <?php //echo $this->url('dashboard/event_calendar/list_calendar/delete'); ?><!--",-->
 //                    data: {"id": id},
 //                    success: function (data) {
-                        /*
-                         todo success / error messages
-                         */
+                    /*
+                     todo success / error messages
+                     */
 //                        if (data == "OK")
 //                            elem.parent().remove();
 //                    }
 //                });
-            }
-            else
-                return false;
+                }
+                else
+                    return false;
+            });
         });
-    });
-</script>
+    </script>
 
 <?php endif; ?>
 

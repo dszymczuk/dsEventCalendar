@@ -7,7 +7,7 @@ $form = Loader::helper('form');
 
 
     <div class="btn-group" style="margin-top: 15px;">
-        <a class="btn" href="<?php echo View::url('dashboard//event_calendar/list_calendar') ?>">Return to calendar
+        <a class="btn" href="<?php echo View::url('dashboard/event_calendar/list_calendar') ?>">Return to calendar
             list</a>
 
     </div>

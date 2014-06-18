@@ -14,7 +14,7 @@ $form = Loader::helper('form');
 
 
 <div class="btn-group" style="margin-top: 10px;">
-    <a class="btn" href="<?php echo View::url('dashboard//event_calendar/list_event') ?>">Return to event list</a>
+    <a class="btn" href="<?php echo View::url('dashboard/event_calendar/list_event') ?>">Return to event list</a>
 </div>
 
 <form class="form-horizontal" method="post" id="ccm-multilingual-page-report-form" style="margin-top: 35px;">

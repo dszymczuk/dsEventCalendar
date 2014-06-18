@@ -3,7 +3,7 @@ $form = Loader::helper('form');
 ?>
 
 <?php echo Loader::helper('concrete/dashboard')->getDashboardPaneHeaderWrapper(t('Event Calendar')); ?>
-    <h3><?php echo t('Add / edit event') ?></h3>
+    <h3><?php echo t('Add / edit calendar') ?></h3>
 
 
     <div class="btn-group" style="margin-top: 15px;">

@@ -78,7 +78,8 @@ $form = Loader::helper('form');
     $(document).ready(function () {
         $('#event_date').datetimepicker({
             lang: 'pl',
-            dateFormat: "yy-mm-dd H:i",
+            format: "Y-m-d H:i:s",
+            step: 15,
             todayButton: true,
             dayOfWeekStart: 1
         }).datepicker('setDate', new Date());

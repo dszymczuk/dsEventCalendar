@@ -57,7 +57,7 @@ class dsEventCalendarPackage extends Package
 
         $p3 = SinglePage::add('/dashboard/event_calendar/calendar', $pkg);
         if (is_object($p3)) {
-            $p3->update(array('cName' => t('Add calendar'), 'cDescription' => ''));
+            $p3->update(array('cName' => t('Add / edit calendar'), 'cDescription' => ''));
         }
 
         $p4 = SinglePage::add('/dashboard/event_calendar/list_event', $pkg);
@@ -67,7 +67,7 @@ class dsEventCalendarPackage extends Package
 
         $p5 = SinglePage::add('/dashboard/event_calendar/event', $pkg);
         if (is_object($p5)) {
-            $p5->update(array('cName' => t('Add event'), 'cDescription' => ''));
+            $p5->update(array('cName' => t('Add / edit event'), 'cDescription' => ''));
         }
     }
 }

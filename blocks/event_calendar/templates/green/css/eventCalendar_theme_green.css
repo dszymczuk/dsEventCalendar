@@ -2,7 +2,7 @@ a:hover {
   color: black !important;
 }
 
-.redEventCalendar .eventCalendar-wrap {
+.greenEventCalendar .eventCalendar-wrap {
   border: solid 1px #d3d3d3;
   box-shadow: 0 0 15px #999;
   border-radius: 5px;
@@ -10,7 +10,7 @@ a:hover {
   background-color: #fff;
   color: black;
 }
-.redEventCalendar .eventCalendar-wrap .arrow {
+.greenEventCalendar .eventCalendar-wrap .arrow {
   text-decoration: none;
   color: #fff;
   padding: 0 5px;
@@ -18,10 +18,10 @@ a:hover {
   top: 9px;
   padding: 8px 10px;
 }
-.redEventCalendar .eventCalendar-wrap .arrow:hover {
+.greenEventCalendar .eventCalendar-wrap .arrow:hover {
   opacity: 0.7;
 }
-.redEventCalendar .eventCalendar-wrap .arrow span {
+.greenEventCalendar .eventCalendar-wrap .arrow span {
   height: 0;
   width: 0;
   font-size: 0;
@@ -32,37 +32,37 @@ a:hover {
   float: left;
   text-indent: -5000px;
 }
-.redEventCalendar .eventCalendar-wrap .arrow.prev span {
+.greenEventCalendar .eventCalendar-wrap .arrow.prev span {
   border-left-width: 0;
   border-right: 6px solid #fff;
 }
-.redEventCalendar .eventsCalendar-slider {
+.greenEventCalendar .eventsCalendar-slider {
   height: 80px;
 }
-.redEventCalendar .eventsCalendar-monthWrap {
+.greenEventCalendar .eventsCalendar-monthWrap {
   border-radius: 5px;
   top: 10px;
   left: 0px;
 }
-.redEventCalendar .eventsCalendar-currentTitle {
+.greenEventCalendar .eventsCalendar-currentTitle {
   line-height: 25px;
-  background-color: #c22222;
-  outline: 1px solid #c22222;
+  background-color: #25c21c;
+  outline: 1px solid #25c21c;
   border: 1px solid #E3E3E3;
   border-width: 1px 0;
 }
-.redEventCalendar .eventsCalendar-currentTitle .monthTitle {
+.greenEventCalendar .eventsCalendar-currentTitle .monthTitle {
   font-size: 110%;
   text-decoration: none;
   font-weight: bold;
   color: #fff;
 }
-.redEventCalendar .eventsCalendar-daysList {
+.greenEventCalendar .eventsCalendar-daysList {
   zoom: 1;
   padding: 0;
   width: 100%;
 }
-.redEventCalendar .eventsCalendar-daysList.showAsWeek {
+.greenEventCalendar .eventsCalendar-daysList.showAsWeek {
   margin: 10px 5px;
   width: auto;
   border: solid 1px #BCBCBC;
@@ -76,89 +76,89 @@ a:hover {
   background-image: -ms-linear-gradient(top, #eeeeee 42%, #cccccc 71%);
   background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0.42, #eeeeee), color-stop(0.71, #cccccc));
 }
-.redEventCalendar .eventsCalendar-daysList.showDayNames.showAsWeek {
+.greenEventCalendar .eventsCalendar-daysList.showDayNames.showAsWeek {
   border-radius: 5px 5px 0 0;
 }
-.redEventCalendar .eventsCalendar-daysList:before {
+.greenEventCalendar .eventsCalendar-daysList:before {
   content: "";
   display: table;
 }
-.redEventCalendar .eventsCalendar-daysList:after {
+.greenEventCalendar .eventsCalendar-daysList:after {
   content: "";
   display: table;
   clear: both;
 }
-.redEventCalendar .eventsCalendar-day-header {
+.greenEventCalendar .eventsCalendar-day-header {
   text-transform: lowercase;
   text-align: center;
   font-size: 10px;
   border-bottom: solid 1px #BCBCBC;
 }
-.redEventCalendar .eventsCalendar-daysList.showAsWeek li {
+.greenEventCalendar .eventsCalendar-daysList.showAsWeek li {
   height: auto;
 }
-.redEventCalendar .eventsCalendar-daysList.showAsWeek li.empty {
+.greenEventCalendar .eventsCalendar-daysList.showAsWeek li.empty {
   background-color: #ccc;
   min-height: 29px;
 }
-.redEventCalendar .eventsCalendar-day {
+.greenEventCalendar .eventsCalendar-day {
   border-left: solid 1px #BCBCBC;
 }
-.redEventCalendar .eventsCalendar-day a {
+.greenEventCalendar .eventsCalendar-day a {
   text-decoration: none;
   font-size: 10px;
   color: #424242;
   border: solid 1px #BCBCBC;
   border-width: 0 1px 1px 0;
 }
-.redEventCalendar .showAsWeek .eventsCalendar-day {
+.greenEventCalendar .showAsWeek .eventsCalendar-day {
   border-left-width: 0;
 }
-.redEventCalendar .showAsWeek .eventsCalendar-day a {
+.greenEventCalendar .showAsWeek .eventsCalendar-day a {
   border: solid 1px red;
   border-color: #fff #BCBCBC #BCBCBC #eee;
   line-height: 27px;
   font-size: 11px;
 }
-.redEventCalendar .eventsCalendar-day a:hover {
+.greenEventCalendar .eventsCalendar-day a:hover {
   background-color: #E4E4E4;
   box-shadow: inset 5px 5px 10px #C1C1C1;
   text-shadow: 2px 2px 2px #C1C1C1;
 }
-.redEventCalendar .eventsCalendar-daysList li.dayWithEvents a {
-  background: #e46666;
-  box-shadow: inset 5px 5px 10px #dd3a3a;
-  text-shadow: 2px 2px 2px #dd3a3a;
+.greenEventCalendar .eventsCalendar-daysList li.dayWithEvents a {
+  background: #64e85c;
+  box-shadow: inset 5px 5px 10px #3ae130;
+  text-shadow: 2px 2px 2px #3ae130;
   color: #fff;
 }
-.redEventCalendar li.eventsCalendar-day.dayWithEvents a:hover {
-  background-color: #e46666;
-  box-shadow: inset 5px 5px 10px #dd3a3a;
-  text-shadow: 2px 2px 2px #dd3a3a;
+.greenEventCalendar li.eventsCalendar-day.dayWithEvents a:hover {
+  background-color: #64e85c;
+  box-shadow: inset 5px 5px 10px #3ae130;
+  text-shadow: 2px 2px 2px #3ae130;
 }
-.redEventCalendar .eventsCalendar-daysList li.today a {
+.greenEventCalendar .eventsCalendar-daysList li.today a {
   color: #fff;
-  background: #c22222;
-  box-shadow: inset 5px 5px 10px #6b1313;
-  text-shadow: 2px 2px 2px #6b1313;
+  background: #25c21c;
+  box-shadow: inset 5px 5px 10px #14690f;
+  text-shadow: 2px 2px 2px #14690f;
 }
-.redEventCalendar li.eventsCalendar-day.today a:hover {
-  background-color: #e46666;
-  box-shadow: inset 5px 5px 10px #dd3a3a;
-  text-shadow: 2px 2px 2px #dd3a3a;
+.greenEventCalendar li.eventsCalendar-day.today a:hover {
+  background-color: #64e85c;
+  box-shadow: inset 5px 5px 10px #3ae130;
+  text-shadow: 2px 2px 2px #3ae130;
 }
-.redEventCalendar .eventsCalendar-daysList li.current a {
+.greenEventCalendar .eventsCalendar-daysList li.current a {
   color: #fff;
-  background: #c22222;
-  box-shadow: inset 5px 5px 10px #6b1313;
-  text-shadow: 2px 2px 2px #6b1313;
+  background: #25c21c;
+  box-shadow: inset 5px 5px 10px #14690f;
+  text-shadow: 2px 2px 2px #14690f;
 }
-.redEventCalendar li.eventsCalendar-day.current a:hover {
-  background-color: #e46666;
-  box-shadow: inset 5px 5px 10px #dd3a3a;
-  text-shadow: 2px 2px 2px #dd3a3a;
+.greenEventCalendar li.eventsCalendar-day.current a:hover {
+  background-color: #64e85c;
+  box-shadow: inset 5px 5px 10px #3ae130;
+  text-shadow: 2px 2px 2px #3ae130;
 }
-.redEventCalendar .eventsCalendar-loading {
+.greenEventCalendar .eventsCalendar-loading {
   border-radius: 4px;
   margin: 5px auto;
   padding: 0 10px;
@@ -173,66 +173,66 @@ a:hover {
   top: 25px;
   left: 5px;
 }
-.redEventCalendar .eventsCalendar-loading.error {
+.greenEventCalendar .eventsCalendar-loading.error {
   background-color: red;
 }
-.redEventCalendar .eventsCalendar-list-wrap {
+.greenEventCalendar .eventsCalendar-list-wrap {
   min-height: 100px;
   position: relative;
 }
-.redEventCalendar .eventsCalendar-list-content.scrollable {
+.greenEventCalendar .eventsCalendar-list-content.scrollable {
   height: 100px;
   overflow-y: auto;
   margin: 0 5px 5px 0;
 }
-.redEventCalendar .eventsCalendar-list {
+.greenEventCalendar .eventsCalendar-list {
   margin: 0;
   padding: 0;
   list-style-type: none;
 }
-.redEventCalendar .eventsCalendar-list li {
+.greenEventCalendar .eventsCalendar-list li {
   margin-left: 10px;
   padding: 5px 0 0 10px !important;
   clear: both;
   border-left: 5px solid #aaa;
 }
-.redEventCalendar .eventsCalendar-list li time {
+.greenEventCalendar .eventsCalendar-list li time {
   font-size: 14px;
   line-height: 13px;
   font-weight: bold;
 }
-.redEventCalendar .eventsCalendar-list li time em {
+.greenEventCalendar .eventsCalendar-list li time em {
   float: left;
   font-style: normal;
   margin-bottom: 10px;
 }
-.redEventCalendar .eventsCalendar-list li time small {
+.greenEventCalendar .eventsCalendar-list li time small {
   font-size: 14px;
   float: left;
   background-color: white;
-  color: #c22222;
+  color: #25c21c;
   padding: 0 5px 0 4px;
   margin: 0 0 0 3px;
 }
-.redEventCalendar .eventsCalendar-list li .eventTitle {
+.greenEventCalendar .eventsCalendar-list li .eventTitle {
   font-size: 14px;
   display: block;
   clear: both;
-  color: #c22222 !important;
+  color: #25c21c !important;
   font-weight: bold;
   text-decoration: none;
 }
-.redEventCalendar .eventsCalendar-list li .eventTitle:hover {
+.greenEventCalendar .eventsCalendar-list li .eventTitle:hover {
   text-decoration: underline;
 }
-.redEventCalendar .eventsCalendar-list li .eventDesc {
+.greenEventCalendar .eventsCalendar-list li .eventDesc {
   clear: both;
   margin-top: 10px;
   margin-bottom: 20px;
   font-size: 12px;
   line-height: 1.2em;
 }
-.redEventCalendar .eventsCalendar-list .eventsCalendar-noEvents {
+.greenEventCalendar .eventsCalendar-list .eventsCalendar-noEvents {
   border: none;
   font-size: 120%;
   border-radius: 4px;
@@ -245,17 +245,17 @@ a:hover {
   box-shadow: 0 0 10px #ccc;
   text-shadow: 0 0 3px #aaa;
 }
-.redEventCalendar .eventsCalendar-list .eventsCalendar-noEvents p {
+.greenEventCalendar .eventsCalendar-list .eventsCalendar-noEvents p {
   margin: 0;
 }
-.redEventCalendar .eventCalendarInfo {
+.greenEventCalendar .eventCalendarInfo {
   color: black;
   font-size: 20px;
   padding: 10px;
   border-radius: 4px;
   background-color: #ccc;
 }
-.redEventCalendar .bt {
+.greenEventCalendar .bt {
   font-size: 12px;
   display: block;
   clear: both;
@@ -287,7 +287,7 @@ a:hover {
   -o-transition: 0.1s linear all;
   transition: 0.1s linear all;
 }
-.redEventCalendar .bt:hover {
+.greenEventCalendar .bt:hover {
   background-position: 0 -15px;
   text-decoration: none;
 }

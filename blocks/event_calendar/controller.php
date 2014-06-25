@@ -28,6 +28,10 @@ class EventCalendarBlockController extends BlockController
 
     public function on_page_view()
     {
+        //$this->addHeaderItem(Loader::helper('html')->css('/blocks/event_calendar/css/eventCalendar.css','dsEventCalendar'));
+        //$this->addHeaderItem(Loader::helper('html')->css('/blocks/event_calendar/css/eventCalendar_theme.css','dsEventCalendar'));
+        //$this->addHeaderItem(Loader::helper('html')->css('/blocks/event_calendar/css/eventCalendar_theme_responsive.css','dsEventCalendar'));
+
         $db = Loader::db();
         $calendar = $db->GetAll("SELECT * FROM dsEventCalendar WHERE calendarID=" . $this->calendarID);
         $this->set('calendar', $calendar);

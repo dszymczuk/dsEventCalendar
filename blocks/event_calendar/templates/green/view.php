@@ -1,7 +1,7 @@
 <?php
 defined('C5_EXECUTE') or die(_("Access Denied."));
-    $c = Page::getCurrentPage();
-    $rand = rand(1000,2000);
+$c = Page::getCurrentPage();
+$rand = rand(1000, 2000);
 ?>
 
 
@@ -22,18 +22,18 @@ defined('C5_EXECUTE') or die(_("Access Denied."));
 
 
 
-<?php if(!$c->isEditMode()): ?>
-<script>
-    $(document).ready(function() {
-        var eventsInline = {} ;
-        eventsInline = <?php echo $events; ?> ;
+<?php if (!$c->isEditMode()): ?>
+    <script>
+        $(document).ready(function () {
+            var eventsInline = {};
+            eventsInline = <?php echo $events; ?>;
 
 
-        $("#eventCalendarInline<?php echo $rand; ?>").eventCalendar({
-            jsonData: eventsInline,
-            jsonDateFormat: 'human',
-            showDescription: true
+            $("#eventCalendarInline<?php echo $rand; ?>").eventCalendar({
+                jsonData: eventsInline,
+                jsonDateFormat: 'human',
+                showDescription: true
+            });
         });
-    });
-</script>
+    </script>
 <?php endif ?>

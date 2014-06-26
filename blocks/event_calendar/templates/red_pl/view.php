@@ -18,7 +18,7 @@ defined('C5_EXECUTE') or die(_("Access Denied."));
 
 <?php endif ?>
 
-    <div id="eventCalendarInline<?php echo $rand; ?>" class="blueEventCalendar"></div>
+    <div id="eventCalendarInline<?php echo $rand; ?>" class="redEventCalendar"></div>
 
 
 
@@ -32,7 +32,20 @@ defined('C5_EXECUTE') or die(_("Access Denied."));
         $("#eventCalendarInline<?php echo $rand; ?>").eventCalendar({
             jsonData: eventsInline,
             jsonDateFormat: 'human',
-            showDescription: true
+            showDescription: true,
+            monthNames: [ "Styczeń", "Luty", "Marzec", "Kwiecień", "Maj", "Czerwiec",
+                "Lipiec", "Sierpień", "Wrzesień", "Październik", "Listopad", "Grudzień" ],
+            dayNames: [ 'Poniedziałek','Wtorek','Środa','Czwartek',
+                'Piątek','Sobota','Niedziela' ],
+            dayNamesShort: [ 'Pn','Wt','Śr','Cz', 'Pt','Sb','Nd' ],
+            txt_noEvents: "Brak wydarzeń w tym czasie",
+            txt_SpecificEvents_prev: "",
+            txt_SpecificEvents_after: "Wydarzenia:",
+            txt_next: "Następny",
+            txt_prev: "Poprzedni",
+            txt_NextEvents: "Następne wydarzenie:",
+            txt_GoToEventUrl: "Idź do wydarzenia",
+            txt_Loading: "Wczytywanie..."
         });
     });
 </script>

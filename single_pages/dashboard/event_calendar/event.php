@@ -53,8 +53,7 @@ $form = Loader::helper('form');
             <label class="control-label"><?php echo t('Event description') ?></label>
 
             <div class="controls">
-                <input type="text" name="event_description" id="event_description"
-                       value="<?php echo $event_description; ?>">
+                <textarea name="event_description" id="event_description"><?php echo $event_description; ?></textarea>
             </div>
         </fieldset>
         <fieldset class="control-group">

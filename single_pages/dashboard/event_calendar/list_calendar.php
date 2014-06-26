@@ -38,7 +38,7 @@
         <tbody>
         <?php foreach ($calendars as $cal): ?>
             <tr>
-                <td><input class="calendarID" type="text"
+                <td><input class="calendarID" type="hidden"
                            value="<?php echo $cal['calendarID']; ?>"><?php echo $cal['title']; ?>
                 </td>
                 <td>
@@ -58,9 +58,9 @@
         </tbody>
     </table>
 
-    <!--<div id="dialog-confirm" title="Empty the recycle bin?" style="display: none">-->
-    <!--    <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>These items will be permanently deleted and cannot be recovered. Are you sure?</p>-->
-    <!--</div>-->
+<!--    <div id="dialog-confirm" title="Empty the recycle bin?" style="display: none">-->
+<!--        <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>These items will be permanently deleted and cannot be recovered. Are you sure?</p>-->
+<!--    </div>-->
 
 
 
@@ -90,23 +90,24 @@
                 console.log(count_evetns);
                 var conf = confirm("Are you sure to delete this calendar with all events? Events in this calendar: " + count_evetns);
                 if (conf) {
-                    var id = elem.closest('tr').children('td').children('input.calendarID').val();
+                    /*var id = elem.closest('tr').children('td').children('input.calendarID').val();
                     elem.closest('tr').addClass('toRemove');
                     console.log(id);
-                    $('.toRemove').remove();
-//                $.ajax({
-//                    type: "POST",
-                    <!--                    url: "-->
-                    <?php //echo $this->url('dashboard/event_calendar/list_calendar/delete'); ?><!--",-->
-//                    data: {"id": id},
-//                    success: function (data) {
-                    /*
-                     todo success / error messages
-                     */
-//                        if (data == "OK")
-//                            elem.parent().remove();
-//                    }
-//                });
+
+                    $.ajax({
+                        type: "POST",
+                        url: "<?php echo $this->url('dashboard/event_calendar/list_calendar/delete'); ?>",
+                        data: {"id": id},
+                        success: function (data) {
+                            if (data == "OK") {
+                                $("#success").fadeIn(1000).delay(2000).fadeOut(1000);
+                                $('.toRemove').remove();
+                            }
+                            else {
+                                $("#error").fadeIn(1000).delay(2000).fadeOut(1000);
+                            }
+                        }
+                    });*/
                 }
                 else
                     return false;

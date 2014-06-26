@@ -15,8 +15,7 @@ Maybe in future I create something own with new features.
 
 Version
 ----
-0.1
-
+0.9
 
 Changelog
 ----
@@ -24,12 +23,43 @@ Changelog
 
 0.1 - Initial development 
 
+Languages
+----
+You can set any language. Just edit eventCalendar properties in template like that:
+In English - default
+```javascript
+$("#eventCalendarInline<?php echo $rand; ?>").eventCalendar({
+    jsonData: eventsInline,
+    jsonDateFormat: 'human',
+    showDescription: true
+});
+```
+In Polish:
+```javascript
+$("#eventCalendarInline<?php echo $rand; ?>").eventCalendar({
+    jsonData: eventsInline,
+    jsonDateFormat: 'human',
+    showDescription: true
+    monthNames: [ "Styczeń", "Luty", "Marzec", "Kwiecień", "Maj", "Czerwiec","Lipiec", "Sierpień", "Wrzesień", "Październik", "Listopad", "Grudzień" ],  
+    dayNames: [ 'Poniedziałek','Wtorek','Środa','Czwartek', 'Piątek','Sobota','Niedziela' ],  
+    dayNamesShort: [ 'Pn','Wt','Śr','Cz', 'Pt','Sb','Nd' ],  
+    txt_noEvents: "Brak wydarzeń w tym czasie",  
+    txt_SpecificEvents_prev: "",
+    txt_SpecificEvents_after: "Wydarzenia:",
+    txt_next: "Następny",
+    txt_prev: "Poprzedni",
+    txt_NextEvents: "Następne wydarzenie:",
+    txt_GoToEventUrl: "Idź do wydarzenia",
+    txt_Loading: "Wczytywanie..."
+});
+```
+
 License
 ----
 MIT
 
 Future features
 ----
-* validation
+* validation forms in dashboard
 * multiday events (probably version 2)
 * manage events from calendar (probably version 3)

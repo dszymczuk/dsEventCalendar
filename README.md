@@ -13,6 +13,14 @@ http://www.vissit.com/jquery-event-calendar-plugin-english-version
 
 Maybe in future I create something own with new features.
 
+How to use
+----
+First, go to dashboard and add calendar in "Add / edit calendar" . After that you can create new event in "Add / edit event" connected with new added calendar (choose from select).
+
+If you did this, go to page and add new block called "Event Calendar" and select calendar.
+
+If you want, you can change template in Custom Templates.
+
 
 Version
 ----

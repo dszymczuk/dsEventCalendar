@@ -28,6 +28,7 @@ class EventCalendarBlockController extends BlockController
 
     public function on_page_view()
     {
+
         $db = Loader::db();
         $calendar = $db->GetAll("SELECT * FROM dsEventCalendar WHERE calendarID=" . $this->calendarID);
         $this->set('calendar', $calendar);
@@ -62,7 +63,8 @@ class EventCalendarBlockController extends BlockController
     {
         $db = Loader::db();
         $events = $db->GetAll("SELECT * FROM dsEventCalendarEvents WHERE calendarID = " . $calendarID);
-        return json_encode($events);
+        $js = Loader::helper('json');
+        return $js->encode($events);
     }
 
 }

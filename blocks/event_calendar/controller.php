@@ -66,7 +66,8 @@ class EventCalendarBlockController extends BlockController
     {
         $db = Loader::db();
         $events = $db->GetAll("SELECT * FROM dsEventCalendarEvents WHERE calendarID = " . $calendarID);
-        return json_encode($events);
+        $js = Loader::helper('json');
+        return $js->encode($events);
 
     }
 

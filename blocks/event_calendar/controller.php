@@ -38,6 +38,7 @@ class EventCalendarBlockController extends BlockController
 
         $json_events = $this->getEventsForCalendar($this->calendarID);
         $this->set('events', $json_events);
+        $this->set('lang',$this->translateProvider());
     }
 
     function save($data)
@@ -68,6 +69,29 @@ class EventCalendarBlockController extends BlockController
         $events = $db->GetAll("SELECT * FROM dsEventCalendarEvents WHERE calendarID = " . $calendarID);
         $js = Loader::helper('json');
         return $js->encode($events);
+
+    }
+
+    private function translateProvider()
+    {
+        $months = array(t('January'),t('February'),t('March'),t('April'),t('May'),t('June'),t('July'),t('August'),t('September'),t('October'),t('November'),t('December'));
+        $days = array(t('Sunday'),t('Monday'),t('Tuesday'),t('Wednesday'),t('Thursday'),t('Friday'),t('Saturday'));
+        $days_short = array(t('Sun'),t('Mon'),t('Tue'),t('Wed'), t('Thu'),t('Fri'),t('Sat'));
+        $another_texts = array(
+            'txt_noEvents' => t("There are no events in this period"),
+            'txt_SpecificEvents_prev' => t(""),
+            'txt_SpecificEvents_after' => t("events:"),
+            'txt_next' => t("next"),
+            'txt_prev' => t("prev"),
+            'txt_NextEvents' => t("Next events:"),
+            'txt_GoToEventUrl' => t("See the event"),
+            'txt_LoadingText' => t("loading...")
+        );
+        $lang = array($months,$days,$days_short,$another_texts);
+        $js = Loader::helper('json');
+        return $js->encode($lang);
+
+
 
     }
 

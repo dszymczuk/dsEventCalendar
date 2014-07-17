@@ -1,7 +1,6 @@
 <?php
 defined('C5_EXECUTE') or die(_("Access Denied."));
     $c = Page::getCurrentPage();
-    $rand = rand(1000,2000);
 ?>
 
 
@@ -18,7 +17,7 @@ defined('C5_EXECUTE') or die(_("Access Denied."));
 
 <?php endif ?>
 
-    <div id="eventCalendarInline<?php echo $rand; ?>" class="greenEventCalendar"></div>
+    <div id="eventCalendarInline<?php echo $blockIdentifier; ?>" class="greenEventCalendar"></div>
 
 
 
@@ -31,7 +30,7 @@ defined('C5_EXECUTE') or die(_("Access Denied."));
             texts = <?php echo $lang; ?>;
             var options = texts[3];
 
-            $("#eventCalendarInline<?php echo $rand; ?>").eventCalendar({
+            $("#eventCalendarInline<?php echo $blockIdentifier; ?>").eventCalendar({
                 jsonData: eventsInline,
                 jsonDateFormat: 'human',
                 showDescription: true,

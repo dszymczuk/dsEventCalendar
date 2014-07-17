@@ -1,7 +1,6 @@
 <?php
 defined('C5_EXECUTE') or die(_("Access Denied."));
 $c = Page::getCurrentPage();
-$rand = rand(1000, 2000);
 ?>
 
 <?php if ($c->isEditMode()): ?>
@@ -17,7 +16,7 @@ $rand = rand(1000, 2000);
 
 <?php endif ?>
 
-    <div id="eventCalendarInline<?php echo $rand; ?>"></div>
+    <div id="eventCalendarInline<?php echo $blockIdentifier; ?>"></div>
 
 <?php if (!$c->isEditMode()): ?>
     <script>
@@ -28,7 +27,7 @@ $rand = rand(1000, 2000);
             texts = <?php echo $lang; ?>;
             var options = texts[3];
 
-            $("#eventCalendarInline<?php echo $rand; ?>").eventCalendar({
+            $("#eventCalendarInline<?php echo $blockIdentifier; ?>").eventCalendar({
                 jsonData: eventsInline,
                 jsonDateFormat: 'human',
                 showDescription: true,

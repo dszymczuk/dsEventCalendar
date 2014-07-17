@@ -39,7 +39,8 @@ You can set any language using gettext.
 
 License
 ----
-MIT
+dsEventCalendar - Creative Commons
+jQuery Event Calendar Plugin - GPL v3
 
 Future features
 ----

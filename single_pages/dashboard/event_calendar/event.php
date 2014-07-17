@@ -21,7 +21,7 @@ $form = Loader::helper('form');
             <label class="control-label"><?php echo t('Event title') ?></label>
 
             <div class="controls">
-                <input type="text" name="event_title" id="event_title" value="<?php echo $event_title; ?>">
+                <input maxlength="255" type="text" name="event_title" id="event_title" value="<?php echo $event_title; ?>">
             </div>
         </fieldset>
         <fieldset class="control-group">
@@ -39,14 +39,14 @@ $form = Loader::helper('form');
             <label class="control-label"><?php echo t('Event date') ?></label>
 
             <div class="controls">
-                <input type="text" name="event_date" id="event_date" value="<?php echo $event_date; ?>">
+                <input maxlength="255" type="text" name="event_date" id="event_date" value="<?php echo $event_date; ?>">
             </div>
         </fieldset>
         <fieldset class="control-group">
             <label class="control-label"><?php echo t('Event type') ?></label>
 
             <div class="controls">
-                <input type="text" name="event_type" id="event_type" value="<?php echo $event_type; ?>">
+                <input maxlength="255" type="text" name="event_type" id="event_type" value="<?php echo $event_type; ?>">
             </div>
         </fieldset>
         <fieldset class="control-group">
@@ -60,7 +60,7 @@ $form = Loader::helper('form');
             <label class="control-label"><?php echo t('Event url') ?></label>
 
             <div class="controls">
-                <input type="text" name="event_url" id="event_url" value="<?php echo $event_url; ?>">
+                <input maxlength="255" type="text" name="event_url" id="event_url" value="<?php echo $event_url; ?>">
             </div>
         </fieldset>
         <fieldset class="control-group offset2">

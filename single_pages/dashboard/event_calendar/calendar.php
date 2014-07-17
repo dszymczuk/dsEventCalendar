@@ -16,7 +16,7 @@ $form = Loader::helper('form');
             <label class="control-label"><?php echo t('Calendar title') ?></label>
 
             <div class="controls">
-                <input type="text" name="calendar_title" id="calendar_title" value="<?php echo $calendar_title; ?>">
+                <input maxlength="255" type="text" name="calendar_title" id="calendar_title" value="<?php echo $calendar_title; ?>">
             </div>
         </fieldset>
 

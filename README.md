@@ -24,10 +24,16 @@ If you want, you can change template in Custom Templates.
 
 Version
 ----
-0.9
+1.0.1
 
 Changelog
 ----
+1.0.1
+Fix: Call to undefined method Block::getProxyBlock()
+
+1.0.0
+Official release. Fix: Removed jquery.eventCalendar.js files from color templates blocks - they are unnecessary (override by default jquery.eventCalendar.js in block)
+
 0.9 - PRB submission
 
 0.1 - Initial development 

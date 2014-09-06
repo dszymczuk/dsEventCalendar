@@ -35,12 +35,24 @@ class EventCalendarBlockController extends BlockController
         $json_events = $this->getEventsForCalendar($this->calendarID);
         $this->set('events', $json_events);
         $this->set('lang',$this->translateProvider());
-        $this->set(
-            'blockIdentifier',
-            $this->getBlockObject()->getProxyBlock()
-                ? $this->getBlockObject()->getProxyBlock()->getInstance()->getIdentifier()
-                : $this->getIdentifier()
-        );
+
+        if(method_exists($this->getBlockObject(),'getProxyBlock'))
+        {
+            $this->set(
+                'blockIdentifier',
+                $this->getBlockObject()->getProxyBlock()
+                    ? $this->getBlockObject()->getProxyBlock()->getInstance()->getIdentifier()
+                    : $this->getIdentifier()
+            );
+        }
+        else
+        {
+            $this->set('blockIdentifier',rand(12,512));
+        }
+
+
+
+
     }
 
     function save($data)

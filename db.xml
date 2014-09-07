@@ -30,7 +30,7 @@
         </field>
     </table>
     <table name="dsEventCalendarTypes">
-        <field name="calendarID" type="I">
+        <field name="typeID" type="I">
             <key/>
             <unsigned/>
             <autoincrement/>
@@ -41,7 +41,7 @@
         </field>
     </table>
     <table name="dsEventCalendarSettings">
-        <field name="calendarID" type="I">
+        <field name="settingID" type="I">
             <key/>
             <unsigned/>
             <autoincrement/>

@@ -2,7 +2,7 @@
 
 defined('C5_EXECUTE') or die("Access Denied.");
 
-class DashboardEventSettingsController extends Controller
+class DashboardEventCalendarSettingsController extends Controller
 {
 
     public function view()

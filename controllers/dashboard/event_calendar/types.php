@@ -2,7 +2,7 @@
 
 defined('C5_EXECUTE') or die("Access Denied.");
 
-class DashboardEventTypesController extends Controller
+class DashboardEventCalendarTypesController extends Controller
 {
 
 	public function on_before_render()

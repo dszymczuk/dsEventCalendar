@@ -9,17 +9,16 @@ class DashboardEventCalendarTypesController extends Controller
     {
         $this->addHeaderItem(Loader::helper('html')->css('colorpicker.css', 'dsEventCalendar'));
         $this->addHeaderItem(Loader::helper('html')->javascript('colorpicker.js', 'dsEventCalendar'));
-        $this->addHeaderItem(Loader::helper('html')->css('jquery.dataTables.min.css', 'dsEventCalendar'));
+        //$this->addHeaderItem(Loader::helper('html')->css('jquery.dataTables.min.css', 'dsEventCalendar'));
         $this->addHeaderItem(Loader::helper('html')->javascript('jquery.js', 'dsEventCalendar'));
-        $this->addHeaderItem(Loader::helper('html')->javascript('jquery.dataTables.min.js', 'dsEventCalendar'));
+        //$this->addHeaderItem(Loader::helper('html')->javascript('jquery.dataTables.min.js', 'dsEventCalendar'));
     }
 
     public function view()
     {
-        /*$db = Loader::db();
+        $db = Loader::db();
 
         if (!empty($_POST)){
-            die(var_dump($_POST));
             $isSomeValueEmpty = false;
             foreach ($_POST as $key => $value) {
                 if ($value === "") {
@@ -45,14 +44,14 @@ class DashboardEventCalendarTypesController extends Controller
             } else {
                 $this->set('error', t('Error while adding. Maybe some values were empty?'));
             }
-        }*/
+        }
 
 
-        /*$types = $db->GetAll("SELECT * FROM `dsEventCalendarTypes`");
-        $this->set('types', $types);*/
+        $types = $db->GetAll("SELECT * FROM dsEventCalendarTypes");
+        $this->set('types', $types);
 
-        $type = "asdasd";
-        $this->set('type',$type);
+
+        $this->set('type','');
         $this->set('color','');
     }
 

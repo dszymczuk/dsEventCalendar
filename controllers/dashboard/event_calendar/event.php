@@ -56,6 +56,9 @@ class DashboardEventCalendarEventController extends Controller
         $calendars = $db->GetAll("SELECT * FROM dsEventCalendar");
         $this->set('calendars', $calendars);
 
+        $types = $db->GetAll("SELECT * FROM dsEventCalendarTypes");
+        $this->set('types', $types);
+
         $this->set('button', array(
             'class' => 'btn btn-success',
             'label' => t('Add event')

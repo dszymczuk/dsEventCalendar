@@ -11,13 +11,13 @@
     </div>
 
     <h3><?php echo t('List of types') ?></h3>
-a
-    <table id="typeevent" class="display" cellspacing="0" width="100%">
+
+    <table id="typelist" class="table table-bordered table-hover" cellspacing="0" width="100%">
         <thead>
         <tr>
             <th><?php echo t('Type name') ?></th>
             <th><?php echo t('Color') ?></th>
-            <th><?php echo t('Count of evetns whit type') ?></th>
+            <th><?php echo t('Count of evetns with type') ?></th>
             <th><?php echo t('Options') ?></th>
         </tr>
         </thead>
@@ -26,24 +26,29 @@ a
         <tr>
             <th><?php echo t('Type name') ?></th>
             <th><?php echo t('Color') ?></th>
-            <th><?php echo t('Count of evetns whit type') ?></th>
+            <th><?php echo t('Count of evetns with type') ?></th>
             <th><?php echo t('Options') ?></th>
         </tr>
         </tfoot>
 
         <tbody>
-        <?php
-        var_dump($types);
-        ?>
         <?php foreach ($types as $t): ?>
             <tr>
-                <td><input class="typeID" type="hidden" value="<?php echo $e['typeID']; ?>"><?php echo $e['type']; ?>
+                <td><input class="typeID" type="hidden" value="<?php echo $t['typeID']; ?>"><?php echo $t['type']; ?>
                 </td>
-                <td><?php echo $e['color']; ?></td>
                 <td>
-                    <span class="badge badge-success"><?php echo $e['count'] == '' ? 0 : $e['count']; ?></span>
+                    <span class="badge" style="background-color: <?php echo $t['color']; ?> ;">
+                        <?php echo $t['color']; ?>
+                    </span>
                 </td>
-                <td><a href="<?php echo View::url('dashboard/event_calendar/types/update/' . $e['typeID']) ?>"
+                <td>
+                    <?php if ($t['count'] > 0): ?>
+                        <span class="badge badge-important"><?php echo $t['count']; ?></span>
+                    <?php else: ?>
+                        <span class="badge badge-success">0</span>
+                    <?php endif; ?>
+                </td>
+                <td><a href="<?php echo View::url('dashboard/event_calendar/types/update/' . $t['typeID']) ?>"
                        class="btn btn-warning edit"><?php echo t('Edit') ?></a>
 <!--                    <button class="btn btn-danger delete">--><?php //echo t('Delete') ?><!--</button>-->
                 </td>
@@ -89,6 +94,34 @@ $(document).ready(function () {
 			$(el).hide();
 		}
 	});
+
+    /*$("tr").on('click', 'button.delete', function () {
+        var elem = $(this);
+        var conf = confirm("Are you sure to delete this event?");
+        if (conf) {
+            var id = elem.closest('tr').children('td').children('input.eventID').val();
+            elem.closest('tr').addClass('toRemove');
+            $.ajax({
+                type: "POST",
+                url: "<?php echo $this->url('dashboard/event_calendar/list_event/delete'); ?>",
+                data: {"id": id},
+                success: function (data) {
+                    if (data == "OK") {
+                        $("#success").fadeIn(1000).delay(2000).fadeOut(1000);
+                        listevent.fnDeleteRow(elem.closest('tr'));
+                    }
+                    else {
+                        $("#error").fadeIn(1000).delay(2000).fadeOut(1000);
+                    }
+
+                }
+            });
+        }
+        else
+            return false;
+    });
+    });*/
+
 });
 </script>
 

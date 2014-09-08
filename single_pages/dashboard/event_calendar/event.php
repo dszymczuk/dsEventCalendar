@@ -46,7 +46,11 @@ $form = Loader::helper('form');
             <label class="control-label"><?php echo t('Event type') ?></label>
 
             <div class="controls">
-                <input maxlength="255" type="text" name="event_type" id="event_type" value="<?php echo $event_type; ?>">
+                <select name="event_type" id="event_type" value="<?php echo $event_type; ?>">
+                    <?php foreach ($types as $t): ?>
+                        <option value="<?php echo $t['typeID'] ?>"><?php echo $t['type'] ?></option>
+                    <?php endforeach; ?>
+                </select>
             </div>
         </fieldset>
         <fieldset class="control-group">

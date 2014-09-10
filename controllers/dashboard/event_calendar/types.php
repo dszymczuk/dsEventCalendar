@@ -55,11 +55,30 @@ class DashboardEventCalendarTypesController extends Controller
         $this->set('color','');
     }
 
+    public function update()
+    {
+        if (isset($_POST) && is_numeric($_POST['id'])) {
+            $db = Loader::db();
+            $sql = "UPDATE dsEventCalendarTypes SET
+            type = ?,
+            color = ? 
+            WHERE typeID=" . $this->post('id');
+            $args = array(
+                $this->post('type'),
+                $this->post('color')
+            );
+            $db->Execute($sql, $args);
+            die("OK");
+        } else {
+            die("ERROR");
+        }
+    }
+
     /*public function delete()
     {
         if (isset($_POST) && is_numeric($_POST['id'])) {
             $db = Loader::db();
-            $sql = "DELETE FROM dsEventCalendarEvents WHERE eventID = " . $_POST['id'];
+            $sql = "DELETE FROM dsEventCalendarTypes WHERE eventID = " . $this->post('id');
             $db->Execute($sql);
             die("OK");
         } else {

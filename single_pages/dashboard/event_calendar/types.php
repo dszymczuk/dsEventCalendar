@@ -34,10 +34,11 @@
         <tbody>
         <?php foreach ($types as $t): ?>
             <tr>
-                <td><input class="typeID" type="hidden" value="<?php echo $t['typeID']; ?>"><?php echo $t['type']; ?>
+                <td><input class="typeID" type="text" value="<?php echo $t['typeID']; ?>">
+                    <span class="type"><?php echo $t['type']; ?></span>
                 </td>
                 <td>
-                    <span class="badge" style="background-color: <?php echo $t['color']; ?> ;">
+                    <span class="badge color" style="background-color: <?php echo $t['color']; ?> ;">
                         <?php echo $t['color']; ?>
                     </span>
                 </td>
@@ -48,8 +49,7 @@
                         <span class="badge badge-success">0</span>
                     <?php endif; ?>
                 </td>
-                <td><a href="<?php echo View::url('dashboard/event_calendar/types/update/' . $t['typeID']) ?>"
-                       class="btn btn-warning edit"><?php echo t('Edit') ?></a>
+                <td><button class="btn btn-warning edit"><?php echo t('Edit') ?></button>
 <!--                    <button class="btn btn-danger delete">--><?php //echo t('Delete') ?><!--</button>-->
                 </td>
             </tr>
@@ -59,12 +59,20 @@
     </table>
 
 
+<div class="alert alert-success" id="success-edit" style="display: none">
+    <?php echo t('Type has been edited') ?>
+</div>
+<div class="alert alert-danger" id="error-edit" style="display: none">
+    <?php echo t('Something wrong in edit. Try again') ?>
+</div>
+
 
 <form class="form-horizontal" method="post" id="ccm-multilingual-page-report-form" style="margin-top: 35px;">
         <fieldset class="control-group">
             <label class="control-label"><?php echo t('Type name') ?></label>
 
             <div class="controls">
+                <input maxlength="255" type="text" name="typeID" id="typeID" value="">
                 <input maxlength="255" type="text" name="type" id="type" value="<?php echo $type; ?>">
             </div>
         </fieldset>
@@ -79,7 +87,9 @@
         <fieldset class="control-group offset2">
             <div class="clearfix">
                 <div style="margin-top: 10px;">
-                    <input class="btn btn-success" type="submit" value="<?php echo t('Add type') ?>">
+                    <input class="btn btn-success" id="submit-add" type="submit" value="<?php echo t('Add type') ?>">
+                    <button class="btn btn-success" style="display: none;" id="submit-new" ><?php echo t('Add new') ?></button>
+                    <button class="btn btn-warning" style="display: none;" id="submit-edit" ><?php echo t('Edit type') ?></button>
                 </div>
             </div>
         </fieldset>
@@ -88,12 +98,81 @@
 
 <script>
 $(document).ready(function () {
+    var editMode = false;
+    showButtons();
+
 	$('#color').ColorPicker({
 		onSubmit: function(hsb, hex, rgb, el) {
 			$('#color').val('#'+hex);
 			$(el).hide();
 		}
 	});
+
+    $("tr").on('click', 'button.edit', function (){
+        editMode = true;
+        showButtons();
+        var elem = $(this);
+        var id = elem.closest('tr').children('td').children('input.typeID').val();
+        var color = elem.closest('tr').find('td span.color').html().trim();
+        var type = elem.closest('tr').find('td span.type').html().trim();
+        console.log(id,color,type);
+
+        $('#typeID').val(id);
+        $('#type').val(type);
+        $('#color').val(color);
+
+        $('#color').ColorPickerSetColor(color);
+    });
+
+    $("#submit-new").on('click',function(){
+        editMode = false;
+        showButtons();
+    });
+
+    $("#submit-edit").on('click',function(e){
+        e.preventDefault();
+        var id = $('#typeID').val();
+        var color = $('#color').val();
+        var type = $('#type').val();
+        $.ajax({
+            type: "POST",
+            url: "<?php echo $this->url('dashboard/event_calendar/types/update'); ?>",
+            data: {"id": id, "color" : color , "type" : type},
+            success: function (data) {
+                if (data == "OK") {
+                    $("#success-edit").fadeIn(1000).delay(2000).fadeOut(1000);
+                    var row = $("#typelist").find("input[value="+id+"]").closest('tr');
+                    row.find('td span.color').html(color.trim()).css("background-color",color);
+                    row.find('td span.type').html(type.trim());
+                    editMode = false;
+                    $('#typeID').val("");
+                    $('#type').val("");
+                    $('#color').val("");
+                    $('#color').ColorPickerSetColor("");
+                }
+                else {
+                    $("#error-edit").fadeIn(1000).delay(2000).fadeOut(1000);
+                }
+
+            }
+        });
+    });
+
+
+    function showButtons(){
+        if(editMode)
+        {
+            $("#submit-edit").show();
+            $("#submit-new").show();
+            $("#submit-add").hide();
+        }
+        else
+        {
+            $("#submit-edit").hide();
+            $("#submit-new").hide();
+            $("#submit-add").show();
+        }
+    };
 
     /*$("tr").on('click', 'button.delete', function () {
         var elem = $(this);

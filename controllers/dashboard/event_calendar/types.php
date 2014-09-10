@@ -49,7 +49,7 @@ class DashboardEventCalendarTypesController extends Controller
         }
 
 
-        $types = $db->GetAll("SELECT * FROM dsEventCalendarTypes");
+        $types = $db->GetAll("SELECT ECT.*, count(ECE.eventID) as total_types FROM dsEventCalendarTypes AS ECT LEFT JOIN dsEventCalendarEvents AS ECE ON ECE.type = ECT.typeID group by ECT.typeID");
         $this->set('types', $types);
 
 
@@ -82,6 +82,12 @@ class DashboardEventCalendarTypesController extends Controller
             $db = Loader::db();
             $sql = "DELETE FROM dsEventCalendarTypes WHERE typeID = " . $this->post('id');
             $db->Execute($sql);
+
+
+            $sql2 = "UPDATE dsEventCalendarEvents SET
+            type = 0
+            WHERE type=" . $this->post('id');
+            $db->Execute($sql2);
             die("OK");
         } else {
             die("ERROR");

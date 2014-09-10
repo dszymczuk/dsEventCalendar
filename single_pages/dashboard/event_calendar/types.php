@@ -43,8 +43,8 @@
                     </span>
                 </td>
                 <td>
-                    <?php if ($t['count'] > 0): ?>
-                        <span class="badge badge-important"><?php echo $t['count']; ?></span>
+                    <?php if ($t['total_types'] > 0): ?>
+                        <span class="badge badge-important"><?php echo $t['total_types']; ?></span>
                     <?php else: ?>
                         <span class="badge badge-success">0</span>
                     <?php endif; ?>
@@ -176,7 +176,7 @@ $(document).ready(function () {
 
     $("tr").on('click', 'button.delete', function () {
         var elem = $(this);
-        var conf = confirm("Are you sure to delete this event?");
+        var conf = confirm("Are you sure to delete this event? All event with this tape will be set as default type.");
         if (conf) {
             var id = elem.closest('tr').children('td').children('input.typeID').val();
             elem.closest('tr').addClass('toRemove');

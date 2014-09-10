@@ -18,10 +18,12 @@ class DashboardEventCalendarTypesController extends Controller
     {
         $db = Loader::db();
 
+
+
         if (!empty($_POST)){
             $isSomeValueEmpty = false;
             foreach ($_POST as $key => $value) {
-                if ($value === "") {
+                if ($value === "" && $key !== "typeID") {
                     $isSomeValueEmpty = true;
                 }
             }
@@ -74,15 +76,15 @@ class DashboardEventCalendarTypesController extends Controller
         }
     }
 
-    /*public function delete()
+    public function delete()
     {
         if (isset($_POST) && is_numeric($_POST['id'])) {
             $db = Loader::db();
-            $sql = "DELETE FROM dsEventCalendarTypes WHERE eventID = " . $this->post('id');
+            $sql = "DELETE FROM dsEventCalendarTypes WHERE typeID = " . $this->post('id');
             $db->Execute($sql);
             die("OK");
         } else {
             die("ERROR");
         }
-    }*/
+    }
 }

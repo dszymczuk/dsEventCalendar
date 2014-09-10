@@ -34,7 +34,7 @@
         <tbody>
         <?php foreach ($types as $t): ?>
             <tr>
-                <td><input class="typeID" type="text" value="<?php echo $t['typeID']; ?>">
+                <td><input class="typeID" type="hidden" value="<?php echo $t['typeID']; ?>">
                     <span class="type"><?php echo $t['type']; ?></span>
                 </td>
                 <td>
@@ -50,7 +50,7 @@
                     <?php endif; ?>
                 </td>
                 <td><button class="btn btn-warning edit"><?php echo t('Edit') ?></button>
-<!--                    <button class="btn btn-danger delete">--><?php //echo t('Delete') ?><!--</button>-->
+                    <button class="btn btn-danger delete"><?php echo t('Delete') ?></button>
                 </td>
             </tr>
         <?php endforeach; ?>
@@ -72,7 +72,7 @@
             <label class="control-label"><?php echo t('Type name') ?></label>
 
             <div class="controls">
-                <input maxlength="255" type="text" name="typeID" id="typeID" value="">
+                <input maxlength="255" type="hidden" name="typeID" id="typeID" value="">
                 <input maxlength="255" type="text" name="type" id="type" value="<?php echo $type; ?>">
             </div>
         </fieldset>
@@ -174,20 +174,21 @@ $(document).ready(function () {
         }
     };
 
-    /*$("tr").on('click', 'button.delete', function () {
+    $("tr").on('click', 'button.delete', function () {
         var elem = $(this);
         var conf = confirm("Are you sure to delete this event?");
         if (conf) {
-            var id = elem.closest('tr').children('td').children('input.eventID').val();
+            var id = elem.closest('tr').children('td').children('input.typeID').val();
             elem.closest('tr').addClass('toRemove');
+            console.log(id);
             $.ajax({
                 type: "POST",
-                url: "<?php echo $this->url('dashboard/event_calendar/list_event/delete'); ?>",
+                url: "<?php echo $this->url('dashboard/event_calendar/types/delete'); ?>",
                 data: {"id": id},
                 success: function (data) {
                     if (data == "OK") {
                         $("#success").fadeIn(1000).delay(2000).fadeOut(1000);
-                        listevent.fnDeleteRow(elem.closest('tr'));
+                        $("#typelist").find("input[value="+id+"]").closest('tr').remove();
                     }
                     else {
                         $("#error").fadeIn(1000).delay(2000).fadeOut(1000);
@@ -199,7 +200,6 @@ $(document).ready(function () {
         else
             return false;
     });
-    });*/
 
 });
 </script>

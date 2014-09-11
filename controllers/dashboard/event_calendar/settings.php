@@ -4,14 +4,39 @@ defined('C5_EXECUTE') or die("Access Denied.");
 
 class DashboardEventCalendarSettingsController extends Controller
 {
+	public function on_before_render()
+    {
+        $this->addHeaderItem(Loader::helper('html')->css('colorpicker.css', 'dsEventCalendar'));
+        $this->addHeaderItem(Loader::helper('html')->javascript('colorpicker.js', 'dsEventCalendar'));
+        //$this->addHeaderItem(Loader::helper('html')->css('jquery.dataTables.min.css', 'dsEventCalendar'));
+        $this->addHeaderItem(Loader::helper('html')->javascript('jquery.js', 'dsEventCalendar'));
+        //$this->addHeaderItem(Loader::helper('html')->javascript('jquery.dataTables.min.js', 'dsEventCalendar'));
+    }
 
     public function view()
     {
 		/*
-			lang:
-			date format:
-			date format 2:
+			lang
+			date format
+			date format 2
+			start from day
+			default event name
+			defautl event color
 		*/
+
+			$lang_list = array("af","ar-ma","ar-sa","ar","az","be","bg","bn","bo","br","bs","ca","cs","cv","cy","da","de-at","de","el","en-au","en-ca","en-gb","eo","es","et","eu","fa","fi","fo","fr-ca","fr","gl","he","hi","hr","hu","hy-am","id","is","it","ja","ka","km","ko","lb","lt","lv","mk","ml","mr","ms-my","my","nb","ne","nl","nn","pl","pt-br","pt","ro","ru","sk","sl","sq","sr-cyrl","sr","sv","ta","th","tl-ph","tr","tzm-latn","tzm","uk","uz","vi","zh-cn","zh-tw");
+			$this->set('lang_list',$lang_list);
+
+			//default values
+			$this->set('lang','en');
+			$this->set('formatTitle','MMMM YYYY');
+			$this->set('formatEvent','DD MMMM YYYY');
+			$this->set('startFrom',1); //0 - Sunday, 1 - Monday etc.
+			$this->set('eventsInDay',3);
+			$this->set('texts',array(
+				'closeText' => _t('close'),
+				'typeText' => _t('Type:'),
+				));
     }
 
 }

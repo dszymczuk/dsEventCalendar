@@ -30,7 +30,7 @@ $form = Loader::helper('form');
             <div class="controls">
                 <select name="event_calendarID" id="event_calendarID" value="<?php echo $event_calendarID; ?>">
                     <?php foreach ($calendars as $cal): ?>
-                        <option value="<?php echo $cal['calendarID'] ?>"><?php echo $cal['title'] ?></option>
+                        <option value="<?php echo $cal['calendarID'] ?>" <?php $selected = $cal['calendarID']==$event_calendarID ? "selected" : ""; echo $selected; ?> ><?php echo $cal['title'] ?></option>
                     <?php endforeach; ?>
                 </select>
             </div>
@@ -48,7 +48,7 @@ $form = Loader::helper('form');
             <div class="controls">
                 <select name="event_type" id="event_type" value="<?php echo $event_type; ?>">
                     <?php foreach ($types as $t): ?>
-                        <option value="<?php echo $t['typeID'] ?>"><?php echo $t['type'] ?></option>
+                        <option value="<?php echo $t['typeID'] ?>" <?php $selected = $t['typeID']==$event_type ? "selected" : ""; echo $selected; ?> ><?php echo $t['type'] ?></option>
                     <?php endforeach; ?>
                 </select>
             </div>

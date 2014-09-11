@@ -49,6 +49,11 @@ class DashboardEventCalendarEventController extends Controller
                 $this->set('success', t('Event: ' . $this->post('event_title') . ' has been added'));
                 unset($_POST);
             } else {
+                $this->set('event_title', $this->post('event_title'));
+                $this->set('event_date', $this->post('event_date'));
+                $this->set('event_type', $this->post('event_type'));
+                $this->set('event_description', $this->post('event_description'));
+                $this->set('event_url', $this->post('event_url'));
                 $this->set('error', t('Error while adding. Maybe some values were empty?'));
             }
         }

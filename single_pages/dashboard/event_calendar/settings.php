@@ -19,7 +19,7 @@
         <label class="control-label"><?php echo t('Language') ?></label>
 
         <div class="controls">
-            <select name="language" id="language" value="<?php echo $lang; ?>">
+            <select name="lang" id="lang" value="<?php echo $lang; ?>">
                 <?php foreach ($lang_list as $ll): ?>
                     <option value="<?php echo $ll; ?>" <?php $selected = $ll==$lang ? "selected" : ""; echo $selected; ?> ><?php echo $ll; ?></option>
                 <?php endforeach; ?>
@@ -62,8 +62,23 @@
 	    </div>
 	</fieldset>
 
+	<fieldset class="control-group">
+	    <label class="control-label"><?php echo t('Default name of event') ?></label>
+	    <div class="controls">
+	        <input maxlength="255" type="text" name="default_name" id="default_name" value="<?php echo $default_name; ?>">
+	    </div>
+	</fieldset>
+
+	<fieldset class="control-group">
+	    <label class="control-label"><?php echo t('Default color of event') ?></label>
+	    <div class="controls">
+	        <input maxlength="255" type="text" name="default_color" id="default_color" value="<?php echo $default_color; ?>">
+	    </div>
+	</fieldset>
+
 </form>
 
+<a href="http://momentjs.com/docs/#/displaying/format/" class="btn btn-primary" target="_blank">Available formats</a>
 
 
 $this->set('lang','en');
@@ -74,12 +89,22 @@ $this->set('lang','en');
 
 <script>
 $(document).ready(function () {
-	$('#color').ColorPicker({
+
+
+        
+
+
+	$('#default_color').ColorPicker({
 		onSubmit: function(hsb, hex, rgb, el) {
-			$('#color').val('#'+hex);
+			$('#default_color').val('#'+hex);
 			$(el).hide();
 		}
 	});
+
+	var default_color = $('#default_color').val();
+    $('#default_color').ColorPickerSetColor(default_color);
+
+
 });
 </script>
 

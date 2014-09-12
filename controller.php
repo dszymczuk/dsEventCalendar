@@ -14,7 +14,7 @@ class dsEventCalendarPackage extends Package
 
     protected $pkgHandle = 'dsEventCalendar';
     protected $appVersionRequired = '5.5.0';
-    protected $pkgVersion = '2.0.5';
+    protected $pkgVersion = '2.0.6';
 
     public function getPackageDescription()
     {
@@ -31,6 +31,7 @@ class dsEventCalendarPackage extends Package
         $pkg = parent::install();
         BlockType::installBlockTypeFromPackage('event_calendar', $pkg);
         $this->installSP($pkg);
+        $this->installSettings();
     }
 
     public function upgrade()
@@ -38,6 +39,7 @@ class dsEventCalendarPackage extends Package
         $currentVersion = $this->getPackageVersion();
         parent::upgrade();
         $this->installSP($this, $currentVersion);
+        $this->installSettings();
     }
 
 
@@ -79,6 +81,32 @@ class dsEventCalendarPackage extends Package
         if (is_object($p7)) {
             $p7->update(array('cName' => t('Settings'), 'cDescription' => ''));
         }
+    }
+
+    private function installSettings()
+    {
+        $db = Loader::db();
+
+        $sql = "INSERT IGNORE INTO dsEventCalendarSettings SET opt= 'lang' , value='en-gb'";
+        $db->Execute($sql);
+
+        $sql = "INSERT IGNORE INTO dsEventCalendarSettings SET opt= 'formatTitle' , value='MMMM YYYY'";
+        $db->Execute($sql);
+
+        $sql = "INSERT IGNORE INTO dsEventCalendarSettings SET opt= 'formatEvent' , value='DD MMMM YYYY'";
+        $db->Execute($sql);
+
+        $sql = "INSERT IGNORE INTO dsEventCalendarSettings SET opt= 'startFrom' , value='1'";
+        $db->Execute($sql);
+
+        $sql = "INSERT IGNORE INTO dsEventCalendarSettings SET opt= 'eventsInDay' , value='3'";
+        $db->Execute($sql);
+
+        $sql = "INSERT IGNORE INTO dsEventCalendarSettings SET opt= 'default_name' , value='#808080'";
+        $db->Execute($sql);
+
+        $sql = "INSERT IGNORE INTO dsEventCalendarSettings SET opt= 'default_color' , value=''";
+        $db->Execute($sql);
     }
 }
 

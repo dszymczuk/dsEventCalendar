@@ -75,13 +75,16 @@ class DashboardEventCalendarSettingsController extends Controller
 			$this->set('days',$days);
 
 			//default values
-			$this->set('lang','en-gb');
+
+            
+            
+			/*$this->set('lang','en-gb');
 			$this->set('formatTitle','MMMM YYYY');
 			$this->set('formatEvent','DD MMMM YYYY');
 			$this->set('startFrom',1); //0 - Sunday, 1 - Monday etc.
 			$this->set('eventsInDay',3);
 			$this->set('default_color','#808080');
-			$this->set('default_name',t('Default'));
+			$this->set('default_name',t('Default'));*/
 			$this->set('texts',array(
 				'closeText' => t('close'),
 				'typeText' => t('Type:'),

@@ -14,7 +14,7 @@ class dsEventCalendarPackage extends Package
 
     protected $pkgHandle = 'dsEventCalendar';
     protected $appVersionRequired = '5.5.0';
-    protected $pkgVersion = '2.0.6';
+    protected $pkgVersion = '2.0.9';
 
     public function getPackageDescription()
     {
@@ -102,10 +102,10 @@ class dsEventCalendarPackage extends Package
         $sql = "INSERT IGNORE INTO dsEventCalendarSettings SET opt= 'eventsInDay' , value='3'";
         $db->Execute($sql);
 
-        $sql = "INSERT IGNORE INTO dsEventCalendarSettings SET opt= 'default_name' , value='#808080'";
+        $sql = "INSERT IGNORE INTO dsEventCalendarSettings SET opt= 'default_color' , value='#808080'";
         $db->Execute($sql);
 
-        $sql = "INSERT IGNORE INTO dsEventCalendarSettings SET opt= 'default_color' , value=''";
+        $sql = "INSERT IGNORE INTO dsEventCalendarSettings SET opt= 'default_name' , value='Default'";
         $db->Execute($sql);
     }
 }

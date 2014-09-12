@@ -62,7 +62,24 @@ class DashboardEventCalendarEventController extends Controller
         $this->set('calendars', $calendars);
 
         $types = $db->GetAll("SELECT * FROM dsEventCalendarTypes");
+
+        $settings = $db->GetAll("SELECT * FROM dsEventCalendarSettings");
+        // ADD DEFAULT VALUE
+        foreach ($settings as $s) {
+            $s['opt'] = $s['opt']."_dsECS";
+            $$s['opt'] = $s['value'];
+        }
+
+        array_unshift($types, array(
+                'typeID' => 0,
+                'type' => $default_name_dsECS,
+                'color' => $default_color_dsECS,
+            ));
+        // END OF ADD DEFAULT VALUE
+
         $this->set('types', $types);
+
+
 
         $this->set('button', array(
             'class' => 'btn btn-success',
@@ -123,13 +140,22 @@ class DashboardEventCalendarEventController extends Controller
 
         $types = $db->GetAll("SELECT * FROM dsEventCalendarTypes");
 
+        $settings = $db->GetAll("SELECT * FROM dsEventCalendarSettings");
+        // ADD DEFAULT VALUE
+        foreach ($settings as $s) {
+            $s['opt'] = $s['opt']."_dsECS";
+            $$s['opt'] = $s['value'];
+        }
+
         array_unshift($types, array(
                 'typeID' => 0,
-                'type' => 'default',
-                'color' => '#ff0000',
+                'type' => $default_name_dsECS,
+                'color' => $default_color_dsECS,
             ));
+        // END OF ADD DEFAULT VALUE
 
         $this->set('types', $types);
+
 
         // REFRESH FOR NEW DATA
         $sql = "SELECT * FROM dsEventCalendarEvents WHERE eventID=" . $event_id;

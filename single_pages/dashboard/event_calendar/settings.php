@@ -30,21 +30,28 @@
 	<fieldset class="control-group">
 	    <label class="control-label"><?php echo t('Title date format') ?></label>
 	    <div class="controls">
-	        <input maxlength="255" type="text" name="title_format" id="title_format" value="<?php echo $formatTitle; ?>">
+	        <input maxlength="255" type="text" name="formatTitle" id="formatTitle" value="<?php echo $formatTitle; ?>">
 	    </div>
 	</fieldset>
 
 	<fieldset class="control-group">
 	    <label class="control-label"><?php echo t('Event date format') ?></label>
 	    <div class="controls">
-	        <input maxlength="255" type="text" name="event_format" id="event_format" value="<?php echo $formatEvent; ?>">
+	        <input maxlength="255" type="text" name="formatEvent" id="formatEvent" value="<?php echo $formatEvent; ?>">
+	    </div>
+	</fieldset>
+
+	<fieldset class="control-group">
+	    <!-- <label class="control-label"></label> -->
+	    <div class="controls">
+	        <a href="http://momentjs.com/docs/#/displaying/format/" class="btn btn-primary" target="_blank">Available formats</a>
 	    </div>
 	</fieldset>
 
 	<fieldset class="control-group">
 	    <label class="control-label"><?php echo t('Start from') ?></label>
 	    <div class="controls">
-            <select name="start_day" id="start_day" value="<?php echo $startFrom; ?>">
+            <select name="startFrom" id="startFrom" value="<?php echo $startFrom; ?>">
             	<?php $index = 1; ?>
                 <?php foreach ($days as $d): ?>
                 	
@@ -58,7 +65,7 @@
 	<fieldset class="control-group">
 	    <label class="control-label"><?php echo t('Number of evetns in day') ?></label>
 	    <div class="controls">
-	        <input maxlength="255" type="text" name="events_in_day" id="events_in_day" value="<?php echo $eventsInDay; ?>">
+	        <input maxlength="255" type="text" name="eventsInDay" id="eventsInDay" value="<?php echo $eventsInDay; ?>">
 	    </div>
 	</fieldset>
 
@@ -76,23 +83,17 @@
 	    </div>
 	</fieldset>
 
+	<fieldset class="control-group offset2">
+        <div class="clearfix">
+            <div style="margin-top: 10px;">
+                <input class="btn btn-warning" id="submit-update" type="submit" value="<?php echo t('Update settigns') ?>">
+            </div>
+        </div>
+    </fieldset>
 </form>
-
-<a href="http://momentjs.com/docs/#/displaying/format/" class="btn btn-primary" target="_blank">Available formats</a>
-
-
-$this->set('lang','en');
-			$this->set('formatTitle','MMMM YYYY');
-			$this->set('formatEvent','DD MMMM YYYY');
-			$this->set('startFrom',1); //0 - Sunday, 1 - Monday etc.
-			$this->set('eventsInDay',3);
 
 <script>
 $(document).ready(function () {
-
-
-        
-
 
 	$('#default_color').ColorPicker({
 		onSubmit: function(hsb, hex, rgb, el) {

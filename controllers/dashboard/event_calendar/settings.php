@@ -8,9 +8,7 @@ class DashboardEventCalendarSettingsController extends Controller
     {
         $this->addHeaderItem(Loader::helper('html')->css('colorpicker.css', 'dsEventCalendar'));
         $this->addHeaderItem(Loader::helper('html')->javascript('colorpicker.js', 'dsEventCalendar'));
-        //$this->addHeaderItem(Loader::helper('html')->css('jquery.dataTables.min.css', 'dsEventCalendar'));
         $this->addHeaderItem(Loader::helper('html')->javascript('jquery.js', 'dsEventCalendar'));
-        //$this->addHeaderItem(Loader::helper('html')->javascript('jquery.dataTables.min.js', 'dsEventCalendar'));
     }
 
     public function view()
@@ -20,7 +18,7 @@ class DashboardEventCalendarSettingsController extends Controller
 
             $isSomeValueEmpty = false;
             foreach ($_POST as $key => $value) {
-                if ($value === "") {
+                if ($value === "" && $key !== "default_name") {
                     $isSomeValueEmpty = true;
                 }
             }
@@ -28,37 +26,11 @@ class DashboardEventCalendarSettingsController extends Controller
             if (!$isSomeValueEmpty) {
 
 
-
-
             	//I know is not optimally but universally to new settings
-
-	            $sql = "UPDATE dsEventCalendarSettings SET opt = ? WHERE opt= 'lang'";
-                $args = array($this->post('lang'));
-                $db->Execute($sql, $args);
-
-                $sql = "UPDATE dsEventCalendarSettings SET opt = ? WHERE opt= 'formatTitle'";
-                $args = array($this->post('title_format'));
-                $db->Execute($sql, $args);
-
-                $sql = "UPDATE dsEventCalendarSettings SET opt = ? WHERE opt= 'formatEvent'";
-                $args = array($this->post('event_format'));
-                $db->Execute($sql, $args);
-
-                $sql = "UPDATE dsEventCalendarSettings SET opt = ? WHERE opt= 'startFrom'";
-                $args = array($this->post('start_day'));
-                $db->Execute($sql, $args);
-
-                $sql = "UPDATE dsEventCalendarSettings SET opt = ? WHERE opt= 'eventsInDay'";
-                $args = array($this->post('events_in_day'));
-                $db->Execute($sql, $args);
-
-                $sql = "UPDATE dsEventCalendarSettings SET opt = ? WHERE opt= 'default_name'";
-                $args = array($this->post('default_name'));
-                $db->Execute($sql, $args);
-
-                $sql = "UPDATE dsEventCalendarSettings SET opt = ? WHERE opt= 'default_color'";
-                $args = array($this->post('default_color'));
-                $db->Execute($sql, $args);
+                foreach ($_POST as $key => $value) {
+                    $sql = "UPDATE dsEventCalendarSettings SET value = '".$value."' WHERE opt= '".$key."'";
+                    $db->Execute($sql);
+                }
 
 	            $this->set('success', t('Settings have been updated.'));
                 unset($_POST);
@@ -71,20 +43,14 @@ class DashboardEventCalendarSettingsController extends Controller
 			$this->set('lang_list',$lang_list);
 
 			$days = array(t('Monday'),t('Tuesday'),t('Wednesday'),t('Thursday'),t('Friday'),t('Saturday'),t('Sunday'));
-
 			$this->set('days',$days);
 
-			//default values
+            $settings = $db->GetAll("SELECT * FROM dsEventCalendarSettings");
+            
+            foreach ($settings as $s) {
+                $this->set($s['opt'],$s['value']);
+            }
 
-            
-            
-			/*$this->set('lang','en-gb');
-			$this->set('formatTitle','MMMM YYYY');
-			$this->set('formatEvent','DD MMMM YYYY');
-			$this->set('startFrom',1); //0 - Sunday, 1 - Monday etc.
-			$this->set('eventsInDay',3);
-			$this->set('default_color','#808080');
-			$this->set('default_name',t('Default'));*/
 			$this->set('texts',array(
 				'closeText' => t('close'),
 				'typeText' => t('Type:'),

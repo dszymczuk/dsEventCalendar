@@ -1,7 +1,12 @@
 <?php defined('C5_EXECUTE') or die('Access denied.'); ?>
 <?php echo Loader::helper('concrete/dashboard')->getDashboardPaneHeaderWrapper(t('Event Calendar')); ?>
 
-<?php echo $type; ?>
+    <div class="btn-group" style="margin: 10px 0;">
+        <a class="btn"
+           href="<?php echo View::url('dashboard/event_calendar/list_event') ?>"><?php echo t('Return to event list') ?></a>
+    </div>
+
+    <h3><?php echo t('List of types') ?></h3>
 
     <div class="alert alert-success" id="success" style="display: none">
         <?php echo t('Type has been deleted') ?>
@@ -10,14 +15,13 @@
         <?php echo t('Something wrong in delete. Try again') ?>
     </div>
 
-    <h3><?php echo t('List of types') ?></h3>
 
     <table id="typelist" class="table table-bordered table-hover" cellspacing="0" width="100%">
         <thead>
         <tr>
             <th><?php echo t('Type name') ?></th>
             <th><?php echo t('Color') ?></th>
-            <th><?php echo t('Count of evetns with type') ?></th>
+            <th><?php echo t('Count of events with type') ?></th>
             <th><?php echo t('Options') ?></th>
         </tr>
         </thead>
@@ -26,7 +30,7 @@
         <tr>
             <th><?php echo t('Type name') ?></th>
             <th><?php echo t('Color') ?></th>
-            <th><?php echo t('Count of evetns with type') ?></th>
+            <th><?php echo t('Count of events with type') ?></th>
             <th><?php echo t('Options') ?></th>
         </tr>
         </tfoot>
@@ -188,6 +192,10 @@ $(document).ready(function () {
                 success: function (data) {
                     if (data == "OK") {
                         $("#success").fadeIn(1000).delay(2000).fadeOut(1000);
+                        $('#typeID').val("");
+                        $('#type').val("");
+                        $('#color').val("");
+                        $('#color').ColorPickerSetColor("");
                         $("#typelist").find("input[value="+id+"]").closest('tr').remove();
                     }
                     else {

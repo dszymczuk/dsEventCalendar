@@ -3,17 +3,7 @@
 
 <h3><?php echo t('Settings') ?></h3>
 
-
-
-
-			lang
-			date format
-			date format 2
-			start from day
-			default event name
-			defautl event color
-
-<form class="form-horizontal" method="post" id="ccm-multilingual-page-report-form" style="margin-top: 35px;">
+<form class="form-horizontal" method="post" id="ccm-multilingual-page-report-form" style="margin-top: 15px;">
 
 	<fieldset class="control-group">
         <label class="control-label"><?php echo t('Language') ?></label>
@@ -86,7 +76,7 @@
 	<fieldset class="control-group offset2">
         <div class="clearfix">
             <div style="margin-top: 10px;">
-                <input class="btn btn-warning" id="submit-update" type="submit" value="<?php echo t('Update settigns') ?>">
+                <input class="btn btn-success" id="submit-update" type="submit" value="<?php echo t('Update settings') ?>">
             </div>
         </div>
     </fieldset>

@@ -20,13 +20,35 @@
         </field>
         <field name="date" type="T">
         </field>
-        <field name="type" type="C" size="255">
+        <field name="type" type="I" size="255">
         </field>
         <field name="title" type="C" size="255">
         </field>
         <field name="description" type="X">
         </field>
         <field name="url" type="X">
+        </field>
+    </table>
+    <table name="dsEventCalendarTypes">
+        <field name="typeID" type="I">
+            <key/>
+            <unsigned/>
+            <autoincrement/>
+        </field>
+        <field name="type" type="C" size="255">
+        </field>
+        <field name="color" type="C" size="255">
+        </field>
+    </table>
+    <table name="dsEventCalendarSettings">
+        <field name="settingID" type="I">
+            <key/>
+            <unsigned/>
+            <autoincrement/>
+        </field>
+        <field name="opt" type="C" size="255">
+        </field>
+        <field name="value" type="C" size="255">
         </field>
     </table>
 </schema>

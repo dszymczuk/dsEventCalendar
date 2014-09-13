@@ -50,11 +50,6 @@ class DashboardEventCalendarSettingsController extends Controller
             foreach ($settings as $s) {
                 $this->set($s['opt'],$s['value']);
             }
-
-			$this->set('texts',array(
-				'closeText' => t('close'),
-				'typeText' => t('Type:'),
-				));
     }
 
 }

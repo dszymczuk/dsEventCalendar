@@ -1,0 +1,327 @@
+@import "reset";
+@import "compass/css3/border-radius";
+
+@mixin size($width, $height: nil) {
+  @if ($height == nil) {
+    width: $width;
+    height: $width;
+  } @else {
+    width: $width;
+    height: $height;
+  }
+
+}
+
+/* CONFIG CALENDAR */
+$fontSize: 13px;
+$dayMinHeight: 90px;
+$borderCalendar: 1px dashed black;
+$header: #dadada;
+$headerText: #585858;
+$headerBorderColor: #666666;
+$headerArrow: #fff;
+$headerArrowHover: #585858;
+
+$dayColorBg: #f2f2f2;
+$dayNameColor: darken($dayColorBg, 60%);
+
+$dayHeaderAfterBeforeLevel: 3%;
+$dayHeaderDarkenLevel: 20%;
+
+$dayColorBeforeBg: lighten($dayColorBg, $dayHeaderAfterBeforeLevel);
+$dayColorAfterBg: lighten($dayColorBg, $dayHeaderAfterBeforeLevel);
+
+$dayHeaderColorBg: darken($dayColorBg, $dayHeaderDarkenLevel);
+$dayHeaderColorBeforeBg: darken($dayColorBeforeBg, $dayHeaderAfterBeforeLevel);
+$dayHeaderColorAfterBg: darken($dayColorAfterBg, $dayHeaderAfterBeforeLevel);
+$dayHeaderTextColor: #333;
+$dayColorBorder: #999999;
+
+$dayHeaderColor: #296638;
+$eventsColor: #1f4d2a;
+$eventColor: #9acd32;
+$eventColorBorder: #27330d;
+$eventTextColor: #000000;
+
+
+.ds-calendar {
+  $maxSizeDay: 100%/7;
+
+  width: 100%;
+  overflow: hidden;
+  color: white;
+  position: relative;
+  font-size: $fontSize;
+  border: $borderCalendar;
+  padding: 5px;
+  font-size: 14px;
+  font-family: Arial;
+
+  /*---------------------*\
+    Header of calendar (name of current month)
+  \*---------------------*/
+  .ds-calendar-header-border {
+    background-color: white;
+    margin: 5px 0;
+    padding: 3px 0;
+    border-bottom: 2px solid $headerBorderColor;
+    border-top: 2px solid $headerBorderColor;
+  }
+
+  .ds-calendar-header {
+    text-align: center;
+    background-color: $header;
+    position: relative;
+    height: 20px;
+
+    .arrow {
+      display: inline-block;
+      position: absolute;
+      span {
+        height: 0;
+        width: 0;
+        font-size: 0;
+        line-height: 0;
+        text-indent: -5000px;
+        margin-top: 3px;
+        cursor: pointer;
+        transition: border-color 0.5s ease;
+      }
+    }
+
+    .ds-prev-month {
+      @extend .arrow;
+      left: 5px;
+      span {
+        float: left;
+        border-style: solid;
+        border-width: 7.5px 13.0px 7.5px 0;
+        border-color: transparent $headerArrow transparent transparent;
+        &:hover {
+          border-color: transparent $headerArrowHover transparent transparent;
+        }
+      }
+    }
+    .ds-title-month {
+      display: inline-block;
+      text-transform: uppercase;
+      margin-top: 3px;
+      color: $headerText;
+      font-weight: bold;
+    }
+    .ds-next-month {
+      @extend .arrow;
+      right: 5px;
+      span {
+        float: left;
+        border-style: solid;
+        border-width: 7.5px 0px 7.5px 13px;
+        border-color: transparent transparent transparent $headerArrow;
+        &:hover {
+          border-color: transparent transparent transparent $headerArrowHover;
+        }
+      }
+    }
+
+  }
+
+  /*---------------------*\
+    Names of week
+  \*---------------------*/
+  .ds-title {
+    .ds-day {
+      @include size($maxSizeDay, 20px);
+      background-color: $dayNameColor;
+      box-sizing: border-box;
+      text-transform: uppercase;
+      text-align: center;
+      height: 22px;
+      line-height: 1.4;
+    }
+  }
+
+  /*---------------------*\
+    One day element
+  \*---------------------*/
+  .ds-day {
+    @include size($maxSizeDay, auto);
+    background-color: $dayColorBg;
+    border: 1px solid $dayColorBorder;
+    float: left;
+    box-sizing: border-box;
+    .ds-events {
+      overflow: hidden;
+      min-height: $dayMinHeight;
+    }
+    .ds-day-header {
+      text-align: center;
+      padding: 1px 0px 1px 10px;
+      color: $dayHeaderTextColor;
+      font-weight: bold;
+    }
+    &.before {
+      .ds-day-header {
+        @extend .ds-day-header;
+        background-color: $dayHeaderColorBeforeBg;
+      }
+      .ds-events {
+        @extend .ds-events;
+        background-color: $dayColorBeforeBg;
+      }
+    }
+    &.current {
+      .ds-day-header {
+        @extend .ds-day-header;
+        background-color: $dayHeaderColorBg;
+      }
+      .ds-events {
+        @extend .ds-events;
+        background-color: $dayColorBg;
+      }
+    }
+    &.after {
+      .ds-day-header {
+        @extend .ds-day-header;
+        background-color: $dayHeaderColorAfterBg;
+      }
+      .ds-events {
+        @extend .ds-events;
+        background-color: $dayColorAfterBg;
+      }
+    }
+    &.extra-after {
+      .ds-day-header {
+        @extend .ds-day-header;
+        background-color: $dayHeaderColorAfterBg;
+      }
+      .ds-events {
+        @extend .ds-events;
+        background-color: $dayColorAfterBg;
+      }
+    }
+    &.ds-new-week {
+      clear: left;
+    }
+
+    /*---------------------*\
+      One event in day
+    \*---------------------*/
+    .ds-event {
+      background-color: $eventColor;
+      width: 90%;
+      margin: 0 auto;
+      border: 1px solid $eventColorBorder;
+      cursor: pointer;
+      color: $eventTextColor;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      padding: 1px 4px;
+      @include border-radius(4px);
+      margin-top: 2px;
+      &:last-child {
+        margin-bottom: 2px;
+      }
+    }
+  }
+}
+
+/*---------------------*\
+    Modal
+\*---------------------*/
+$modalContainerColorBg: #fff;
+$modalHeaderColorBg: #9acd32;
+$modalContentColorBg: #f5f5f5;
+$modalFooterColorBg: transparent;
+$modalCloseColorBg: #9acd32;
+$modalTextColor: black;
+$modalBorder: 1px solid #000;
+$modalDateColor: #414141;
+$modalLinkColor: #27330d;
+$modalLinkHoverColor: #1f4d2a;
+
+.ds-event-modal {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .container {
+    width: 500px;
+    background-color: $modalContainerColorBg;
+    border: $modalBorder;
+    text-align: center;
+    color: $modalTextColor;
+    border-radius: 10px;
+    .header {
+      background: $modalHeaderColorBg;
+      border-bottom: $modalBorder;
+      padding: 10px;
+      @include border-radius(10px 10px 0px 0px);
+      .title {
+        text-transform: uppercase;
+        font-weight: bold;
+        font-size: 16px;
+      }
+      .date {
+        text-transform: uppercase;
+        color: $modalDateColor;
+        font-size: 12px;
+        margin-top: 5px;
+      }
+    }
+    .content {
+      background: $modalContentColorBg;
+      padding: 10px;
+      .type {
+        span {
+          font-weight: bold;
+        }
+      }
+      .description {
+        padding: 10px;
+      }
+      .url {
+        text-overflow: ellipsis;
+        width: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+        a {
+          color: $modalLinkColor;
+          font-weight: normal;
+          &:link,
+          &:visited {
+            font-weight: normal;
+          }
+          &:hover {
+            font-weight: bold;
+          }
+          &:active {
+            font-weight: bold;
+          }
+        }
+      }
+    }
+    .footer {
+      border-top: $modalBorder;
+      background: $modalFooterColorBg;
+      @include border-radius(0px 0px 10px 10px);
+      .close-button {
+        background: $modalCloseColorBg;
+        padding: 10px;
+        cursor: pointer;
+        overflow: hidden;
+        @include border-radius(0px 0px 10px 10px);
+        transition: background 0.5s ease;
+        &:hover {
+          background: darken($modalCloseColorBg, 20%);
+        }
+      }
+    }
+  }
+}

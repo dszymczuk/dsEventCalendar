@@ -137,6 +137,9 @@ $eventTextColor: #000000;
       text-align: center;
       height: 22px;
       line-height: 1.4;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
     }
   }
 
@@ -217,6 +220,7 @@ $eventTextColor: #000000;
       white-space: nowrap;
       overflow: hidden;
       padding: 1px 4px;
+      box-sizing: border-box;
       @include border-radius(4px);
       margin-top: 2px;
       &:last-child {

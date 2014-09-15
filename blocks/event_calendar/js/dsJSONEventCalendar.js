@@ -331,7 +331,8 @@
             eventDetails += '</div>';
             eventDetails += '<div class="content">';
 
-            if(typeof  event.type !== "undefined")
+
+            if(typeof  event.type !== "undefined" && event.type !== null)
                 eventDetails += '<p class="type">'+settings.typeText+' <span>'+event.type+'</span></p>';
 
             eventDetails += '<p class="description">'+event.description+'</p>';

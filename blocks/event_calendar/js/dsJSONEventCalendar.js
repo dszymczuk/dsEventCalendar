@@ -269,7 +269,7 @@
                     var events = _getEvents(day,month,year);
                     for(var e = 0 ; e < events.length ; e++)
                     {
-                        dD += '<div class="ds-event" id="'+events[e].id+'">'+events[e].title+'</div>';
+                        dD += '<div class="ds-event" id="'+events[e].id+'" style="background-color: '+events[e].color+'">'+events[e].title+'</div>';
                     }
 
                 }

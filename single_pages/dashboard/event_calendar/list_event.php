@@ -50,7 +50,7 @@
                 <td><input class="eventID" type="hidden" value="<?php echo $e['eventID']; ?>"><?php echo $e['title']; ?>
                 </td>
                 <td><?php echo $e['date']; ?></td>
-                <td><?php echo $e['type']; ?></td>
+                <td><?php echo $e['type_name']; ?></td>
                 <td><?php echo $e['description']; ?></td>
                 <td><?php echo $e['url']; ?></td>
                 <td><?php echo $e['title_cal']; ?></td>

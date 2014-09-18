@@ -13,7 +13,13 @@ class DashboardEventCalendarListEventController extends Controller
     public function view()
     {
         $db = Loader::db();
-        $events = $db->GetAll("SELECT EC.title AS title_cal, ECE . * FROM dsEventCalendarEvents AS ECE LEFT JOIN dsEventCalendar AS EC ON ECE.calendarID = EC.calendarID");
+        
+        $sql = "SELECT EC.title AS title_cal, IFNULL(ECT.type,'default') as type_name ,ECE . * FROM dsEventCalendarEvents AS ECE ";
+        $sql .= " LEFT JOIN dsEventCalendar AS EC ON ECE.calendarID = EC.calendarID ";
+        $sql .= " LEFT JOIN dsEventCalendarTypes AS ECT ON ECT.typeID = ECE.type ";
+
+        $events = $db->GetAll($sql);
+
         $this->set('events', $events);
     }
 

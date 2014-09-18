@@ -24,10 +24,20 @@ If you want, you can change template in Custom Templates.
 
 Version
 ----
-1.0.1
+2.0beta
 
 Changelog
 ----
+2.0.0beta
+Development for new version.
+
+Version 2 is not compatible with previous version! Database structure has been changed.
+
+New feature:
+* settings - you can set language ; date format
+* types - you can define type of event with color (it will display in calendar)
+* new calendar view with modal windows with info about event
+
 1.0.1
 Fix: Call to undefined method Block::getProxyBlock()
 

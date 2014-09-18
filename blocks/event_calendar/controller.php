@@ -33,9 +33,9 @@ class EventCalendarBlockController extends BlockController
         $calendar = $db->GetAll("SELECT * FROM dsEventCalendar WHERE calendarID=" . $this->calendarID);
         $this->set('calendar', $calendar);
 
-        $json_events = $this->getEventsForCalendar($this->calendarID);
+        $json_events = $this->getEventsFromCalendar($this->calendarID);
         $this->set('events', $json_events);
-        $this->set('lang',$this->translateProvider());
+        $this->set('settings',$this->settingsProvider());
 
         if(method_exists($this->getBlockObject(),'getProxyBlock'))
         {
@@ -78,35 +78,54 @@ class EventCalendarBlockController extends BlockController
     }
 
 
-    private function getEventsForCalendar($calendarID)
+    private function getEventsFromCalendar($calendarID)
     {
         $db = Loader::db();
-        $events = $db->GetAll("SELECT * FROM dsEventCalendarEvents WHERE calendarID = " . $calendarID);
+
+        $q  = "SELECT ECE.eventID as id, ECE.*, ECT.* FROM dsEventCalendarEvents as ECE ";
+        $q  .= " LEFT JOIN dsEventCalendarTypes as ECT on ECE.type = ECT.typeID ";
+        $q  .= " WHERE calendarID =" . $calendarID;
+
+        $settings = $db->GetAll("SELECT * FROM dsEventCalendarSettings");
+        foreach ($settings as $s) {
+            $s['opt'] = $s['opt']."_dsECS";
+            $$s['opt'] = $s['value'];
+        }
+
+        $events = $db->GetAll($q);
+
+        foreach ($events as &$e) {
+            unset($e['eventID']);
+            unset($e['calendarID']);
+            unset($e['typeID']);
+            if($e['color'] == NULL)
+            {
+                $e['color'] = $default_color_dsECS;
+                $e['type_name'] = $default_name_dsECS;
+            }
+        }
+
         $js = Loader::helper('json');
         return $js->encode($events);
     }
 
-    private function translateProvider()
+    private function settingsProvider()
     {
-        $months = array(t('January'),t('February'),t('March'),t('April'),t('May'),t('June'),t('July'),t('August'),t('September'),t('October'),t('November'),t('December'));
-        $days = array(t('Sunday'),t('Monday'),t('Tuesday'),t('Wednesday'),t('Thursday'),t('Friday'),t('Saturday'));
-        $days_short = array(t('Sun'),t('Mon'),t('Tue'),t('Wed'), t('Thu'),t('Fri'),t('Sat'));
-        $another_texts = array(
-            'txt_noEvents' => t("There are no events in this period"),
-            'txt_SpecificEvents_prev' => t(""),
-            'txt_SpecificEvents_after' => t("events:"),
-            'txt_next' => t("next"),
-            'txt_prev' => t("prev"),
-            'txt_NextEvents' => t("Next events:"),
-            'txt_GoToEventUrl' => t("See the event"),
-            'txt_LoadingText' => t("loading...")
-        );
-        $lang = array($months,$days,$days_short,$another_texts);
+        $db = Loader::db();
+        $settings = $db->GetAll("SELECT * FROM dsEventCalendarSettings");
+        $set_return = array();
+
+        foreach ($settings as $s) {
+            array_push($set_return, array(
+                $s['opt'] => $s['value']
+            ));
+        }
+
+        array_push($set_return,array('closeText' => t('close')));
+        array_push($set_return,array('typeText' => t('Type:')));
+
         $js = Loader::helper('json');
-        return $js->encode($lang);
-
-
-
+        return $js->encode($set_return);
     }
 
 }

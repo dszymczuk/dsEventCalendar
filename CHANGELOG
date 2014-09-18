@@ -1,3 +1,21 @@
-0.9 - PRB submission
+2.0.0beta
+Development for new version.
 
-0.1 - Initial development
+Version 2 is not compatible with previous version! Database structure has been changed.
+
+New feature:
+* settings - you can set language ; date format
+* types - you can define type of event with color (it will display in calendar)
+* new calendar view with modal windows with info about event
+
+1.0.1 
+Fix: Call to undefined method Block::getProxyBlock()
+
+1.0.0 
+Official release. Fix: Removed jquery.eventCalendar.js files from color templates blocks - they are unnecessary (override by default jquery.eventCalendar.js in block)
+
+0.9
+PRB submission
+
+0.1
+Initial development 

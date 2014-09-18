@@ -1,4 +1,2 @@
 /.idea
-/blocks/event_calendar/templates/*/sass
-/blocks/event_calendar/templates/*/.sass-cache
-/blocks/event_calendar/templates/*/config.rb
+/blocks/event_calendar/.sass-cache

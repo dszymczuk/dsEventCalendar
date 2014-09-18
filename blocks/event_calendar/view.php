@@ -23,25 +23,27 @@ $c = Page::getCurrentPage();
         $(document).ready(function () {
             var eventsInline = {};
             eventsInline = <?php echo $events; ?>;
-            var texts = {};
-            texts = <?php echo $lang; ?>;
-            var options = texts[3];
+            var settings = {};
+            var set_serv = <?php echo $settings; ?>;
 
-            $("#eventCalendarInline<?php echo $blockIdentifier; ?>").eventCalendar({
-                jsonData: eventsInline,
-                jsonDateFormat: 'human',
-                showDescription: true,
-                monthNames: texts[0],
-                dayNames: texts[1],
-                dayNamesShort: texts[2],
-                txt_noEvents: options.txt_noEvents,
-                txt_SpecificEvents_prev: options.txt_SpecificEvents_prev,
-                txt_SpecificEvents_after: options.txt_SpecificEvents_after,
-                txt_next: options.txt_next,
-                txt_prev: options.txt_prev,
-                txt_NextEvents: options.txt_NextEvents,
-                txt_GoToEventUrl: options.txt_GoToEventUrl,
-                txt_LoadingText: options.txt_LoadingText
+            for(var key in set_serv) {
+                var value = set_serv[key];
+                var k = Object.keys(value);
+                var v = value[k];
+                settings[k] = v;
+            }
+
+            console.log(eventsInline);
+            //var options = settings[3];
+
+            $("#eventCalendarInline<?php echo $blockIdentifier; ?>").JSONEventCalendar(eventsInline,{
+                lang: settings.lang,
+                formatTitle: settings.formatTitle,
+                formatEvent: settings.formatEvent,
+                startFrom: settings.startFrom,
+                eventsInDay: settings.eventsInDay,
+                closeText: settings.closeText,
+                typeText: settings.typeText
             });
         });
     </script>

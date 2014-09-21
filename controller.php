@@ -1,20 +1,13 @@
 <?php
 defined('C5_EXECUTE') or die(_("Access Denied."));
 
-/*
- *
- * Event Calendar use this script for view:
- * http://www.vissit.com/jquery-event-calendar-plugin-english-version
- *
- */
-
 class dsEventCalendarPackage extends Package
 {
 
 
     protected $pkgHandle = 'dsEventCalendar';
     protected $appVersionRequired = '5.5.0';
-    protected $pkgVersion = '2.0.10';
+    protected $pkgVersion = '2.0.11';
 
     public function getPackageDescription()
     {

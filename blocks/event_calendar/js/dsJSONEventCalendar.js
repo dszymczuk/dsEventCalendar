@@ -9,10 +9,6 @@
 (function( $ ) {
     $.fn.JSONEventCalendar = function(events,options) {
 
-        console.log("odpala");
-        console.log(events);
-        console.log(options);
-
         var settings = $.extend($.fn.JSONEventCalendar.settings, options );
         settings.startFrom = settings.startFrom%7;
         
@@ -295,8 +291,8 @@
             
             function _getEvents(day,month,year){
                 return _.filter(events, function (sE) {
-                    return moment(new Date(year, month, day)) < new Date(sE.date) 
-                        && new Date(sE.date) < moment(new Date(year, month, day)).add(1, 'd');
+                    return moment(new Date(year, month, day)) < new Date(sE.date.replace(/-/g,"/")) 
+                        && new Date(sE.date.replace(/-/g,"/")) < moment(new Date(year, month, day)).add(1, 'd');
                 });
             }
 

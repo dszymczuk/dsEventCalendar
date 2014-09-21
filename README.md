@@ -50,38 +50,13 @@ Official release. Fix: Removed jquery.eventCalendar.js files from color template
 
 Languages
 ----
-You can set any language. Just edit eventCalendar properties in template like that:
-In English - default
-```javascript
-$("#eventCalendarInline<?php echo $rand; ?>").eventCalendar({
-    jsonData: eventsInline,
-    jsonDateFormat: 'human',
-    showDescription: true
-});
-```
-In Polish:
-```javascript
-$("#eventCalendarInline<?php echo $rand; ?>").eventCalendar({
-    jsonData: eventsInline,
-    jsonDateFormat: 'human',
-    showDescription: true
-    monthNames: [ "Styczeń", "Luty", "Marzec", "Kwiecień", "Maj", "Czerwiec","Lipiec", "Sierpień", "Wrzesień", "Październik", "Listopad", "Grudzień" ],  
-    dayNames: [ 'Poniedziałek','Wtorek','Środa','Czwartek', 'Piątek','Sobota','Niedziela' ],  
-    dayNamesShort: [ 'Pn','Wt','Śr','Cz', 'Pt','Sb','Nd' ],  
-    txt_noEvents: "Brak wydarzeń w tym czasie",  
-    txt_SpecificEvents_prev: "",
-    txt_SpecificEvents_after: "Wydarzenia:",
-    txt_next: "Następny",
-    txt_prev: "Poprzedni",
-    txt_NextEvents: "Następne wydarzenie:",
-    txt_GoToEventUrl: "Idź do wydarzenia",
-    txt_Loading: "Wczytywanie..."
-});
-```
+You can set any language using gettext.
+
 
 License
 ----
-MIT
+dsEventCalendar - Creative Commons
+jQuery Event Calendar Plugin - GPL v3
 
 Future features
 ----

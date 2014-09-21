@@ -68,8 +68,6 @@
     <script>
         $(document).ready(function () {
 
-//        $('#listevent').hide();
-
             var listevent = $('#listevent').dataTable({
                 "order": [
                     [ 1, "desc" ]
@@ -89,9 +87,6 @@
                     "info": "Showing page _PAGE_ of _PAGES_",
                     "infoEmpty": "No records available",
                     "infoFiltered": "(filtered from _MAX_ total records)"
-                },
-                "initComplete": function () {
-//                $('#listevent').show();
                 }
             });
 

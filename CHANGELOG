@@ -1,3 +1,6 @@
+2.0.12
+Fix issue: Calender doesn't show events with time: 00:00:00
+
 2.0.11
 Fix display events on FF and IE
 

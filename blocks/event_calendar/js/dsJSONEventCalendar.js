@@ -291,7 +291,7 @@
             
             function _getEvents(day,month,year){
                 return _.filter(events, function (sE) {
-                    return moment(new Date(year, month, day)) < new Date(sE.date.replace(/-/g,"/")) 
+                    return moment(new Date(year, month, day)) <= new Date(sE.date.replace(/-/g,"/"))
                         && new Date(sE.date.replace(/-/g,"/")) < moment(new Date(year, month, day)).add(1, 'd');
                 });
             }

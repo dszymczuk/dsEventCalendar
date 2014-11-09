@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: dsEventCalendar 1.0\n"
-"POT-Creation-Date: 2014-11-09 15:13+0100\n"
-"PO-Revision-Date: 2014-11-09 15:14+0100\n"
+"POT-Creation-Date: 2014-11-09 16:35+0100\n"
+"PO-Revision-Date: 2014-11-09 16:35+0100\n"
 "Last-Translator: \n"
 "Language-Team: dszymczuk <damian.strony+c5@gmail.com>\n"
 "Language: Polish\n"
@@ -24,12 +24,14 @@ msgstr ""
 #: /var/www/c5packlh/packages/dsEventCalendar/blocks/event_calendar/form_setup_html.php:2
 #: /var/www/c5packlh/packages/dsEventCalendar/blocks/event_calendar/controller.php:2
 msgid "Access Denied."
-msgstr ""
+msgstr "Dostęp zabrioniony."
 
 #: /var/www/c5packlh/packages/dsEventCalendar/controller.php:14
 msgid ""
 "Event Calendar - you can add, edit and remove one day events on your page"
 msgstr ""
+"Event Calednar - dodawaj, edytuj i usuwaj jednodniowe wydarzenia na swojej "
+"stronie"
 
 #: /var/www/c5packlh/packages/dsEventCalendar/controller.php:19
 #: /var/www/c5packlh/packages/dsEventCalendar/controller.php:45
@@ -41,110 +43,110 @@ msgstr ""
 #: /var/www/c5packlh/packages/dsEventCalendar/single_pages/dashboard/event_calendar/event.php:5
 #: /var/www/c5packlh/packages/dsEventCalendar/single_pages/dashboard/event_calendar/calendar.php:5
 msgid "Event Calendar"
-msgstr ""
+msgstr "Kalendarz wydarzeń"
 
 #: /var/www/c5packlh/packages/dsEventCalendar/controller.php:50
 msgid "Calendars list"
-msgstr ""
+msgstr "Lista kalendarzy"
 
 #: /var/www/c5packlh/packages/dsEventCalendar/controller.php:55
 #: /var/www/c5packlh/packages/dsEventCalendar/single_pages/dashboard/event_calendar/calendar.php:6
 msgid "Add / edit calendar"
-msgstr ""
+msgstr "Dodaj / edytuj kalendarz"
 
 #: /var/www/c5packlh/packages/dsEventCalendar/controller.php:60
 msgid "Events list"
-msgstr ""
+msgstr "Lista wydarzeń"
 
 #: /var/www/c5packlh/packages/dsEventCalendar/controller.php:65
 #: /var/www/c5packlh/packages/dsEventCalendar/single_pages/dashboard/event_calendar/event.php:6
 msgid "Add / edit event"
-msgstr ""
+msgstr "Dodaj / edytuj wydarzenie"
 
 #: /var/www/c5packlh/packages/dsEventCalendar/controller.php:70
 msgid "Type of events"
-msgstr ""
+msgstr "Typ wydarzenia"
 
 #: /var/www/c5packlh/packages/dsEventCalendar/controller.php:75
 #: /var/www/c5packlh/packages/dsEventCalendar/single_pages/dashboard/event_calendar/settings.php:4
 msgid "Settings"
-msgstr ""
+msgstr "Ustawienia"
 
 #: /var/www/c5packlh/packages/dsEventCalendar/blocks/event_calendar/view.php:9
 msgid "No calendar choose"
-msgstr ""
+msgstr "Nie wybrano kalendarza"
 
 #: /var/www/c5packlh/packages/dsEventCalendar/blocks/event_calendar/view.php:13
 msgid "Edit mode for calendar:"
-msgstr ""
+msgstr "Tryb edycji dla kalendarza:"
 
 #: /var/www/c5packlh/packages/dsEventCalendar/blocks/event_calendar/form_setup_html.php:7
 msgid "No calendar exist. Add from one from dashboard."
-msgstr ""
+msgstr "Kalendarz nie istnieje. Dodaj z panelu administracyjnego."
 
 #: /var/www/c5packlh/packages/dsEventCalendar/blocks/event_calendar/form_setup_html.php:12
 msgid "Select calendar"
-msgstr ""
+msgstr "Wybierz kalendarz"
 
 #: /var/www/c5packlh/packages/dsEventCalendar/blocks/event_calendar/controller.php:124
 msgid "close"
-msgstr ""
+msgstr "zamknij"
 
 #: /var/www/c5packlh/packages/dsEventCalendar/blocks/event_calendar/controller.php:125
 msgid "Type:"
-msgstr ""
+msgstr "Typ:"
 
 #: /var/www/c5packlh/packages/dsEventCalendar/single_pages/dashboard/event_calendar/list_event.php:6
 msgid "Event was deleted"
-msgstr ""
+msgstr "Wydarzenie zostało usunięte"
 
 #: /var/www/c5packlh/packages/dsEventCalendar/single_pages/dashboard/event_calendar/list_event.php:9
 #: /var/www/c5packlh/packages/dsEventCalendar/single_pages/dashboard/event_calendar/types.php:15
 #: /var/www/c5packlh/packages/dsEventCalendar/single_pages/dashboard/event_calendar/list_calendar.php:9
 msgid "Something wrong in delete. Try again"
-msgstr ""
+msgstr "Coś poszło źle. Spróbuj ponownie."
 
 #: /var/www/c5packlh/packages/dsEventCalendar/single_pages/dashboard/event_calendar/list_event.php:12
 msgid "List of events"
-msgstr ""
+msgstr "Lista wydarzeń"
 
 #: /var/www/c5packlh/packages/dsEventCalendar/single_pages/dashboard/event_calendar/list_event.php:17
 msgid "There is no events. Go to Add event to add new event."
-msgstr ""
+msgstr "Brak wydarzeń. Dodaj nowe wydarzenie."
 
 #: /var/www/c5packlh/packages/dsEventCalendar/single_pages/dashboard/event_calendar/list_event.php:25
 #: /var/www/c5packlh/packages/dsEventCalendar/single_pages/dashboard/event_calendar/list_event.php:37
 #: /var/www/c5packlh/packages/dsEventCalendar/single_pages/dashboard/event_calendar/event.php:21
 msgid "Event title"
-msgstr ""
+msgstr "Tytuł wydarzenia"
 
 #: /var/www/c5packlh/packages/dsEventCalendar/single_pages/dashboard/event_calendar/list_event.php:26
 #: /var/www/c5packlh/packages/dsEventCalendar/single_pages/dashboard/event_calendar/list_event.php:38
 #: /var/www/c5packlh/packages/dsEventCalendar/single_pages/dashboard/event_calendar/event.php:39
 msgid "Event date"
-msgstr ""
+msgstr "Data wydarzenia"
 
 #: /var/www/c5packlh/packages/dsEventCalendar/single_pages/dashboard/event_calendar/list_event.php:27
 #: /var/www/c5packlh/packages/dsEventCalendar/single_pages/dashboard/event_calendar/list_event.php:39
 #: /var/www/c5packlh/packages/dsEventCalendar/single_pages/dashboard/event_calendar/event.php:46
 msgid "Event type"
-msgstr ""
+msgstr "Type wydarzenia"
 
 #: /var/www/c5packlh/packages/dsEventCalendar/single_pages/dashboard/event_calendar/list_event.php:28
 #: /var/www/c5packlh/packages/dsEventCalendar/single_pages/dashboard/event_calendar/list_event.php:40
 #: /var/www/c5packlh/packages/dsEventCalendar/single_pages/dashboard/event_calendar/event.php:57
 msgid "Event description"
-msgstr ""
+msgstr "Opis wydarzenia"
 
 #: /var/www/c5packlh/packages/dsEventCalendar/single_pages/dashboard/event_calendar/list_event.php:29
 #: /var/www/c5packlh/packages/dsEventCalendar/single_pages/dashboard/event_calendar/list_event.php:41
 msgid "Event URL"
-msgstr ""
+msgstr "Adres URL wydarzenia"
 
 #: /var/www/c5packlh/packages/dsEventCalendar/single_pages/dashboard/event_calendar/list_event.php:30
 #: /var/www/c5packlh/packages/dsEventCalendar/single_pages/dashboard/event_calendar/list_event.php:42
 msgid "Calendar Title"
-msgstr ""
+msgstr "Tytuł kalendarza"
 
 #: /var/www/c5packlh/packages/dsEventCalendar/single_pages/dashboard/event_calendar/list_event.php:31
 #: /var/www/c5packlh/packages/dsEventCalendar/single_pages/dashboard/event_calendar/list_event.php:43
@@ -153,216 +155,232 @@ msgstr ""
 #: /var/www/c5packlh/packages/dsEventCalendar/single_pages/dashboard/event_calendar/list_calendar.php:26
 #: /var/www/c5packlh/packages/dsEventCalendar/single_pages/dashboard/event_calendar/list_calendar.php:34
 msgid "Options"
-msgstr ""
+msgstr "Opcje"
 
 #: /var/www/c5packlh/packages/dsEventCalendar/single_pages/dashboard/event_calendar/list_event.php:58
 #: /var/www/c5packlh/packages/dsEventCalendar/single_pages/dashboard/event_calendar/types.php:56
 #: /var/www/c5packlh/packages/dsEventCalendar/single_pages/dashboard/event_calendar/list_calendar.php:53
 msgid "Edit"
-msgstr ""
+msgstr "Edytuj"
 
 #: /var/www/c5packlh/packages/dsEventCalendar/single_pages/dashboard/event_calendar/list_event.php:59
 #: /var/www/c5packlh/packages/dsEventCalendar/single_pages/dashboard/event_calendar/types.php:57
 #: /var/www/c5packlh/packages/dsEventCalendar/single_pages/dashboard/event_calendar/list_calendar.php:54
 msgid "Delete"
-msgstr ""
+msgstr "Usuń"
 
 #: /var/www/c5packlh/packages/dsEventCalendar/single_pages/dashboard/event_calendar/types.php:6
 #: /var/www/c5packlh/packages/dsEventCalendar/single_pages/dashboard/event_calendar/event.php:16
 msgid "Return to event list"
-msgstr ""
+msgstr "Powrót do listy wydarzeń"
 
 #: /var/www/c5packlh/packages/dsEventCalendar/single_pages/dashboard/event_calendar/types.php:9
 msgid "List of types"
-msgstr ""
+msgstr "Lista typów"
 
 #: /var/www/c5packlh/packages/dsEventCalendar/single_pages/dashboard/event_calendar/types.php:12
 msgid "Type has been deleted"
-msgstr ""
+msgstr "Typ został usunięty"
 
 #: /var/www/c5packlh/packages/dsEventCalendar/single_pages/dashboard/event_calendar/types.php:22
 #: /var/www/c5packlh/packages/dsEventCalendar/single_pages/dashboard/event_calendar/types.php:31
 #: /var/www/c5packlh/packages/dsEventCalendar/single_pages/dashboard/event_calendar/types.php:76
 msgid "Type name"
-msgstr ""
+msgstr "Nazwa typu"
 
 #: /var/www/c5packlh/packages/dsEventCalendar/single_pages/dashboard/event_calendar/types.php:23
 #: /var/www/c5packlh/packages/dsEventCalendar/single_pages/dashboard/event_calendar/types.php:32
 #: /var/www/c5packlh/packages/dsEventCalendar/single_pages/dashboard/event_calendar/types.php:85
 msgid "Color"
-msgstr ""
+msgstr "Kolor"
 
 #: /var/www/c5packlh/packages/dsEventCalendar/single_pages/dashboard/event_calendar/types.php:24
 #: /var/www/c5packlh/packages/dsEventCalendar/single_pages/dashboard/event_calendar/types.php:33
 msgid "Count of events with type"
-msgstr ""
+msgstr "Liczba wydarzeń danego typu"
 
 #: /var/www/c5packlh/packages/dsEventCalendar/single_pages/dashboard/event_calendar/types.php:67
 msgid "Type has been edited"
-msgstr ""
+msgstr "Typ został wyedytowany"
 
 #: /var/www/c5packlh/packages/dsEventCalendar/single_pages/dashboard/event_calendar/types.php:70
 msgid "Something wrong in edit. Try again"
-msgstr ""
+msgstr "Coś poszło nie tak podczas edycji. Spróbuj ponownie."
 
 #: /var/www/c5packlh/packages/dsEventCalendar/single_pages/dashboard/event_calendar/types.php:94
 msgid "Add type"
-msgstr ""
+msgstr "Dodaj typ"
 
 #: /var/www/c5packlh/packages/dsEventCalendar/single_pages/dashboard/event_calendar/types.php:95
 msgid "Add new"
-msgstr ""
+msgstr "Dodaj nowy"
 
 #: /var/www/c5packlh/packages/dsEventCalendar/single_pages/dashboard/event_calendar/types.php:96
 msgid "Edit type"
-msgstr ""
+msgstr "Edytuj typ"
 
 #: /var/www/c5packlh/packages/dsEventCalendar/single_pages/dashboard/event_calendar/settings.php:9
 msgid "Language"
-msgstr ""
+msgstr "Język"
 
 #: /var/www/c5packlh/packages/dsEventCalendar/single_pages/dashboard/event_calendar/settings.php:21
 msgid "Title date format"
-msgstr ""
+msgstr "Format daty w tytule"
 
 #: /var/www/c5packlh/packages/dsEventCalendar/single_pages/dashboard/event_calendar/settings.php:28
 msgid "Event date format"
-msgstr ""
+msgstr "Format daty w wydarzeniu"
 
 #: /var/www/c5packlh/packages/dsEventCalendar/single_pages/dashboard/event_calendar/settings.php:42
 msgid "Start from"
-msgstr ""
+msgstr "Zacznij od"
 
 #: /var/www/c5packlh/packages/dsEventCalendar/single_pages/dashboard/event_calendar/settings.php:56
 msgid "Number of evetns in day"
-msgstr ""
+msgstr "Ilość wydarzeń w dniu"
 
 #: /var/www/c5packlh/packages/dsEventCalendar/single_pages/dashboard/event_calendar/settings.php:63
 msgid "Default name of event"
-msgstr ""
+msgstr "Domyślna nazwa wydarzenia"
 
 #: /var/www/c5packlh/packages/dsEventCalendar/single_pages/dashboard/event_calendar/settings.php:70
 msgid "Default color of event"
-msgstr ""
+msgstr "Domyslny kolor wydarzenia"
 
 #: /var/www/c5packlh/packages/dsEventCalendar/single_pages/dashboard/event_calendar/settings.php:79
 msgid "Update settings"
-msgstr ""
+msgstr "Aktualizuj ustawienia"
+
+#: /var/www/c5packlh/packages/dsEventCalendar/single_pages/dashboard/event_calendar/settings.php:87
+msgid "Author:"
+msgstr "Autor:"
+
+#: /var/www/c5packlh/packages/dsEventCalendar/single_pages/dashboard/event_calendar/settings.php:88
+msgid "Site:"
+msgstr "Strona:"
+
+#: /var/www/c5packlh/packages/dsEventCalendar/single_pages/dashboard/event_calendar/settings.php:89
+msgid "Project on GitHub:"
+msgstr "Projekt na GitHub:"
+
+#: /var/www/c5packlh/packages/dsEventCalendar/single_pages/dashboard/event_calendar/settings.php:90
+msgid "Do you like it? Maybe some donate? :)"
+msgstr "Podoba się? Może jakaś dotacja? :)"
 
 #: /var/www/c5packlh/packages/dsEventCalendar/single_pages/dashboard/event_calendar/list_calendar.php:6
 msgid "Calendar with all events was deleted"
-msgstr ""
+msgstr "Kalendarz ze wszystkimi wydarzeniami został usunięty"
 
 #: /var/www/c5packlh/packages/dsEventCalendar/single_pages/dashboard/event_calendar/list_calendar.php:12
 msgid "List of calendars"
-msgstr ""
+msgstr "Lista kalendarzy"
 
 #: /var/www/c5packlh/packages/dsEventCalendar/single_pages/dashboard/event_calendar/list_calendar.php:16
 msgid "There is no calendars. Go to Add calendar to add new calendar."
-msgstr ""
+msgstr "Brak kalendarzy. Dodaj nowy."
 
 #: /var/www/c5packlh/packages/dsEventCalendar/single_pages/dashboard/event_calendar/list_calendar.php:24
 #: /var/www/c5packlh/packages/dsEventCalendar/single_pages/dashboard/event_calendar/list_calendar.php:32
 #: /var/www/c5packlh/packages/dsEventCalendar/single_pages/dashboard/event_calendar/calendar.php:16
 msgid "Calendar title"
-msgstr ""
+msgstr "Tytuł kalendarza"
 
 #: /var/www/c5packlh/packages/dsEventCalendar/single_pages/dashboard/event_calendar/list_calendar.php:25
 #: /var/www/c5packlh/packages/dsEventCalendar/single_pages/dashboard/event_calendar/list_calendar.php:33
 msgid "Events in calendar"
-msgstr ""
+msgstr "Wydarzenia w kalendarzu"
 
 #: /var/www/c5packlh/packages/dsEventCalendar/single_pages/dashboard/event_calendar/event.php:11
 msgid ""
 "There is no calendars to add new event. Go to Add calendar to add new "
 "calendar."
-msgstr ""
+msgstr "Nie ma kalndarzy aby dodać wydarzenie. Dodaj nowy kalendarz."
 
 #: /var/www/c5packlh/packages/dsEventCalendar/single_pages/dashboard/event_calendar/event.php:28
 msgid "Calendar"
-msgstr ""
+msgstr "Kalendarz"
 
 #: /var/www/c5packlh/packages/dsEventCalendar/single_pages/dashboard/event_calendar/event.php:64
 msgid "Event url"
-msgstr ""
+msgstr "URL wydarzenia"
 
 #: /var/www/c5packlh/packages/dsEventCalendar/single_pages/dashboard/event_calendar/calendar.php:11
 msgid "Return to calendar list"
-msgstr ""
+msgstr "Powrót do listy kalendarzy"
 
 #: /var/www/c5packlh/packages/dsEventCalendar/controllers/dashboard/event_calendar/types.php:44
 #: /var/www/c5packlh/packages/dsEventCalendar/controllers/dashboard/event_calendar/event.php:49
 #: /var/www/c5packlh/packages/dsEventCalendar/controllers/dashboard/event_calendar/event.php:129
 msgid "Event: "
-msgstr ""
+msgstr "Wydarzenie:"
 
 #: /var/www/c5packlh/packages/dsEventCalendar/controllers/dashboard/event_calendar/types.php:47
 #: /var/www/c5packlh/packages/dsEventCalendar/controllers/dashboard/event_calendar/settings.php:38
 #: /var/www/c5packlh/packages/dsEventCalendar/controllers/dashboard/event_calendar/event.php:57
 msgid "Error while adding. Maybe some values were empty?"
-msgstr ""
+msgstr "Błąd podczas dodawania. Może pewne pola są puste?"
 
 #: /var/www/c5packlh/packages/dsEventCalendar/controllers/dashboard/event_calendar/settings.php:35
 msgid "Settings have been updated."
-msgstr ""
+msgstr "Ustawienia zaktualizowane"
 
 #: /var/www/c5packlh/packages/dsEventCalendar/controllers/dashboard/event_calendar/settings.php:45
 msgid "Monday"
-msgstr ""
+msgstr "Poniedziałek"
 
 #: /var/www/c5packlh/packages/dsEventCalendar/controllers/dashboard/event_calendar/settings.php:45
 msgid "Tuesday"
-msgstr ""
+msgstr "Wtorek"
 
 #: /var/www/c5packlh/packages/dsEventCalendar/controllers/dashboard/event_calendar/settings.php:45
 msgid "Wednesday"
-msgstr ""
+msgstr "Środa"
 
 #: /var/www/c5packlh/packages/dsEventCalendar/controllers/dashboard/event_calendar/settings.php:45
 msgid "Thursday"
-msgstr ""
+msgstr "Czwartek"
 
 #: /var/www/c5packlh/packages/dsEventCalendar/controllers/dashboard/event_calendar/settings.php:45
 msgid "Friday"
-msgstr ""
+msgstr "Piątek"
 
 #: /var/www/c5packlh/packages/dsEventCalendar/controllers/dashboard/event_calendar/settings.php:45
 msgid "Saturday"
-msgstr ""
+msgstr "Sobota"
 
 #: /var/www/c5packlh/packages/dsEventCalendar/controllers/dashboard/event_calendar/settings.php:45
 msgid "Sunday"
-msgstr ""
+msgstr "Niedziela"
 
 #: /var/www/c5packlh/packages/dsEventCalendar/controllers/dashboard/event_calendar/event.php:86
 msgid "Add event"
-msgstr ""
+msgstr "Dodaj wydarzenie"
 
 #: /var/www/c5packlh/packages/dsEventCalendar/controllers/dashboard/event_calendar/event.php:132
 msgid "Error while editing. Maybe some values were empty?"
-msgstr ""
+msgstr "Błąd podczas edycji. Może pewne pola są puste?"
 
 #: /var/www/c5packlh/packages/dsEventCalendar/controllers/dashboard/event_calendar/event.php:175
 msgid "Edit event"
-msgstr ""
+msgstr "Edytuj wydarzenie"
 
 #: /var/www/c5packlh/packages/dsEventCalendar/controllers/dashboard/event_calendar/calendar.php:17
 #: /var/www/c5packlh/packages/dsEventCalendar/controllers/dashboard/event_calendar/calendar.php:55
 msgid "Calendar "
-msgstr ""
+msgstr "Kalendarz"
 
 #: /var/www/c5packlh/packages/dsEventCalendar/controllers/dashboard/event_calendar/calendar.php:21
 msgid "Error while adding. Maybe calendar title was empty?"
-msgstr ""
+msgstr "Błąd podczas dodawania. Może tytuł kalendarza jest pusty?"
 
 #: /var/www/c5packlh/packages/dsEventCalendar/controllers/dashboard/event_calendar/calendar.php:27
 msgid "Add calendar"
-msgstr ""
+msgstr "Dodaj kalendarz"
 
 #: /var/www/c5packlh/packages/dsEventCalendar/controllers/dashboard/event_calendar/calendar.php:44
 msgid "Edit calendar"
-msgstr ""
+msgstr "Edytuj kalendarz"
 
 #: /var/www/c5packlh/packages/dsEventCalendar/controllers/dashboard/event_calendar/calendar.php:59
 msgid "Error while editing. Maybe calendar title was empty?"
-msgstr ""
+msgstr "Błąd podczas edycji. Może tytuł kalendarza jest pusty?"

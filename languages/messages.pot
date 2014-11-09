@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: dsEventCalendar 1.0\n"
-"POT-Creation-Date: 2014-11-09 15:13+0100\n"
-"PO-Revision-Date: 2014-11-09 15:14+0100\n"
+"POT-Creation-Date: 2014-11-09 16:35+0100\n"
+"PO-Revision-Date: 2014-11-09 16:39+0100\n"
 "Last-Translator: \n"
 "Language-Team: dszymczuk <damian.strony+c5@gmail.com>\n"
 "Language: Polish\n"
@@ -247,6 +247,22 @@ msgstr ""
 
 #: /var/www/c5packlh/packages/dsEventCalendar/single_pages/dashboard/event_calendar/settings.php:79
 msgid "Update settings"
+msgstr ""
+
+#: /var/www/c5packlh/packages/dsEventCalendar/single_pages/dashboard/event_calendar/settings.php:87
+msgid "Author:"
+msgstr ""
+
+#: /var/www/c5packlh/packages/dsEventCalendar/single_pages/dashboard/event_calendar/settings.php:88
+msgid "Site:"
+msgstr ""
+
+#: /var/www/c5packlh/packages/dsEventCalendar/single_pages/dashboard/event_calendar/settings.php:89
+msgid "Project on GitHub:"
+msgstr ""
+
+#: /var/www/c5packlh/packages/dsEventCalendar/single_pages/dashboard/event_calendar/settings.php:90
+msgid "Do you like it? Maybe some donate? :)"
 msgstr ""
 
 #: /var/www/c5packlh/packages/dsEventCalendar/single_pages/dashboard/event_calendar/list_calendar.php:6

@@ -1,3 +1,7 @@
+2.1
+OFFICIAL RELEASE
+Remove border of calendar ; set font smaller ; add some languages
+
 2.0.12
 Fix issue: Calender doesn't show events with time: 00:00:00
 

@@ -1,4 +1,4 @@
-/* line 5, ../../../../../../../../Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
+/* line 5, ../../../../../../../lib/gems/1.9.1/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -20,45 +20,45 @@ time, mark, audio, video {
   vertical-align: baseline;
 }
 
-/* line 22, ../../../../../../../../Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
+/* line 22, ../../../../../../../lib/gems/1.9.1/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
 html {
   line-height: 1;
 }
 
-/* line 24, ../../../../../../../../Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
+/* line 24, ../../../../../../../lib/gems/1.9.1/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
 ol, ul {
   list-style: none;
 }
 
-/* line 26, ../../../../../../../../Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
+/* line 26, ../../../../../../../lib/gems/1.9.1/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-/* line 28, ../../../../../../../../Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
+/* line 28, ../../../../../../../lib/gems/1.9.1/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
 caption, th, td {
   text-align: left;
   font-weight: normal;
   vertical-align: middle;
 }
 
-/* line 30, ../../../../../../../../Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
+/* line 30, ../../../../../../../lib/gems/1.9.1/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
 q, blockquote {
   quotes: none;
 }
-/* line 103, ../../../../../../../../Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
+/* line 103, ../../../../../../../lib/gems/1.9.1/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
 q:before, q:after, blockquote:before, blockquote:after {
   content: "";
   content: none;
 }
 
-/* line 32, ../../../../../../../../Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
+/* line 32, ../../../../../../../lib/gems/1.9.1/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
 a img {
   border: none;
 }
 
-/* line 116, ../../../../../../../../Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
+/* line 116, ../../../../../../../lib/gems/1.9.1/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
 article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
   display: block;
 }
@@ -70,9 +70,8 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   overflow: hidden;
   color: white;
   position: relative;
-  font-size: 13px;
+  font-size: 12px;
   padding: 5px;
-  font-size: 14px;
   font-family: Arial;
   /*---------------------*\
     Header of calendar (name of current month)
@@ -84,7 +83,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
     One day element
   \*---------------------*/
 }
-/* line 63, ../sass/style.scss */
+/* line 62, ../sass/style.scss */
 .ds-calendar .ds-calendar-header-border {
   background-color: white;
   margin: 5px 0;
@@ -92,19 +91,19 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   border-bottom: 2px solid #666666;
   border-top: 2px solid #666666;
 }
-/* line 71, ../sass/style.scss */
+/* line 70, ../sass/style.scss */
 .ds-calendar .ds-calendar-header {
   text-align: center;
   background-color: #dadada;
   position: relative;
   height: 20px;
 }
-/* line 77, ../sass/style.scss */
+/* line 76, ../sass/style.scss */
 .ds-calendar .ds-calendar-header .arrow, .ds-calendar .ds-calendar-header .ds-prev-month, .ds-calendar .ds-calendar-header .ds-next-month {
   display: inline-block;
   position: absolute;
 }
-/* line 80, ../sass/style.scss */
+/* line 79, ../sass/style.scss */
 .ds-calendar .ds-calendar-header .arrow span, .ds-calendar .ds-calendar-header .ds-prev-month span, .ds-calendar .ds-calendar-header .ds-next-month span {
   height: 0;
   width: 0;
@@ -115,22 +114,22 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   cursor: pointer;
   transition: border-color 0.5s ease;
 }
-/* line 92, ../sass/style.scss */
+/* line 91, ../sass/style.scss */
 .ds-calendar .ds-calendar-header .ds-prev-month {
   left: 5px;
 }
-/* line 95, ../sass/style.scss */
+/* line 94, ../sass/style.scss */
 .ds-calendar .ds-calendar-header .ds-prev-month span {
   float: left;
   border-style: solid;
   border-width: 7.5px 13.0px 7.5px 0;
   border-color: transparent #fff transparent transparent;
 }
-/* line 100, ../sass/style.scss */
+/* line 99, ../sass/style.scss */
 .ds-calendar .ds-calendar-header .ds-prev-month span:hover {
   border-color: transparent #585858 transparent transparent;
 }
-/* line 105, ../sass/style.scss */
+/* line 104, ../sass/style.scss */
 .ds-calendar .ds-calendar-header .ds-title-month {
   display: inline-block;
   text-transform: uppercase;
@@ -138,22 +137,22 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   color: #585858;
   font-weight: bold;
 }
-/* line 112, ../sass/style.scss */
+/* line 111, ../sass/style.scss */
 .ds-calendar .ds-calendar-header .ds-next-month {
   right: 5px;
 }
-/* line 115, ../sass/style.scss */
+/* line 114, ../sass/style.scss */
 .ds-calendar .ds-calendar-header .ds-next-month span {
   float: left;
   border-style: solid;
   border-width: 7.5px 0px 7.5px 13px;
   border-color: transparent transparent transparent #fff;
 }
-/* line 120, ../sass/style.scss */
+/* line 119, ../sass/style.scss */
 .ds-calendar .ds-calendar-header .ds-next-month span:hover {
   border-color: transparent transparent transparent #585858;
 }
-/* line 132, ../sass/style.scss */
+/* line 131, ../sass/style.scss */
 .ds-calendar .ds-title .ds-day {
   width: 14.28571%;
   height: 20px;
@@ -162,7 +161,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   text-transform: uppercase;
   text-align: center;
   height: 22px;
-  line-height: 1.4;
+  line-height: 22px;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
@@ -240,9 +239,9 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   overflow: hidden;
   padding: 1px 4px;
   box-sizing: border-box;
-  -moz-border-radius: 4px;
-  -webkit-border-radius: 4px;
-  border-radius: 4px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
   margin-top: 2px;
 }
 /* line 226, ../sass/style.scss */
@@ -253,7 +252,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 /*---------------------*\
     Modal
 \*---------------------*/
-/* line 248, ../sass/style.scss */
+/* line 249, ../sass/style.scss */
 .ds-event-modal {
   position: absolute;
   left: 0px;
@@ -266,12 +265,12 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   justify-content: center;
   align-items: center;
 }
-/* line 249, ../sass/style.scss */
+/* line 250, ../sass/style.scss */
 .ds-event-modal p {
   margin: 0;
   padding: 0;
 }
-/* line 264, ../sass/style.scss */
+/* line 265, ../sass/style.scss */
 .ds-event-modal .container {
   width: 500px;
   background-color: #fff;
@@ -280,66 +279,66 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   color: black;
   border-radius: 10px;
 }
-/* line 271, ../sass/style.scss */
+/* line 272, ../sass/style.scss */
 .ds-event-modal .container .header {
   background: #9acd32;
   border-bottom: 1px solid #000;
   padding: 10px;
-  -moz-border-radius: 10px 10px 0px 0px;
-  -webkit-border-radius: 10px;
-  border-radius: 10px 10px 0px 0px;
+  -moz-border-radius: 8px 8px 0px 0px;
+  -webkit-border-radius: 8px;
+  border-radius: 8px 8px 0px 0px;
 }
-/* line 276, ../sass/style.scss */
+/* line 277, ../sass/style.scss */
 .ds-event-modal .container .header .title {
   text-transform: uppercase;
   font-weight: bold;
   font-size: 16px;
 }
-/* line 281, ../sass/style.scss */
+/* line 282, ../sass/style.scss */
 .ds-event-modal .container .header .date {
   text-transform: uppercase;
   color: #414141;
   font-size: 12px;
   margin-top: 5px;
 }
-/* line 288, ../sass/style.scss */
+/* line 289, ../sass/style.scss */
 .ds-event-modal .container .content {
   background: #f5f5f5;
   padding: 10px;
 }
-/* line 292, ../sass/style.scss */
+/* line 293, ../sass/style.scss */
 .ds-event-modal .container .content .type span {
   font-weight: bold;
 }
-/* line 296, ../sass/style.scss */
+/* line 297, ../sass/style.scss */
 .ds-event-modal .container .content .description {
   padding: 10px;
 }
-/* line 299, ../sass/style.scss */
+/* line 300, ../sass/style.scss */
 .ds-event-modal .container .content .url {
   text-overflow: ellipsis;
   width: 100%;
   white-space: nowrap;
   overflow: hidden;
 }
-/* line 304, ../sass/style.scss */
+/* line 305, ../sass/style.scss */
 .ds-event-modal .container .content .url a {
   color: #27330d;
   font-weight: normal;
 }
-/* line 307, ../sass/style.scss */
+/* line 308, ../sass/style.scss */
 .ds-event-modal .container .content .url a:link, .ds-event-modal .container .content .url a:visited {
   font-weight: normal;
 }
-/* line 311, ../sass/style.scss */
+/* line 312, ../sass/style.scss */
 .ds-event-modal .container .content .url a:hover {
   font-weight: bold;
 }
-/* line 314, ../sass/style.scss */
+/* line 315, ../sass/style.scss */
 .ds-event-modal .container .content .url a:active {
   font-weight: bold;
 }
-/* line 320, ../sass/style.scss */
+/* line 321, ../sass/style.scss */
 .ds-event-modal .container .footer {
   border-top: 1px solid #000;
   background: transparent;
@@ -347,19 +346,19 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   -webkit-border-radius: 0px;
   border-radius: 0px 0px 10px 10px;
 }
-/* line 324, ../sass/style.scss */
+/* line 325, ../sass/style.scss */
 .ds-event-modal .container .footer .close-button {
   background: #414141;
   color: #fff;
   padding: 10px;
   cursor: pointer;
   overflow: hidden;
-  -moz-border-radius: 0px 0px 10px 10px;
+  -moz-border-radius: 0px 0px 8px 8px;
   -webkit-border-radius: 0px;
-  border-radius: 0px 0px 10px 10px;
+  border-radius: 0px 0px 8px 8px;
   transition: background 0.5s ease;
 }
-/* line 332, ../sass/style.scss */
+/* line 333, ../sass/style.scss */
 .ds-event-modal .container .footer .close-button:hover {
   background: #0e0e0e;
 }

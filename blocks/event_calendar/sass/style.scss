@@ -13,7 +13,7 @@
 }
 
 /* CONFIG CALENDAR */
-$fontSize: 13px;
+$fontSize: 12px;
 $dayMinHeight: 90px;
 $borderCalendar: 1px dashed black;
 $header: #dadada;
@@ -54,7 +54,6 @@ $eventTextColor: #000000;
   font-size: $fontSize;
   // border: $borderCalendar;
   padding: 5px;
-  font-size: 14px;
   font-family: Arial;
 
   /*---------------------*\
@@ -130,13 +129,14 @@ $eventTextColor: #000000;
   \*---------------------*/
   .ds-title {
     .ds-day {
+      $height: 22px;
       @include size($maxSizeDay, 20px);
       background-color: $dayNameColor;
       box-sizing: border-box;
       text-transform: uppercase;
       text-align: center;
-      height: 22px;
-      line-height: 1.4;
+      height: $height;
+      line-height: $height;
       text-overflow: ellipsis;
       white-space: nowrap;
       overflow: hidden;
@@ -221,7 +221,7 @@ $eventTextColor: #000000;
       overflow: hidden;
       padding: 1px 4px;
       box-sizing: border-box;
-      @include border-radius(4px);
+      @include border-radius(3px);
       margin-top: 2px;
       &:last-child {
         margin-bottom: 2px;
@@ -244,6 +244,7 @@ $modalBorder: 1px solid #000;
 $modalDateColor: #414141;
 $modalLinkColor: #27330d;
 $modalLinkHoverColor: #1f4d2a;
+$borderRadius: 10px;
 
 .ds-event-modal {
   p {
@@ -267,12 +268,12 @@ $modalLinkHoverColor: #1f4d2a;
     border: $modalBorder;
     text-align: center;
     color: $modalTextColor;
-    border-radius: 10px;
+    border-radius: $borderRadius;
     .header {
       background: $modalHeaderColorBg;
       border-bottom: $modalBorder;
       padding: 10px;
-      @include border-radius(10px 10px 0px 0px);
+      @include border-radius($borderRadius - 2px $borderRadius - 2px 0px 0px);
       .title {
         text-transform: uppercase;
         font-weight: bold;
@@ -327,7 +328,7 @@ $modalLinkHoverColor: #1f4d2a;
         padding: 10px;
         cursor: pointer;
         overflow: hidden;
-        @include border-radius(0px 0px 10px 10px);
+        @include border-radius(0px 0px $borderRadius - 2px $borderRadius - 2px);
         transition: background 0.5s ease;
         &:hover {
           background: darken($modalCloseColorBg, 20%);

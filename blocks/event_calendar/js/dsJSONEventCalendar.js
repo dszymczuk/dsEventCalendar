@@ -323,15 +323,15 @@
 
 
             eventDetails += '<p class="title">'+event.title+'</p>';
-            eventDetails += '<p class="date">'+moment(event.date).locale(settings.lang).format(settings.formatEvent);
 
-            if(typeof  event.type !== "undefined" && event.type !== null)
-                eventDetails += ', <span>'+event.type+'</span>';
 
             eventDetails += '</p>';
             eventDetails += '</div>';
             eventDetails += '<div class="content">';
+            eventDetails += '<p class="date">'+moment(event.date).locale(settings.lang).format(settings.formatEvent);
 
+            //if(typeof  event.type !== "undefined" && event.type !== null)
+            //    eventDetails += ', <span>'+event.type+'</span>';
 
             
 

@@ -4,14 +4,9 @@ dsEventCalendar
 Description
 ----
 My first official package for Concrete 5 - Event Calendar.
+
 It is simple add on to create calendar with events and display it on page as block.
 
-I have created some templates - red, blue, green. You can create own theme - just edit CSS or (better) SCSS! Each template has compass project for styles (on branch dev).
-
-At now I use this calendar script:
-http://www.vissit.com/jquery-event-calendar-plugin-english-version
-
-Maybe in future I create something own with new features.
 
 How to use
 ----
@@ -19,15 +14,23 @@ First, go to dashboard and add calendar in "Add / edit calendar" . After that yo
 
 If you did this, go to page and add new block called "Event Calendar" and select calendar.
 
-If you want, you can change template in Custom Templates.
-
 
 Version
 ----
-2.0beta
+2.1
 
 Changelog
 ----
+2.1
+OFFICIAL RELEASE
+Remove border of calendar ; set font smaller ; add some languages
+
+2.0.12
+Fix issue: Calender doesn't show events with time: 00:00:00
+
+2.0.11
+Fix display events on FF and IE
+
 2.0.0beta
 Development for new version.
 

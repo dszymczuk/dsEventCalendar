@@ -53,7 +53,7 @@
 	</fieldset>
 
 	<fieldset class="control-group">
-	    <label class="control-label"><?php echo t('Number of evetns in day') ?></label>
+	    <label class="control-label"><?php echo t('Number of events in day') ?></label>
 	    <div class="controls">
 	        <input maxlength="255" type="text" name="eventsInDay" id="eventsInDay" value="<?php echo $eventsInDay; ?>">
 	    </div>

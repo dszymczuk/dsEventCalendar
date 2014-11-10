@@ -1,10 +1,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: dsEventCalendar 1.0\n"
-"POT-Creation-Date: 2014-11-09 16:35+0100\n"
-"PO-Revision-Date: 2014-11-09 16:39+0100\n"
+"POT-Creation-Date: 2014-11-10 10:43+0100\n"
+"PO-Revision-Date: 2014-11-10 10:43+0100\n"
 "Last-Translator: \n"
-"Language-Team: dszymczuk <damian.strony+c5@gmail.com>\n"
+"Language-Team: dszymczuk <test>\n"
 "Language: Polish\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -234,7 +234,7 @@ msgid "Start from"
 msgstr ""
 
 #: /var/www/c5packlh/packages/dsEventCalendar/single_pages/dashboard/event_calendar/settings.php:56
-msgid "Number of evetns in day"
+msgid "Number of events in day"
 msgstr ""
 
 #: /var/www/c5packlh/packages/dsEventCalendar/single_pages/dashboard/event_calendar/settings.php:63

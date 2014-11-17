@@ -34,7 +34,7 @@
 	<fieldset class="control-group">
 	    <!-- <label class="control-label"></label> -->
 	    <div class="controls">
-	        <a href="http://momentjs.com/docs/#/displaying/format/" class="btn btn-primary" target="_blank">Available formats</a>
+	        <a href="http://momentjs.com/docs/#/displaying/format/" class="btn btn-primary" target="_blank"><?php echo t('Available formats') ?></a>
 	    </div>
 	</fieldset>
 

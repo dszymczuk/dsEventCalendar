@@ -90,7 +90,7 @@
                 }
             });
 
-            $("tr").on('click', 'button.delete', function () {
+            $("#listevent tbody").on('click', 'button.delete', function () {
                 var elem = $(this);
                 var conf = confirm("Are you sure to delete this event?");
                 if (conf) {

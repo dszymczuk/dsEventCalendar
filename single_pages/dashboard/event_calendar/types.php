@@ -180,7 +180,7 @@ $(document).ready(function () {
 
     $("tr").on('click', 'button.delete', function () {
         var elem = $(this);
-        var conf = confirm('<?php echo t("Are you sure to delete this event? All event with this tape will be set as default type."); ?>');
+        var conf = confirm('<?php echo t("Are you sure to delete this type? All event with this type will be set as default type."); ?>');
         if (conf) {
             var id = elem.closest('tr').children('td').children('input.typeID').val();
             elem.closest('tr').addClass('toRemove');

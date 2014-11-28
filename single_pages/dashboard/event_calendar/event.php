@@ -18,14 +18,14 @@ $form = Loader::helper('form');
 
     <form class="form-horizontal" method="post" id="ccm-multilingual-page-report-form" style="margin-top: 35px;">
         <fieldset class="control-group">
-            <label class="control-label"><?php echo t('Event title') ?></label>
+            <label class="control-label"><?php echo t('Event title') ?>  *</label>
 
             <div class="controls">
                 <input maxlength="255" type="text" name="event_title" id="event_title" value="<?php echo $event_title; ?>">
             </div>
         </fieldset>
         <fieldset class="control-group">
-            <label class="control-label"><?php echo t('Calendar') ?></label>
+            <label class="control-label"><?php echo t('Calendar') ?> *</label>
 
             <div class="controls">
                 <select name="event_calendarID" id="event_calendarID" value="<?php echo $event_calendarID; ?>">
@@ -36,14 +36,14 @@ $form = Loader::helper('form');
             </div>
         </fieldset>
         <fieldset class="control-group">
-            <label class="control-label"><?php echo t('Event date') ?></label>
+            <label class="control-label"><?php echo t('Event date') ?> *</label>
 
             <div class="controls">
                 <input maxlength="255" type="text" name="event_date" id="event_date" value="<?php echo $event_date; ?>">
             </div>
         </fieldset>
         <fieldset class="control-group">
-            <label class="control-label"><?php echo t('Event type') ?></label>
+            <label class="control-label"><?php echo t('Event type') ?> *</label>
 
             <div class="controls">
                 <select name="event_type" id="event_type" value="<?php echo $event_type; ?>">
@@ -54,7 +54,7 @@ $form = Loader::helper('form');
             </div>
         </fieldset>
         <fieldset class="control-group">
-            <label class="control-label"><?php echo t('Event description') ?></label>
+            <label class="control-label"><?php echo t('Event description') ?> *</label>
 
             <div class="controls">
                 <textarea name="event_description" id="event_description"><?php echo $event_description; ?></textarea>

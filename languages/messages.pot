@@ -219,7 +219,7 @@ msgstr ""
 
 #: /var/www/c5packlh/packages/dsEventCalendar/single_pages/dashboard/event_calendar/types.php:183
 msgid ""
-"Are you sure to delete this event? All event with this tape will be set as "
+"Are you sure to delete this type? All event with this type will be set as "
 "default type."
 msgstr ""
 

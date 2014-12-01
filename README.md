@@ -66,6 +66,10 @@ jQuery Event Calendar Plugin - GPL v3
 
 Future features
 ----
+__Version 3__
 * validation forms in dashboard
-* multiday events (probably version 2)
-* manage events from calendar (probably version 3)
+* multiday events
+* replace jQuery plugin
+
+__Planed__
+* manage events from calendar

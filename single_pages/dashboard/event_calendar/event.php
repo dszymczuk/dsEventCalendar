@@ -6,7 +6,7 @@ $form = Loader::helper('form');
 <h3><?php echo t('Add / edit event') ?></h3>
 
 
-<?php if (empty($calendars) && $event_ID === null): ?>
+<?php if (empty($calendars) && ( !isset( $event_ID ) || $event_ID === null)): ?>
     <div class="alert alert-info">
         <?php echo t('There is no calendars to add new event. Go to Add calendar to add new calendar.') ?>
     </div>
@@ -21,13 +21,14 @@ $form = Loader::helper('form');
             <label class="control-label"><?php echo t('Event title') ?>  *</label>
 
             <div class="controls">
-                <input maxlength="255" type="text" name="event_title" id="event_title" value="<?php echo $event_title; ?>">
+                <input maxlength="255" type="text" name="event_title" id="event_title" value="<?php echo ( isset( $event_title ) ) ? $event_title : ''; ?>">
             </div>
         </fieldset>
         <fieldset class="control-group">
             <label class="control-label"><?php echo t('Calendar') ?> *</label>
 
             <div class="controls">
+                <?php $event_calendarID = isset( $event_calendarID ) ? $event_calendarID : null; ?>
                 <select name="event_calendarID" id="event_calendarID" value="<?php echo $event_calendarID; ?>">
                     <?php foreach ($calendars as $cal): ?>
                         <option value="<?php echo $cal['calendarID'] ?>" <?php $selected = $cal['calendarID']==$event_calendarID ? "selected" : ""; echo $selected; ?> ><?php echo $cal['title'] ?></option>
@@ -39,13 +40,14 @@ $form = Loader::helper('form');
             <label class="control-label"><?php echo t('Event date') ?> *</label>
 
             <div class="controls">
-                <input maxlength="255" type="text" name="event_date" id="event_date" value="<?php echo $event_date; ?>">
+                <input maxlength="255" type="text" name="event_date" id="event_date" value="<?php echo ( isset( $event_date ) ) ? $event_date : ''; ?>">
             </div>
         </fieldset>
         <fieldset class="control-group">
             <label class="control-label"><?php echo t('Event type') ?> *</label>
 
             <div class="controls">
+                <?php $event_type = isset( $event_type ) ? $event_type : null; ?>
                 <select name="event_type" id="event_type" value="<?php echo $event_type; ?>">
                     <?php foreach ($types as $t): ?>
                         <option value="<?php echo $t['typeID'] ?>" <?php $selected = $t['typeID']==$event_type ? "selected" : ""; echo $selected; ?> ><?php echo $t['type'] ?></option>
@@ -57,14 +59,14 @@ $form = Loader::helper('form');
             <label class="control-label"><?php echo t('Event description') ?> *</label>
 
             <div class="controls">
-                <textarea name="event_description" id="event_description"><?php echo $event_description; ?></textarea>
+                <textarea name="event_description" id="event_description"><?php echo ( isset( $event_description ) ) ? $event_description : ''; ?></textarea>
             </div>
         </fieldset>
         <fieldset class="control-group">
             <label class="control-label"><?php echo t('Event url') ?></label>
 
             <div class="controls">
-                <input maxlength="255" type="text" name="event_url" id="event_url" value="<?php echo $event_url; ?>">
+                <input maxlength="255" type="text" name="event_url" id="event_url" value="<?php echo ( isset( $event_url ) ) ? $event_url : ''; ?>">
             </div>
         </fieldset>
         <fieldset class="control-group offset2">
@@ -91,5 +93,3 @@ $form = Loader::helper('form');
 <?php endif; ?>
 
 <?php echo Loader::helper('concrete/dashboard')->getDashboardPaneFooterWrapper(); ?>
-
-

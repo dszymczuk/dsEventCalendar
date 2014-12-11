@@ -33,9 +33,6 @@ $c = Page::getCurrentPage();
                 settings[k] = v;
             }
 
-            console.log(eventsInline);
-            //var options = settings[3];
-
             $("#eventCalendarInline<?php echo $blockIdentifier; ?>").JSONEventCalendar(eventsInline,{
                 lang: settings.lang,
                 formatTitle: settings.formatTitle,

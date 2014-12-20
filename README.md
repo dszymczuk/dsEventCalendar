@@ -17,10 +17,13 @@ If you did this, go to page and add new block called "Event Calendar" and select
 
 Version
 ----
-2.1.5
+2.1.6
 
 Changelog
 ----
+2.1.6
+Some bug fixes
+
 2.1.5
 Fix some bugs ; add more languages (C5 market - English, Greek, Swedish, Polish, Italian, Dutch, Russian, German)
 

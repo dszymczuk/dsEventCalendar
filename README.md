@@ -17,10 +17,13 @@ If you did this, go to page and add new block called "Event Calendar" and select
 
 Version
 ----
-2.1.5
+2.1.6
 
 Changelog
 ----
+2.1.6
+Some bug fixes
+
 2.1.5
 Fix some bugs ; add more languages (C5 market - English, Greek, Swedish, Polish, Italian, Dutch, Russian, German)
 
@@ -66,6 +69,10 @@ jQuery Event Calendar Plugin - GPL v3
 
 Future features
 ----
+__Version 3__
 * validation forms in dashboard
-* multiday events (probably version 2)
-* manage events from calendar (probably version 3)
+* multiday events
+* replace jQuery plugin
+
+__Planed__
+* manage events from calendar

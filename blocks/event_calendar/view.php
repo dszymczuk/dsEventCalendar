@@ -24,8 +24,73 @@ $c = Page::getCurrentPage();
 
             console.log(<?php echo $events; ?>);
 
+            /*var events = [
+                {
+                    title: 'All Day Event',
+                    start: '2014-11-01'
+                },
+                {
+                    title: 'Long Event',
+                    start: '2014-11-07',
+                    end: '2014-11-10'
+                },
+                {
+                    id: 999,
+                    title: 'Repeating Event',
+                    start: '2014-11-09T16:00:00'
+                },
+                {
+                    id: 999,
+                    title: 'Repeating Event',
+                    start: '2014-11-16T16:00:00'
+                },
+                {
+                    title: 'Conference',
+                    start: '2014-11-11',
+                    end: '2014-11-13',
+                    dupka: "dupcyngowo"
+                },
+                {
+                    title: 'Meeting',
+                    start: '2014-11-12T10:30:00',
+                    end: '2014-11-12T12:30:00'
+                },
+                {
+                    title: 'Lunch',
+                    start: '2014-11-12T12:00:00'
+                },
+                {
+                    title: 'Meeting',
+                    start: '2014-11-12T14:30:00'
+                },
+                {
+                    title: 'Happy Hour',
+                    start: '2014-11-12T17:30:00'
+                },
+                {
+                    title: 'Dinner',
+                    start: '2014-11-12T20:00:00'
+                },
+                {
+                    title: 'Birthday Party',
+                    start: '2014-11-13T07:00:00'
+                },
+                {
+                    title: 'Click for Google',
+                    url: 'http://google.com/',
+                    start: '2014-11-28'
+                }
+            ];*/
+
+
+            var events = <?php echo $events; ?>;
+            events.forEach(function(e){
+                e.start = e.date;
+            })
+            console.info(events);
+
             $("#eventCalendarInline<?php echo $blockIdentifier; ?>").fullCalendar({
-                defaultDate: '2014-11-12',
+//                defaultDate: '2014-12-12',
                 editable: true,
                 eventClick: function(calEvent, jsEvent, view) {
                     console.log(calEvent);
@@ -34,63 +99,7 @@ $c = Page::getCurrentPage();
                     $(this).css('border-color', 'red');
                 },
                 eventLimit: true, // allow "more" link when too many events
-                events: [
-                    {
-                        title: 'All Day Event',
-                        start: '2014-11-01'
-                    },
-                    {
-                        title: 'Long Event',
-                        start: '2014-11-07',
-                        end: '2014-11-10'
-                    },
-                    {
-                        id: 999,
-                        title: 'Repeating Event',
-                        start: '2014-11-09T16:00:00'
-                    },
-                    {
-                        id: 999,
-                        title: 'Repeating Event',
-                        start: '2014-11-16T16:00:00'
-                    },
-                    {
-                        title: 'Conference',
-                        start: '2014-11-11',
-                        end: '2014-11-13',
-                        dupka: "dupcyngowo"
-                    },
-                    {
-                        title: 'Meeting',
-                        start: '2014-11-12T10:30:00',
-                        end: '2014-11-12T12:30:00'
-                    },
-                    {
-                        title: 'Lunch',
-                        start: '2014-11-12T12:00:00'
-                    },
-                    {
-                        title: 'Meeting',
-                        start: '2014-11-12T14:30:00'
-                    },
-                    {
-                        title: 'Happy Hour',
-                        start: '2014-11-12T17:30:00'
-                    },
-                    {
-                        title: 'Dinner',
-                        start: '2014-11-12T20:00:00'
-                    },
-                    {
-                        title: 'Birthday Party',
-                        start: '2014-11-13T07:00:00'
-                    },
-                    {
-                        title: 'Click for Google',
-                        url: 'http://google.com/',
-                        start: '2014-11-28'
-                    }
-                ]
+                events: events
             });
 
             /*var eventsInline = {};

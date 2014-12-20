@@ -339,8 +339,13 @@
 
             if(typeof event.url !== "undefined")
             {
+                target = '';
+                if (/^(f|ht)tps?:\/\//i.test(event.url)) {
+                    target = ' target="_blank"';
+                }
+
                 eventDetails += '<p class="url">';
-                eventDetails += '<a href="'+event.url+'">'+event.url+'</a>';
+                eventDetails += '<a href="'+event.url+'" ' + target + '>'+event.url+'</a>';
                 eventDetails += '</p>';
             }
 

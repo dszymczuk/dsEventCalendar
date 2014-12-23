@@ -103,6 +103,7 @@ class EventCalendarBlockController extends BlockController
                 $e['color'] = $default_color_dsECS;
                 $e['type_name'] = $default_name_dsECS;
             }
+            $e['start'] = $e['date'];
         }
 
         $js = Loader::helper('json');

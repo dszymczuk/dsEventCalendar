@@ -27,14 +27,13 @@ $modalBorder: 1px solid #000;
 $modalDateColor: #414141;
 $modalLinkColor: #27330d;
 $modalLinkHoverColor: #1f4d2a;
-$borderRadius: 10px;
+$borderRadius: 5px;
 
 .ds-event-modal {
   p {
     margin: 0;
     padding: 0;
   }
-
   position: absolute;
   left: 0px;
   top: 0px;
@@ -42,9 +41,12 @@ $borderRadius: 10px;
   height: 100%;
   text-align: center;
   z-index: 1000;
-  display: flex;
+//  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
+  background-color: rgba(0,0,0,0.5);
+
   .container {
     width: 500px;
     background-color: $modalContainerColorBg;
@@ -53,6 +55,17 @@ $borderRadius: 10px;
     color: $modalTextColor;
     border-radius: $borderRadius;
     .header {
+
+    }
+    .content {
+
+    }
+    .footer {
+      .btn-close {
+        cursor: pointer;
+      }
+    }
+    /*.header {
       background: $modalHeaderColorBg;
       border-bottom: $modalBorder;
       padding: 10px;
@@ -117,6 +130,6 @@ $borderRadius: 10px;
           background: darken($modalCloseColorBg, 20%);
         }
       }
-    }
+    }*/
   }
 }

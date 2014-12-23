@@ -75,104 +75,92 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   height: 100%;
   text-align: center;
   z-index: 1000;
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 /* line 33, ../sass/style.scss */
 .ds-event-modal p {
   margin: 0;
   padding: 0;
 }
-/* line 48, ../sass/style.scss */
+/* line 50, ../sass/style.scss */
 .ds-event-modal .container {
   width: 500px;
   background-color: #fff;
   border: 1px solid #000;
   text-align: center;
   color: black;
-  border-radius: 10px;
+  border-radius: 5px;
+  /*.header {
+    background: $modalHeaderColorBg;
+    border-bottom: $modalBorder;
+    padding: 10px;
+    @include border-radius($borderRadius - 2px $borderRadius - 2px 0px 0px);
+    .title {
+      text-transform: uppercase;
+      font-weight: bold;
+      font-size: 16px;
+    }
+    .date {
+      text-transform: uppercase;
+      color: $modalDateColor;
+      font-size: 12px;
+      margin-top: 5px;
+    }
+  }
+  .content {
+    background: $modalContentColorBg;
+    padding: 10px;
+    .type {
+      span {
+        font-weight: bold;
+      }
+    }
+    .description {
+      padding: 10px;
+    }
+    .url {
+      text-overflow: ellipsis;
+      width: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      a {
+        color: $modalLinkColor;
+        font-weight: normal;
+        &:link,
+        &:visited {
+          font-weight: normal;
+        }
+        &:hover {
+          font-weight: bold;
+        }
+        &:active {
+          font-weight: bold;
+        }
+      }
+    }
+  }
+  .footer {
+    border-top: $modalBorder;
+    background: $modalFooterColorBg;
+    @include border-radius(0px 0px 10px 10px);
+    .close-button {
+      background: $modalCloseColorBg;
+      color: $modalCloseTextColor;
+      padding: 10px;
+      cursor: pointer;
+      overflow: hidden;
+      @include border-radius(0px 0px $borderRadius - 2px $borderRadius - 2px);
+      transition: background 0.5s ease;
+      &:hover {
+        background: darken($modalCloseColorBg, 20%);
+      }
+    }
+  }*/
 }
-/* line 55, ../sass/style.scss */
-.ds-event-modal .container .header {
-  background: #9acd32;
-  border-bottom: 1px solid #000;
-  padding: 10px;
-  -moz-border-radius: 8px 8px 0px 0px;
-  -webkit-border-radius: 8px;
-  border-radius: 8px 8px 0px 0px;
-}
-/* line 60, ../sass/style.scss */
-.ds-event-modal .container .header .title {
-  text-transform: uppercase;
-  font-weight: bold;
-  font-size: 16px;
-}
-/* line 65, ../sass/style.scss */
-.ds-event-modal .container .header .date {
-  text-transform: uppercase;
-  color: #414141;
-  font-size: 12px;
-  margin-top: 5px;
-}
-/* line 72, ../sass/style.scss */
-.ds-event-modal .container .content {
-  background: #f5f5f5;
-  padding: 10px;
-}
-/* line 76, ../sass/style.scss */
-.ds-event-modal .container .content .type span {
-  font-weight: bold;
-}
-/* line 80, ../sass/style.scss */
-.ds-event-modal .container .content .description {
-  padding: 10px;
-}
-/* line 83, ../sass/style.scss */
-.ds-event-modal .container .content .url {
-  text-overflow: ellipsis;
-  width: 100%;
-  white-space: nowrap;
-  overflow: hidden;
-}
-/* line 88, ../sass/style.scss */
-.ds-event-modal .container .content .url a {
-  color: #27330d;
-  font-weight: normal;
-}
-/* line 91, ../sass/style.scss */
-.ds-event-modal .container .content .url a:link, .ds-event-modal .container .content .url a:visited {
-  font-weight: normal;
-}
-/* line 95, ../sass/style.scss */
-.ds-event-modal .container .content .url a:hover {
-  font-weight: bold;
-}
-/* line 98, ../sass/style.scss */
-.ds-event-modal .container .content .url a:active {
-  font-weight: bold;
-}
-/* line 104, ../sass/style.scss */
-.ds-event-modal .container .footer {
-  border-top: 1px solid #000;
-  background: transparent;
-  -moz-border-radius: 0px 0px 10px 10px;
-  -webkit-border-radius: 0px;
-  border-radius: 0px 0px 10px 10px;
-}
-/* line 108, ../sass/style.scss */
-.ds-event-modal .container .footer .close-button {
-  background: #414141;
-  color: #fff;
-  padding: 10px;
+/* line 64, ../sass/style.scss */
+.ds-event-modal .container .footer .btn-close {
   cursor: pointer;
-  overflow: hidden;
-  -moz-border-radius: 0px 0px 8px 8px;
-  -webkit-border-radius: 0px;
-  border-radius: 0px 0px 8px 8px;
-  transition: background 0.5s ease;
-}
-/* line 116, ../sass/style.scss */
-.ds-event-modal .container .footer .close-button:hover {
-  background: #0e0e0e;
 }

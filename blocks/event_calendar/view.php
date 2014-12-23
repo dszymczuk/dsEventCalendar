@@ -16,12 +16,42 @@ $c = Page::getCurrentPage();
 
 <?php endif ?>
 
-    <div id="eventCalendarInline<?php echo $blockIdentifier; ?>"></div>
+    <div id="eventCalendarInline<?php echo $blockIdentifier; ?>">
+        <div class="ds-event-modal">
+            <div class="container">
+                asdasd
+            </div>
+        </div>
+    </div>
 
 <?php if (!$c->isEditMode()): ?>
     <script>
         $(document).ready(function () {
-            var eventsInline = {};
+
+            console.log(<?php echo $events; ?>);
+
+
+            var events = <?php echo $events; ?>;
+            events.forEach(function(e){
+                e.start = e.date;
+            })
+            console.info(events);
+
+            $("#eventCalendarInline<?php echo $blockIdentifier; ?>").fullCalendar({
+//                defaultDate: '2014-12-12',
+                editable: true,
+                timeFormat: "H:mm",
+                eventClick: function(calEvent, jsEvent, view) {
+                    console.log(calEvent);
+                    console.log(jsEvent);
+                    console.log(view);
+                    $(this).css('border-color', 'red');
+                },
+                eventLimit: 2, // allow "more" link when too many events
+                events: events
+            });
+
+            /*var eventsInline = {};
             eventsInline = <?php echo $events; ?>;
             var settings = {};
             var set_serv = <?php echo $settings; ?>;
@@ -41,7 +71,7 @@ $c = Page::getCurrentPage();
                 eventsInDay: settings.eventsInDay,
                 closeText: settings.closeText,
                 typeText: settings.typeText
-            });
+            });*/
         });
     </script>
 <?php endif ?>

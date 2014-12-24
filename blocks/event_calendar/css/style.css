@@ -66,7 +66,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 /*---------------------*\
     Modal
 \*---------------------*/
-/* line 120, ../sass/style.scss */
+/* line 112, ../sass/style.scss */
 .btn {
   background: #428bca;
   border: #357ebd solid 1px;
@@ -81,23 +81,23 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   position: relative;
   transition: color .1s ease;
 }
-/* line 134, ../sass/style.scss */
+/* line 126, ../sass/style.scss */
 .btn:hover {
   background: #357ebd;
 }
-/* line 138, ../sass/style.scss */
+/* line 130, ../sass/style.scss */
 .btn.btn-big {
   font-size: 18px;
   padding: 15px 20px;
   min-width: 100px;
 }
 
-/* line 146, ../sass/style.scss */
+/* line 138, ../sass/style.scss */
 .btn-close {
   text-decoration: none;
 }
 
-/* line 162, ../sass/style.scss */
+/* line 154, ../sass/style.scss */
 .ds-event-modal {
   position: fixed;
   left: 0px;
@@ -112,12 +112,12 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   align-items: center;
   background-color: rgba(0, 0, 0, 0.5);
 }
-/* line 163, ../sass/style.scss */
+/* line 155, ../sass/style.scss */
 .ds-event-modal p {
   margin: 0;
   padding: 0;
 }
-/* line 181, ../sass/style.scss */
+/* line 173, ../sass/style.scss */
 .ds-event-modal .container {
   width: 500px;
   background-color: #fff;
@@ -192,7 +192,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
     }
   }*/
 }
-/* line 196, ../sass/style.scss */
+/* line 188, ../sass/style.scss */
 .ds-event-modal .container .footer .btn-close {
   cursor: pointer;
 }

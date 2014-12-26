@@ -12,111 +12,106 @@
 
 }
 
+//
+// Base for dsEventCalendar
+//
 
-/*---------------------*\
-    Modal
-\*---------------------*/
-$modalContainerColorBg: #fff;
-$modalHeaderColorBg: #9acd32;
-$modalContentColorBg: #f5f5f5;
-$modalFooterColorBg: transparent;
-$modalCloseColorBg: #414141;
-$modalCloseTextColor: #fff;
-$modalTextColor: black;
-$modalBorder: 1px solid #000;
-$modalDateColor: #414141;
-$modalLinkColor: #27330d;
-$modalLinkHoverColor: #1f4d2a;
-$borderRadius: 10px;
 
+//
+// Variables
+// ----------------------
+
+$gray: #333;
+$gray-light: #aaa;
+$gray-lighter: #eee;
+$space: 40px;
+$blue: #428bca;
+$blue-dark: darken($blue, 5%);
+//
+// Buttons
+//
+.btn{
+  background: $blue;
+  border: $blue-dark solid 1px;
+  border-radius: 3px;
+  color: #fff;
+  display: inline-block;
+  font-size: 14px;
+  padding: 4px 10px;
+  text-decoration: none;
+  text-align: center;
+  min-width: 60px;
+  position: relative;
+  transition: color .1s ease;
+
+  &:hover{
+    background: $blue-dark;
+  }
+
+  &.btn-big{
+    font-size: 18px;
+    padding: 15px 20px;
+    min-width: 100px;
+  }
+}
+
+.btn-close{
+  text-decoration: none;
+  cursor: pointer;
+}
+
+//
+// Modal window
+//
 .ds-event-modal {
   p {
     margin: 0;
     padding: 0;
   }
-
-  position: absolute;
+  position: fixed;
   left: 0px;
   top: 0px;
   width: 100%;
   height: 100%;
+  overflow: hidden;
   text-align: center;
   z-index: 1000;
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
+  background-color: rgba(0,0,0,0.5);
+  &.active {
+    display: flex;
+  }
+
   .container {
-    width: 500px;
-    background-color: $modalContainerColorBg;
-    border: $modalBorder;
+    width: 35%;
+    min-width: 500px;
+    background-color: #fff;
+    border: 1px solid $gray;
     text-align: center;
-    color: $modalTextColor;
-    border-radius: $borderRadius;
+    color: $gray;
+    border-radius: 5px;
     .header {
-      background: $modalHeaderColorBg;
-      border-bottom: $modalBorder;
-      padding: 10px;
-      @include border-radius($borderRadius - 2px $borderRadius - 2px 0px 0px);
-      .title {
-        text-transform: uppercase;
-        font-weight: bold;
-        font-size: 16px;
-      }
-      .date {
-        text-transform: uppercase;
-        color: $modalDateColor;
-        font-size: 12px;
-        margin-top: 5px;
-      }
+      font-size: 20px;
+      padding: $space/4;
+      border-bottom: 1px solid $gray-lighter;
+
     }
     .content {
-      background: $modalContentColorBg;
-      padding: 10px;
-      .type {
-        span {
-          font-weight: bold;
-        }
+      .time {
+        padding-top: $space/4;
+        color: darken($gray-light,20%);
+
       }
       .description {
-        padding: 10px;
-      }
-      .url {
-        text-overflow: ellipsis;
-        width: 100%;
-        white-space: nowrap;
-        overflow: hidden;
-        a {
-          color: $modalLinkColor;
-          font-weight: normal;
-          &:link,
-          &:visited {
-            font-weight: normal;
-          }
-          &:hover {
-            font-weight: bold;
-          }
-          &:active {
-            font-weight: bold;
-          }
-        }
+        padding: $space/4 $space/2;
+        text-align: justify;
       }
     }
     .footer {
-      border-top: $modalBorder;
-      background: $modalFooterColorBg;
-      @include border-radius(0px 0px 10px 10px);
-      .close-button {
-        background: $modalCloseColorBg;
-        color: $modalCloseTextColor;
-        padding: 10px;
-        cursor: pointer;
-        overflow: hidden;
-        @include border-radius(0px 0px $borderRadius - 2px $borderRadius - 2px);
-        transition: background 0.5s ease;
-        &:hover {
-          background: darken($modalCloseColorBg, 20%);
-        }
-      }
+      border-top: 1px solid $gray-lighter;
+      padding: $space/4;
     }
   }
 }

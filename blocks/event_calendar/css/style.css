@@ -63,10 +63,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   display: block;
 }
 
-/*---------------------*\
-    Modal
-\*---------------------*/
-/* line 112, ../sass/style.scss */
+/* line 33, ../sass/style.scss */
 .btn {
   background: #428bca;
   border: #357ebd solid 1px;
@@ -74,30 +71,31 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   color: #fff;
   display: inline-block;
   font-size: 14px;
-  padding: 8px 15px;
+  padding: 4px 10px;
   text-decoration: none;
   text-align: center;
   min-width: 60px;
   position: relative;
   transition: color .1s ease;
 }
-/* line 126, ../sass/style.scss */
+/* line 47, ../sass/style.scss */
 .btn:hover {
   background: #357ebd;
 }
-/* line 130, ../sass/style.scss */
+/* line 51, ../sass/style.scss */
 .btn.btn-big {
   font-size: 18px;
   padding: 15px 20px;
   min-width: 100px;
 }
 
-/* line 138, ../sass/style.scss */
+/* line 58, ../sass/style.scss */
 .btn-close {
   text-decoration: none;
+  cursor: pointer;
 }
 
-/* line 154, ../sass/style.scss */
+/* line 66, ../sass/style.scss */
 .ds-event-modal {
   position: fixed;
   left: 0px;
@@ -112,87 +110,43 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   align-items: center;
   background-color: rgba(0, 0, 0, 0.5);
 }
-/* line 155, ../sass/style.scss */
+/* line 67, ../sass/style.scss */
 .ds-event-modal p {
   margin: 0;
   padding: 0;
 }
-/* line 173, ../sass/style.scss */
-.ds-event-modal .container {
-  width: 500px;
-  background-color: #fff;
-  border: 1px solid #000;
-  text-align: center;
-  color: black;
-  border-radius: 5px;
-  /*.header {
-    background: $modalHeaderColorBg;
-    border-bottom: $modalBorder;
-    padding: 10px;
-    @include border-radius($borderRadius - 2px $borderRadius - 2px 0px 0px);
-    .title {
-      text-transform: uppercase;
-      font-weight: bold;
-      font-size: 16px;
-    }
-    .date {
-      text-transform: uppercase;
-      color: $modalDateColor;
-      font-size: 12px;
-      margin-top: 5px;
-    }
-  }
-  .content {
-    background: $modalContentColorBg;
-    padding: 10px;
-    .type {
-      span {
-        font-weight: bold;
-      }
-    }
-    .description {
-      padding: 10px;
-    }
-    .url {
-      text-overflow: ellipsis;
-      width: 100%;
-      white-space: nowrap;
-      overflow: hidden;
-      a {
-        color: $modalLinkColor;
-        font-weight: normal;
-        &:link,
-        &:visited {
-          font-weight: normal;
-        }
-        &:hover {
-          font-weight: bold;
-        }
-        &:active {
-          font-weight: bold;
-        }
-      }
-    }
-  }
-  .footer {
-    border-top: $modalBorder;
-    background: $modalFooterColorBg;
-    @include border-radius(0px 0px 10px 10px);
-    .close-button {
-      background: $modalCloseColorBg;
-      color: $modalCloseTextColor;
-      padding: 10px;
-      cursor: pointer;
-      overflow: hidden;
-      @include border-radius(0px 0px $borderRadius - 2px $borderRadius - 2px);
-      transition: background 0.5s ease;
-      &:hover {
-        background: darken($modalCloseColorBg, 20%);
-      }
-    }
-  }*/
+/* line 83, ../sass/style.scss */
+.ds-event-modal.active {
+  display: flex;
 }
-/* line 188, ../sass/style.scss */
-.ds-event-modal .container .footer .btn-close {
-  cursor: pointer;
+/* line 87, ../sass/style.scss */
+.ds-event-modal .container {
+  width: 35%;
+  min-width: 500px;
+  background-color: #fff;
+  border: 1px solid #333;
+  text-align: center;
+  color: #333;
+  border-radius: 5px;
+}
+/* line 95, ../sass/style.scss */
+.ds-event-modal .container .header {
+  font-size: 20px;
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+/* line 102, ../sass/style.scss */
+.ds-event-modal .container .content .time {
+  padding-top: 10px;
+  color: #777777;
+}
+/* line 107, ../sass/style.scss */
+.ds-event-modal .container .content .description {
+  padding: 10px 20px;
+  text-align: justify;
+}
+/* line 112, ../sass/style.scss */
+.ds-event-modal .container .footer {
+  border-top: 1px solid #eee;
+  padding: 10px;
 }

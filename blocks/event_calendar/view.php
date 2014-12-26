@@ -50,8 +50,8 @@ $c = Page::getCurrentPage();
                 settings[k] = v;
             }
 
-            console.log(settings);
 
+            var modal = $("#dsEventModal<?php echo $blockIdentifier; ?>");
 
             $("#dsEventCalendar<?php echo $blockIdentifier; ?>").fullCalendar({
                 header: {
@@ -61,27 +61,22 @@ $c = Page::getCurrentPage();
                 defaultTimedEventDuration: "00:30:00",
                 timeFormat: "HH:mm",
                 eventClick: function(calEvent, jsEvent, view) {
-                    console.log(calEvent);
-                    console.log(jsEvent);
-                    console.log(view);
-                    $(this).css('border-color', 'red');
+                    if(calEvent.url != "")
+                        return;
+
+//                    console.log(calEvent);
+//                    console.log(jsEvent);
+//                    console.log(view);
 
                     var start_day = calEvent.start.format(settings.formatEvent);
                     var end_day = "";
                      if(calEvent.end != null)
                         end_day = " - " + calEvent.end.format(settings.formatEvent);
 
-
-                    console.log(start_day);
-
-                    var modal = $("#dsEventModal<?php echo $blockIdentifier; ?>");
-
-
                     modal.find('.header .title').text(calEvent.title);
                     modal.find('.content .time').text(start_day + end_day);
                     modal.find('.content .description').text(calEvent.description);
-
-                    modal.css('display','flex');
+                    modal.addClass('active');
 
                 },
                 eventLimit: parseInt(settings.eventsInDay)+1,
@@ -91,20 +86,8 @@ $c = Page::getCurrentPage();
             });
 
             $(".ds-event-modal .btn-close").on('click',function(){
-                $(this).closest(".ds-event-modal").fadeOut(500);
+                $(this).closest(".ds-event-modal").removeClass('active');
             });
-
-            /*
-
-            $("#dsEventCalendar<?php echo $blockIdentifier; ?>").JSONEventCalendar(eventsInline,{
-                lang: settings.lang,
-                formatTitle: settings.formatTitle,
-                formatEvent: settings.formatEvent,
-                startFrom: settings.startFrom,
-                eventsInDay: settings.eventsInDay,
-                closeText: settings.closeText,
-                typeText: settings.typeText
-            });*/
         });
     </script>
 <?php endif ?>

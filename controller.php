@@ -7,7 +7,7 @@ class dsEventCalendarPackage extends Package
 
     protected $pkgHandle = 'dsEventCalendar';
     protected $appVersionRequired = '5.5.0';
-    protected $pkgVersion = '3.0.0';
+    protected $pkgVersion = '3.0.0.7';
 
     public function getPackageDescription()
     {
@@ -31,8 +31,17 @@ class dsEventCalendarPackage extends Package
     {
         $currentVersion = $this->getPackageVersion();
         parent::upgrade();
+        $this->update2to3();
         $this->installSP($this, $currentVersion);
         $this->installSettings();
+    }
+
+    private function update2to3(){
+        $p4 = SinglePage::getByPath('/dashboard/event_calendar/list_event');
+
+        if (is_object($p4)) {
+            $p4->delete();
+        }
     }
 
 
@@ -53,11 +62,6 @@ class dsEventCalendarPackage extends Package
         $p3 = SinglePage::add('/dashboard/event_calendar/calendar', $pkg);
         if (is_object($p3)) {
             $p3->update(array('cName' => t('Add / edit calendar'), 'cDescription' => ''));
-        }
-
-        $p4 = SinglePage::add('/dashboard/event_calendar/list_event', $pkg);
-        if (is_object($p4)) {
-            $p4->update(array('cName' => t('Events list'), 'cDescription' => ''));
         }
 
         $p5 = SinglePage::add('/dashboard/event_calendar/event', $pkg);

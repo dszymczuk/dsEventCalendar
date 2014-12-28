@@ -18,13 +18,6 @@
     </fieldset>
 
 	<fieldset class="control-group">
-	    <label class="control-label"><?php echo t('Title date format') ?></label>
-	    <div class="controls">
-	        <input maxlength="255" type="text" name="formatTitle" id="formatTitle" value="<?php echo $formatTitle; ?>">
-	    </div>
-	</fieldset>
-
-	<fieldset class="control-group">
 	    <label class="control-label"><?php echo t('Event date format') ?></label>
 	    <div class="controls">
 	        <input maxlength="255" type="text" name="formatEvent" id="formatEvent" value="<?php echo $formatEvent; ?>">
@@ -56,13 +49,6 @@
 	    <label class="control-label"><?php echo t('Number of events in day') ?></label>
 	    <div class="controls">
 	        <input maxlength="255" type="text" name="eventsInDay" id="eventsInDay" value="<?php echo $eventsInDay; ?>">
-	    </div>
-	</fieldset>
-
-	<fieldset class="control-group">
-	    <label class="control-label"><?php echo t('Default name of event') ?></label>
-	    <div class="controls">
-	        <input maxlength="255" type="text" name="default_name" id="default_name" value="<?php echo $default_name; ?>">
 	    </div>
 	</fieldset>
 

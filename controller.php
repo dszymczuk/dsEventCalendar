@@ -7,7 +7,7 @@ class dsEventCalendarPackage extends Package
 
     protected $pkgHandle = 'dsEventCalendar';
     protected $appVersionRequired = '5.5.0';
-    protected $pkgVersion = '3.0.0.7';
+    protected $pkgVersion = '3.0.0.12';
 
     public function getPackageDescription()
     {
@@ -40,8 +40,15 @@ class dsEventCalendarPackage extends Package
         $p4 = SinglePage::getByPath('/dashboard/event_calendar/list_event');
 
         if (is_object($p4)) {
-            $p4->delete();
+            $p4->setAttribute('exclude_nav', 1);
         }
+
+        $db = Loader::db();
+        $sql = "DELETE FROM dsEventCalendarSettings WHERE opt = 'formatTitle'";
+        $db->Execute($sql);
+
+        $sql = "DELETE FROM dsEventCalendarSettings WHERE opt = 'default_name'";
+        $db->Execute($sql);
     }
 
 
@@ -62,6 +69,11 @@ class dsEventCalendarPackage extends Package
         $p3 = SinglePage::add('/dashboard/event_calendar/calendar', $pkg);
         if (is_object($p3)) {
             $p3->update(array('cName' => t('Add / edit calendar'), 'cDescription' => ''));
+        }
+
+        $p4 = SinglePage::add('/dashboard/event_calendar/list_event', $pkg);
+        if (is_object($p4)) {
+            $p4->update(array('cName' => t('Events list'), 'cDescription' => ''));
         }
 
         $p5 = SinglePage::add('/dashboard/event_calendar/event', $pkg);
@@ -87,8 +99,8 @@ class dsEventCalendarPackage extends Package
         $sql = "INSERT IGNORE INTO dsEventCalendarSettings SET opt= 'lang' , value='en-gb'";
         $db->Execute($sql);
 
-        $sql = "INSERT IGNORE INTO dsEventCalendarSettings SET opt= 'formatTitle' , value='MMMM YYYY'";
-        $db->Execute($sql);
+//        $sql = "INSERT IGNORE INTO dsEventCalendarSettings SET opt= 'formatTitle' , value='MMMM YYYY'";
+//        $db->Execute($sql);
 
         $sql = "INSERT IGNORE INTO dsEventCalendarSettings SET opt= 'formatEvent' , value='DD MMMM YYYY'";
         $db->Execute($sql);
@@ -102,8 +114,8 @@ class dsEventCalendarPackage extends Package
         $sql = "INSERT IGNORE INTO dsEventCalendarSettings SET opt= 'default_color' , value='#808080'";
         $db->Execute($sql);
 
-        $sql = "INSERT IGNORE INTO dsEventCalendarSettings SET opt= 'default_name' , value='Default'";
-        $db->Execute($sql);
+//        $sql = "INSERT IGNORE INTO dsEventCalendarSettings SET opt= 'default_name' , value='Default'";
+//        $db->Execute($sql);
     }
 }
 

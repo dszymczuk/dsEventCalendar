@@ -2,12 +2,7 @@
 ?>
 
 <?php echo Loader::helper('concrete/dashboard')->getDashboardPaneHeaderWrapper(t('Event Calendar')); ?>
-    <div class="alert alert-success" id="success" style="display: none">
-        <?php echo t('Event was deleted') ?>
-    </div>
-    <div class="alert alert-danger" id="error" style="display: none">
-        <?php echo t('Something wrong in delete. Try again') ?>
-    </div>
+
 
     <h3><?php echo t('List of events') ?></h3>
 
@@ -18,103 +13,81 @@
     </div>
 <?php else: ?>
 
-
-    <table id="listevent" class="display" cellspacing="0" width="100%">
-        <thead>
-        <tr>
-            <th><?php echo t('Event title') ?></th>
-            <th><?php echo t('Event date') ?></th>
-            <th><?php echo t('Event type') ?></th>
-            <th><?php echo t('Event description') ?></th>
-            <th><?php echo t('Event URL') ?></th>
-            <th><?php echo t('Calendar Title') ?></th>
-            <th><?php echo t('Options') ?></th>
-        </tr>
-        </thead>
-
-        <tfoot>
-        <tr>
-            <th><?php echo t('Event title') ?></th>
-            <th><?php echo t('Event date') ?></th>
-            <th><?php echo t('Event type') ?></th>
-            <th><?php echo t('Event description') ?></th>
-            <th><?php echo t('Event URL') ?></th>
-            <th><?php echo t('Calendar Title') ?></th>
-            <th><?php echo t('Options') ?></th>
-        </tr>
-        </tfoot>
-
-        <tbody>
-        <?php foreach ($events as $e): ?>
-            <tr>
-                <td><input class="eventID" type="hidden" value="<?php echo $e['eventID']; ?>"><?php echo $e['title']; ?>
-                </td>
-                <td><?php echo $e['date']; ?></td>
-                <td><?php echo $e['type_name']; ?></td>
-                <td><?php echo $e['description']; ?></td>
-                <td><?php echo $e['url']; ?></td>
-                <td><?php echo $e['title_cal']; ?></td>
-                <td><a href="<?php echo View::url('dashboard/event_calendar/event/update/' . $e['eventID']) ?>"
-                       class="btn btn-warning edit"><?php echo t('Edit') ?></a>
-                    <button class="btn btn-danger delete"><?php echo t('Delete') ?></button>
-                </td>
-            </tr>
-        <?php endforeach; ?>
-
-        </tbody>
-    </table>
-
+    <div id="dsEventCalendar">
+        <div class="ds-event-modal" id="dsEventModal">
+            <div class="container">
+                <div class="header">
+                    <div class="title"></div>
+                </div>
+                <div class="content">
+                    <div class="time"></div>
+                    <div class="description"></div>
+                </div>
+                <div class="footer">
+                    <div class="buttons">
+                        <div class="btn btn-close"><?php echo t("Close") ?></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script>
         $(document).ready(function () {
 
-            var listevent = $('#listevent').dataTable({
-                "order": [
-                    [ 1, "desc" ]
-                ],
-                "aoColumns": [
-                    {},
-                    {sWidth: '10%'},
-                    {},
-                    {},
-                    {},
-                    {},
-                    {}
-                ],
-                "language": {
-                    "lengthMenu": "Display _MENU_ records per page",
-                    "zeroRecords": "Nothing found - sorry",
-                    "info": "Showing page _PAGE_ of _PAGES_",
-                    "infoEmpty": "No records available",
-                    "infoFiltered": "(filtered from _MAX_ total records)"
-                }
+            var modal = $("#dsEventModal");
+
+
+            var events = <?php echo $events; ?>;
+            var settings = {};
+            var set_serv = <?php echo $settings; ?>;
+
+            for(var key in set_serv) {
+                var value = set_serv[key];
+                var k = Object.keys(value);
+                var v = value[k];
+                settings[k] = v;
+            }
+
+            console.info(events);
+            console.warn(settings);
+
+            $("#dsEventCalendar").fullCalendar({
+                header: {
+                    right: "today,month,agendaDay,agendaWeek"
+                },
+                slotDuration: "00:30:00",
+                defaultTimedEventDuration: "00:30:00",
+                timeFormat: "HH:mm",
+                eventClick: function(calEvent, jsEvent, view) {
+                    if(calEvent.url != "")
+                        return;
+
+//                    console.log(calEvent);
+//                    console.log(jsEvent);
+//                    console.log(view);
+
+                    var start_day = calEvent.start.format(settings.formatEvent);
+                    var end_day = "";
+                    if(calEvent.end != null)
+                        end_day = " - " + calEvent.end.format(settings.formatEvent);
+
+                    modal.find('.header .title').text(calEvent.title);
+                    modal.find('.content .time').text(start_day + end_day);
+                    modal.find('.content .description').text(calEvent.description);
+                    modal.addClass('active');
+
+                },
+                eventLimit: parseInt(settings.eventsInDay)+1,
+                events: events,
+                lang: settings.lang,
+                firstDay: settings.startFrom
             });
 
-            $("#listevent tbody").on('click', 'button.delete', function () {
-                var elem = $(this);
-                var conf = confirm("Are you sure to delete this event?");
-                if (conf) {
-                    var id = elem.closest('tr').children('td').children('input.eventID').val();
-                    elem.closest('tr').addClass('toRemove');
-                    $.ajax({
-                        type: "POST",
-                        url: "<?php echo $this->url('dashboard/event_calendar/list_event/delete'); ?>",
-                        data: {"id": id},
-                        success: function (data) {
-                            if (data == "OK") {
-                                $("#success").fadeIn(1000).delay(2000).fadeOut(1000);
-                                listevent.fnDeleteRow(elem.closest('tr'));
-                            }
-                            else {
-                                $("#error").fadeIn(1000).delay(2000).fadeOut(1000);
-                            }
-
-                        }
-                    });
-                }
-                else
-                    return false;
+            $("#dsEventModal .btn-close").on('click',function(){
+                $(this).closest(".ds-event-modal").removeClass('active');
             });
+
         });
     </script>
 

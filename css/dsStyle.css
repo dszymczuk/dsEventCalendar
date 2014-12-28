@@ -1,0 +1,71 @@
+/* line 57, ../sass/dsStyle.scss */
+.btn-close {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* line 63, ../sass/dsStyle.scss */
+#dsEventCalendar .fc-event,
+#dsEventCalendar .fc-event:hover,
+#dsEventCalendar .ui-widget .fc-event {
+  color: #fff;
+  /* default TEXT color */
+  text-decoration: none;
+  /* if <a> has an href */
+}
+
+/* line 76, ../sass/dsStyle.scss */
+.ds-event-modal {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  text-align: center;
+  z-index: 1000;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+/* line 77, ../sass/dsStyle.scss */
+.ds-event-modal p {
+  margin: 0;
+  padding: 0;
+}
+/* line 93, ../sass/dsStyle.scss */
+.ds-event-modal.active {
+  display: flex;
+}
+/* line 97, ../sass/dsStyle.scss */
+.ds-event-modal .container {
+  width: 35%;
+  min-width: 500px;
+  background-color: #fff;
+  border: 1px solid #333;
+  text-align: center;
+  color: #333;
+  border-radius: 5px;
+}
+/* line 105, ../sass/dsStyle.scss */
+.ds-event-modal .container .header {
+  font-size: 20px;
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+/* line 112, ../sass/dsStyle.scss */
+.ds-event-modal .container .content .time {
+  padding-top: 10px;
+  color: #777777;
+}
+/* line 117, ../sass/dsStyle.scss */
+.ds-event-modal .container .content .description {
+  padding: 10px 20px;
+  text-align: justify;
+}
+/* line 122, ../sass/dsStyle.scss */
+.ds-event-modal .container .footer {
+  border-top: 1px solid #eee;
+  padding: 10px;
+}

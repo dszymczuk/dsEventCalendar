@@ -68,7 +68,20 @@ $blue-dark: darken($blue, 5%);
   }
 }
 
-
+.drop-trash {
+  margin-top: 5px;
+  padding: 5px;
+  border: 2px dashed #ccc;
+  background-color: transparent;
+  color: #aaa;
+  font-size: 13px;
+  text-align: center;
+  &.active {
+    border: 2px dashed #999;
+    color: #777;
+    font-weight: bold;
+  }
+}
 
 //
 // Modal window

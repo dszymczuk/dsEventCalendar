@@ -14,7 +14,24 @@
   /* if <a> has an href */
 }
 
-/* line 76, ../sass/dsStyle.scss */
+/* line 71, ../sass/dsStyle.scss */
+.drop-trash {
+  margin-top: 5px;
+  padding: 5px;
+  border: 2px dashed #ccc;
+  background-color: transparent;
+  color: #aaa;
+  font-size: 13px;
+  text-align: center;
+}
+/* line 79, ../sass/dsStyle.scss */
+.drop-trash.active {
+  border: 2px dashed #999;
+  color: #777;
+  font-weight: bold;
+}
+
+/* line 89, ../sass/dsStyle.scss */
 .ds-event-modal {
   position: fixed;
   left: 0px;
@@ -29,16 +46,16 @@
   align-items: center;
   background-color: rgba(0, 0, 0, 0.5);
 }
-/* line 77, ../sass/dsStyle.scss */
+/* line 90, ../sass/dsStyle.scss */
 .ds-event-modal p {
   margin: 0;
   padding: 0;
 }
-/* line 93, ../sass/dsStyle.scss */
+/* line 106, ../sass/dsStyle.scss */
 .ds-event-modal.active {
   display: flex;
 }
-/* line 97, ../sass/dsStyle.scss */
+/* line 110, ../sass/dsStyle.scss */
 .ds-event-modal .container {
   width: 35%;
   min-width: 500px;
@@ -48,23 +65,23 @@
   color: #333;
   border-radius: 5px;
 }
-/* line 105, ../sass/dsStyle.scss */
+/* line 118, ../sass/dsStyle.scss */
 .ds-event-modal .container .header {
   font-size: 20px;
   padding: 10px;
   border-bottom: 1px solid #eee;
 }
-/* line 112, ../sass/dsStyle.scss */
+/* line 125, ../sass/dsStyle.scss */
 .ds-event-modal .container .content .time {
   padding-top: 10px;
   color: #777777;
 }
-/* line 117, ../sass/dsStyle.scss */
+/* line 130, ../sass/dsStyle.scss */
 .ds-event-modal .container .content .description {
   padding: 10px 20px;
   text-align: justify;
 }
-/* line 122, ../sass/dsStyle.scss */
+/* line 135, ../sass/dsStyle.scss */
 .ds-event-modal .container .footer {
   border-top: 1px solid #eee;
   padding: 10px;

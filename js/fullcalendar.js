@@ -5131,6 +5131,15 @@ $.extend(Grid.prototype, {
 			dragStop: function(ev) {
 				var hasChanged = newStart && !newStart.isSame(event.start);
 
+				if(hasChanged == null)
+				{
+					_this.isDraggingSeg = false;
+					view.destroyDrag();
+					view.trigger('eventDragRemove', el[0], event, ev, {});
+					enableCursor();
+					return;
+				}
+
 				// do revert animation if hasn't changed. calls a callback when finished (whether animation or not)
 				mouseFollower.stop(!hasChanged, function() {
 					_this.isDraggingSeg = false;

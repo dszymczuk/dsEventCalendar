@@ -14,6 +14,9 @@
 <?php else: ?>
 
     <div id="dsEventCalendar">
+        <div class="ds-drop-trash" id="dsEventCalendarTrash">
+            Drop here to remove event
+        </div>
         <div class="ds-event-modal" id="dsEventModal">
             <div class="container">
                 <div class="header">
@@ -35,8 +38,9 @@
     <script>
         $(document).ready(function () {
 
+            var dsEventCalendar = $("#dsEventCalendar");
             var modal = $("#dsEventModal");
-
+            var trashElement = $('#dsEventCalendarTrash');
 
             var events = <?php echo $events; ?>;
             var settings = {};
@@ -52,7 +56,7 @@
             console.info(events);
             console.warn(settings);
 
-            $("#dsEventCalendar").fullCalendar({
+            dsEventCalendar.fullCalendar({
                 header: {
                     right: "today,month,agendaDay,agendaWeek"
                 },
@@ -77,6 +81,25 @@
                     modal.find('.content .description').text(calEvent.description);
                     modal.addClass('active');
 
+                },
+                eventDragStart: function (event, jsEvent, ui, view) {
+                    trashElement.addClass('active');
+                },
+                eventDragRemove:function(event,jsEvent){
+                    var ofs = trashElement.offset();
+                    var x1 = ofs.left;
+                    var x2 = ofs.left + trashElement.outerWidth(true);
+                    var y1 = ofs.top;
+                    var y2 = ofs.top + trashElement.outerHeight(true);
+
+                    if (jsEvent.pageX >= x1 && jsEvent.pageX<= x2 &&
+                            jsEvent.pageY>= y1 && jsEvent.pageY <= y2) {
+                        dsEventCalendar.fullCalendar('removeEvents', event._id);
+                        trashElement.removeClass('active');
+                    }
+                },
+                eventDragStop: function(event,jsEvent) {
+                    trashElement.removeClass('active');
                 },
                 eventLimit: parseInt(settings.eventsInDay)+1,
                 events: events,

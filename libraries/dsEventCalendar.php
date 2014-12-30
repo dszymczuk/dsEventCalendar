@@ -20,7 +20,7 @@ class dsEventCalendar {
         $events = $db->GetAll($q);
 
         foreach ($events as &$e) {
-            unset($e['eventID']);
+            // unset($e['eventID']);
             unset($e['calendarID']);
             unset($e['typeID']);
             if($e['color'] == NULL)

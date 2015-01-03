@@ -42,8 +42,10 @@
             <div class="controls">
                 <?php $event_type = isset( $event_type ) ? $event_type : null; ?>
                 <select name="event_type" id="event_type" value="<?php echo $event_type; ?>">
+                    <option value="0"><?php echo t("Default"); ?></option>
+
                     <?php foreach ($types as $t): ?>
-                        <option value="<?php echo $t['typeID'] ?>" <?php $selected = $t['typeID']==$event_type ? "selected" : ""; echo $selected; ?> ><?php echo $t['type'] ?></option>
+                        <option value="<?php echo $t['typeID'] ?>"><?php echo $t['type'] ?></option>
                     <?php endforeach; ?>
                 </select>
             </div>
@@ -123,10 +125,14 @@
                 button_desc.removeClass('btn-primary');
             });
 
+            var calendarID = 0;
+
 
             $("#dsEventCalendar").fullCalendar({
                 header: {
-                    right: "today,month,agendaDay,agendaWeek"
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: "month,agendaWeek"
                 },
                 slotDuration: "00:30:00",
                 defaultTimedEventDuration: "00:30:00",
@@ -155,6 +161,27 @@
                     modal.find('input#event_date').val(calEvent.date);
                     modal.find('textarea#event_description').val(calEvent.description);
                     modal.find('input#event_url').val(calEvent.url);
+
+                    var select_event_type = $("select#event_type option");
+
+                    if(calEvent.typeID != null)
+                    {
+                    select_event_type.filter(function() {
+                        //may want to use $.trim in here
+                        return $(this).val() == calEvent.typeID;
+                    }).attr('selected', true);
+
+                    }
+                    else
+                    {
+                        select_event_type.first().attr('selected', true);
+                    }
+
+                    calendarID = calEvent.calendarID;
+
+
+//                    console.warn(calEvent.typeID);
+
 
                     //to think
                     // modal.find('.container').css("background-color",calEvent.color);
@@ -196,6 +223,30 @@
 
             $("#dsEventModal .btn-update").click(function(){
                 console.log("UPDATE!");
+
+
+
+                var event_data = {
+                    calendarID: calendarID,
+                    eventTitle: $("#event_title").val(),
+                    eventDate: $("#event_date").val(),
+                    eventType: $("#event_type").val(),
+                    eventDescription: $("#event_description").val(),
+                    eventURL: $("#event_url").val()
+                };
+
+                $.ajax({
+                    type: "post",
+                    url: '<?php echo $this->action("updateEvent");?>',
+                    data: event_data,
+                    success: function(data){
+                        console.log(data);
+                    },
+                    error: function(){
+                        console.warn("error");
+                    }
+                });
+
             });
 
         });

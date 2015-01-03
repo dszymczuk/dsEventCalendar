@@ -21,8 +21,8 @@ class dsEventCalendar {
 
         foreach ($events as &$e) {
             // unset($e['eventID']);
-            unset($e['calendarID']);
-            unset($e['typeID']);
+//            unset($e['calendarID']);
+//            unset($e['typeID']);
             if($e['color'] == NULL)
             {
                 $e['color'] = $default_color_dsECS;
@@ -52,5 +52,11 @@ class dsEventCalendar {
 
         $js = Loader::helper('json');
         return $js->encode($set_return);
+    }
+
+    public function getEventTypes(){
+        $db = Loader::db();
+        $types = $db->GetAll("SELECT ECT.*, count(ECE.eventID) as total_types FROM dsEventCalendarTypes AS ECT LEFT JOIN dsEventCalendarEvents AS ECE ON ECE.type = ECT.typeID group by ECT.typeID");
+        return $types;
     }
 }

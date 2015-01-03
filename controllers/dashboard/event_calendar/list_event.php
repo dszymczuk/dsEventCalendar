@@ -61,6 +61,33 @@ class DashboardEventCalendarListEventController extends Controller
 
         $this->set('settings',$dsEventCalendar->settingsProvider());
 
+        $this->set('types', $dsEventCalendar->getEventTypes());
+
+    }
+
+    public function action_test(){
+//        die("action update!");
+        exit;
+    }
+
+    public function updateEvent(){
+        if(isset($_POST) && !empty($_POST))
+        {
+            //if calendarID === 0 -> is bad !!
+
+            die(var_dump($_POST));
+//            die("post!");
+        }
+        die("not post");
+    }
+
+    public function myAction() {
+        $values = array();
+        $values[] = array('name'=>'some name 1','value'=>'some value 1');
+        $values[] = array('name'=>'some name 2','value'=>'some value 2');
+        $values[] = array('name'=>'some name 3','value'=>'some value 3');
+        echo json_encode($values);
+        exit;
     }
 
 //    public function delete()

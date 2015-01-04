@@ -66,9 +66,19 @@ $blue-dark: darken($blue, 5%);
     color: #fff; /* default TEXT color */
     text-decoration: none; /* if <a> has an href */
   }
+
+  #update_message {
+    display: none;
+  }
 }
 
+.margin-top-10 {
+  margin-top: 10px;
+}
 
+.margin-top-20 {
+  margin-top: 20px;
+}
 
 //
 // Modal window

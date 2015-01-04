@@ -48,9 +48,11 @@ class DashboardEventCalendarTypesController extends Controller
             }
         }
 
+        Loader::library('dsEventCalendar','dsEventCalendar');
 
-        $types = $db->GetAll("SELECT ECT.*, count(ECE.eventID) as total_types FROM dsEventCalendarTypes AS ECT LEFT JOIN dsEventCalendarEvents AS ECE ON ECE.type = ECT.typeID group by ECT.typeID");
-        $this->set('types', $types);
+        $dsEventCalendar = new dsEventCalendar();
+        $this->set('types', $dsEventCalendar->getEventTypes());
+
 
 
         $this->set('type','');

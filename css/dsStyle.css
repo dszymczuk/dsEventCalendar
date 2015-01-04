@@ -15,7 +15,7 @@
 }
 
 /* line 71, ../sass/dsStyle.scss */
-.drop-trash {
+.ds-drop-trash {
   margin-top: 5px;
   padding: 5px;
   border: 2px dashed #ccc;
@@ -25,7 +25,7 @@
   text-align: center;
 }
 /* line 79, ../sass/dsStyle.scss */
-.drop-trash.active {
+.ds-drop-trash.active {
   border: 2px dashed #999;
   color: #777;
   font-weight: bold;

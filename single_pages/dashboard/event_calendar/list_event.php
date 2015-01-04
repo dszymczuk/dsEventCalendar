@@ -8,6 +8,7 @@
 
 
 <?php if (empty($events)): ?>
+    <div class="margin-top-10"></div>
     <div class="alert alert-info">
         <?php echo t('There is no events. Go to Add event to add new event.') ?>
     </div>
@@ -51,6 +52,11 @@
             </div>
         </fieldset>
 
+                        <div class="alert alert-info">
+                            <p class="event_url"><?php echo t('If you set URL info type, after click on event it will redirct to URL. Window with details will NOT show! Description will be erase.'); ?></p>
+                            <p class="event_description"><?php echo t('If you set Description info type, after click on event it will show window with details.'); ?></p>
+                        </div>
+
         <fieldset class="control-group event_info_type">
             <label class="control-label"><?php echo t('Event info type') ?> *</label>
 
@@ -60,11 +66,13 @@
             </div>
         </fieldset>
 
+
+
         <fieldset class="control-group event_description">
             <label class="control-label"><?php echo t('Event description') ?></label>
 
             <div class="controls">
-                <textarea name="event_description" id="event_description"><?php echo ( isset( $event_description ) ) ? $event_description : ''; ?></textarea>
+                <textarea rows="5" name="event_description" id="event_description"><?php echo ( isset( $event_description ) ) ? $event_description : ''; ?></textarea>
             </div>
         </fieldset>
         <fieldset class="control-group event_url" style="display: none;">
@@ -99,7 +107,7 @@
             var dsEventCalendar = $("#dsEventCalendar");
 
 
-            var events = <?php echo $events; ?>;
+//            var events = <?php //echo $events; ?>//;
             var settings = {};
             var set_serv = <?php echo $settings; ?>;
 
@@ -118,18 +126,26 @@
 
 
             button_desc.click(function(){
-                button_desc.addClass('btn-primary');
-                $('.event_description').show();
-                $('.event_url').hide();
-                button_url.removeClass('btn-primary');
+                setDescriptionButton();
             });
 
             button_url.click(function(){
+                setURLButton();
+            });
+
+            function setURLButton(){
                 button_url.addClass('btn-primary');
                 $('.event_url').show();
                 $('.event_description').hide();
                 button_desc.removeClass('btn-primary');
-            });
+            }
+
+            function setDescriptionButton(){
+                button_desc.addClass('btn-primary');
+                $('.event_description').show();
+                $('.event_url').hide();
+                button_url.removeClass('btn-primary');
+            }
 
             var calendarID = 0;
             var eventID = 0;
@@ -148,14 +164,17 @@
 
                     eventClicked = calEvent;
 
-                    //@todo: update when event is url
 
-                    if(calEvent.url != "")
-                        return false;
 
                    console.log(calEvent);
 //                    console.log(jsEvent);
 //                    console.log(view);
+
+                    if(calEvent.description == "")
+                        setURLButton();
+
+                    if(calEvent.url == "")
+                        setDescriptionButton();
 
                     var start_day = calEvent.start.format(settings.formatEvent);
                     var end_day = "";
@@ -215,6 +234,9 @@
 
                     modal.addClass('active');
 
+                    if(calEvent.url != "")
+                        return false;
+
                 },
                 editable: true,
                 eventDragStart: function (event, jsEvent, ui, view) {
@@ -257,6 +279,15 @@
                     eventDescription: $("#event_description").val(),
                     eventURL: $("#event_url").val()
                 };
+
+                console.log(button_desc);
+
+                if(button_desc.hasClass('btn-primary'))
+                    event_data.eventURL = "";
+
+
+                if(button_url.hasClass('btn-primary'))
+                    event_data.eventDescription = "";
 
                 $.ajax({
                     type: "post",

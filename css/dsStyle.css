@@ -18,7 +18,17 @@
   display: none;
 }
 
-/* line 80, ../sass/dsStyle.scss */
+/* line 75, ../sass/dsStyle.scss */
+.margin-top-10 {
+  margin-top: 10px;
+}
+
+/* line 79, ../sass/dsStyle.scss */
+.margin-top-20 {
+  margin-top: 20px;
+}
+
+/* line 86, ../sass/dsStyle.scss */
 .ds-event-modal {
   position: fixed;
   left: 0px;
@@ -33,16 +43,16 @@
   align-items: center;
   background-color: rgba(0, 0, 0, 0.5);
 }
-/* line 81, ../sass/dsStyle.scss */
+/* line 87, ../sass/dsStyle.scss */
 .ds-event-modal p {
   margin: 0;
   padding: 0;
 }
-/* line 97, ../sass/dsStyle.scss */
+/* line 103, ../sass/dsStyle.scss */
 .ds-event-modal.active {
   display: flex;
 }
-/* line 101, ../sass/dsStyle.scss */
+/* line 107, ../sass/dsStyle.scss */
 .ds-event-modal .container {
   width: 35%;
   min-width: 500px;
@@ -52,23 +62,23 @@
   color: #333;
   border-radius: 5px;
 }
-/* line 109, ../sass/dsStyle.scss */
+/* line 115, ../sass/dsStyle.scss */
 .ds-event-modal .container .header {
   font-size: 20px;
   padding: 10px;
   border-bottom: 1px solid #eee;
 }
-/* line 116, ../sass/dsStyle.scss */
+/* line 122, ../sass/dsStyle.scss */
 .ds-event-modal .container .content .time {
   padding-top: 10px;
   color: #777777;
 }
-/* line 121, ../sass/dsStyle.scss */
+/* line 127, ../sass/dsStyle.scss */
 .ds-event-modal .container .content .description {
   padding: 10px 20px;
   text-align: justify;
 }
-/* line 126, ../sass/dsStyle.scss */
+/* line 132, ../sass/dsStyle.scss */
 .ds-event-modal .container .footer {
   border-top: 1px solid #eee;
   padding: 10px;

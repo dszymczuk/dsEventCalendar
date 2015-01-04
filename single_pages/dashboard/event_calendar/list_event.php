@@ -77,10 +77,13 @@
         </fieldset>
                     </div>
                 </div>
+                <div id="update_message" class="alert">
+
+                </div>
                 <div class="footer">
                     <div class="buttons">
                         <div class="btn btn-close"><?php echo t("Close") ?></div>
-                        <div class="btn btn-success btn-update"><?php echo t("Udpate") ?></div>
+                        <div class="btn btn-success btn-update"><?php echo t("Update") ?></div>
                     </div>
                 </div>
             </div>
@@ -91,6 +94,9 @@
         $(document).ready(function () {
 
             var modal = $("#dsEventModal");
+            var updateMessage = $("#update_message");
+            var eventClicked = {};
+            var dsEventCalendar = $("#dsEventCalendar");
 
 
             var events = <?php echo $events; ?>;
@@ -126,9 +132,10 @@
             });
 
             var calendarID = 0;
+            var eventID = 0;
 
 
-            $("#dsEventCalendar").fullCalendar({
+            dsEventCalendar.fullCalendar({
                 header: {
                     left: 'prev,next today',
                     center: 'title',
@@ -138,8 +145,13 @@
                 defaultTimedEventDuration: "00:30:00",
                 timeFormat: "HH:mm",
                 eventClick: function(calEvent, jsEvent, view) {
+
+                    eventClicked = calEvent;
+
+                    //@todo: update when event is url
+
                     if(calEvent.url != "")
-                        return;
+                        return false;
 
                    console.log(calEvent);
 //                    console.log(jsEvent);
@@ -178,6 +190,7 @@
                     }
 
                     calendarID = calEvent.calendarID;
+                    eventID = calEvent.eventID;
 
 
 //                    console.warn(calEvent.typeID);
@@ -212,7 +225,16 @@
                     console.log("eventDragStop");
                 },
                 eventLimit: parseInt(settings.eventsInDay)+1,
-                events: events,
+//                events: events,
+                eventSources: [
+                    {
+                        url: '<?php echo $this->action("getEvents");?>',
+                        type: 'GET',
+                        data: {
+                            'calendarid': '<?php echo $calendarID; ?>'
+                        }
+                    }
+                ],
                 lang: settings.lang,
                 firstDay: settings.startFrom
             });
@@ -228,6 +250,7 @@
 
                 var event_data = {
                     calendarID: calendarID,
+                    eventID: eventID,
                     eventTitle: $("#event_title").val(),
                     eventDate: $("#event_date").val(),
                     eventType: $("#event_type").val(),
@@ -241,6 +264,32 @@
                     data: event_data,
                     success: function(data){
                         console.log(data);
+                        if(data == "OK")
+                        {
+                            updateMessage.addClass('alert-success');
+                            updateMessage.text("<?php echo t('Event has been updated') ?>");
+                            updateMessage.fadeIn(500).delay(2000).fadeOut(500,function(){
+                                updateMessage.text("");
+                                updateMessage.removeClass('alert-success');
+                                eventClicked.title = event_data.eventTitle;
+                                eventClicked.date = event_data.eventDate;
+                                eventClicked.typeID = event_data.eventType;
+                                eventClicked.description = event_data.eventDescription;
+                                eventClicked.url = event_data.eventURL;
+                                dsEventCalendar.fullCalendar('refetchEvents');
+
+                                $(this).closest(".ds-event-modal").removeClass('active');
+                            });
+                        }
+                        else
+                        {
+                            updateMessage.addClass('alert-error');
+                            updateMessage.text("<?php echo t('Error while update event. Try again.') ?>");
+                            updateMessage.fadeIn(500).delay(2000).fadeOut(500,function(){
+                                updateMessage.text("");
+                                updateMessage.removeClass('alert-error');
+                            });
+                        }
                     },
                     error: function(){
                         console.warn("error");

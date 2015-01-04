@@ -63,6 +63,8 @@ class DashboardEventCalendarListEventController extends Controller
 
         $this->set('types', $dsEventCalendar->getEventTypes());
 
+        $this->set('calendarID',$calendar_id);
+
     }
 
     public function action_test(){
@@ -70,15 +72,75 @@ class DashboardEventCalendarListEventController extends Controller
         exit;
     }
 
+    public function getEvents(){
+        Loader::library('dsEventCalendar','dsEventCalendar');
+
+        $calendar_id = $this->get('calendarid');
+        $dsEventCalendar = new dsEventCalendar();
+        $json_events = $dsEventCalendar->getEventsFromCalendar($calendar_id);
+        die($json_events);
+//        $this->set('events', $json_events);
+    }
+
     public function updateEvent(){
         if(isset($_POST) && !empty($_POST))
         {
             //if calendarID === 0 -> is bad !!
+            if($_POST['calendarID'] == 0)
+                die("ERROR");
 
-            die(var_dump($_POST));
+//            $calendarID = $_POST['calendarID'];
+//            $eventID = $_POST['eventID'];
+
+            $calendarID = $this->post('calendarID');
+            $eventID = $this->post('eventID');
+
+
+            $sql = "UPDATE dsEventCalendarEvents SET
+                calendarID = ?,
+                title = ?,
+                date = ?,
+                type = ?,
+                description = ?,
+                url = ?
+                WHERE eventID=" . $eventID. " and calendarID = " .$calendarID;
+
+//            die($sql);
+
+            $args = array(
+                $this->post('calendarID'),
+                $this->post('eventTitle'),
+                $this->post('eventDate'),
+                $this->post('eventType'),
+                $this->post('eventDescription'),
+                $this->post('eventURL')
+            );
+
+            $db = Loader::db();
+//
+            if($db->Execute($sql, $args))
+                die("OK");
+
+
+
+
+
+            die("ERROR");
+
+
+//            ''  =>'1'
+//            'eventID'  =>'2'
+//  ''  =>'aaaaa'
+//  ''  =>'2015-01-22 00:15:45'>
+//        ''  =>'1'
+//  ''  =>'aaaaaaaaaaa'
+//  ''  =>''
+
+
+//            die(var_dump($_POST));
 //            die("post!");
         }
-        die("not post");
+        die("ERROR");
     }
 
     public function myAction() {

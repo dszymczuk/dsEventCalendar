@@ -66,6 +66,10 @@ $blue-dark: darken($blue, 5%);
     color: #fff; /* default TEXT color */
     text-decoration: none; /* if <a> has an href */
   }
+
+  #update_message {
+    display: none;
+  }
 }
 
 

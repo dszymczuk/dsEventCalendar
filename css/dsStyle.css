@@ -13,8 +13,12 @@
   text-decoration: none;
   /* if <a> has an href */
 }
+/* line 70, ../sass/dsStyle.scss */
+#dsEventCalendar #update_message {
+  display: none;
+}
 
-/* line 76, ../sass/dsStyle.scss */
+/* line 80, ../sass/dsStyle.scss */
 .ds-event-modal {
   position: fixed;
   left: 0px;
@@ -29,16 +33,16 @@
   align-items: center;
   background-color: rgba(0, 0, 0, 0.5);
 }
-/* line 77, ../sass/dsStyle.scss */
+/* line 81, ../sass/dsStyle.scss */
 .ds-event-modal p {
   margin: 0;
   padding: 0;
 }
-/* line 93, ../sass/dsStyle.scss */
+/* line 97, ../sass/dsStyle.scss */
 .ds-event-modal.active {
   display: flex;
 }
-/* line 97, ../sass/dsStyle.scss */
+/* line 101, ../sass/dsStyle.scss */
 .ds-event-modal .container {
   width: 35%;
   min-width: 500px;
@@ -48,23 +52,23 @@
   color: #333;
   border-radius: 5px;
 }
-/* line 105, ../sass/dsStyle.scss */
+/* line 109, ../sass/dsStyle.scss */
 .ds-event-modal .container .header {
   font-size: 20px;
   padding: 10px;
   border-bottom: 1px solid #eee;
 }
-/* line 112, ../sass/dsStyle.scss */
+/* line 116, ../sass/dsStyle.scss */
 .ds-event-modal .container .content .time {
   padding-top: 10px;
   color: #777777;
 }
-/* line 117, ../sass/dsStyle.scss */
+/* line 121, ../sass/dsStyle.scss */
 .ds-event-modal .container .content .description {
   padding: 10px 20px;
   text-align: justify;
 }
-/* line 122, ../sass/dsStyle.scss */
+/* line 126, ../sass/dsStyle.scss */
 .ds-event-modal .container .footer {
   border-top: 1px solid #eee;
   padding: 10px;

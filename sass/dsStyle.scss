@@ -72,12 +72,28 @@ $blue-dark: darken($blue, 5%);
   }
 }
 
+
 .margin-top-10 {
   margin-top: 10px;
 }
 
 .margin-top-20 {
   margin-top: 20px;
+}
+
+.ds-drop-trash {
+  margin-top: 5px;
+  padding: 5px;
+  border: 2px dashed #ccc;
+  background-color: transparent;
+  color: #aaa;
+  font-size: 13px;
+  text-align: center;
+  &.active {
+    border: 2px dashed #999;
+    color: #777;
+    font-weight: bold;
+  }
 }
 
 //

@@ -15,6 +15,9 @@
 <?php else: ?>
 
     <div id="dsEventCalendar">
+        <div class="ds-drop-trash" id="dsEventCalendarTrash">
+            Drop here to remove event
+        </div>
         <div class="ds-event-modal" id="dsEventModal">
             <div class="container">
                 <div class="header">
@@ -105,11 +108,14 @@
     <script>
         $(document).ready(function () {
 
+            var dsEventCalendar = $("#dsEventCalendar");
             var modal = $("#dsEventModal");
+
             var updateMessage = $("#update_message");
             var eventClicked = {};
-            var dsEventCalendar = $("#dsEventCalendar");
             var dateInput = $('#event_date');
+
+            var trashElement = $('#dsEventCalendarTrash');
 
             var settings = {};
             var set_serv = <?php echo $settings; ?>;
@@ -146,9 +152,9 @@
                 button_url.removeClass('btn-primary');
             }
 
+
             var calendarID = 0;
             var eventID = 0;
-
 
             dsEventCalendar.fullCalendar({
                 header: {
@@ -205,14 +211,6 @@
 
                 },
                 editable: true,
-                eventDragStart: function (event, jsEvent, ui, view) {
-                    console.log("eventDragStart");
-
-                },
-                eventDragStop: function (event, jsEvent) {
-                    console.log("eventDragStop");
-                },
-                eventLimit: parseInt(settings.eventsInDay) + 1,
                 eventSources: [
                     {
                         url: '<?php echo $this->action("getEvents");?>',
@@ -222,6 +220,25 @@
                         }
                     }
                 ],
+                eventDragStart: function (event, jsEvent, ui, view) {
+                    trashElement.addClass('active');
+                },
+                eventDragRemove:function(event,jsEvent){
+                    var ofs = trashElement.offset();
+                    var x1 = ofs.left;
+                    var x2 = ofs.left + trashElement.outerWidth(true);
+                    var y1 = ofs.top;
+                    var y2 = ofs.top + trashElement.outerHeight(true);
+
+                    if (jsEvent.pageX >= x1 && jsEvent.pageX<= x2 &&
+                            jsEvent.pageY>= y1 && jsEvent.pageY <= y2) {
+                        dsEventCalendar.fullCalendar('removeEvents', event._id);
+                        trashElement.removeClass('active');
+                    }
+                },
+                eventDragStop: function(event,jsEvent) {
+                    trashElement.removeClass('active');
+                },
                 lang: settings.lang,
                 firstDay: settings.startFrom
             });

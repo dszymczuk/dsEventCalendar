@@ -221,9 +221,11 @@
                     }
                 ],
                 eventDragStart: function (event, jsEvent, ui, view) {
+                    console.log("eventDragStart");
                     trashElement.addClass('active');
                 },
                 eventDragRemove:function(event,jsEvent){
+                    console.log("eventDragRemove");
                     var ofs = trashElement.offset();
                     var x1 = ofs.left;
                     var x2 = ofs.left + trashElement.outerWidth(true);
@@ -237,6 +239,7 @@
                     }
                 },
                 eventDragStop: function(event,jsEvent) {
+                    console.log("eventDragStop");
                     trashElement.removeClass('active');
                 },
                 lang: settings.lang,

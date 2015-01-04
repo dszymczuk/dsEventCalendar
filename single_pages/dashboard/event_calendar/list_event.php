@@ -31,7 +31,7 @@
             </div>
         </fieldset>
         <fieldset class="control-group">
-            <label class="control-label"><?php echo t('Event date') ?> *</label>
+            <label class="control-label"><?php echo t('Event (start) date') ?> *</label>
 
             <div class="controls">
                 <input maxlength="255" type="text" name="event_date" id="event_date" value="<?php echo ( isset( $event_date ) ) ? $event_date : ''; ?>">
@@ -105,6 +105,7 @@
             var updateMessage = $("#update_message");
             var eventClicked = {};
             var dsEventCalendar = $("#dsEventCalendar");
+            var dateInput = $('#event_date');
 
 
 //            var events = <?php //echo $events; ?>//;
@@ -161,6 +162,8 @@
                 defaultTimedEventDuration: "00:30:00",
                 timeFormat: "HH:mm",
                 eventClick: function(calEvent, jsEvent, view) {
+
+
 
                     eventClicked = calEvent;
 
@@ -299,15 +302,17 @@
                         {
                             updateMessage.addClass('alert-success');
                             updateMessage.text("<?php echo t('Event has been updated') ?>");
-                            updateMessage.fadeIn(500).delay(2000).fadeOut(500,function(){
-                                updateMessage.text("");
-                                updateMessage.removeClass('alert-success');
+                            updateMessage.fadeIn(500,function(){
                                 eventClicked.title = event_data.eventTitle;
                                 eventClicked.date = event_data.eventDate;
                                 eventClicked.typeID = event_data.eventType;
                                 eventClicked.description = event_data.eventDescription;
                                 eventClicked.url = event_data.eventURL;
                                 dsEventCalendar.fullCalendar('refetchEvents');
+                            }).delay(2000).fadeOut(500,function(){
+                                updateMessage.text("");
+                                updateMessage.removeClass('alert-success');
+
 
                                 $(this).closest(".ds-event-modal").removeClass('active');
                             });
@@ -329,6 +334,13 @@
 
             });
 
+            dateInput.datetimepicker({
+                lang: 'en',
+                format: "Y-m-d H:i:s",
+                step: 15,
+                todayButton: true,
+                dayOfWeekStart: 1
+            });
         });
     </script>
 

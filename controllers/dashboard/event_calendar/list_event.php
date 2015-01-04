@@ -6,10 +6,12 @@ class DashboardEventCalendarListEventController extends Controller
 
     public function on_before_render()
     {
+        $this->addHeaderItem(Loader::helper('html')->css('jquery.datetimepicker.css', 'dsEventCalendar'));
         $this->addHeaderItem(Loader::helper('html')->css('fullcalendar.min.css', 'dsEventCalendar'));
         $this->addHeaderItem(Loader::helper('html')->css('dsStyle.css', 'dsEventCalendar'));
         $this->addHeaderItem(Loader::helper('html')->javascript('jquery.js', 'dsEventCalendar'));
         $this->addHeaderItem(Loader::helper('html')->javascript('moment.js', 'dsEventCalendar'));
+        $this->addHeaderItem(Loader::helper('html')->javascript('jquery.datetimepicker.js', 'dsEventCalendar'));
         $this->addHeaderItem(Loader::helper('html')->javascript('fullcalendar.js', 'dsEventCalendar'));
     }
 

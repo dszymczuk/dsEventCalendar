@@ -168,10 +168,11 @@
                 eventClick: function (calEvent, jsEvent, view) {
                     eventClicked = calEvent;
 
-                    if (calEvent.description == "")
+
+                    if (calEvent.description == "" || calEvent.description == null)
                         setURLButton();
 
-                    if (calEvent.url == "")
+                    if (calEvent.url == ""|| calEvent.url == null)
                         setDescriptionButton();
 
                     var start_day = calEvent.start.format(settings.formatEvent);

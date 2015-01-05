@@ -223,11 +223,9 @@
                     }
                 ],
                 eventDragStart: function (event, jsEvent, ui, view) {
-                    console.log("eventDragStart");
                     trashElement.addClass('active');
                 },
                 eventDragRemove:function(event,jsEvent){
-                    console.log("eventDragRemove");
                     var ofs = trashElement.offset();
                     var x1 = ofs.left;
                     var x2 = ofs.left + trashElement.outerWidth(true);
@@ -275,16 +273,7 @@
                     }
                 },
                 eventDrop: function( event, delta, revertFunc, jsEvent, ui, view ) {
-                    console.log("eventDrop");
-                    console.log(event);
-
-//                    var newEventEnd = "";
-
                     var newEventDate = event.start.subtract(delta).add(delta).format("YYYY-MM-DD HH:mm:ss");
-
-//                    if(!(event.end == null || event.end == ""))
-//                        newEventEnd = event.end.subtract(delta).add(delta).format("YYYY-MM-DD HH:mm:ss");
-
 
                     var event_data = {
                         calendarID: event.calendarID,
@@ -293,27 +282,18 @@
                     };
 
                     if(event.end)
-                    {
                         event_data.eventEnd = event.end.subtract(delta).add(delta).format("YYYY-MM-DD HH:mm:ss");
-                    }
-
-
-
-
-                    console.log(event_data);
-
 
                     $.ajax({
                         type: "post",
                         url: '<?php echo $this->action("updateDateEventRange");?>',
                         data: event_data,
                         success: function (data) {
-                            console.log(data);
                             if (data == "OK") {
                             }
                             else
                             {
-//                                dsEventCalendar.fullCalendar('refetchEvents');
+                                dsEventCalendar.fullCalendar('refetchEvents');
                             }
                         },
                         error: function () {
@@ -323,8 +303,6 @@
 
                 },
                 eventDragStop: function(event,jsEvent) {
-                    console.log("eventDragStop");
-
                     trashElement.removeClass('active');
                 },
                 lang: settings.lang,

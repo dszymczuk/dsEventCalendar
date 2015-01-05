@@ -55,7 +55,9 @@ $c = Page::getCurrentPage();
 
             $("#dsEventCalendar<?php echo $blockIdentifier; ?>").fullCalendar({
                 header: {
-                    right: "today,month,agendaDay,agendaWeek"
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: "month,agendaDay,agendaWeek"
                 },
                 slotDuration: "00:30:00",
                 defaultTimedEventDuration: "00:30:00",

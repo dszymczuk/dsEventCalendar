@@ -165,13 +165,15 @@
                 slotDuration: "00:30:00",
                 defaultTimedEventDuration: "00:30:00",
                 timeFormat: "HH:mm",
+                eventLimit: false,
                 eventClick: function (calEvent, jsEvent, view) {
                     eventClicked = calEvent;
 
-                    if (calEvent.description == "")
+
+                    if (calEvent.description == "" || calEvent.description == null)
                         setURLButton();
 
-                    if (calEvent.url == "")
+                    if (calEvent.url == ""|| calEvent.url == null)
                         setDescriptionButton();
 
                     var start_day = calEvent.start.format(settings.formatEvent);
@@ -221,11 +223,9 @@
                     }
                 ],
                 eventDragStart: function (event, jsEvent, ui, view) {
-                    console.log("eventDragStart");
                     trashElement.addClass('active');
                 },
                 eventDragRemove:function(event,jsEvent){
-                    console.log("eventDragRemove");
                     var ofs = trashElement.offset();
                     var x1 = ofs.left;
                     var x2 = ofs.left + trashElement.outerWidth(true);
@@ -272,8 +272,37 @@
 
                     }
                 },
+                eventDrop: function( event, delta, revertFunc, jsEvent, ui, view ) {
+                    var newEventDate = event.start.subtract(delta).add(delta).format("YYYY-MM-DD HH:mm:ss");
+
+                    var event_data = {
+                        calendarID: event.calendarID,
+                        eventID: event.eventID,
+                        eventDate: newEventDate
+                    };
+
+                    if(event.end)
+                        event_data.eventEnd = event.end.subtract(delta).add(delta).format("YYYY-MM-DD HH:mm:ss");
+
+                    $.ajax({
+                        type: "post",
+                        url: '<?php echo $this->action("updateDateEventRange");?>',
+                        data: event_data,
+                        success: function (data) {
+                            if (data == "OK") {
+                            }
+                            else
+                            {
+                                dsEventCalendar.fullCalendar('refetchEvents');
+                            }
+                        },
+                        error: function () {
+                            console.warn("error");
+                        }
+                    });
+
+                },
                 eventDragStop: function(event,jsEvent) {
-                    console.log("eventDragStop");
                     trashElement.removeClass('active');
                 },
                 lang: settings.lang,

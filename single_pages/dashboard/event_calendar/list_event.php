@@ -16,7 +16,7 @@
 
     <div id="dsEventCalendar">
         <div class="ds-drop-trash" id="dsEventCalendarTrash">
-            Drop here to remove event
+            <?php echo t('Drop here to remove event'); ?>
         </div>
         <div class="ds-event-modal" id="dsEventModal">
             <div class="container">
@@ -234,8 +234,42 @@
 
                     if (jsEvent.pageX >= x1 && jsEvent.pageX<= x2 &&
                             jsEvent.pageY>= y1 && jsEvent.pageY <= y2) {
+
                         dsEventCalendar.fullCalendar('removeEvents', event._id);
-                        trashElement.removeClass('active');
+
+                        $.ajax({
+                            type: "post",
+                            url: '<?php echo $this->action("removeEvent");?>',
+                            data: {eventID: event._id},
+                            success: function (data) {
+                                if (data == "OK") {
+                                    trashElement.addClass('success');
+                                    trashElement.text("Event has been deleted.");
+                                    trashElement.delay(1000).fadeOut(500,function(){
+                                        trashElementRestore();
+                                    });
+                                }
+                                else
+                                {
+                                    trashElement.addClass('error');
+                                    trashElement.text("<?php echo t('Error while update event. Try again.') ?>");
+                                    trashElement.delay(1000).fadeOut(500,function(){
+                                        trashElementRestore();
+                                    });
+                                }
+                            },
+                            error: function () {
+                                console.warn("error");
+                            }
+                        });
+
+                        function trashElementRestore(){
+                            trashElement.text('<?php echo t('Drop here to remove event'); ?>');
+                            trashElement.removeClass('success');
+                            trashElement.removeClass('error');
+                            trashElement.removeClass('active');
+                        }
+
                     }
                 },
                 eventDragStop: function(event,jsEvent) {

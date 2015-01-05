@@ -165,6 +165,7 @@
                 slotDuration: "00:30:00",
                 defaultTimedEventDuration: "00:30:00",
                 timeFormat: "HH:mm",
+                eventLimit: false,
                 eventClick: function (calEvent, jsEvent, view) {
                     eventClicked = calEvent;
 
@@ -273,8 +274,57 @@
 
                     }
                 },
+                eventDrop: function( event, delta, revertFunc, jsEvent, ui, view ) {
+                    console.log("eventDrop");
+                    console.log(event);
+
+//                    var newEventEnd = "";
+
+                    var newEventDate = event.start.subtract(delta).add(delta).format("YYYY-MM-DD HH:mm:ss");
+
+//                    if(!(event.end == null || event.end == ""))
+//                        newEventEnd = event.end.subtract(delta).add(delta).format("YYYY-MM-DD HH:mm:ss");
+
+
+                    var event_data = {
+                        calendarID: event.calendarID,
+                        eventID: event.eventID,
+                        eventDate: newEventDate
+                    };
+
+                    if(event.end)
+                    {
+                        event_data.eventEnd = event.end.subtract(delta).add(delta).format("YYYY-MM-DD HH:mm:ss");
+                    }
+
+
+
+
+                    console.log(event_data);
+
+
+                    $.ajax({
+                        type: "post",
+                        url: '<?php echo $this->action("updateDateEventRange");?>',
+                        data: event_data,
+                        success: function (data) {
+                            console.log(data);
+                            if (data == "OK") {
+                            }
+                            else
+                            {
+//                                dsEventCalendar.fullCalendar('refetchEvents');
+                            }
+                        },
+                        error: function () {
+                            console.warn("error");
+                        }
+                    });
+
+                },
                 eventDragStop: function(event,jsEvent) {
                     console.log("eventDragStop");
+
                     trashElement.removeClass('active');
                 },
                 lang: settings.lang,

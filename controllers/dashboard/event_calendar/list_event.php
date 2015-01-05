@@ -97,4 +97,39 @@ class DashboardEventCalendarListEventController extends Controller
             die("ERROR");
         }
     }
+
+    public function updateDateEventRange(){
+        if (isset($_POST) && !empty($_POST)) {
+            //if calendarID === 0 -> is bad !!
+            if ($_POST['calendarID'] == 0)
+                die("ERROR");
+
+            $calendarID = $this->post('calendarID');
+            $eventID = $this->post('eventID');
+            $eventStart = $this->post('eventDate');
+            $eventEnd = $this->post('eventEnd');
+
+            $args = array(
+                $eventStart
+            );
+
+            $sql = "UPDATE dsEventCalendarEvents SET date = ? ";
+
+            if($eventEnd != "")
+            {
+                $sql .= " , end = ? ";
+                array_push($args,$eventEnd);
+            }
+
+            $sql .= " WHERE eventID=" . $eventID . " and calendarID = " . $calendarID;
+
+            $db = Loader::db();
+
+            if ($db->Execute($sql,$args))
+                die("OK");
+
+            die("ERROR");
+
+        }
+    }
 }

@@ -30,6 +30,9 @@
         </field>
         <field name="url" type="X">
         </field>
+        <field name="allDayEvent" type="I">
+            <default value="0"/>
+        </field>
     </table>
     <table name="dsEventCalendarTypes">
         <field name="typeID" type="I">

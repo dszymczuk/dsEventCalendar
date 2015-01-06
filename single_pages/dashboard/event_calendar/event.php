@@ -36,11 +36,28 @@ $form = Loader::helper('form');
                 </select>
             </div>
         </fieldset>
+
+        <fieldset class="control-group event_info_type">
+            <label class="control-label"><?php echo t('Event info type') ?> *</label>
+
+            <div class="controls">
+                <button class="btn btn-primary desc">Description</button>
+                <button class="btn url">URL</button>
+            </div>
+        </fieldset>
+
         <fieldset class="control-group">
             <label class="control-label"><?php echo t('Event date') ?> *</label>
 
             <div class="controls">
                 <input maxlength="255" type="text" name="event_date" id="event_date" value="<?php echo ( isset( $event_date ) ) ? $event_date : ''; ?>">
+            </div>
+        </fieldset>
+        <fieldset class="control-group">
+            <label class="control-label"><?php echo t('Event time') ?></label>
+
+            <div class="controls">
+                <input maxlength="255" type="text" name="event_time" id="event_time" value="<?php echo ( isset( $event_time ) ) ? $event_date : ''; ?>">
             </div>
         </fieldset>
         <fieldset class="control-group">
@@ -82,11 +99,21 @@ $form = Loader::helper('form');
         $(document).ready(function () {
             $('#event_date').datetimepicker({
                 lang: 'en',
-                format: "Y-m-d H:i:s",
-                step: 15,
+                format: "Y-m-d",
                 todayButton: true,
-                dayOfWeekStart: 1
+                dayOfWeekStart: 1,
+                timepicker:false,
+                closeOnDateSelect:true
             }).datepicker('setDate', new Date());
+
+            $('#event_time').datetimepicker({
+                datepicker: false,
+                lang: 'en',
+                format: "H:i",
+                step: 30
+            }).datepicker('setDate', new Date());
+
+
         });
     </script>
 

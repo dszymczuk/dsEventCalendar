@@ -8,9 +8,13 @@ class dsEventCalendar
     {
         $db = Loader::db();
 
-        $q = "SELECT ECE.eventID as id, ECE.*, ECT.* FROM dsEventCalendarEvents as ECE ";
-        $q .= " LEFT JOIN dsEventCalendarTypes as ECT on ECE.type = ECT.typeID ";
+        $q = "SELECT ECE.eventID as id,  ";
+        $q .= ' IF(ECE.allDayEvent = 1,concat(date(ECE.date),""),ECE.date) AS start_time, ';
+        $q .= ' IF(ECE.allDayEvent = 1,concat(date(ECE.end),NULL),ECE.end) AS end_time, ';
+        $q .= " ECE.*, ECT.* FROM dsEventCalendarEvents as ECE  ";
+        $q .= " LEFT JOIN dsEventCalendarTypes as ECT on ECE.type = ECT.typeID  ";
         $q .= " WHERE calendarID =" . $calendarID;
+
 
         $settings = $db->GetAll("SELECT * FROM dsEventCalendarSettings");
         foreach ($settings as $s) {
@@ -25,7 +29,8 @@ class dsEventCalendar
                 $e['color'] = $default_color_dsECS;
                 $e['type_name'] = $default_name_dsECS;
             }
-            $e['start'] = $e['date'];
+            $e['start'] = $e['start_time'];
+            $e['end'] = $e['end_time'];
         }
 
         $js = Loader::helper('json');

@@ -15,21 +15,30 @@ class DashboardEventCalendarEventController extends Controller
         if (!empty($_POST)) {
 
             $isSomeValueEmpty = false;
-            foreach ($_POST as $key => $value) {
-                if ($value === "" && $key !== 'event_url') {
+            $isAllDay = 1;
+
+            $validateArray = $_POST;
+            unset($validateArray['event_url']);
+            unset($validateArray['event_description']);
+            unset($validateArray['event_time']);
+            foreach($validateArray as $vA)
+            {
+                if($vA === "")
+                {
                     $isSomeValueEmpty = true;
+                    break;
                 }
             }
 
+
             if (!$isSomeValueEmpty) {
+                if($this->post('event_time') !== '')
+                {
+                    $isAllDay = 0;
+                    $_POST['event_date'] = $_POST['event_date']." ".$_POST['event_time'];
+                }
 
-                $this->post('event_title');
-                $this->post('event_date');
-                $this->post('event_type');
-                $this->post('event_description');
-                $this->post('event_url');
-
-                $sql = "INSERT INTO dsEventCalendarEvents (calendarID,title,date,type,description,url) VALUES (?,?,?,?,?,?)";
+                $sql = "INSERT INTO dsEventCalendarEvents (calendarID,title,date,type,description,url,allDayEvent) VALUES (?,?,?,?,?,?,?)";
 
                 $args = array(
                     $this->post('event_calendarID'),
@@ -37,12 +46,15 @@ class DashboardEventCalendarEventController extends Controller
                     $this->post('event_date'),
                     $this->post('event_type'),
                     $this->post('event_description'),
-                    $this->post('event_url')
+                    $this->post('event_url'),
+                    $isAllDay
                 );
+
                 $db->Execute($sql, $args);
 
                 $this->set('event_title', "");
                 $this->set('event_date', "");
+                $this->set('event_time', "");
                 $this->set('event_type', "");
                 $this->set('event_description', "");
                 $this->set('event_url', "");
@@ -51,6 +63,7 @@ class DashboardEventCalendarEventController extends Controller
             } else {
                 $this->set('event_title', $this->post('event_title'));
                 $this->set('event_date', $this->post('event_date'));
+                $this->set('event_time', $this->post('event_time'));
                 $this->set('event_type', $this->post('event_type'));
                 $this->set('event_description', $this->post('event_description'));
                 $this->set('event_url', $this->post('event_url'));
@@ -88,91 +101,4 @@ class DashboardEventCalendarEventController extends Controller
 
     }
 
-    public function update($event_id)
-    {
-        $db = Loader::db();
-
-        if (!empty($_POST)) {
-
-            $isSomeValueEmpty = false;
-            foreach ($_POST as $key => $value) {
-                if ($value === "" && $key !== 'event_url') {
-                    $isSomeValueEmpty = true;
-                }
-            }
-
-            if (!$isSomeValueEmpty) {
-                $sql = "UPDATE dsEventCalendarEvents SET
-                calendarID = ?,
-                title = ?,
-                date = ?,
-                type = ?,
-                description = ?,
-                url = ?
-                WHERE eventID=" . $event_id;
-
-                $args = array(
-                    $this->post('event_calendarID'),
-                    $this->post('event_title'),
-                    $this->post('event_date'),
-                    $this->post('event_type'),
-                    $this->post('event_description'),
-                    $this->post('event_url')
-                );
-                $db->Execute($sql, $args);
-
-                $this->set('event_title', "");
-                $this->set('event_date', "");
-                $this->set('event_type', "");
-                $this->set('event_description', "");
-                $this->set('event_url', "");
-                $this->set('success', t('Event: ' . $this->post('event_title') . ' has been edited'));
-                unset($_POST);
-            } else {
-                $this->set('error', t('Error while editing. Maybe some values were empty?'));
-            }
-        }
-
-        
-
-        $calendars = $db->GetAll("SELECT * FROM dsEventCalendar");
-        $this->set('calendars', $calendars);
-
-        $types = $db->GetAll("SELECT * FROM dsEventCalendarTypes");
-
-        $settings = $db->GetAll("SELECT * FROM dsEventCalendarSettings");
-        // ADD DEFAULT VALUE
-        foreach ($settings as $s) {
-            $s['opt'] = $s['opt']."_dsECS";
-            $$s['opt'] = $s['value'];
-        }
-
-        array_unshift($types, array(
-                'typeID' => 0,
-                'type' => $default_name_dsECS,
-                'color' => $default_color_dsECS,
-            ));
-        // END OF ADD DEFAULT VALUE
-
-        $this->set('types', $types);
-
-
-        // REFRESH FOR NEW DATA
-        $sql = "SELECT * FROM dsEventCalendarEvents WHERE eventID=" . $event_id;
-        $event = $db->GetRow($sql);
-        $this->set('event_calendarID', $event['calendarID']);
-        $this->set('event_title', $event['title']);
-        $this->set('event_date', $event['date']);
-        $this->set('event_type', $event['type']);
-        $this->set('event_description', $event['description']);
-        $this->set('event_url', $event['url']);
-
-        // die(var_dump($event));
-
-        $this->set('event_ID', $event_id);
-        $this->set('button', array(
-            'class' => 'btn btn-warning',
-            'label' => t('Edit event')
-        ));
-    }
 }

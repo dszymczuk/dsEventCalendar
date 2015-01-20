@@ -169,6 +169,8 @@
                 eventClick: function (calEvent, jsEvent, view) {
                     eventClicked = calEvent;
 
+                    console.log(calEvent);
+
 
                     if (calEvent.description == "" || calEvent.description == null)
                         setURLButton();
@@ -184,10 +186,31 @@
 
                     modal.find('.header .title').text(calEvent.title);
                     modal.find('.content .time').text(start_day + end_day);
-
                     modal.find('input#event_title').val(calEvent.title);
+                    modal.find('input#event_date').val(calEvent.start_time);
 
-                    modal.find('input#event_date').val(calEvent.date);
+                    if(calEvent.allDayEvent == "1")
+                    {
+                        dateInput.datetimepicker({
+                            lang: 'en',
+                            format: "Y-m-d",
+                            todayButton: true,
+                            dayOfWeekStart: 1,
+                            timepicker:false,
+                            closeOnDateSelect:true
+                        });
+                    }
+                    else
+                    {
+                        dateInput.datetimepicker({
+                            lang: 'en',
+                            format: "Y-m-d H:i:s",
+                            step: 30,
+                            todayButton: true,
+                            dayOfWeekStart: 1
+                        });
+                    }
+
                     modal.find('textarea#event_description').val(calEvent.description);
                     modal.find('input#event_url').val(calEvent.url);
 
@@ -369,13 +392,6 @@
 
             });
 
-            dateInput.datetimepicker({
-                lang: 'en',
-                format: "Y-m-d H:i:s",
-                step: 15,
-                todayButton: true,
-                dayOfWeekStart: 1
-            });
         });
     </script>
 

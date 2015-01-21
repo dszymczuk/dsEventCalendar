@@ -309,7 +309,7 @@
 
                     $.ajax({
                         type: "post",
-                        url: '<?php echo $this->action("updateDateEventRange");?>',
+                        url: '<?php echo $this->action("updateDateEvent");?>',
                         data: event_data,
                         success: function (data) {
                             if (data == "OK") {
@@ -327,6 +327,32 @@
                 },
                 eventDragStop: function(event,jsEvent) {
                     trashElement.removeClass('active');
+                },
+                eventResize: function( event, delta, revertFunc, jsEvent, ui, view ) {
+                    var event_data = {
+                        calendarID: event.calendarID,
+                        eventID: event.eventID
+                    };
+
+                    event_data.eventEnd = event.end.subtract(delta).add(delta).format("YYYY-MM-DD");
+
+                    $.ajax({
+                        type: "post",
+                        url: '<?php echo $this->action("updateDateEventRange");?>',
+                        data: event_data,
+                        success: function (data) {
+                            if (data == "OK") {
+                            }
+                            else
+                            {
+                                dsEventCalendar.fullCalendar('refetchEvents');
+                            }
+                        },
+                        error: function () {
+                            console.warn("error");
+                        }
+                    });
+
                 },
                 lang: settings.lang,
                 firstDay: settings.startFrom

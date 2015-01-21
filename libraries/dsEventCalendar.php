@@ -10,7 +10,7 @@ class dsEventCalendar
 
         $q = "SELECT ECE.eventID as id,  ";
         $q .= ' IF(ECE.allDayEvent = 1,concat(date(ECE.date),""),ECE.date) AS start_time, ';
-        $q .= ' IF(ECE.allDayEvent = 1,concat(date(ECE.end),NULL),ECE.end) AS end_time, ';
+        $q .= ' IF(ECE.allDayEvent = 1,concat(date(ECE.end),""),ECE.end) AS end_time, ';
         $q .= " ECE.*, ECT.* FROM dsEventCalendarEvents as ECE  ";
         $q .= " LEFT JOIN dsEventCalendarTypes as ECT on ECE.type = ECT.typeID  ";
         $q .= " WHERE calendarID =" . $calendarID;

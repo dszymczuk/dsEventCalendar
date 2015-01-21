@@ -98,7 +98,7 @@ class DashboardEventCalendarListEventController extends Controller
         }
     }
 
-    public function updateDateEventRange(){
+    public function updateDateEvent(){
         if (isset($_POST) && !empty($_POST)) {
             //if calendarID === 0 -> is bad !!
             if ($_POST['calendarID'] == 0)
@@ -120,6 +120,34 @@ class DashboardEventCalendarListEventController extends Controller
                 $sql .= " , end = ? ";
                 array_push($args,$eventEnd);
             }
+
+            $sql .= " WHERE eventID=" . $eventID . " and calendarID = " . $calendarID;
+
+            $db = Loader::db();
+
+            if ($db->Execute($sql,$args))
+                die("OK");
+
+            die("ERROR");
+
+        }
+    }
+
+    public function updateDateEventRange(){
+        if (isset($_POST) && !empty($_POST)) {
+            //if calendarID === 0 -> is bad !!
+            if ($_POST['calendarID'] == 0)
+                die("ERROR");
+
+            $calendarID = $this->post('calendarID');
+            $eventID = $this->post('eventID');
+            $eventEnd = $this->post('eventEnd');
+
+            $args = array(
+                $eventEnd
+            );
+
+            $sql = "UPDATE dsEventCalendarEvents SET end = ? , allDayEvent = 1 ";
 
             $sql .= " WHERE eventID=" . $eventID . " and calendarID = " . $calendarID;
 

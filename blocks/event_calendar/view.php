@@ -63,12 +63,9 @@ $c = Page::getCurrentPage();
                 defaultTimedEventDuration: "00:30:00",
                 timeFormat: "HH:mm",
                 eventClick: function(calEvent, jsEvent, view) {
-                    if(calEvent.url != "")
-                        return;
 
-//                    console.log(calEvent);
-//                    console.log(jsEvent);
-//                    console.log(view);
+                    if(calEvent.url)
+                        return;
 
                     var start_day = calEvent.start.format(settings.formatEvent);
                     var end_day = "";

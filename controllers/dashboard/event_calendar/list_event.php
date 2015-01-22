@@ -1,37 +1,164 @@
-<?php  defined('C5_EXECUTE') or die("Access Denied.");
+<?php defined('C5_EXECUTE') or die("Access Denied.");
+
 
 class DashboardEventCalendarListEventController extends Controller
 {
 
     public function on_before_render()
     {
-        $this->addHeaderItem(Loader::helper('html')->css('jquery.dataTables.min.css', 'dsEventCalendar'));
-        $this->addHeaderItem(Loader::helper('html')->javascript('jquery.js', 'dsEventCalendar'));
-        $this->addHeaderItem(Loader::helper('html')->javascript('jquery.dataTables.min.js', 'dsEventCalendar'));
+        $this->addHeaderItem(Loader::helper('html')->css('jquery.datetimepicker.min.css', 'dsEventCalendar'));
+        $this->addHeaderItem(Loader::helper('html')->css('fullcalendar.min.css', 'dsEventCalendar'));
+        $this->addHeaderItem(Loader::helper('html')->css('dsStyle.css', 'dsEventCalendar'));
+        $this->addHeaderItem(Loader::helper('html')->javascript('moment.min.js', 'dsEventCalendar'));
+        $this->addHeaderItem(Loader::helper('html')->javascript('jquery.datetimepicker.min.js', 'dsEventCalendar'));
+        $this->addHeaderItem(Loader::helper('html')->javascript('fullcalendar.min.js', 'dsEventCalendar'));
+        $this->addHeaderItem(Loader::helper('html')->javascript('lang-all.js', 'dsEventCalendar'));
     }
 
     public function view()
     {
-        $db = Loader::db();
-        
-        $sql = "SELECT EC.title AS title_cal, IFNULL(ECT.type,'default') as type_name ,ECE . * FROM dsEventCalendarEvents AS ECE ";
-        $sql .= " LEFT JOIN dsEventCalendar AS EC ON ECE.calendarID = EC.calendarID ";
-        $sql .= " LEFT JOIN dsEventCalendarTypes AS ECT ON ECT.typeID = ECE.type ";
-
-        $events = $db->GetAll($sql);
-
-        $this->set('events', $events);
+        //redirect if param is not exist
+        $this->redirect("dashboard/event_calendar/list_calendar");
     }
 
-    public function delete()
+    public function show($calendar_id)
     {
-        if (isset($_POST) && is_numeric($_POST['id'])) {
+        Loader::library('dsEventCalendar', 'dsEventCalendar');
+        $dsEventCalendar = new dsEventCalendar();
+
+        $json_events = $dsEventCalendar->getEventsFromCalendar($calendar_id);
+        $this->set('events', $json_events);
+        $this->set('settings', $dsEventCalendar->settingsProvider());
+        $this->set('types', $dsEventCalendar->getEventTypes());
+        $this->set('calendarID', $calendar_id);
+    }
+
+    public function getEvents()
+    {
+        Loader::library('dsEventCalendar', 'dsEventCalendar');
+
+        $calendar_id = $this->get('calendarid');
+        $dsEventCalendar = new dsEventCalendar();
+        $json_events = $dsEventCalendar->getEventsFromCalendar($calendar_id);
+        die($json_events);
+    }
+
+    public function updateEvent()
+    {
+        if (isset($_POST) && !empty($_POST)) {
+            //if calendarID === 0 -> is bad !!
+            if ($_POST['calendarID'] == 0)
+                die("ERROR");
+
+            $calendarID = $this->post('calendarID');
+            $eventID = $this->post('eventID');
+
+            $sql = "UPDATE dsEventCalendarEvents SET
+                calendarID = ?,
+                title = ?,
+                date = ?,
+                type = ?,
+                description = ?,
+                url = ?
+                WHERE eventID=" . $eventID . " and calendarID = " . $calendarID;
+
+            $args = array(
+                $this->post('calendarID'),
+                $this->post('eventTitle'),
+                $this->post('eventDate'),
+                $this->post('eventType'),
+                $this->post('eventDescription'),
+                $this->post('eventURL')
+            );
+
             $db = Loader::db();
-            $sql = "DELETE FROM dsEventCalendarEvents WHERE eventID = " . $_POST['id'];
-            $db->Execute($sql);
-            die("OK");
-        } else {
+
+            if ($db->Execute($sql, $args))
+                die("OK");
+
             die("ERROR");
+
+        }
+        die("ERROR");
+    }
+
+    public function removeEvent(){
+        if (isset($_POST) && !empty($_POST)) {
+            $eventID = $this->post('eventID');
+            if(is_numeric($eventID))
+            {
+                $db = Loader::db();
+                $sql = "DELETE FROM dsEventCalendarEvents WHERE eventID = " . $eventID;
+                if($db->Execute($sql))
+                    die("OK");
+                else
+                    die("ERROR");
+            }
+
+            die("ERROR");
+        }
+    }
+
+    public function updateDateEvent(){
+        if (isset($_POST) && !empty($_POST)) {
+            //if calendarID === 0 -> is bad !!
+            if ($_POST['calendarID'] == 0)
+                die("ERROR");
+
+            $calendarID = $this->post('calendarID');
+            $eventID = $this->post('eventID');
+            $eventStart = $this->post('eventDate');
+            $eventEnd = $this->post('eventEnd');
+
+            $args = array(
+                $eventStart
+            );
+
+            $sql = "UPDATE dsEventCalendarEvents SET date = ? ";
+
+            if($eventEnd != "")
+            {
+                $sql .= " , end = ? ";
+                array_push($args,$eventEnd);
+            }
+
+            $sql .= " WHERE eventID=" . $eventID . " and calendarID = " . $calendarID;
+
+            $db = Loader::db();
+
+            if ($db->Execute($sql,$args))
+                die("OK");
+
+            die("ERROR");
+
+        }
+    }
+
+    public function updateDateEventRange(){
+        if (isset($_POST) && !empty($_POST)) {
+            //if calendarID === 0 -> is bad !!
+            if ($_POST['calendarID'] == 0)
+                die("ERROR");
+
+            $calendarID = $this->post('calendarID');
+            $eventID = $this->post('eventID');
+            $eventEnd = $this->post('eventEnd');
+
+            $args = array(
+                $eventEnd
+            );
+
+            $sql = "UPDATE dsEventCalendarEvents SET end = ? ";
+
+            $sql .= " WHERE eventID=" . $eventID . " and calendarID = " . $calendarID;
+
+            $db = Loader::db();
+
+            if ($db->Execute($sql,$args))
+                die("OK");
+
+            die("ERROR");
+
         }
     }
 }

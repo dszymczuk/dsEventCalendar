@@ -14,13 +14,29 @@ First, go to dashboard and add calendar in "Add / edit calendar" . After that yo
 
 If you did this, go to page and add new block called "Event Calendar" and select calendar.
 
+After add event go to Calendar list -> show events for calendar. At now, you can manage events.
+Drag and drop to change date.
+Click for edit details.
+If you choose "All day" event you can resize event for more days.
+If you choose "One day with time" event you can resize event for more days.
+
 
 Version
 ----
-2.1.6
+3.0.0
 
 Changelog
 ----
+3.0.0
+NEW VERSION - OFFICIAL RELEASE
+Calendar based on http://fullcalendar.io/
+Features:
+* multiview in calendar (month, day, week)
+* multiday events
+* start and end time for event
+* easier managment for events
+* pretty modal
+
 2.1.6
 Some bug fixes
 

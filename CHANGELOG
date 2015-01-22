@@ -1,3 +1,13 @@
+3.0.0
+NEW VERSION - OFFICIAL RELEASE
+Calendar based on http://fullcalendar.io/
+Features:
+* multiview in calendar (month, day, week)
+* multiday events
+* start and end time for event
+* easier managment for events
+* pretty modal
+
 2.1.6
 Some bug fixes
 

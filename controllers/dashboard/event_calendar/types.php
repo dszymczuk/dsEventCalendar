@@ -7,11 +7,8 @@ class DashboardEventCalendarTypesController extends Controller
 
 	public function on_before_render()
     {
-        $this->addHeaderItem(Loader::helper('html')->css('colorpicker.css', 'dsEventCalendar'));
-        $this->addHeaderItem(Loader::helper('html')->javascript('colorpicker.js', 'dsEventCalendar'));
-        //$this->addHeaderItem(Loader::helper('html')->css('jquery.dataTables.min.css', 'dsEventCalendar'));
-        $this->addHeaderItem(Loader::helper('html')->javascript('jquery.js', 'dsEventCalendar'));
-        //$this->addHeaderItem(Loader::helper('html')->javascript('jquery.dataTables.min.js', 'dsEventCalendar'));
+        $this->addHeaderItem(Loader::helper('html')->css('colorpicker.min.css', 'dsEventCalendar'));
+        $this->addHeaderItem(Loader::helper('html')->javascript('colorpicker.min.js', 'dsEventCalendar'));
     }
 
     public function view()
@@ -48,9 +45,11 @@ class DashboardEventCalendarTypesController extends Controller
             }
         }
 
+        Loader::library('dsEventCalendar','dsEventCalendar');
 
-        $types = $db->GetAll("SELECT ECT.*, count(ECE.eventID) as total_types FROM dsEventCalendarTypes AS ECT LEFT JOIN dsEventCalendarEvents AS ECE ON ECE.type = ECT.typeID group by ECT.typeID");
-        $this->set('types', $types);
+        $dsEventCalendar = new dsEventCalendar();
+        $this->set('types', $dsEventCalendar->getEventTypes());
+
 
 
         $this->set('type','');

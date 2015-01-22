@@ -16,13 +16,30 @@ $c = Page::getCurrentPage();
 
 <?php endif ?>
 
-    <div id="eventCalendarInline<?php echo $blockIdentifier; ?>"></div>
+    <div id="dsEventCalendar<?php echo $blockIdentifier; ?>">
+        <div class="ds-event-modal" id="dsEventModal<?php echo $blockIdentifier; ?>">
+            <div class="container">
+                <div class="header">
+                    <div class="title"></div>
+                </div>
+                <div class="content">
+                    <div class="time"></div>
+                    <div class="description"></div>
+                </div>
+                <div class="footer">
+                    <div class="buttons">
+                        <div class="btn btn-close"><?php echo t("Close") ?></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 <?php if (!$c->isEditMode()): ?>
     <script>
         $(document).ready(function () {
-            var eventsInline = {};
-            eventsInline = <?php echo $events; ?>;
+
+            var events = <?php echo $events; ?>;
             var settings = {};
             var set_serv = <?php echo $settings; ?>;
 
@@ -33,14 +50,42 @@ $c = Page::getCurrentPage();
                 settings[k] = v;
             }
 
-            $("#eventCalendarInline<?php echo $blockIdentifier; ?>").JSONEventCalendar(eventsInline,{
+
+            var modal = $("#dsEventModal<?php echo $blockIdentifier; ?>");
+
+            $("#dsEventCalendar<?php echo $blockIdentifier; ?>").fullCalendar({
+                header: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: "month,agendaDay,agendaWeek"
+                },
+                slotDuration: "00:30:00",
+                defaultTimedEventDuration: "00:30:00",
+                timeFormat: "HH:mm",
+                eventClick: function(calEvent, jsEvent, view) {
+
+                    if(calEvent.url)
+                        return;
+
+                    var start_day = calEvent.start.format(settings.formatEvent);
+                    var end_day = "";
+                     if(calEvent.end != null)
+                        end_day = " - " + calEvent.end.format(settings.formatEvent);
+
+                    modal.find('.header .title').text(calEvent.title);
+                    modal.find('.content .time').text(start_day + end_day);
+                    modal.find('.content .description').text(calEvent.description);
+                    modal.addClass('active');
+
+                },
+                eventLimit: parseInt(settings.eventsInDay)+1,
+                events: events,
                 lang: settings.lang,
-                formatTitle: settings.formatTitle,
-                formatEvent: settings.formatEvent,
-                startFrom: settings.startFrom,
-                eventsInDay: settings.eventsInDay,
-                closeText: settings.closeText,
-                typeText: settings.typeText
+                firstDay: settings.startFrom
+            });
+
+            $(".ds-event-modal .btn-close").on('click',function(){
+                $(this).closest(".ds-event-modal").removeClass('active');
             });
         });
     </script>

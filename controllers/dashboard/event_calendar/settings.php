@@ -6,9 +6,8 @@ class DashboardEventCalendarSettingsController extends Controller
 {
 	public function on_before_render()
     {
-        $this->addHeaderItem(Loader::helper('html')->css('colorpicker.css', 'dsEventCalendar'));
-        $this->addHeaderItem(Loader::helper('html')->javascript('colorpicker.js', 'dsEventCalendar'));
-        $this->addHeaderItem(Loader::helper('html')->javascript('jquery.js', 'dsEventCalendar'));
+        $this->addHeaderItem(Loader::helper('html')->css('colorpicker.min.css', 'dsEventCalendar'));
+        $this->addHeaderItem(Loader::helper('html')->javascript('colorpicker.min.js', 'dsEventCalendar'));
     }
 
     public function view()
@@ -39,7 +38,7 @@ class DashboardEventCalendarSettingsController extends Controller
             }
         }
 
-			$lang_list = array("af","ar-ma","ar-sa","ar","az","be","bg","bn","bo","br","bs","ca","cs","cv","cy","da","de-at","de","el","en-au","en-ca","en-gb","eo","es","et","eu","fa","fi","fo","fr-ca","fr","gl","he","hi","hr","hu","hy-am","id","is","it","ja","ka","km","ko","lb","lt","lv","mk","ml","mr","ms-my","my","nb","ne","nl","nn","pl","pt-br","pt","ro","ru","sk","sl","sq","sr-cyrl","sr","sv","ta","th","tl-ph","tr","tzm-latn","tzm","uk","uz","vi","zh-cn","zh-tw");
+			$lang_list = array("ar-ma","ar-sa","ar","bg","ca","cs","da","de-at","de","el","en-au","en-ca","en-gb","es","fa","fi","fr-ca","fr","he","hi","hr","hu","id","is","it","ja","ko","lt","lv","nl","pl","pt-br","pt","ro","ru","sk","sl","sr-cyrl","sr","sv","th","tr","uk","vi","zh-cn","zh-tw");
 			$this->set('lang_list',$lang_list);
 
 			$days = array(t('Monday'),t('Tuesday'),t('Wednesday'),t('Thursday'),t('Friday'),t('Saturday'),t('Sunday'));

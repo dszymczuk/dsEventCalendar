@@ -7,7 +7,7 @@ class dsEventCalendarPackage extends Package
 
     protected $pkgHandle = 'dsEventCalendar';
     protected $appVersionRequired = '5.5.0';
-    protected $pkgVersion = '2.1.6';
+    protected $pkgVersion = '3.0.0.16';
 
     public function getPackageDescription()
     {
@@ -31,8 +31,24 @@ class dsEventCalendarPackage extends Package
     {
         $currentVersion = $this->getPackageVersion();
         parent::upgrade();
+        $this->update2to3();
         $this->installSP($this, $currentVersion);
         $this->installSettings();
+    }
+
+    private function update2to3(){
+        $p4 = SinglePage::getByPath('/dashboard/event_calendar/list_event');
+
+        if (is_object($p4)) {
+            $p4->setAttribute('exclude_nav', 1);
+        }
+
+        $db = Loader::db();
+        $sql = "DELETE FROM dsEventCalendarSettings WHERE opt = 'formatTitle'";
+        $db->Execute($sql);
+
+        $sql = "DELETE FROM dsEventCalendarSettings WHERE opt = 'default_name'";
+        $db->Execute($sql);
     }
 
 
@@ -83,8 +99,8 @@ class dsEventCalendarPackage extends Package
         $sql = "INSERT IGNORE INTO dsEventCalendarSettings SET opt= 'lang' , value='en-gb'";
         $db->Execute($sql);
 
-        $sql = "INSERT IGNORE INTO dsEventCalendarSettings SET opt= 'formatTitle' , value='MMMM YYYY'";
-        $db->Execute($sql);
+//        $sql = "INSERT IGNORE INTO dsEventCalendarSettings SET opt= 'formatTitle' , value='MMMM YYYY'";
+//        $db->Execute($sql);
 
         $sql = "INSERT IGNORE INTO dsEventCalendarSettings SET opt= 'formatEvent' , value='DD MMMM YYYY'";
         $db->Execute($sql);
@@ -98,8 +114,8 @@ class dsEventCalendarPackage extends Package
         $sql = "INSERT IGNORE INTO dsEventCalendarSettings SET opt= 'default_color' , value='#808080'";
         $db->Execute($sql);
 
-        $sql = "INSERT IGNORE INTO dsEventCalendarSettings SET opt= 'default_name' , value='Default'";
-        $db->Execute($sql);
+//        $sql = "INSERT IGNORE INTO dsEventCalendarSettings SET opt= 'default_name' , value='Default'";
+//        $db->Execute($sql);
     }
 }
 

@@ -49,7 +49,10 @@
                     <?php endif; ?>
 
                 </td>
-                <td><a href="<?php echo View::url('dashboard/event_calendar/calendar/update/' . $cal['calendarID']) ?>"
+                <td>
+                    <a href="<?php echo View::url('dashboard/event_calendar/list_event/show/' . $cal['calendarID']) ?>"
+                       class="btn btn-success"><?php echo t('Show events') ?></a>
+                    <a href="<?php echo View::url('dashboard/event_calendar/calendar/update/' . $cal['calendarID']) ?>"
                        class="btn btn-warning edit"><?php echo t('Edit') ?></a>
                     <button class="btn btn-danger delete"><?php echo t('Delete') ?></button>
                 </td>

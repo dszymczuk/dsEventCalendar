@@ -169,7 +169,6 @@
                 eventClick: function (calEvent, jsEvent, view) {
                     eventClicked = calEvent;
 
-                    console.log(calEvent);
 
 
                     if (calEvent.description == "" || calEvent.description == null)
@@ -312,12 +311,7 @@
                         url: '<?php echo $this->action("updateDateEvent");?>',
                         data: event_data,
                         success: function (data) {
-                            if (data == "OK") {
-                            }
-                            else
-                            {
                                 dsEventCalendar.fullCalendar('refetchEvents');
-                            }
                         },
                         error: function () {
                             console.warn("error");
@@ -329,24 +323,23 @@
                     trashElement.removeClass('active');
                 },
                 eventResize: function( event, delta, revertFunc, jsEvent, ui, view ) {
+
                     var event_data = {
                         calendarID: event.calendarID,
                         eventID: event.eventID
                     };
 
-                    event_data.eventEnd = event.end.subtract(delta).add(delta).format("YYYY-MM-DD");
+                    if(event.addDayEvent == "0")
+                        event_data.eventEnd = event.end.subtract(delta).add(delta).format("YYYY-MM-DD");
+                    else
+                        event_data.eventEnd = event.end.subtract(delta).add(delta).format("YYYY-MM-DD HH:mm:ss");
 
                     $.ajax({
                         type: "post",
                         url: '<?php echo $this->action("updateDateEventRange");?>',
                         data: event_data,
                         success: function (data) {
-                            if (data == "OK") {
-                            }
-                            else
-                            {
                                 dsEventCalendar.fullCalendar('refetchEvents');
-                            }
                         },
                         error: function () {
                             console.warn("error");

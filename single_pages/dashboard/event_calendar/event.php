@@ -13,7 +13,7 @@ $form = Loader::helper('form');
 <?php else: ?>
     <div class="btn-group" style="margin-top: 10px;">
         <a class="btn"
-           href="<?php echo View::url('dashboard/event_calendar/list_event') ?>"><?php echo t('Return to event list') ?></a>
+           href="<?php echo View::url('dashboard/event_calendar/list_event') ?>"><?php echo t('Return to calendar list') ?></a>
     </div>
 
     <form class="form-horizontal" method="post" id="ccm-multilingual-page-report-form" style="margin-top: 35px;">

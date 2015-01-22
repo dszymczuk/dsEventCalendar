@@ -47,10 +47,12 @@
                     <?php else: ?>
                         <span class="badge badge-success"><?php echo $cal['total_events']; ?></span>
                     <?php endif; ?>
+
+                </td>
+                <td>
                     <a href="<?php echo View::url('dashboard/event_calendar/list_event/show/' . $cal['calendarID']) ?>"
                        class="btn btn-success"><?php echo t('Show events') ?></a>
-                </td>
-                <td><a href="<?php echo View::url('dashboard/event_calendar/calendar/update/' . $cal['calendarID']) ?>"
+                    <a href="<?php echo View::url('dashboard/event_calendar/calendar/update/' . $cal['calendarID']) ?>"
                        class="btn btn-warning edit"><?php echo t('Edit') ?></a>
                     <button class="btn btn-danger delete"><?php echo t('Delete') ?></button>
                 </td>

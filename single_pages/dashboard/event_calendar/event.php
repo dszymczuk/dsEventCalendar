@@ -50,8 +50,8 @@ $form = Loader::helper('form');
             <label class="control-label"><?php echo t('Event info type') ?></label>
 
             <div class="controls">
-                <button class="btn btn-primary desc">Description</button>
-                <button class="btn url">URL</button>
+                <button class="btn btn-primary desc"><?php echo t('Description') ?></button>
+                <button class="btn url"><?php echo t('URL') ?></button>
             </div>
         </fieldset>
 
@@ -59,8 +59,8 @@ $form = Loader::helper('form');
             <label class="control-label"><?php echo t('Event type') ?></label>
 
             <div class="controls">
-                <button class="btn btn-primary allday">All day (multiday)</button>
-                <button class="btn withtime">1 day with time</button>
+                <button class="btn btn-primary allday"><?php echo t('All day (multiday)') ?></button>
+                <button class="btn withtime"><?php echo t('One day with time') ?></button>
             </div>
         </fieldset>
 

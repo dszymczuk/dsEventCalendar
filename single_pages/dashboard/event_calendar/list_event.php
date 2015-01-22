@@ -64,8 +64,8 @@
                             <label class="control-label"><?php echo t('Event info type') ?> *</label>
 
                             <div class="controls">
-                                <button class="btn btn-primary desc">Description</button>
-                                <button class="btn url">URL</button>
+                                <button class="btn btn-primary desc"><?php echo t('Description') ?></button>
+                                <button class="btn url"><?php echo t('URL') ?></button>
                             </div>
                         </fieldset>
 

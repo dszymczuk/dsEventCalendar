@@ -15,9 +15,6 @@
 <?php else: ?>
 
     <div id="dsEventCalendar">
-        <div class="ds-drop-trash" id="dsEventCalendarTrash">
-            <?php echo t('Drop here to remove event'); ?>
-        </div>
         <div class="ds-event-modal" id="dsEventModal">
             <div class="container">
                 <div class="header">
@@ -97,8 +94,9 @@
                 </div>
                 <div class="footer">
                     <div class="buttons">
+                        <div class="pull-left btn btn-danger"><?php echo t("Remove") ?></div>
                         <div class="btn btn-close"><?php echo t("Close") ?></div>
-                        <div class="btn btn-success btn-update"><?php echo t("Update") ?></div>
+                        <div class="pull-right btn btn-success btn-update"><?php echo t("Update") ?></div>
                     </div>
                 </div>
             </div>
@@ -247,53 +245,6 @@
                 eventDragStart: function (event, jsEvent, ui, view) {
                     trashElement.addClass('active');
                 },
-                eventDragRemove:function(event,jsEvent){
-                    var ofs = trashElement.offset();
-                    var x1 = ofs.left;
-                    var x2 = ofs.left + trashElement.outerWidth(true);
-                    var y1 = ofs.top;
-                    var y2 = ofs.top + trashElement.outerHeight(true);
-
-                    if (jsEvent.pageX >= x1 && jsEvent.pageX<= x2 &&
-                            jsEvent.pageY>= y1 && jsEvent.pageY <= y2) {
-
-                        dsEventCalendar.fullCalendar('removeEvents', event._id);
-
-                        $.ajax({
-                            type: "post",
-                            url: '<?php echo $this->action("removeEvent");?>',
-                            data: {eventID: event._id},
-                            success: function (data) {
-                                if (data == "OK") {
-                                    trashElement.addClass('success');
-                                    trashElement.text("Event has been deleted.");
-                                    trashElement.delay(1000).fadeOut(500,function(){
-                                        trashElementRestore();
-                                    });
-                                }
-                                else
-                                {
-                                    trashElement.addClass('error');
-                                    trashElement.text("<?php echo t('Error while update event. Try again.') ?>");
-                                    trashElement.delay(1000).fadeOut(500,function(){
-                                        trashElementRestore();
-                                    });
-                                }
-                            },
-                            error: function () {
-                                console.warn("error");
-                            }
-                        });
-
-                        function trashElementRestore(){
-                            trashElement.text('<?php echo t('Drop here to remove event'); ?>');
-                            trashElement.removeClass('success');
-                            trashElement.removeClass('error');
-                            trashElement.removeClass('active');
-                        }
-
-                    }
-                },
                 eventDrop: function( event, delta, revertFunc, jsEvent, ui, view ) {
                     var newEventDate = event.start.subtract(delta).add(delta).format("YYYY-MM-DD HH:mm:ss");
 
@@ -353,6 +304,41 @@
 
             $("#dsEventModal .btn-close").on('click', function () {
                 $(this).closest(".ds-event-modal").removeClass('active');
+            });
+
+            $("#dsEventModal .btn-danger").on('click', function () {
+
+                $.ajax({
+                    type: "post",
+                    url: '<?php echo $this->action("removeEvent");?>',
+                    data: {eventID: eventID},
+                    success: function (data) {
+                        if (data == "OK") {
+                            updateMessage.addClass('alert-success');
+                            updateMessage.text("<?php echo t('Event has been removed') ?>");
+                            updateMessage.fadeIn(500, function () {
+                                dsEventCalendar.fullCalendar('refetchEvents');
+                            }).delay(2000).fadeOut(500, function () {
+                                updateMessage.text("");
+                                updateMessage.removeClass('alert-success');
+                                $(this).closest(".ds-event-modal").removeClass('active');
+                            });
+                        }
+                        else
+                        {
+                            updateMessage.addClass('alert-error');
+                            updateMessage.text("<?php echo t('Error while remove event. Try again.') ?>");
+                            updateMessage.fadeIn(500).delay(2000).fadeOut(500, function () {
+                                updateMessage.text("");
+                                updateMessage.removeClass('alert-error');
+                            });
+                        }
+                    },
+                    error: function () {
+                        console.warn("error");
+                    }
+                });
+
             });
 
             $("#dsEventModal .btn-update").click(function () {

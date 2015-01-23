@@ -74,12 +74,12 @@
 	<div class="span5 offset1">
 		<h3><?php echo t('Help') ?></h3>
 		<blockquote>
-			<p><?php echo ('After add event go to Calendar list -> show events for calendar. At now, you can manage events.'); ?></p>
+			<p><?php echo t('After add event go to Calendar list -> show events for calendar. At now, you can manage events.'); ?></p>
 		</blockquote>
-		<blockquote><p><?php echo ('Drag and drop to change date.'); ?></p></blockquote>
-		<blockquote><p><?php echo ('Click for edit details.'); ?></p></blockquote>
-		<blockquote><p><?php echo ('If you choose "All day" event you can resize event for more days.'); ?></p></blockquote>
-		<blockquote><p><?php echo ('If you choose "One day with time" event you can resize event for more days.'); ?></p></blockquote>
+		<blockquote><p><?php echo t('Drag and drop to change date.'); ?></p></blockquote>
+		<blockquote><p><?php echo t('Click for edit details.'); ?></p></blockquote>
+		<blockquote><p><?php echo t('If you choose "All day" event you can resize event for more days.'); ?></p></blockquote>
+		<blockquote><p><?php echo t('If you choose "One day with time" event you can resize event for more days.'); ?></p></blockquote>
 	</div>
 </div>
 

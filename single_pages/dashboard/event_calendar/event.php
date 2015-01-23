@@ -8,7 +8,7 @@ $form = Loader::helper('form');
 
 <?php if (empty($calendars) && ( !isset( $event_ID ) || $event_ID === null)): ?>
     <div class="alert alert-info">
-        <?php echo t('There is no calendars to add new event. Go to Add calendar to add new calendar.') ?>
+        <?php echo t(' There are no calendars to add a new event. Go to Add calendar to add a new calendar.') ?>
     </div>
 <?php else: ?>
     <div class="btn-group" style="margin-top: 10px;">

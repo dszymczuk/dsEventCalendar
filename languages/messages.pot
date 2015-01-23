@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: dsEventCalendar 1.0\n"
-"POT-Creation-Date: 2015-01-23 00:25+0100\n"
-"PO-Revision-Date: 2015-01-23 00:26+0100\n"
+"POT-Creation-Date: 2015-01-23 22:26+0100\n"
+"PO-Revision-Date: 2015-01-23 22:26+0100\n"
 "Last-Translator: \n"
 "Language-Team: dszymczuk <test>\n"
 "Language: Polish\n"
@@ -272,6 +272,29 @@ msgstr ""
 msgid "Help"
 msgstr ""
 
+#: /var/www/c5packlh/packages/dsEventCalendar/single_pages/dashboard/event_calendar/settings.php:77
+msgid ""
+"After add event go to Calendar list -> show events for calendar. At now, you "
+"can manage events."
+msgstr ""
+
+#: /var/www/c5packlh/packages/dsEventCalendar/single_pages/dashboard/event_calendar/settings.php:79
+msgid "Drag and drop to change date."
+msgstr ""
+
+#: /var/www/c5packlh/packages/dsEventCalendar/single_pages/dashboard/event_calendar/settings.php:80
+msgid "Click for edit details."
+msgstr ""
+
+#: /var/www/c5packlh/packages/dsEventCalendar/single_pages/dashboard/event_calendar/settings.php:81
+msgid "If you choose \"All day\" event you can resize event for more days."
+msgstr ""
+
+#: /var/www/c5packlh/packages/dsEventCalendar/single_pages/dashboard/event_calendar/settings.php:82
+msgid ""
+"If you choose \"One day with time\" event you can resize event for more days."
+msgstr ""
+
 #: /var/www/c5packlh/packages/dsEventCalendar/single_pages/dashboard/event_calendar/settings.php:90
 msgid "Author:"
 msgstr ""
@@ -399,7 +422,7 @@ msgstr ""
 
 #: /var/www/c5packlh/packages/dsEventCalendar/single_pages/dashboard/event_calendar/event.php:11
 msgid ""
-"There is no calendars to add new event. Go to Add calendar to add new "
+" There are no calendars to add a new event. Go to Add calendar to add a new "
 "calendar."
 msgstr ""
 

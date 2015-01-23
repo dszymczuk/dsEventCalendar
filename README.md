@@ -27,6 +27,9 @@ Version
 
 Changelog
 ----
+3.0.1
+Add translation
+
 3.0.0
 NEW VERSION - OFFICIAL RELEASE
 Calendar based on http://fullcalendar.io/

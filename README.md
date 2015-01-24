@@ -23,10 +23,13 @@ If you choose "One day with time" event you can resize event for more days.
 
 Version
 ----
-3.0.0
+3.0.2
 
 Changelog
 ----
+3.0.2
+Join all JS scripts in block
+
 3.0.1
 Add translation
 

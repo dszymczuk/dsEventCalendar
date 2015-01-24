@@ -79,7 +79,7 @@
 		<blockquote><p><?php echo t('Drag and drop to change date.'); ?></p></blockquote>
 		<blockquote><p><?php echo t('Click for edit details.'); ?></p></blockquote>
 		<blockquote><p><?php echo t('If you choose "All day" event you can resize event for more days.'); ?></p></blockquote>
-		<blockquote><p><?php echo t('If you choose "One day with time" event you can resize event for more days.'); ?></p></blockquote>
+		<blockquote><p><?php echo t('If you choose "One day with time" event you can resize event for more hours.'); ?></p></blockquote>
 	</div>
 </div>
 

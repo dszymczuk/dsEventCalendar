@@ -1,6 +1,8 @@
 dsEventCalendar
 ================
 
+[![Code Climate](https://codeclimate.com/github/dszymczuk/dsEventCalendar/badges/gpa.svg)](https://codeclimate.com/github/dszymczuk/dsEventCalendar)
+
 Description
 ----
 My first official package for Concrete 5 - Event Calendar.

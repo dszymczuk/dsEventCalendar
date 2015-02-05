@@ -61,7 +61,7 @@ $c = Page::getCurrentPage();
                 },
                 slotDuration: "00:30:00",
                 defaultTimedEventDuration: "00:30:00",
-                timeFormat: "HH:mm",
+                timeFormat: settings.timeFormat,
                 eventClick: function(calEvent, jsEvent, view) {
 
                     if(calEvent.url)

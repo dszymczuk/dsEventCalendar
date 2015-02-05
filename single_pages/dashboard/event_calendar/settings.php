@@ -28,6 +28,13 @@
 			</fieldset>
 
 			<fieldset class="control-group">
+				<label class="control-label"><?php echo t('Event time format') ?></label>
+				<div class="controls">
+					<input maxlength="255" type="text" name="timeFormat" id="timeFormat" value="<?php echo $timeFormat; ?>">
+				</div>
+			</fieldset>
+
+			<fieldset class="control-group">
 				<!-- <label class="control-label"></label> -->
 				<div class="controls">
 					<a href="http://momentjs.com/docs/#/displaying/format/" class="btn btn-primary" target="_blank"><?php echo t('Available formats') ?></a>

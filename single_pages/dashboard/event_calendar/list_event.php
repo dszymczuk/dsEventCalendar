@@ -162,7 +162,7 @@
                 },
                 slotDuration: "00:30:00",
                 defaultTimedEventDuration: "00:30:00",
-                timeFormat: "HH:mm",
+                timeFormat: settings.timeFormat,
                 eventLimit: false,
                 eventClick: function (calEvent, jsEvent, view) {
                     eventClicked = calEvent;

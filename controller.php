@@ -114,6 +114,9 @@ class dsEventCalendarPackage extends Package
         $sql = "INSERT IGNORE INTO dsEventCalendarSettings SET opt= 'default_color' , value='#808080'";
         $db->Execute($sql);
 
+        $sql = "INSERT IGNORE INTO dsEventCalendarSettings SET opt= 'timeFormat' , value='HH:mm'";
+        $db->Execute($sql);
+
 //        $sql = "INSERT IGNORE INTO dsEventCalendarSettings SET opt= 'default_name' , value='Default'";
 //        $db->Execute($sql);
     }

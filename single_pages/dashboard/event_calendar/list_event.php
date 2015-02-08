@@ -113,8 +113,6 @@
             var eventClicked = {};
             var dateInput = $('#event_date');
 
-            var trashElement = $('#dsEventCalendarTrash');
-
             var settings = {};
             var set_serv = <?php echo $settings; ?>;
 
@@ -242,9 +240,6 @@
                         }
                     }
                 ],
-                eventDragStart: function (event, jsEvent, ui, view) {
-                    trashElement.addClass('active');
-                },
                 eventDrop: function( event, delta, revertFunc, jsEvent, ui, view ) {
                     var newEventDate = event.start.subtract(delta).add(delta).format("YYYY-MM-DD HH:mm:ss");
 
@@ -269,9 +264,6 @@
                         }
                     });
 
-                },
-                eventDragStop: function(event,jsEvent) {
-                    trashElement.removeClass('active');
                 },
                 eventResize: function( event, delta, revertFunc, jsEvent, ui, view ) {
 

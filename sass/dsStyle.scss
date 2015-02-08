@@ -139,8 +139,10 @@ $blue-dark: darken($blue, 5%);
   }
 
   .container {
-    width: 35%;
-    min-width: 500px;
+    min-width: 35%;
+    max-width: 90%;
+    max-height: 80%;
+    overflow-y: auto;
     background-color: #fff;
     border: 1px solid $gray;
     text-align: center;

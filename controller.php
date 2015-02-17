@@ -7,7 +7,7 @@ class dsEventCalendarPackage extends Package
 
     protected $pkgHandle = 'dsEventCalendar';
     protected $appVersionRequired = '5.5.0';
-    protected $pkgVersion = '3.0.29';
+    protected $pkgVersion = '3.0.30';
 
     public function getPackageDescription()
     {
@@ -71,14 +71,14 @@ class dsEventCalendarPackage extends Package
             $p2->update(array('cName' => t('Calendars list'), 'cDescription' => ''));
         }
 
-        $p3 = SinglePage::add('/dashboard/event_calendar/calendar', $pkg);
-        if (is_object($p3)) {
-            $p3->update(array('cName' => t('Add / edit calendar'), 'cDescription' => ''));
-        }
-
         $p4 = SinglePage::add('/dashboard/event_calendar/list_event', $pkg);
         if (is_object($p4)) {
             $p4->update(array('cName' => t('Events list'), 'cDescription' => ''));
+        }
+
+        $p3 = SinglePage::add('/dashboard/event_calendar/calendar', $pkg);
+        if (is_object($p3)) {
+            $p3->update(array('cName' => t('Add / edit calendar'), 'cDescription' => ''));
         }
 
         $p5 = SinglePage::add('/dashboard/event_calendar/event', $pkg);
@@ -94,6 +94,11 @@ class dsEventCalendarPackage extends Package
         $p7 = SinglePage::add('/dashboard/event_calendar/settings', $pkg);
         if (is_object($p7)) {
             $p7->update(array('cName' => t('Settings'), 'cDescription' => ''));
+        }
+
+        $p8 = SinglePage::add('/dashboard/event_calendar/help', $pkg);
+        if (is_object($p8)) {
+            $p8->update(array('cName' => t('Help'), 'cDescription' => ''));
         }
     }
 

@@ -8,6 +8,7 @@ class DashboardEventCalendarSettingsController extends Controller
     {
         $this->addHeaderItem(Loader::helper('html')->css('colorpicker.min.css', 'dsEventCalendar'));
         $this->addHeaderItem(Loader::helper('html')->javascript('colorpicker.min.js', 'dsEventCalendar'));
+        $this->addHeaderItem(Loader::helper('html')->css('dsStyle.css', 'dsEventCalendar'));
     }
 
     public function view()

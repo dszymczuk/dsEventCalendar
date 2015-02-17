@@ -1,11 +1,14 @@
 <?php defined('C5_EXECUTE') or die('Access denied.'); ?>
 <?php echo Loader::helper('concrete/dashboard')->getDashboardPaneHeaderWrapper(t('Event Calendar')); ?>
 
-
+<?php include_once('dsEventCalendarMenu.php'); ?>
 
 <div class="row">
 	<div class="span5">
 		<h3><?php echo t('Settings') ?></h3>
+
+
+
 		<form class="form-horizontal" method="post" id="ccm-multilingual-page-report-form" style="margin-top: 15px;">
 
 			<fieldset class="control-group">

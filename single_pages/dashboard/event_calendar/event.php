@@ -3,19 +3,17 @@ $form = Loader::helper('form');
 ?>
 
 <?php echo Loader::helper('concrete/dashboard')->getDashboardPaneHeaderWrapper(t('Event Calendar')); ?>
-<h3><?php echo t('Add / edit event') ?></h3>
 
+<?php include_once('dsEventCalendarMenu.php'); ?>
+
+<h3><?php echo t('Add / edit event') ?></h3>
 
 <?php if (empty($calendars) && ( !isset( $event_ID ) || $event_ID === null)): ?>
     <div class="alert alert-info">
         <?php echo t(' There are no calendars to add a new event. Go to Add calendar to add a new calendar.') ?>
     </div>
 <?php else: ?>
-    <div class="btn-group" style="margin-top: 10px;">
-        <a class="btn"
-           href="<?php echo View::url('dashboard/event_calendar/list_event') ?>"><?php echo t('Return to calendar list') ?></a>
-    </div>
-
+    
     <form class="form-horizontal" method="post" id="ccm-multilingual-page-report-form" style="margin-top: 35px;">
         <fieldset class="control-group">
             <label class="control-label"><?php echo t('Event title') ?>  *</label>

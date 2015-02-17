@@ -1,10 +1,8 @@
 <?php defined('C5_EXECUTE') or die('Access denied.'); ?>
 <?php echo Loader::helper('concrete/dashboard')->getDashboardPaneHeaderWrapper(t('Event Calendar')); ?>
 
-    <div class="btn-group" style="margin: 10px 0;">
-        <a class="btn"
-           href="<?php echo View::url('dashboard/event_calendar/list_event') ?>"><?php echo t('Return to event list') ?></a>
-    </div>
+<?php include_once('dsEventCalendarMenu.php'); ?>
+
 
     <h3><?php echo t('List of types') ?></h3>
 

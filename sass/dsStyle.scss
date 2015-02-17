@@ -59,6 +59,14 @@ $blue-dark: darken($blue, 5%);
   cursor: pointer;
 }
 
+.dsMenu {
+  text-align: center;
+  .btn-toolbar{
+    display: inline-block;
+    margin-top: 0px;
+  }
+}
+
 #dsEventCalendar {
   .fc-event,
   .fc-event:hover,

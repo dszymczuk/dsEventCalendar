@@ -3,9 +3,9 @@
 
 <?php echo Loader::helper('concrete/dashboard')->getDashboardPaneHeaderWrapper(t('Event Calendar')); ?>
 
+<?php include_once('dsEventCalendarMenu.php'); ?>
 
 <h3><?php echo t('List of events') ?></h3>
-
 
 <?php if (empty($events)): ?>
     <div class="margin-top-10"></div>

@@ -62,20 +62,49 @@ $form = Loader::helper('form');
             </div>
         </fieldset>
 
-        <fieldset class="control-group">
-            <label class="control-label"><?php echo t('Event date') ?> *</label>
+        <div class="row">
+            <div class="span3">
+                <fieldset class="control-group">
+                    <label class="control-label"><?php echo t('Event start date') ?> *</label>
 
-            <div class="controls">
-                <input class="span6" maxlength="255" type="text" name="event_date" id="event_date" value="<?php echo ( isset( $event_date ) ) ? $event_date : ''; ?>">
-            </div>
-        </fieldset>
-        <fieldset class="control-group event_withtime">
-            <label class="control-label"><?php echo t('Event time') ?></label>
+                    <div class="controls">
+                        <input class="span3" maxlength="255" type="text" name="event_start_date" id="event_start_date" value="<?php echo ( isset( $event_start_date ) ) ? $event_start_date : ''; ?>">
+                    </div>
+                </fieldset>
 
-            <div class="controls">
-                <input class="span6" maxlength="255" type="text" name="event_time" id="event_time" value="<?php echo ( isset( $event_time ) ) ? $event_date : ''; ?>">
             </div>
-        </fieldset>
+            <div class="offset2 span2">
+                <fieldset class="control-group event_withtime">
+                    <label class="control-label"><?php echo t('Event start time') ?></label>
+
+                    <div class="controls">
+                        <input class="span3" maxlength="255" type="text" name="event_start_time" id="event_start_time" value="<?php echo ( isset( $event_start_time ) ) ? $event_start_date : ''; ?>">
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="span3">
+                <fieldset class="control-group">
+                    <label class="control-label"><?php echo t('Event end date') ?> *</label>
+
+                    <div class="controls">
+                        <input class="span3" maxlength="255" type="text" name="event_end_date" id="event_end_date" value="<?php echo ( isset( $event_end_date ) ) ? $event_end_date : ''; ?>">
+                    </div>
+                </fieldset>
+
+            </div>
+            <div class="offset2 span2">
+                <fieldset class="control-group event_withtime">
+                    <label class="control-label"><?php echo t('Event end time') ?></label>
+
+                    <div class="controls">
+                        <input class="span3" maxlength="255" type="text" name="event_end_time" id="event_end_time" value="<?php echo ( isset( $event_end_time ) ) ? $event_end_time : ''; ?>">
+                    </div>
+                </fieldset>
+            </div>
+        </div>
 
         <fieldset class="control-group">
             <label class="control-label"><?php echo t('Event type - color') ?> *</label>
@@ -117,7 +146,7 @@ $form = Loader::helper('form');
 
     <script>
         $(document).ready(function () {
-            $('#event_date').datetimepicker({
+            $('#event_start_date,#event_end_date').datetimepicker({
                 lang: 'en',
                 format: "Y-m-d",
                 todayButton: true,
@@ -126,7 +155,7 @@ $form = Loader::helper('form');
                 closeOnDateSelect:true
             }).datepicker('setDate', new Date());
 
-            $('#event_time').datetimepicker({
+            $('#event_start_time,#event_end_time').datetimepicker({
                 datepicker: false,
                 lang: 'en',
                 format: "H:i",
@@ -180,12 +209,14 @@ $form = Loader::helper('form');
                 button_wittime.removeClass('btn-primary');
                 $('.event_withtime').hide();
                 button_allday.addClass('btn-primary');
+                $("input#event_end_date").prop('disabled', false);
             }
 
             function setWithTimeButton() {
                 button_allday.removeClass('btn-primary');
                 $('.event_withtime').show();
                 button_wittime.addClass('btn-primary');
+                $("input#event_end_date").prop('disabled',true );
             }
 
             setAllDayButton();

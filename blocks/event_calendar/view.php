@@ -63,14 +63,30 @@ $c = Page::getCurrentPage();
                 defaultTimedEventDuration: "00:30:00",
                 timeFormat: settings.timeFormat,
                 eventClick: function(calEvent, jsEvent, view) {
-
                     if(calEvent.url)
                         return;
 
-                    var start_day = calEvent.start.format(settings.formatEvent);
-                    var end_day = "";
-                     if(calEvent.end != null)
-                        end_day = " - " + calEvent.end.format(settings.formatEvent);
+                    var start_day;
+                    var end_day;
+
+                    if(calEvent.allDayEvent == 0)
+                    {
+                        //with time
+                        start_day = calEvent.start.format(settings.timeFormat);
+                        end_day = "";
+                        if(calEvent.end != null)
+                            end_day = " - " + calEvent.end.format(settings.timeFormat);
+                            end_day += " " + calEvent.end.format(settings.formatEvent);
+
+                    }
+                    else
+                    {
+                        //witout time
+                        start_day = calEvent.start.format(settings.formatEvent);
+                        end_day = "";
+                        if(calEvent.end != null)
+                            end_day = " - " + calEvent.end.format(settings.formatEvent);
+                    }
 
                     modal.find('.header .title').text(calEvent.title);
                     modal.find('.content .time').text(start_day + end_day);

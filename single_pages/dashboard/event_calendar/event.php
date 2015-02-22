@@ -146,13 +146,20 @@ $form = Loader::helper('form');
 
     <script>
         $(document).ready(function () {
+            var allDayEvent = true;
             $('#event_start_date,#event_end_date').datetimepicker({
                 lang: 'en',
-                format: "Y-m-d",
+                format: "d F Y",
                 todayButton: true,
                 dayOfWeekStart: 1,
                 timepicker:false,
-                closeOnDateSelect:true
+                closeOnDateSelect:true,
+                onSelectDate: function(ct){
+                    var date = new Date(ct);
+                    if(allDayEvent) {
+                        $("#event_end_date").val(moment(date).format("DD MMMM YYYY"));
+                    }
+                }
             }).datepicker('setDate', new Date());
 
             $('#event_start_time,#event_end_time').datetimepicker({
@@ -210,13 +217,15 @@ $form = Loader::helper('form');
                 $('.event_withtime').hide();
                 button_allday.addClass('btn-primary');
                 $("input#event_end_date").prop('disabled', false);
+                allDayEvent = false;
             }
 
             function setWithTimeButton() {
                 button_allday.removeClass('btn-primary');
                 $('.event_withtime').show();
                 button_wittime.addClass('btn-primary');
-                $("input#event_end_date").prop('disabled',true );
+                $("input#event_end_date").val($('input#event_start_date').val()).prop('disabled',true );
+                allDayEvent = true;
             }
 
             setAllDayButton();

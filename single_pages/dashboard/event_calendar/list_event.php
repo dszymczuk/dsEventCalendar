@@ -432,9 +432,7 @@
                 if (button_url.hasClass('btn-primary'))
                     event_data.eventDescription = "";
 
-                console.log(event_data);
-
-                /*$.ajax({
+                $.ajax({
                     type: "post",
                     url: '<?php echo $this->action("updateEvent");?>',
                     data: event_data,
@@ -467,7 +465,7 @@
                     error: function () {
                         console.warn("error");
                     }
-                });*/
+                });
 
             });
 

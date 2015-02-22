@@ -6,8 +6,9 @@ class DashboardEventCalendarEventController extends Controller
     public function on_before_render()
     {
         $this->addHeaderItem(Loader::helper('html')->css('jquery.datetimepicker.min.css', 'dsEventCalendar'));
-        $this->addHeaderItem(Loader::helper('html')->javascript('jquery.datetimepicker.min.js', 'dsEventCalendar'));
         $this->addHeaderItem(Loader::helper('html')->css('dsStyle.css', 'dsEventCalendar'));
+        $this->addHeaderItem(Loader::helper('html')->javascript('moment.min.js', 'dsEventCalendar'));
+        $this->addHeaderItem(Loader::helper('html')->javascript('jquery.datetimepicker.min.js', 'dsEventCalendar'));
     }
 
     public function view()
@@ -36,14 +37,15 @@ class DashboardEventCalendarEventController extends Controller
 
 
             if (!$isSomeValueEmpty) {
-                $time = $this->post('event_start_time');
+                $startDate = date_format(date_create($_POST['event_start_date']),"Y-m-d");
+                $startTime = $this->post('event_start_time');
                 $date = date_create($_POST['event_end_date']);
                 $date_end = date_format(date_add($date, date_interval_create_from_date_string('1 day')),"Y-m-d");
-                if(!empty($time))
+                if(!empty($startTime))
                 {
                     $isAllDay = 0;
-                    $date_end = $_POST['event_start_date']." ".$_POST['event_end_time'];
-                    $_POST['event_start_date'] = $_POST['event_start_date']." ".$_POST['event_start_time'];
+                    $date_end = $startDate." ".$_POST['event_end_time'];
+                    $startDate = $startDate." ".$_POST['event_start_time'];
                 }
 
                 $sql = "INSERT INTO dsEventCalendarEvents (calendarID,title,date,type,description,url,end,allDayEvent) VALUES (?,?,?,?,?,?,?,?)";
@@ -51,7 +53,7 @@ class DashboardEventCalendarEventController extends Controller
                 $args = array(
                     $this->post('event_calendarID'),
                     $this->post('event_title'),
-                    $this->post('event_start_date'),
+                    $startDate,
                     $this->post('event_type'),
                     $this->post('event_description'),
                     $this->post('event_url'),

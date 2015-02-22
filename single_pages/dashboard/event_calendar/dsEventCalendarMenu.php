@@ -1,7 +1,8 @@
 <div class="dsMenu">
 	<div class="btn-toolbar">
 		<div class="btn-group">
-			<a class="btn btn-primary" href="<?php echo View::url('dashboard/event_calendar/list_calendar') ?>"><?php echo t('Calendars list'); ?>&nbsp;/&nbsp;<?php echo t('Manage events'); ?></a>
+			<a class="btn btn-primary" href="<?php echo View::url('dashboard/event_calendar/list_calendar') ?>"><?php echo t('Calendars list'); ?></a>
+			<a class="btn btn-primary" href="<?php echo View::url('dashboard/event_calendar/list_calendar') ?>"><?php echo t('Events list'); ?></a>
 		</div>
 
 		<div class="btn-group">

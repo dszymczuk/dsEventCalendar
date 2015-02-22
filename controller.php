@@ -96,10 +96,10 @@ class dsEventCalendarPackage extends Package
             $p7->update(array('cName' => t('Settings'), 'cDescription' => ''));
         }
 
-        $p8 = SinglePage::add('/dashboard/event_calendar/help', $pkg);
-        if (is_object($p8)) {
-            $p8->update(array('cName' => t('Help'), 'cDescription' => ''));
-        }
+//        $p8 = SinglePage::add('/dashboard/event_calendar/help', $pkg);
+//        if (is_object($p8)) {
+//            $p8->update(array('cName' => t('Help'), 'cDescription' => ''));
+//        }
     }
 
     private function installSettings()

@@ -23,10 +23,22 @@ If you choose "One day with time" event you can resize event for more days.
 
 Version
 ----
-3.0.2
+3.1
 
 Changelog
 ----
+3.1
+IMPORTANT !
+Before update, please! make backup of database - I have to improve settings in database (remove duplicate data).
+
+Change:
+* start and end date/time
+* time in modal
+* time format
+* add menu in dashboard to better navigation
+* bug fixes
+
+
 3.0.2
 Join all JS scripts in block
 

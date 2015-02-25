@@ -43,6 +43,20 @@ $c = Page::getCurrentPage();
             var settings = {};
             var set_serv = <?php echo $settings; ?>;
 
+            if (!Object.keys) {
+                Object.keys = function(obj) {
+                    var keys = [];
+
+                    for (var i in obj) {
+                        if (obj.hasOwnProperty(i)) {
+                            keys.push(i);
+                        }
+                    }
+
+                    return keys;
+                };
+            }
+
             for(var key in set_serv) {
                 var value = set_serv[key];
                 var k = Object.keys(value);

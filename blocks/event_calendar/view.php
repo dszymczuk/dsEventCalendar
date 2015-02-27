@@ -43,6 +43,20 @@ $c = Page::getCurrentPage();
             var settings = {};
             var set_serv = <?php echo $settings; ?>;
 
+            if (!Object.keys) {
+                Object.keys = function(obj) {
+                    var keys = [];
+
+                    for (var i in obj) {
+                        if (obj.hasOwnProperty(i)) {
+                            keys.push(i);
+                        }
+                    }
+
+                    return keys;
+                };
+            }
+
             for(var key in set_serv) {
                 var value = set_serv[key];
                 var k = Object.keys(value);
@@ -61,16 +75,32 @@ $c = Page::getCurrentPage();
                 },
                 slotDuration: "00:30:00",
                 defaultTimedEventDuration: "00:30:00",
-                timeFormat: "HH:mm",
+                timeFormat: settings.timeFormat,
                 eventClick: function(calEvent, jsEvent, view) {
-
                     if(calEvent.url)
                         return;
 
-                    var start_day = calEvent.start.format(settings.formatEvent);
-                    var end_day = "";
-                     if(calEvent.end != null)
-                        end_day = " - " + calEvent.end.format(settings.formatEvent);
+                    var start_day;
+                    var end_day;
+
+                    if(calEvent.allDayEvent == 0)
+                    {
+                        //with time
+                        start_day = calEvent.start.format(settings.timeFormat);
+                        end_day = "";
+                        if(calEvent.end != null)
+                            end_day = " - " + calEvent.end.format(settings.timeFormat);
+                            end_day += " " + calEvent.end.format(settings.formatEvent);
+
+                    }
+                    else
+                    {
+                        //witout time
+                        start_day = calEvent.start.format(settings.formatEvent);
+                        end_day = "";
+                        if(calEvent.end != null)
+                            end_day = " - " + calEvent.end.format(settings.formatEvent);
+                    }
 
                     modal.find('.header .title').text(calEvent.title);
                     modal.find('.content .time').text(start_day + end_day);

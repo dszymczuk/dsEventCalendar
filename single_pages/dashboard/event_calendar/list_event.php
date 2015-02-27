@@ -3,9 +3,9 @@
 
 <?php echo Loader::helper('concrete/dashboard')->getDashboardPaneHeaderWrapper(t('Event Calendar')); ?>
 
+<?php include_once('dsEventCalendarMenu.php'); ?>
 
 <h3><?php echo t('List of events') ?></h3>
-
 
 <?php if (empty($events)): ?>
     <div class="margin-top-10"></div>
@@ -28,17 +28,59 @@
 
                             <div class="controls">
                                 <input maxlength="255" type="text" name="event_title" id="event_title"
-                                       value="<?php echo (isset($event_title)) ? $event_title : ''; ?>">
+                                       value="">
                             </div>
                         </fieldset>
-                        <fieldset class="control-group">
-                            <label class="control-label"><?php echo t('Event (start) date') ?> *</label>
 
-                            <div class="controls">
-                                <input maxlength="255" type="text" name="event_date" id="event_date"
-                                       value="<?php echo (isset($event_date)) ? $event_date : ''; ?>">
+
+
+                        <div class="row">
+                            <div class="span3">
+                                <fieldset class="control-group">
+                                    <label class="control-label"><?php echo t('Event start date') ?> *</label>
+
+                                    <div class="controls">
+                                        <input class="span3" maxlength="255" type="text" name="event_start_date" id="event_start_date" value="">
+                                    </div>
+                                </fieldset>
+
                             </div>
-                        </fieldset>
+                            <div class="offset2 span2">
+                                <fieldset class="control-group event_withtime">
+                                    <label class="control-label"><?php echo t('Event start time') ?></label>
+
+                                    <div class="controls">
+                                        <input class="span3" maxlength="255" type="text" name="event_start_time" id="event_start_time" value="">
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="span3">
+                                <fieldset class="control-group">
+                                    <label class="control-label"><?php echo t('Event end date') ?> *</label>
+
+                                    <div class="controls">
+                                        <input class="span3" maxlength="255" type="text" name="event_end_date" id="event_end_date" value="">
+                                    </div>
+                                </fieldset>
+
+                            </div>
+                            <div class="offset2 span2">
+                                <fieldset class="control-group event_withtime">
+                                    <label class="control-label"><?php echo t('Event end time') ?></label>
+
+                                    <div class="controls">
+                                        <input class="span3" maxlength="255" type="text" name="event_end_time" id="event_end_time" value="">
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+
+
+
+
                         <fieldset class="control-group">
                             <label class="control-label"><?php echo t('Event type') ?> *</label>
 
@@ -75,7 +117,7 @@
 
                             <div class="controls">
                                 <textarea rows="5" name="event_description"
-                                          id="event_description"><?php echo (isset($event_description)) ? $event_description : ''; ?></textarea>
+                                          id="event_description"></textarea>
                             </div>
                         </fieldset>
                         <fieldset class="control-group event_url" style="display: none;">
@@ -83,7 +125,7 @@
 
                             <div class="controls">
                                 <input maxlength="255" type="text" name="event_url" id="event_url"
-                                       value="<?php echo (isset($event_url)) ? $event_url : ''; ?>">
+                                       value="">
                             </div>
 
                         </fieldset>
@@ -111,12 +153,23 @@
 
             var updateMessage = $("#update_message");
             var eventClicked = {};
-            var dateInput = $('#event_date');
-
-            var trashElement = $('#dsEventCalendarTrash');
 
             var settings = {};
             var set_serv = <?php echo $settings; ?>;
+
+            if (!Object.keys) {
+                Object.keys = function(obj) {
+                    var keys = [];
+
+                    for (var i in obj) {
+                        if (obj.hasOwnProperty(i)) {
+                            keys.push(i);
+                        }
+                    }
+
+                    return keys;
+                };
+            }
 
             for (var key in set_serv) {
                 var value = set_serv[key];
@@ -162,12 +215,10 @@
                 },
                 slotDuration: "00:30:00",
                 defaultTimedEventDuration: "00:30:00",
-                timeFormat: "HH:mm",
+                timeFormat: settings.timeFormat,
                 eventLimit: false,
                 eventClick: function (calEvent, jsEvent, view) {
                     eventClicked = calEvent;
-
-
 
                     if (calEvent.description == "" || calEvent.description == null)
                         setURLButton();
@@ -182,31 +233,69 @@
 
 
                     modal.find('.header .title').text(calEvent.title);
-                    modal.find('.content .time').text(start_day + end_day);
-                    modal.find('input#event_title').val(calEvent.title);
-                    modal.find('input#event_date').val(calEvent.start_time);
 
-                    if(calEvent.allDayEvent == "1")
+                    if(calEvent.allDayEvent == 0)
                     {
-                        dateInput.datetimepicker({
-                            lang: 'en',
-                            format: "Y-m-d",
-                            todayButton: true,
-                            dayOfWeekStart: 1,
-                            timepicker:false,
-                            closeOnDateSelect:true
-                        });
+                        //with time
+                        start_day = calEvent.start.format(settings.timeFormat);
+                        end_day = "";
+                        if(calEvent.end != null)
+                            end_day = " - " + calEvent.end.format(settings.timeFormat);
+                        end_day += " " + calEvent.end.format(settings.formatEvent);
+
                     }
                     else
                     {
-                        dateInput.datetimepicker({
-                            lang: 'en',
-                            format: "Y-m-d H:i:s",
-                            step: 30,
-                            todayButton: true,
-                            dayOfWeekStart: 1
-                        });
+                        //witout time
+                        start_day = calEvent.start.format(settings.formatEvent);
+                        end_day = "";
+                        if(calEvent.end != null)
+                            end_day = " - " + calEvent.end.format(settings.formatEvent);
                     }
+
+                    modal.find('.content .time').text(start_day + end_day);
+
+                    modal.find('input#event_title').val(calEvent.title);
+
+                    console.warn(calEvent);
+
+
+
+                    modal.find("#event_start_date").val(calEvent.start.format(settings.formatEvent));
+                    modal.find("#event_end_date").val(calEvent.end.format(settings.formatEvent));
+
+                    modal.find(".event_withtime").css('display','none');
+                    modal.find("#event_end_date").prop('disabled', false);
+                    if(calEvent.allDayEvent == 0) {
+                        modal.find(".event_withtime").css('display','block');
+                        modal.find("#event_start_time").val(calEvent.start.format(settings.timeFormat));
+                        modal.find("#event_end_time").val(calEvent.end.format(settings.timeFormat));
+                        modal.find("#event_end_date").prop('disabled',true);
+                    }
+
+
+
+                    $('#event_start_date,#event_end_date').datetimepicker({
+                        lang: 'en',
+                        format: "d F Y",
+                        todayButton: true,
+                        dayOfWeekStart: 1,
+                        timepicker:false,
+                        closeOnDateSelect:true,
+                        onSelectDate: function(ct){
+                            var date = new Date(ct);
+                            if(calEvent.allDayEvent == 0) {
+                                modal.find("#event_end_date").val(moment(date).format(settings.formatEvent));
+                            }
+                        }
+                    });
+
+                    $('#event_start_time,#event_end_time').datetimepicker({
+                        datepicker: false,
+                        lang: 'en',
+                        format: "H:i",
+                        step: 30
+                    });
 
                     modal.find('textarea#event_description').val(calEvent.description);
                     modal.find('input#event_url').val(calEvent.url);
@@ -242,9 +331,6 @@
                         }
                     }
                 ],
-                eventDragStart: function (event, jsEvent, ui, view) {
-                    trashElement.addClass('active');
-                },
                 eventDrop: function( event, delta, revertFunc, jsEvent, ui, view ) {
                     var newEventDate = event.start.subtract(delta).add(delta).format("YYYY-MM-DD HH:mm:ss");
 
@@ -269,9 +355,6 @@
                         }
                     });
 
-                },
-                eventDragStop: function(event,jsEvent) {
-                    trashElement.removeClass('active');
                 },
                 eventResize: function( event, delta, revertFunc, jsEvent, ui, view ) {
 
@@ -347,7 +430,10 @@
                     calendarID: calendarID,
                     eventID: eventID,
                     eventTitle: $("#event_title").val(),
-                    eventDate: $("#event_date").val(),
+                    eventStartDate: $("#event_start_date").val(),
+                    eventStartTime: $("#event_start_time").val(),
+                    eventEndDate: $("#event_end_date").val(),
+                    eventEndTime: $("#event_end_time").val(),
                     eventType: $("#event_type").val(),
                     eventDescription: $("#event_description").val(),
                     eventURL: $("#event_url").val()

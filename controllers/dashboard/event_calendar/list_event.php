@@ -53,10 +53,25 @@ class DashboardEventCalendarListEventController extends Controller
             $calendarID = $this->post('calendarID');
             $eventID = $this->post('eventID');
 
+
+            $date = date_create($_POST['eventEndDate']);
+            if($_POST['eventStartDate'] != $_POST['eventEndDate'])
+                $date = date_add($date, date_interval_create_from_date_string('1 day'));
+
+
+            $date_end = date_format($date,"Y-m-d");
+
+            $startDate = trim($this->post('eventStartDate')." ".$this->post('eventStartTime'));
+            $endDate = trim($date_end." ".$this->post('eventEndTime'));
+
+            $startDate = new DateTime($startDate);
+            $endDate = new DateTime($endDate);
+
             $sql = "UPDATE dsEventCalendarEvents SET
                 calendarID = ?,
                 title = ?,
                 date = ?,
+                end = ?,
                 type = ?,
                 description = ?,
                 url = ?
@@ -65,7 +80,8 @@ class DashboardEventCalendarListEventController extends Controller
             $args = array(
                 $this->post('calendarID'),
                 $this->post('eventTitle'),
-                $this->post('eventDate'),
+                $startDate->format('Y-m-d H:i:s'),
+                $endDate->format('Y-m-d H:i:s'),
                 $this->post('eventType'),
                 $this->post('eventDescription'),
                 $this->post('eventURL')

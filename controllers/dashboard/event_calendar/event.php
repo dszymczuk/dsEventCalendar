@@ -6,6 +6,8 @@ class DashboardEventCalendarEventController extends Controller
     public function on_before_render()
     {
         $this->addHeaderItem(Loader::helper('html')->css('jquery.datetimepicker.min.css', 'dsEventCalendar'));
+        $this->addHeaderItem(Loader::helper('html')->css('dsStyle.css', 'dsEventCalendar'));
+        $this->addHeaderItem(Loader::helper('html')->javascript('moment.min.js', 'dsEventCalendar'));
         $this->addHeaderItem(Loader::helper('html')->javascript('jquery.datetimepicker.min.js', 'dsEventCalendar'));
     }
 
@@ -20,7 +22,9 @@ class DashboardEventCalendarEventController extends Controller
             $validateArray = $_POST;
             unset($validateArray['event_url']);
             unset($validateArray['event_description']);
-            unset($validateArray['event_time']);
+            unset($validateArray['event_start_time']);
+            unset($validateArray['event_end_date']);
+            unset($validateArray['event_end_time']);
             foreach($validateArray as $vA)
             {
                 if($vA === "")
@@ -31,30 +35,40 @@ class DashboardEventCalendarEventController extends Controller
             }
 
 
+
             if (!$isSomeValueEmpty) {
-                if($this->post('event_time') !== '')
+                $startDate = date_format(date_create($_POST['event_start_date']),"Y-m-d");
+                $startTime = $this->post('event_start_time');
+                $date = date_create($_POST['event_end_date']);
+                $date_end = date_format(date_add($date, date_interval_create_from_date_string('1 day')),"Y-m-d");
+                if(!empty($startTime))
                 {
                     $isAllDay = 0;
-                    $_POST['event_date'] = $_POST['event_date']." ".$_POST['event_time'];
+                    $date_end = $startDate." ".$_POST['event_end_time'];
+                    $startDate = $startDate." ".$_POST['event_start_time'];
                 }
 
-                $sql = "INSERT INTO dsEventCalendarEvents (calendarID,title,date,type,description,url,allDayEvent) VALUES (?,?,?,?,?,?,?)";
+                $sql = "INSERT INTO dsEventCalendarEvents (calendarID,title,date,type,description,url,end,allDayEvent) VALUES (?,?,?,?,?,?,?,?)";
 
                 $args = array(
                     $this->post('event_calendarID'),
                     $this->post('event_title'),
-                    $this->post('event_date'),
+                    $startDate,
                     $this->post('event_type'),
                     $this->post('event_description'),
                     $this->post('event_url'),
+                    $date_end,
                     $isAllDay
                 );
+
 
                 $db->Execute($sql, $args);
 
                 $this->set('event_title', "");
-                $this->set('event_date', "");
-                $this->set('event_time', "");
+                $this->set('event_start_date', "");
+                $this->set('event_start_time', "");
+                $this->set('event_end_date', "");
+                $this->set('event_end_time', "");
                 $this->set('event_type', "");
                 $this->set('event_description', "");
                 $this->set('event_url', "");
@@ -62,8 +76,10 @@ class DashboardEventCalendarEventController extends Controller
                 unset($_POST);
             } else {
                 $this->set('event_title', $this->post('event_title'));
-                $this->set('event_date', $this->post('event_date'));
-                $this->set('event_time', $this->post('event_time'));
+                $this->set('event_start_date', $this->post('event_start_date'));
+                $this->set('event_start_time', $this->post('event_start_time'));
+                $this->set('event_end_date', $this->post('event_end_date'));
+                $this->set('event_end_time', $this->post('event_end_time'));
                 $this->set('event_type', $this->post('event_type'));
                 $this->set('event_description', $this->post('event_description'));
                 $this->set('event_url', $this->post('event_url'));

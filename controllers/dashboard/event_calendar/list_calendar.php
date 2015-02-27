@@ -2,6 +2,10 @@
 
 class DashboardEventCalendarListCalendarController extends Controller
 {
+    public function on_before_render()
+    {
+        $this->addHeaderItem(Loader::helper('html')->css('dsStyle.css', 'dsEventCalendar'));
+    }
 
     public function view()
     {

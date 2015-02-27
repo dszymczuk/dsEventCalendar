@@ -2,14 +2,17 @@
 ?>
 
 <?php echo Loader::helper('concrete/dashboard')->getDashboardPaneHeaderWrapper(t('Event Calendar')); ?>
+
+<?php include_once('dsEventCalendarMenu.php'); ?>
+
+    <h3><?php echo t('List of calendars') ?></h3>
+    
     <div class="alert alert-success" id="success" style="display: none">
         <?php echo t('Calendar with all events was deleted') ?>
     </div>
     <div class="alert alert-danger" id="error" style="display: none">
         <?php echo t('Something wrong in delete. Try again') ?>
     </div>
-
-    <h3><?php echo t('List of calendars') ?></h3>
 
 <?php if (empty($calendars)): ?>
     <div class="alert alert-info">

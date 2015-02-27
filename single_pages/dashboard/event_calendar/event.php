@@ -3,19 +3,17 @@ $form = Loader::helper('form');
 ?>
 
 <?php echo Loader::helper('concrete/dashboard')->getDashboardPaneHeaderWrapper(t('Event Calendar')); ?>
-<h3><?php echo t('Add / edit event') ?></h3>
 
+<?php include_once('dsEventCalendarMenu.php'); ?>
+
+<h3><?php echo t('Add / edit event') ?></h3>
 
 <?php if (empty($calendars) && ( !isset( $event_ID ) || $event_ID === null)): ?>
     <div class="alert alert-info">
         <?php echo t(' There are no calendars to add a new event. Go to Add calendar to add a new calendar.') ?>
     </div>
 <?php else: ?>
-    <div class="btn-group" style="margin-top: 10px;">
-        <a class="btn"
-           href="<?php echo View::url('dashboard/event_calendar/list_event') ?>"><?php echo t('Return to calendar list') ?></a>
-    </div>
-
+    
     <form class="form-horizontal" method="post" id="ccm-multilingual-page-report-form" style="margin-top: 35px;">
         <fieldset class="control-group">
             <label class="control-label"><?php echo t('Event title') ?>  *</label>
@@ -64,20 +62,49 @@ $form = Loader::helper('form');
             </div>
         </fieldset>
 
-        <fieldset class="control-group">
-            <label class="control-label"><?php echo t('Event date') ?> *</label>
+        <div class="row">
+            <div class="span3">
+                <fieldset class="control-group">
+                    <label class="control-label"><?php echo t('Event start date') ?> *</label>
 
-            <div class="controls">
-                <input class="span6" maxlength="255" type="text" name="event_date" id="event_date" value="<?php echo ( isset( $event_date ) ) ? $event_date : ''; ?>">
-            </div>
-        </fieldset>
-        <fieldset class="control-group event_withtime">
-            <label class="control-label"><?php echo t('Event time') ?></label>
+                    <div class="controls">
+                        <input class="span3" maxlength="255" type="text" name="event_start_date" id="event_start_date" value="<?php echo ( isset( $event_start_date ) ) ? $event_start_date : ''; ?>">
+                    </div>
+                </fieldset>
 
-            <div class="controls">
-                <input class="span6" maxlength="255" type="text" name="event_time" id="event_time" value="<?php echo ( isset( $event_time ) ) ? $event_date : ''; ?>">
             </div>
-        </fieldset>
+            <div class="offset2 span2">
+                <fieldset class="control-group event_withtime">
+                    <label class="control-label"><?php echo t('Event start time') ?></label>
+
+                    <div class="controls">
+                        <input class="span3" maxlength="255" type="text" name="event_start_time" id="event_start_time" value="<?php echo ( isset( $event_start_time ) ) ? $event_start_date : ''; ?>">
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="span3">
+                <fieldset class="control-group">
+                    <label class="control-label"><?php echo t('Event end date') ?> *</label>
+
+                    <div class="controls">
+                        <input class="span3" maxlength="255" type="text" name="event_end_date" id="event_end_date" value="<?php echo ( isset( $event_end_date ) ) ? $event_end_date : ''; ?>">
+                    </div>
+                </fieldset>
+
+            </div>
+            <div class="offset2 span2">
+                <fieldset class="control-group event_withtime">
+                    <label class="control-label"><?php echo t('Event end time') ?></label>
+
+                    <div class="controls">
+                        <input class="span3" maxlength="255" type="text" name="event_end_time" id="event_end_time" value="<?php echo ( isset( $event_end_time ) ) ? $event_end_time : ''; ?>">
+                    </div>
+                </fieldset>
+            </div>
+        </div>
 
         <fieldset class="control-group">
             <label class="control-label"><?php echo t('Event type - color') ?> *</label>
@@ -119,16 +146,23 @@ $form = Loader::helper('form');
 
     <script>
         $(document).ready(function () {
-            $('#event_date').datetimepicker({
+            var allDayEvent = true;
+            $('#event_start_date,#event_end_date').datetimepicker({
                 lang: 'en',
-                format: "Y-m-d",
+                format: "d F Y",
                 todayButton: true,
                 dayOfWeekStart: 1,
                 timepicker:false,
-                closeOnDateSelect:true
+                closeOnDateSelect:true,
+                onSelectDate: function(ct){
+                    var date = new Date(ct);
+                    if(allDayEvent) {
+                        $("#event_end_date").val(moment(date).format("DD MMMM YYYY"));
+                    }
+                }
             }).datepicker('setDate', new Date());
 
-            $('#event_time').datetimepicker({
+            $('#event_start_time,#event_end_time').datetimepicker({
                 datepicker: false,
                 lang: 'en',
                 format: "H:i",
@@ -182,12 +216,16 @@ $form = Loader::helper('form');
                 button_wittime.removeClass('btn-primary');
                 $('.event_withtime').hide();
                 button_allday.addClass('btn-primary');
+                $("input#event_end_date").prop('disabled', false);
+                allDayEvent = false;
             }
 
             function setWithTimeButton() {
                 button_allday.removeClass('btn-primary');
                 $('.event_withtime').show();
                 button_wittime.addClass('btn-primary');
+                $("input#event_end_date").val($('input#event_start_date').val()).prop('disabled',true );
+                allDayEvent = true;
             }
 
             setAllDayButton();

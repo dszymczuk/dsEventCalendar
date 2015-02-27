@@ -1,7 +1,7 @@
 <?php defined('C5_EXECUTE') or die('Access denied.'); ?>
 <?php echo Loader::helper('concrete/dashboard')->getDashboardPaneHeaderWrapper(t('Event Calendar')); ?>
 
-<?php include_once('dsEventCalendarMenu.php'); ?>
+<?php require_once('dsEventCalendarMenu.php'); ?>
 
 <div class="row">
 	<div class="span5">

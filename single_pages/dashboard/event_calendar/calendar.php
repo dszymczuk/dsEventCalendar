@@ -4,7 +4,7 @@ $form = Loader::helper('form');
 
 <?php echo Loader::helper('concrete/dashboard')->getDashboardPaneHeaderWrapper(t('Event Calendar')); ?>
 
-    <?php include_once('dsEventCalendarMenu.php'); ?>
+    <?php require_once('dsEventCalendarMenu.php'); ?>
 
     <h3><?php echo t('Add / edit calendar') ?></h3>
 

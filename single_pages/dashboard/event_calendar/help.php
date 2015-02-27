@@ -3,7 +3,7 @@
 
 <?php echo Loader::helper('concrete/dashboard')->getDashboardPaneHeaderWrapper(t('Help for dsEventCalendar')); ?>
 
-    <?php include_once('dsEventCalendarMenu.php'); ?>
+    <?php require_once('dsEventCalendarMenu.php'); ?>
 
 <div class="row">
 	<div class="span12">

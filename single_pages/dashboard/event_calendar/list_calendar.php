@@ -83,12 +83,10 @@
             $(".delete").click(function () {
                 var elem = $(this);
                 var count_evetns = elem.closest('tr').children('td').children('span.badge').html();
-                console.log(count_evetns);
                 var conf = confirm("Are you sure to delete this calendar with all events? Events in this calendar: " + count_evetns);
                 if (conf) {
                     var id = elem.closest('tr').children('td').children('input.calendarID').val();
                     elem.closest('tr').addClass('toRemove');
-                    console.log(id);
 
                     $.ajax({
                         type: "POST",

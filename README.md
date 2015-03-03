@@ -25,10 +25,13 @@ If you choose "One day with time" event you can resize event for more days.
 
 Version
 ----
-3.1
+3.1.2
 
 Changelog
 ----
+3.1.2
+IE8 fix ; You don't have to create backup with settings improvment
+
 3.1
 IMPORTANT !
 Before update, please! make backup of database - I have to improve settings in database (remove duplicate data).

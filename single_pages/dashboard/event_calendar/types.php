@@ -131,7 +131,6 @@ $(document).ready(function () {
         var id = elem.closest('tr').children('td').children('input.typeID').val();
         var color = elem.closest('tr').find('td span.color').html().trim();
         var type = elem.closest('tr').find('td span.type').html().trim();
-        console.log(id,color,type);
 
         $('#typeID').val(id);
         $('#type').val(type);
@@ -196,7 +195,7 @@ $(document).ready(function () {
         if (conf) {
             var id = elem.closest('tr').children('td').children('input.typeID').val();
             elem.closest('tr').addClass('toRemove');
-            console.log(id);
+
             $.ajax({
                 type: "POST",
                 url: "<?php echo $this->url('dashboard/event_calendar/types/delete'); ?>",

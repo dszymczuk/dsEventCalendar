@@ -7,7 +7,7 @@ class dsEventCalendarPackage extends Package
 
     protected $pkgHandle = 'dsEventCalendar';
     protected $appVersionRequired = '5.5.0';
-    protected $pkgVersion = '3.1.0';
+    protected $pkgVersion = '3.1.2';
 
     public function getPackageDescription()
     {
@@ -106,114 +106,28 @@ class dsEventCalendarPackage extends Package
     {
         $db = Loader::db();
 
-        //if add new setting - increment this number
-        $howManySettings = 6;
-
         //check is settings are duplicate
         $sql = "select count(*) as count from dsEventCalendarSettings";
         $row = $db->GetRow($sql);
-
-        if ($row['count'] > $howManySettings) {
-            $this->removeDuplicateSettings();
-        }
-
-
-        // check is settings exits
-        $sql = "select count(*) as count from dsEventCalendarSettings where opt = 'lang'";
-        $row = $db->GetRow($sql);
-        if ($row['count'] == 0) {
+        if($row['count'] == 0)
+        {
             $sql = "INSERT IGNORE INTO dsEventCalendarSettings SET opt= 'lang' , value='en-gb'";
             $db->Execute($sql);
-        }
-        $sql = "select count(*) as count from dsEventCalendarSettings where opt= 'formatEvent'";
-        $row = $db->GetRow($sql);
-        if ($row['count'] == 0) {
             $sql = "INSERT IGNORE INTO dsEventCalendarSettings SET opt= 'formatEvent' , value='DD MMMM YYYY'";
             $db->Execute($sql);
-        }
-        $sql = "select count(*) as count from dsEventCalendarSettings where opt= 'startFrom'";
-        $row = $db->GetRow($sql);
-        if ($row['count'] == 0) {
             $sql = "INSERT IGNORE INTO dsEventCalendarSettings SET opt= 'startFrom' , value='1'";
             $db->Execute($sql);
-        }
-        $sql = "select count(*) as count from dsEventCalendarSettings where opt= 'eventsInDay'";
-        $row = $db->GetRow($sql);
-        if ($row['count'] == 0) {
             $sql = "INSERT IGNORE INTO dsEventCalendarSettings SET opt= 'eventsInDay' , value='3'";
             $db->Execute($sql);
-        }
-        $sql = "select count(*) as count from dsEventCalendarSettings where opt= 'default_color'";
-        $row = $db->GetRow($sql);
-        if ($row['count'] == 0) {
             $sql = "INSERT IGNORE INTO dsEventCalendarSettings SET opt= 'default_color' , value='#808080'";
             $db->Execute($sql);
-        }
-        $sql = "select count(*) as count from dsEventCalendarSettings where opt= 'timeFormat'";
-        $row = $db->GetRow($sql);
-        if ($row['count'] == 0) {
             $sql = "INSERT IGNORE INTO dsEventCalendarSettings SET opt= 'timeFormat' , value='HH:mm'";
             $db->Execute($sql);
         }
-    }
-
-    private function removeDuplicateSettings()
-    {
-        $db = Loader::db();
-        $settings = array();
-
-        $sql = "select * from dsEventCalendarSettings where opt = 'lang'";
-        $row = $db->GetRow($sql);
-        array_push($settings, array(
-            'opt' => $row['opt'],
-            'value' => $row['value']
-        ));
-        
-        $sql = "select * from dsEventCalendarSettings where opt= 'formatEvent'";
-        $row = $db->GetRow($sql);
-        array_push($settings, array(
-            'opt' => $row['opt'],
-            'value' => $row['value']
-        ));
-        $sql = "select * from dsEventCalendarSettings where opt= 'startFrom'";
-        $row = $db->GetRow($sql);
-        array_push($settings, array(
-            'opt' => $row['opt'],
-            'value' => $row['value']
-        ));
-
-        $sql = "select * from dsEventCalendarSettings where opt= 'eventsInDay'";
-        $row = $db->GetRow($sql);
-        array_push($settings, array(
-            'opt' => $row['opt'],
-            'value' => $row['value']
-        ));
-        $sql = "select * from dsEventCalendarSettings where opt= 'default_color'";
-        $row = $db->GetRow($sql);
-        array_push($settings, array(
-            'opt' => $row['opt'],
-            'value' => $row['value']
-        ));
-
-        $sql = "select * from dsEventCalendarSettings where opt= 'timeFormat'";
-        $row = $db->GetRow($sql);
-        array_push($settings, array(
-            'opt' => $row['opt'],
-            'value' => $row['value']
-        ));
-
-        //clear table
-        $sql = "TRUNCATE dsEventCalendarSettings";
-        $db->Execute($sql);
-
-
-        //add unique index
-        $sql = "ALTER TABLE dsEventCalendarSettings ADD UNIQUE INDEX dsOptUnique (opt);";
-        $db->Execute($sql);
-
-        foreach($settings as $s)
+        else
         {
-            $sql = "INSERT IGNORE INTO dsEventCalendarSettings SET opt= '".$s['opt']."' , value='".$s['value']."'";
+            //remove duplicate
+            $sql = "DELETE s1 FROM dsEventCalendarSettings s1, dsEventCalendarSettings s2 WHERE s1.opt = s2.opt AND s1.settingID > s2.settingID";
             $db->Execute($sql);
         }
     }

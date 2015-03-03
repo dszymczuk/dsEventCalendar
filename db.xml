@@ -55,9 +55,5 @@
         </field>
         <field name="value" type="C" size="255">
         </field>
-        <index name="dsOptUnique">
-            <unique/>
-            <col>opt</col>
-        </index>
     </table>
 </schema>

@@ -17,7 +17,11 @@ $c = Page::getCurrentPage();
 <?php endif ?>
 
     <div id="dsEventCalendar<?php echo $blockIdentifier; ?>">
-        <div class="ds-event-modal" id="dsEventModal<?php echo $blockIdentifier; ?>">
+        <!--[if lte IE 9]>
+        <div class="ds-event-modal ie8 ie9" id="dsEventModal<?php echo $blockIdentifier; ?>"><![endif]-->
+        <!--[if !IE]><!-->
+        <div class="ds-event-modal" id="dsEventModal<?php echo $blockIdentifier; ?>"><!--<![endif]-->
+
             <div class="container">
                 <div class="header">
                     <div class="title"></div>

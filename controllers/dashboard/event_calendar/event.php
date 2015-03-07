@@ -42,7 +42,7 @@ class DashboardEventCalendarEventController extends Controller
                 $date = date_create($_POST['event_end_date']);
                 date_modify($date, '+1 day');
                 $date_end = date_format($date,'Y-m-d');
-                
+
                 if(!empty($startTime))
                 {
                     $isAllDay = 0;

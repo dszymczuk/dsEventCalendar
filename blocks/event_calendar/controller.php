@@ -54,9 +54,6 @@ class EventCalendarBlockController extends BlockController
             $this->set('blockIdentifier',rand(12,512));
         }
 
-
-
-
     }
 
     function save($data)

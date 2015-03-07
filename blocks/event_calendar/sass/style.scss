@@ -1,5 +1,6 @@
 //@import "reset";
 @import "compass/css3/border-radius";
+@import "compass/css3/flexbox";
 
 @mixin size($width, $height: nil) {
   @if ($height == nil) {
@@ -81,7 +82,7 @@ $blue-dark: darken($blue, 5%);
   align-items: center;
   background-color: rgba(0,0,0,0.5);
   &.active {
-    display: flex;
+    @include display-flex();
   }
 
   .container {
@@ -117,3 +118,5 @@ $blue-dark: darken($blue, 5%);
     }
   }
 }
+
+@import "iehacks";

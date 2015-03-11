@@ -182,3 +182,27 @@ $blue-dark: darken($blue, 5%);
 }
 
 @import "iehacks";
+
+.colorpicker input {
+  position: absolute;
+  font-size: 10px;
+  color: #fff;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  height: 24px;
+  &.colorpicker_none {
+    left: 289px !important;
+    top: 141px !important;
+    &:hover {
+      background-position: 0;
+    }
+  }
+  &.colorpicker_submit {
+    left: 313px !important;
+    top: 141px !important;
+    &:hover {
+      background-position: 0;
+    }
+  }
+}

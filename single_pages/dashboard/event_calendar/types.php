@@ -118,6 +118,7 @@ $(document).ready(function () {
     showButtons();
 
 	$('#color').ColorPicker({
+        flat: true,
 		onSubmit: function(hsb, hex, rgb, el) {
 			$('#color').val('#'+hex);
 			$(el).hide();

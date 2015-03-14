@@ -29,6 +29,13 @@ Version
 
 Changelog
 ----
+
+3.1.4
+Add licenses to JS scripts ; fix bug with button on colorpicker
+
+3.1.3
+Fix display flex ; change add date function to compatible with PHP 5.2
+
 3.1.2
 IE8 fix ; You don't have to create backup with settings improvment
 

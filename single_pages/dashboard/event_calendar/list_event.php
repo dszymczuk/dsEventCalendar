@@ -255,7 +255,10 @@
                     var start_day = calEvent.start.format(settings.formatEvent);
                     var end_day = "";
                     if (calEvent.end != null)
+                    {
+                    	calEvent.end.subtract(1,'days');
                         end_day = " - " + calEvent.end.format(settings.formatEvent);
+                    }
 
 
                     modal.find('.header .title').text(calEvent.title);
@@ -265,8 +268,10 @@
                         start_day = calEvent.start.format(settings.timeFormat);
                         end_day = "";
                         if (calEvent.end != null)
+                        {
                             end_day = " - " + calEvent.end.format(settings.timeFormat);
-                        end_day += " " + calEvent.end.format(settings.formatEvent);
+                        	end_day += " " + calEvent.end.format(settings.formatEvent);
+                        }
 
                     }
                     else {
@@ -284,7 +289,14 @@
 
 
                     modal.find("#event_start_date").val(calEvent.start.format(settings.formatEvent));
-                    modal.find("#event_end_date").val(calEvent.end.format(settings.formatEvent));
+                    if (calEvent.end == null)
+                    {
+                    	modal.find("#event_end_date").val(calEvent.start.format(settings.formatEvent));
+                    }
+                    else
+                    {
+                    	modal.find("#event_end_date").val(calEvent.end.format(settings.formatEvent));
+                    }
 
                     modal.find(".event_withtime").css('display', 'none');
                     modal.find("#event_end_date").prop('disabled', false);

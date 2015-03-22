@@ -25,10 +25,13 @@ If you choose "One day with time" event you can resize event for more days.
 
 Version
 ----
-3.1.5
+3.1.6
 
 Changelog
 ----
+
+3.1.6
+Bug fix with opening modal while edit event
 
 3.1.5
 Add licenses to JS scripts ; fix bug with button on colorpicker

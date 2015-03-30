@@ -256,7 +256,9 @@
                     var end_day = "";
                     if (calEvent.end != null)
                     {
-                    	calEvent.end.subtract(1,'days');
+                        if(calEvent.allDayEvent == 1)
+                    	    calEvent.end.subtract(1,'days');
+
                         end_day = " - " + calEvent.end.format(settings.formatEvent);
                     }
 
@@ -419,6 +421,7 @@
             });
 
             $("#dsEventModal .btn-close").on('click', function () {
+                dsEventCalendar.fullCalendar('refetchEvents');
                 $(this).closest(".ds-event-modal").removeClass('active');
             });
 

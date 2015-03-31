@@ -101,6 +101,8 @@ class DashboardEventCalendarEventController extends Controller
             $$s['opt'] = $s['value'];
         }
 
+        $this->set('lang', $lang_dsECS);
+
         array_unshift($types, array(
                 'typeID' => 0,
                 'type' => $default_name_dsECS,

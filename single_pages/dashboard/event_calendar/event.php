@@ -176,12 +176,19 @@ $form = Loader::helper('form');
                 }
             }).datepicker('setDate', new Date());
 
+            $('#event_start_date').change(function(){$('#event_end_date').val($('#event_start_date').val())});
+
             $('#event_start_time,#event_end_time').datetimepicker({
                 datepicker: false,
                 lang: '<?php echo $lang ?>',
                 format: "H:i",
                 step: 30
             }).datepicker('setDate', new Date());
+
+            $('#event_start_time').change(function(){
+                var time = $('#event_start_time').val().split(":");
+                $('#event_end_time').val((time[0] * 1 + 1) + ':' + time[1]);
+            });
 
             var button_desc = $('.event_info_type button.desc');
             var button_url = $('.event_info_type button.url');

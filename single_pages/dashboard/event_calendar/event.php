@@ -92,7 +92,7 @@ $form = Loader::helper('form');
                     <label class="control-label"><?php echo t('Event start time') ?></label>
 
                     <div class="controls">
-                        <input class="span3" maxlength="255" type="text" name="event_start_time" id="event_start_time" value="<?php echo ( isset( $event_start_time ) ) ? $event_start_date : ''; ?>">
+                        <input class="span3" maxlength="255" type="text" name="event_start_time" id="event_start_time" value="<?php echo ( isset( $event_start_time ) ) ? $event_start_time : ''; ?>">
                     </div>
                 </fieldset>
             </div>

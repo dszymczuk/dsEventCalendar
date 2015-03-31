@@ -92,7 +92,7 @@ $form = Loader::helper('form');
                     <label class="control-label"><?php echo t('Event start time') ?></label>
 
                     <div class="controls">
-                        <input class="span3" maxlength="255" type="text" name="event_start_time" id="event_start_time" value="<?php echo ( isset( $event_start_time ) ) ? $event_start_date : ''; ?>">
+                        <input class="span3" maxlength="255" type="text" name="event_start_time" id="event_start_time" value="<?php echo ( isset( $event_start_time ) ) ? $event_start_time : ''; ?>">
                     </div>
                 </fieldset>
             </div>
@@ -239,6 +239,9 @@ $form = Loader::helper('form');
                 button_allday.addClass('btn-primary');
                 $("input#event_end_date").prop('disabled', false);
                 allDayEvent = false;
+
+                $("input#event_start_time").val('');
+                $("input#event_end_time").val('');
             }
 
             function setWithTimeButton() {
@@ -249,7 +252,10 @@ $form = Loader::helper('form');
                 allDayEvent = true;
             }
 
-            setAllDayButton();
+            if ($('#event_start_time').val() == '')
+                setAllDayButton();
+            else
+                setWithTimeButton();
 
         });
     </script>

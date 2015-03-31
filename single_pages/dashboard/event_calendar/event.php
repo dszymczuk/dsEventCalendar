@@ -239,6 +239,9 @@ $form = Loader::helper('form');
                 button_allday.addClass('btn-primary');
                 $("input#event_end_date").prop('disabled', false);
                 allDayEvent = false;
+
+                $("input#event_start_time").val('');
+                $("input#event_end_time").val('');
             }
 
             function setWithTimeButton() {
@@ -249,7 +252,10 @@ $form = Loader::helper('form');
                 allDayEvent = true;
             }
 
-            setAllDayButton();
+            if ($('#event_start_time').val() == '')
+                setAllDayButton();
+            else
+                setWithTimeButton();
 
         });
     </script>

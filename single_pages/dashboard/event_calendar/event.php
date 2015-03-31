@@ -162,7 +162,7 @@ $form = Loader::helper('form');
         $(document).ready(function () {
             var allDayEvent = true;
             $('#event_start_date,#event_end_date').datetimepicker({
-                lang: 'en',
+                lang: '<?php echo $lang ?>',
                 format: "d F Y",
                 todayButton: true,
                 dayOfWeekStart: 1,
@@ -178,7 +178,7 @@ $form = Loader::helper('form');
 
             $('#event_start_time,#event_end_time').datetimepicker({
                 datepicker: false,
-                lang: 'en',
+                lang: '<?php echo $lang ?>',
                 format: "H:i",
                 step: 30
             }).datepicker('setDate', new Date());

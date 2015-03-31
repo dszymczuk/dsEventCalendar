@@ -302,10 +302,12 @@
 
                     modal.find(".event_withtime").css('display', 'none');
                     modal.find("#event_end_date").prop('disabled', false);
-                    if (calEvent.allDayEvent == 0) {
+                    if (calEvent.allDayEvent == '0') {
                         modal.find(".event_withtime").css('display', 'block');
                         modal.find("#event_start_time").val(calEvent.start.format(settings.timeFormat));
-                        modal.find("#event_end_time").val(calEvent.end.format(settings.timeFormat));
+                        if (calEvent.end != null)
+                            modal.find("#event_end_time").val(calEvent.end.format(settings.timeFormat));
+
                         modal.find("#event_end_date").prop('disabled', true);
                     }
 
@@ -380,7 +382,7 @@
 
                     $.ajax({
                         type: "post",
-                        url: '<?php echo $this->action("updateDateEvent");?>',
+                        url: '<?php echo $this->action("updateDateEventa");?>',
                         data: event_data,
                         success: function (data) {
                             dsEventCalendar.fullCalendar('refetchEvents');

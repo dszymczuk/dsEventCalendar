@@ -170,7 +170,6 @@ $form = Loader::helper('form');
                 closeOnDateSelect:true,
                 onSelectDate: function(ct){
                     var date = new Date(ct);
-                    console.log(allDayEvent);
                     if(allDayEvent) {
                         $("#event_end_date").val(moment(date).format("DD MMMM YYYY"));
                     }

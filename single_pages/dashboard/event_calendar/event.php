@@ -92,7 +92,7 @@ $form = Loader::helper('form');
                     <label class="control-label"><?php echo t('Event start time') ?></label>
 
                     <div class="controls">
-                        <input class="span3" maxlength="255" type="text" name="event_start_time" id="event_start_time" value="<?php echo ( isset( $event_start_time ) ) ? $event_start_date : ''; ?>">
+                        <input class="span3" maxlength="255" type="text" name="event_start_time" id="event_start_time" value="<?php echo ( isset( $event_start_time ) ) ? $event_start_time : ''; ?>">
                     </div>
                 </fieldset>
             </div>
@@ -162,7 +162,7 @@ $form = Loader::helper('form');
         $(document).ready(function () {
             var allDayEvent = true;
             $('#event_start_date,#event_end_date').datetimepicker({
-                lang: 'en',
+                lang: '<?php echo $lang ?>',
                 format: "d F Y",
                 todayButton: true,
                 dayOfWeekStart: 1,
@@ -176,12 +176,19 @@ $form = Loader::helper('form');
                 }
             }).datepicker('setDate', new Date());
 
+            $('#event_start_date').change(function(){$('#event_end_date').val($('#event_start_date').val())});
+
             $('#event_start_time,#event_end_time').datetimepicker({
                 datepicker: false,
-                lang: 'en',
+                lang: '<?php echo $lang ?>',
                 format: "H:i",
                 step: 30
             }).datepicker('setDate', new Date());
+
+            $('#event_start_time').change(function(){
+                var time = $('#event_start_time').val().split(":");
+                $('#event_end_time').val((time[0] * 1 + 1) + ':' + time[1]);
+            });
 
             var button_desc = $('.event_info_type button.desc');
             var button_url = $('.event_info_type button.url');
@@ -232,6 +239,9 @@ $form = Loader::helper('form');
                 button_allday.addClass('btn-primary');
                 $("input#event_end_date").prop('disabled', false);
                 allDayEvent = false;
+
+                $("input#event_start_time").val('');
+                $("input#event_end_time").val('');
             }
 
             function setWithTimeButton() {
@@ -242,7 +252,10 @@ $form = Loader::helper('form');
                 allDayEvent = true;
             }
 
-            setAllDayButton();
+            if ($('#event_start_time').val() == '')
+                setAllDayButton();
+            else
+                setWithTimeButton();
 
         });
     </script>

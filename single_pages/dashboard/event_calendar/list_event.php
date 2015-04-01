@@ -311,8 +311,7 @@
                         modal.find("#event_end_date").prop('disabled', true);
                     }
 
-
-                    $('#event_start_date,#event_end_date').datetimepicker({
+                    var dateConfig = {
                         lang: 'en',
                         format: "d F Y",
                         todayButton: true,
@@ -321,17 +320,57 @@
                         closeOnDateSelect: true,
                         onSelectDate: function (ct) {
                             var date = new Date(ct);
-                            if (calEvent.allDayEvent == 0) {
+                            if (calEvent.allDayEvent == '0') {
                                 modal.find("#event_end_date").val(moment(date).format(settings.formatEvent));
                             }
                         }
-                    });
+                    };
 
-                    $('#event_start_time,#event_end_time').datetimepicker({
+                    var timeConfig = {
                         datepicker: false,
                         lang: 'en',
                         format: "H:i",
                         step: 30
+                    };
+
+
+                    $('#event_start_date').datetimepicker(dateConfig);
+
+                    var dateConfigEnd = dateConfig;
+                    dateConfigEnd.minDate = $('#event_start_date').val();
+                    dateConfigEnd.formatDate = "d F Y";
+
+                    $('#event_end_date').datetimepicker(dateConfigEnd);
+
+                    $('#event_start_time').datetimepicker(timeConfig);
+
+                    var timeConfigEnd = timeConfig;
+                    timeConfigEnd.minTime = $('#event_start_time').val();
+                    timeConfigEnd.formatTime = "H:i";
+
+                    $('#event_end_time').datetimepicker(timeConfigEnd);
+
+                    // minimal end date and time
+
+                    $('#event_start_date').change(function(){
+                        var eed = $('#event_end_date');
+                        if(calEvent.allDayEvent != '0') {
+                            eed.val("");
+                        }
+                        eed.datetimepicker({
+                            minDate: $('#event_start_date').val(),
+                            formatDate: "d F Y"
+                        });
+                    });
+
+
+                    $('#event_start_time').change(function(){
+                        var eet = $('#event_end_time');
+                        eet.val("");
+                        eet.datetimepicker({
+                            minTime: $('#event_start_time').val(),
+                            formatTime: "H:i"
+                        });
                     });
 
                     modal.find('textarea#event_description').val(calEvent.description);

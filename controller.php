@@ -7,7 +7,7 @@ class dsEventCalendarPackage extends Package
 
     protected $pkgHandle = 'dsEventCalendar';
     protected $appVersionRequired = '5.5.0';
-    protected $pkgVersion = '3.1.6';
+    protected $pkgVersion = '3.1.6.1';
 
     public function getPackageDescription()
     {
@@ -113,6 +113,14 @@ class dsEventCalendarPackage extends Package
         if($row['count'] == 0)
         {
             $sql = "INSERT INTO dsEventCalendarSettings SET opt= 'lang' , value='en-gb'";
+            $db->Execute($sql);
+        }
+
+        $sql = "select count(*) as count from dsEventCalendarSettings where opt= 'lang_datepicker'";
+        $row = $db->GetRow($sql);
+        if($row['count'] == 0)
+        {
+            $sql = "INSERT INTO dsEventCalendarSettings SET opt= 'lang_datepicker' , value='en-GB'";
             $db->Execute($sql);
         }
 

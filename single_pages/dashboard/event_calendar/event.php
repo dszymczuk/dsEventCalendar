@@ -92,7 +92,7 @@ $form = Loader::helper('form');
                     <label class="control-label"><?php echo t('Event start time') ?></label>
 
                     <div class="controls">
-                        <input class="span3" maxlength="255" type="text" name="event_start_time" id="event_start_time" value="<?php echo ( isset( $event_start_time ) ) ? $event_start_date : ''; ?>">
+                        <input class="span3" maxlength="255" type="text" name="event_start_time" id="event_start_time" value="<?php echo ( isset( $event_start_time ) ) ? $event_start_time : ''; ?>">
                     </div>
                 </fieldset>
             </div>
@@ -161,8 +161,9 @@ $form = Loader::helper('form');
     <script>
         $(document).ready(function () {
             var allDayEvent = true;
-            $('#event_start_date,#event_end_date').datetimepicker({
-                lang: 'en',
+
+            var dateConfig = {
+                lang: '<?php echo $lang_datepicker ?>',
                 format: "d F Y",
                 todayButton: true,
                 dayOfWeekStart: 1,
@@ -174,14 +175,44 @@ $form = Loader::helper('form');
                         $("#event_end_date").val(moment(date).format("DD MMMM YYYY"));
                     }
                 }
-            }).datepicker('setDate', new Date());
+            };
 
-            $('#event_start_time,#event_end_time').datetimepicker({
+            var timeConfig = {
                 datepicker: false,
-                lang: 'en',
+                lang: '<?php echo $lang_datepicker ?>',
                 format: "H:i",
                 step: 30
-            }).datepicker('setDate', new Date());
+            };
+
+            $('#event_start_date').datetimepicker(dateConfig).datepicker('setDate', new Date());
+            $('#event_end_date').datetimepicker(dateConfig).datepicker('setDate', new Date());
+
+            $('#event_start_time').datetimepicker(timeConfig).datepicker('setDate', new Date());
+            $('#event_end_time').datetimepicker(timeConfig).datepicker('setDate', new Date());
+
+
+            // minimal end date and time
+
+            $('#event_start_date').change(function(){
+                var eed = $('#event_end_date');
+                if(!allDayEvent) {
+                    eed.val("");
+                }
+                eed.datetimepicker({
+                    minDate: $('#event_start_date').val(),
+                    formatDate: "d F Y"
+                });
+            });
+
+
+            $('#event_start_time').change(function(){
+                var eet = $('#event_end_time');
+                eet.val("");
+                eet.datetimepicker({
+                    minTime: $('#event_start_time').val(),
+                    formatTime: "H:i"
+                });
+            });
 
             var button_desc = $('.event_info_type button.desc');
             var button_url = $('.event_info_type button.url');
@@ -232,6 +263,9 @@ $form = Loader::helper('form');
                 button_allday.addClass('btn-primary');
                 $("input#event_end_date").prop('disabled', false);
                 allDayEvent = false;
+
+                $("input#event_start_time").val('');
+                $("input#event_end_time").val('');
             }
 
             function setWithTimeButton() {
@@ -242,7 +276,10 @@ $form = Loader::helper('form');
                 allDayEvent = true;
             }
 
-            setAllDayButton();
+            if ($('#event_start_time').val() == '')
+                setAllDayButton();
+            else
+                setWithTimeButton();
 
         });
     </script>

@@ -7,7 +7,7 @@ class dsEventCalendarPackage extends Package
 
     protected $pkgHandle = 'dsEventCalendar';
     protected $appVersionRequired = '5.5.0';
-    protected $pkgVersion = '3.1.6.1';
+    protected $pkgVersion = '3.1.7';
 
     public function getPackageDescription()
     {

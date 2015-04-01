@@ -161,7 +161,8 @@ $form = Loader::helper('form');
     <script>
         $(document).ready(function () {
             var allDayEvent = true;
-            $('#event_start_date,#event_end_date').datetimepicker({
+
+            var dateConfig = {
                 lang: '<?php echo $lang_datepicker ?>',
                 format: "d F Y",
                 todayButton: true,
@@ -174,20 +175,30 @@ $form = Loader::helper('form');
                         $("#event_end_date").val(moment(date).format("DD MMMM YYYY"));
                     }
                 }
-            }).datepicker('setDate', new Date());
+            };
 
-            $('#event_start_time,#event_end_time').datetimepicker({
+            var timeConfig = {
                 datepicker: false,
                 lang: '<?php echo $lang_datepicker ?>',
                 format: "H:i",
                 step: 30
-            }).datepicker('setDate', new Date());
+            };
+
+            $('#event_start_date').datetimepicker(dateConfig).datepicker('setDate', new Date());
+            $('#event_end_date').datetimepicker(dateConfig).datepicker('setDate', new Date());
+
+            $('#event_start_time').datetimepicker(timeConfig).datepicker('setDate', new Date());
+            $('#event_end_time').datetimepicker(timeConfig).datepicker('setDate', new Date());
 
 
             // minimal end date and time
 
             $('#event_start_date').change(function(){
-                $('#event_end_date').datetimepicker({
+                var eed = $('#event_end_date');
+                if(!allDayEvent) {
+                    eed.val("");
+                }
+                eed.datetimepicker({
                     minDate: $('#event_start_date').val(),
                     formatDate: "d F Y"
                 });
@@ -195,8 +206,11 @@ $form = Loader::helper('form');
 
 
             $('#event_start_time').change(function(){
-                $('#event_end_time').datetimepicker({
-                    minTime: $('#event_start_time').val()
+                var eet = $('#event_end_time');
+                eet.val("");
+                eet.datetimepicker({
+                    minTime: $('#event_start_time').val(),
+                    formatTime: "H:i"
                 });
             });
 

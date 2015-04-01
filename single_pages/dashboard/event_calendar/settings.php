@@ -38,6 +38,18 @@
 			</fieldset>
 
 			<fieldset class="control-group">
+				<label class="control-label"><?php echo t('Language - datepicker') ?></label>
+
+				<div class="controls">
+					<select name="lang_datepicker" id="lang_datepicker" value="<?php echo $lang_datepicker; ?>">
+						<?php foreach ($lang_datepicker_list as $ldl): ?>
+							<option value="<?php echo $ldl; ?>" <?php $selected = $ldl==$lang_datepicker ? "selected" : ""; echo $selected; ?> ><?php echo $ldl; ?></option>
+						<?php endforeach; ?>
+					</select>
+				</div>
+			</fieldset>
+
+			<fieldset class="control-group">
 				<label class="control-label"><?php echo t('Event date format') ?></label>
 				<div class="controls">
 					<input maxlength="255" type="text" name="formatEvent" id="formatEvent" value="<?php echo $formatEvent; ?>">

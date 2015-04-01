@@ -34,57 +34,62 @@ class DashboardEventCalendarEventController extends Controller
                 }
             }
 
-
+            $this->set('event_title', $this->post('event_title'));
+            $this->set('event_start_date', $this->post('event_start_date'));
+            $this->set('event_start_time', $this->post('event_start_time'));
+            $this->set('event_end_date', $this->post('event_end_date'));
+            $this->set('event_end_time', $this->post('event_end_time'));
+            $this->set('event_type', $this->post('event_type'));
+            $this->set('event_description', $this->post('event_description'));
+            $this->set('event_url', $this->post('event_url'));
 
             if (!$isSomeValueEmpty) {
-                $startDate = date_format(date_create($_POST['event_start_date']),"Y-m-d");
-                $startTime = $this->post('event_start_time');
-                $date = date_create($_POST['event_end_date']);
-                date_modify($date, '+1 day');
-                $date_end = date_format($date,'Y-m-d');
-
-                if(!empty($startTime))
+                if(strtotime($this->post('event_start_date')) <= strtotime($this->post('event_end_date'))
+                   or strtotime($this->post('event_start_time')) < strtotime($this->post('event_end_time')))
                 {
-                    $isAllDay = 0;
-                    $date_end = $startDate." ".$_POST['event_end_time'];
-                    $startDate = $startDate." ".$_POST['event_start_time'];
+                    $startDate = date_format(date_create($_POST['event_start_date']),"Y-m-d");
+                    $startTime = $this->post('event_start_time');
+                    $date = date_create($_POST['event_end_date']);
+                    date_modify($date, '+1 day');
+                    $date_end = date_format($date,'Y-m-d');
+
+                    if(!empty($startTime))
+                    {
+                        $isAllDay = 0;
+                        $date_end = $startDate." ".$_POST['event_end_time'];
+                        $startDate = $startDate." ".$_POST['event_start_time'];
+                    }
+
+                    $sql = "INSERT INTO dsEventCalendarEvents (calendarID,title,date,type,description,url,end,allDayEvent) VALUES (?,?,?,?,?,?,?,?)";
+
+                    $args = array(
+                        $this->post('event_calendarID'),
+                        $this->post('event_title'),
+                        $startDate,
+                        $this->post('event_type'),
+                        $this->post('event_description'),
+                        $this->post('event_url'),
+                        $date_end,
+                        $isAllDay
+                    );
+
+
+                    $db->Execute($sql, $args);
+
+                    $this->set('event_title', "");
+                    $this->set('event_start_date', "");
+                    $this->set('event_start_time', "");
+                    $this->set('event_end_date', "");
+                    $this->set('event_end_time', "");
+                    $this->set('event_type', "");
+                    $this->set('event_description', "");
+                    $this->set('event_url', "");
+                    $this->set('success', t('Event: ' . $this->post('event_title') . ' has been added'));
+                    unset($_POST);
+                } else {
+                    $this->set('error', t('Error while adding. Enddate or endtime is not correct.'));
                 }
-
-                $sql = "INSERT INTO dsEventCalendarEvents (calendarID,title,date,type,description,url,end,allDayEvent) VALUES (?,?,?,?,?,?,?,?)";
-
-                $args = array(
-                    $this->post('event_calendarID'),
-                    $this->post('event_title'),
-                    $startDate,
-                    $this->post('event_type'),
-                    $this->post('event_description'),
-                    $this->post('event_url'),
-                    $date_end,
-                    $isAllDay
-                );
-
-
-                $db->Execute($sql, $args);
-
-                $this->set('event_title', "");
-                $this->set('event_start_date', "");
-                $this->set('event_start_time', "");
-                $this->set('event_end_date', "");
-                $this->set('event_end_time', "");
-                $this->set('event_type', "");
-                $this->set('event_description', "");
-                $this->set('event_url', "");
-                $this->set('success', t('Event: ' . $this->post('event_title') . ' has been added'));
-                unset($_POST);
             } else {
-                $this->set('event_title', $this->post('event_title'));
-                $this->set('event_start_date', $this->post('event_start_date'));
-                $this->set('event_start_time', $this->post('event_start_time'));
-                $this->set('event_end_date', $this->post('event_end_date'));
-                $this->set('event_end_time', $this->post('event_end_time'));
-                $this->set('event_type', $this->post('event_type'));
-                $this->set('event_description', $this->post('event_description'));
-                $this->set('event_url', $this->post('event_url'));
                 $this->set('error', t('Error while adding. Maybe some values were empty?'));
             }
         }
@@ -100,6 +105,8 @@ class DashboardEventCalendarEventController extends Controller
             $s['opt'] = $s['opt']."_dsECS";
             $$s['opt'] = $s['value'];
         }
+
+        $this->set('lang_datepicker', $lang_datepicker_dsECS);
 
         array_unshift($types, array(
                 'typeID' => 0,

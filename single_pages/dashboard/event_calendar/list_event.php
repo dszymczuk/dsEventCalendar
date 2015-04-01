@@ -256,7 +256,9 @@
                     var end_day = "";
                     if (calEvent.end != null)
                     {
-                    	calEvent.end.subtract(1,'days');
+                        if(calEvent.allDayEvent == 1)
+                    	    calEvent.end.subtract(1,'days');
+
                         end_day = " - " + calEvent.end.format(settings.formatEvent);
                     }
 
@@ -300,15 +302,16 @@
 
                     modal.find(".event_withtime").css('display', 'none');
                     modal.find("#event_end_date").prop('disabled', false);
-                    if (calEvent.allDayEvent == 0) {
+                    if (calEvent.allDayEvent == '0') {
                         modal.find(".event_withtime").css('display', 'block');
                         modal.find("#event_start_time").val(calEvent.start.format(settings.timeFormat));
-                        modal.find("#event_end_time").val(calEvent.end.format(settings.timeFormat));
+                        if (calEvent.end != null)
+                            modal.find("#event_end_time").val(calEvent.end.format(settings.timeFormat));
+
                         modal.find("#event_end_date").prop('disabled', true);
                     }
 
-
-                    $('#event_start_date,#event_end_date').datetimepicker({
+                    var dateConfig = {
                         lang: 'en',
                         format: "d F Y",
                         todayButton: true,
@@ -317,17 +320,57 @@
                         closeOnDateSelect: true,
                         onSelectDate: function (ct) {
                             var date = new Date(ct);
-                            if (calEvent.allDayEvent == 0) {
+                            if (calEvent.allDayEvent == '0') {
                                 modal.find("#event_end_date").val(moment(date).format(settings.formatEvent));
                             }
                         }
-                    });
+                    };
 
-                    $('#event_start_time,#event_end_time').datetimepicker({
+                    var timeConfig = {
                         datepicker: false,
                         lang: 'en',
                         format: "H:i",
                         step: 30
+                    };
+
+
+                    $('#event_start_date').datetimepicker(dateConfig);
+
+                    var dateConfigEnd = dateConfig;
+                    dateConfigEnd.minDate = $('#event_start_date').val();
+                    dateConfigEnd.formatDate = "d F Y";
+
+                    $('#event_end_date').datetimepicker(dateConfigEnd);
+
+                    $('#event_start_time').datetimepicker(timeConfig);
+
+                    var timeConfigEnd = timeConfig;
+                    timeConfigEnd.minTime = $('#event_start_time').val();
+                    timeConfigEnd.formatTime = "H:i";
+
+                    $('#event_end_time').datetimepicker(timeConfigEnd);
+
+                    // minimal end date and time
+
+                    $('#event_start_date').change(function(){
+                        var eed = $('#event_end_date');
+                        if(calEvent.allDayEvent != '0') {
+                            eed.val("");
+                        }
+                        eed.datetimepicker({
+                            minDate: $('#event_start_date').val(),
+                            formatDate: "d F Y"
+                        });
+                    });
+
+
+                    $('#event_start_time').change(function(){
+                        var eet = $('#event_end_time');
+                        eet.val("");
+                        eet.datetimepicker({
+                            minTime: $('#event_start_time').val(),
+                            formatTime: "H:i"
+                        });
                     });
 
                     modal.find('textarea#event_description').val(calEvent.description);
@@ -378,7 +421,7 @@
 
                     $.ajax({
                         type: "post",
-                        url: '<?php echo $this->action("updateDateEvent");?>',
+                        url: '<?php echo $this->action("updateDateEventa");?>',
                         data: event_data,
                         success: function (data) {
                             dsEventCalendar.fullCalendar('refetchEvents');
@@ -419,6 +462,7 @@
             });
 
             $("#dsEventModal .btn-close").on('click', function () {
+                dsEventCalendar.fullCalendar('refetchEvents');
                 $(this).closest(".ds-event-modal").removeClass('active');
             });
 

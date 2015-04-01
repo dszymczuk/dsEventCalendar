@@ -45,6 +45,10 @@ class DashboardEventCalendarSettingsController extends Controller
 			$days = array(t('Monday'),t('Tuesday'),t('Wednesday'),t('Thursday'),t('Friday'),t('Saturday'),t('Sunday'));
 			$this->set('days',$days);
 
+            $lang_datepicker_list = array("ar","az","bg","bs","ca","ch","cs","da","de","en","en-GB","es","et","eu","fa","fi","fr","gl","he","hr","hu","id","it","ja","ko","kr","lt","lv","mk","mn","nl","no","pl","pt","pt-BR","ro","ru","se","sk","sl","sq","sr","sr-YU","sv","th","tr","uk","vi","zh","zh-TW");
+            $this->set('lang_datepicker_list',$lang_datepicker_list);
+
+
             $settings = $db->GetAll("SELECT * FROM dsEventCalendarSettings");
             
             foreach ($settings as $s) {

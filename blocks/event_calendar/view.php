@@ -87,15 +87,16 @@ $c = Page::getCurrentPage();
                     var start_day;
                     var end_day;
 
-                    if(calEvent.allDayEvent == 0)
+                    if(calEvent.allDayEvent == '0')
                     {
                         //with time
                         start_day = calEvent.start.format(settings.timeFormat);
                         end_day = "";
                         if(calEvent.end != null)
+                        {
                             end_day = " - " + calEvent.end.format(settings.timeFormat);
                             end_day += " " + calEvent.end.format(settings.formatEvent);
-
+                        }
                     }
                     else
                     {
@@ -103,7 +104,9 @@ $c = Page::getCurrentPage();
                         start_day = calEvent.start.format(settings.formatEvent);
                         end_day = "";
                         if(calEvent.end != null)
+                        {
                             end_day = " - " + calEvent.end.format(settings.formatEvent);
+                        }
                     }
 
                     modal.find('.header .title').text(calEvent.title);

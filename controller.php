@@ -7,7 +7,7 @@ class dsEventCalendarPackage extends Package
 
     protected $pkgHandle = 'dsEventCalendar';
     protected $appVersionRequired = '5.5.0';
-    protected $pkgVersion = '3.1.6';
+    protected $pkgVersion = '3.1.7';
 
     public function getPackageDescription()
     {
@@ -107,29 +107,73 @@ class dsEventCalendarPackage extends Package
         $db = Loader::db();
 
         //check is settings are duplicate
-        $sql = "select count(*) as count from dsEventCalendarSettings";
+
+        $sql = "select count(*) as count from dsEventCalendarSettings where opt= 'lang'";
         $row = $db->GetRow($sql);
         if($row['count'] == 0)
         {
-            $sql = "INSERT IGNORE INTO dsEventCalendarSettings SET opt= 'lang' , value='en-gb'";
-            $db->Execute($sql);
-            $sql = "INSERT IGNORE INTO dsEventCalendarSettings SET opt= 'formatEvent' , value='DD MMMM YYYY'";
-            $db->Execute($sql);
-            $sql = "INSERT IGNORE INTO dsEventCalendarSettings SET opt= 'startFrom' , value='1'";
-            $db->Execute($sql);
-            $sql = "INSERT IGNORE INTO dsEventCalendarSettings SET opt= 'eventsInDay' , value='3'";
-            $db->Execute($sql);
-            $sql = "INSERT IGNORE INTO dsEventCalendarSettings SET opt= 'default_color' , value='#808080'";
-            $db->Execute($sql);
-            $sql = "INSERT IGNORE INTO dsEventCalendarSettings SET opt= 'timeFormat' , value='HH:mm'";
+            $sql = "INSERT INTO dsEventCalendarSettings SET opt= 'lang' , value='en-gb'";
             $db->Execute($sql);
         }
-        else
+
+        $sql = "select count(*) as count from dsEventCalendarSettings where opt= 'lang_datepicker'";
+        $row = $db->GetRow($sql);
+        if($row['count'] == 0)
         {
-            //remove duplicate
-            $sql = "DELETE s1 FROM dsEventCalendarSettings s1, dsEventCalendarSettings s2 WHERE s1.opt = s2.opt AND s1.settingID > s2.settingID";
+            $sql = "INSERT INTO dsEventCalendarSettings SET opt= 'lang_datepicker' , value='en-GB'";
             $db->Execute($sql);
         }
+
+
+        $sql = "select count(*) as count from dsEventCalendarSettings where opt= 'formatEvent'";
+        $row = $db->GetRow($sql);
+        if($row['count'] == 0)
+        {
+            $sql = "INSERT INTO dsEventCalendarSettings SET opt= 'formatEvent' , value='DD MMMM YYYY'";
+            $db->Execute($sql);
+        }
+
+
+        $sql = "select count(*) as count from dsEventCalendarSettings where opt= 'startFrom'";
+        $row = $db->GetRow($sql);
+        if($row['count'] == 0)
+        {
+            $sql = "INSERT INTO dsEventCalendarSettings SET opt= 'startFrom' , value='1'";
+            $db->Execute($sql);
+        }
+
+
+        $sql = "select count(*) as count from dsEventCalendarSettings where opt= 'eventsInDay'";
+        $row = $db->GetRow($sql);
+        if($row['count'] == 0)
+        {
+            $sql = "INSERT INTO dsEventCalendarSettings SET opt= 'eventsInDay' , value='3'";
+            $db->Execute($sql);
+        }
+
+
+        $sql = "select count(*) as count from dsEventCalendarSettings where opt= 'default_color'";
+        $row = $db->GetRow($sql);
+        if($row['count'] == 0)
+        {
+            $sql = "INSERT INTO dsEventCalendarSettings SET opt= 'default_color' , value='#808080'";
+            $db->Execute($sql);
+        }
+
+
+        $sql = "select count(*) as count from dsEventCalendarSettings where opt= 'timeFormat'";
+        $row = $db->GetRow($sql);
+        if($row['count'] == 0)
+        {
+            $sql = "INSERT INTO dsEventCalendarSettings SET opt= 'timeFormat' , value='HH:mm'";
+            $db->Execute($sql);
+        }
+
+
+        //remove duplicate
+        $sql = "DELETE s1 FROM dsEventCalendarSettings s1, dsEventCalendarSettings s2 WHERE s1.opt = s2.opt AND s1.settingID > s2.settingID";
+        $db->Execute($sql);
+
     }
 }
 

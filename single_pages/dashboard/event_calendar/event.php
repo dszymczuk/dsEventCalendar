@@ -162,7 +162,7 @@ $form = Loader::helper('form');
         $(document).ready(function () {
             var allDayEvent = true;
             $('#event_start_date,#event_end_date').datetimepicker({
-                lang: '<?php echo $lang ?>',
+                lang: '<?php echo $lang_datepicker ?>',
                 format: "d F Y",
                 todayButton: true,
                 dayOfWeekStart: 1,
@@ -170,24 +170,35 @@ $form = Loader::helper('form');
                 closeOnDateSelect:true,
                 onSelectDate: function(ct){
                     var date = new Date(ct);
+                    console.log(allDayEvent);
                     if(allDayEvent) {
                         $("#event_end_date").val(moment(date).format("DD MMMM YYYY"));
                     }
                 }
             }).datepicker('setDate', new Date());
 
-            $('#event_start_date').change(function(){$('#event_end_date').val($('#event_start_date').val())});
-
             $('#event_start_time,#event_end_time').datetimepicker({
                 datepicker: false,
-                lang: '<?php echo $lang ?>',
+                lang: '<?php echo $lang_datepicker ?>',
                 format: "H:i",
                 step: 30
             }).datepicker('setDate', new Date());
 
+
+            // minimal end date and time
+
+            $('#event_start_date').change(function(){
+                $('#event_end_date').datetimepicker({
+                    minDate: $('#event_start_date').val(),
+                    formatDate: "d F Y"
+                });
+            });
+
+
             $('#event_start_time').change(function(){
-                var time = $('#event_start_time').val().split(":");
-                $('#event_end_time').val((time[0] * 1 + 1) + ':' + time[1]);
+                $('#event_end_time').datetimepicker({
+                    minTime: $('#event_start_time').val()
+                });
             });
 
             var button_desc = $('.event_info_type button.desc');

@@ -25,10 +25,13 @@ If you choose "One day with time" event you can resize event for more days.
 
 Version
 ----
-3.1.6
+3.1.7
 
 Changelog
 ----
+
+3.1.7
+Bug fixes with end date or time ; add minimal date or time in datepicker
 
 3.1.6
 Bug fix with opening modal while edit event

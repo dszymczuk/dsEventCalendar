@@ -8,10 +8,10 @@ header('Content-type: text/calendar; charset=utf-8');
 
 $db = Loader::db();
 $calid = htmlspecialchars($_GET["id"]);
-$cal = $db->GetAll("select * from dsEventCalendar where calendarID = ".$calid);
+$cal = $db->GetAll("select * from dsEventCalendar where calendarID = '".$calid."'");
 $caltitle = $cal[0]['title'];
 
-$events = $db->GetAll("select * from dsEventCalendarEvents where calendarID = ".$calid);
+$events = $db->GetAll("select * from dsEventCalendarEvents where calendarID = '".$calid."'");
 
 echo "BEGIN:VCALENDAR";
 echo "\nVERSION:2.0";

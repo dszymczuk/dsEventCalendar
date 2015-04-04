@@ -1,7 +1,7 @@
 <?php
 defined('C5_EXECUTE') or die("Access Denied.");
 
-function se($s) return preg_replace(array ('/"/','/,/','/\n/','/\r/','/:/','/;/','/\\//'), array ('\"','\\,','\\n','','\:','\\;','\\\\'), $s);
+function se($s) {return preg_replace(array ('/"/','/,/','/\n/','/\r/','/:/','/;/','/\\//'), array ('\"','\\,','\\n','','\:','\\;','\\\\'), $s);}
 
 $timezone = "Europe/Berlin";
 date_default_timezone_set($timezone);

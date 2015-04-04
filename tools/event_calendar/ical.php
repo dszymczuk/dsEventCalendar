@@ -1,6 +1,8 @@
 <?php
 defined('C5_EXECUTE') or die("Access Denied.");
 
+function se($s) return preg_replace(array ('/"/','/,/','/\n/','/\r/','/:/','/;/','/\\//'), array ('\"','\\,','\\n','','\:','\\;','\\\\'), $s);
+
 $timezone = "Europe/Berlin";
 date_default_timezone_set($timezone);
  // the header directive tells the web server to tell your browser that this is a calendar file and not a regular web page
@@ -26,10 +28,10 @@ foreach ( $events as $e){
     echo "\nDTSTART;TZID=".$timezone.":" . $Date->format( 'Ymd\THis' );
     $Date = new DateTime( $e["end"] );
     echo "\nDTEND;TZID=".$timezone.":" . $Date->format( 'Ymd\THis' );
-    echo "\nSUMMARY:".$e["title"];
+    echo "\nSUMMARY:".se($e["title"]);
     echo "\nUID:".$e["eventID"];
     //echo "\nSEQUENCE:0";
-    echo "\nDESCRIPTION:".$e["description"];
+    echo "\nDESCRIPTION:".se($e["description"]);
     //echo "\nDURATION:PT3H0M";
     echo "\nCLASS:PUBLIC";
     echo "\nSTATUS:CONFIRMED";

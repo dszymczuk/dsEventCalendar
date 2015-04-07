@@ -117,7 +117,7 @@ $c = Page::getCurrentPage();
                 },
                 eventLimit: parseInt(settings.eventsInDay)+1,
                 events: events,
-                lang: settings.lang,
+                lang: '<?php echo $lang; ?>',
                 firstDay: settings.startFrom
             });
 

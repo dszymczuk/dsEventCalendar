@@ -8,5 +8,7 @@
         <field name="calendarID" type="I">
             <unsigned/>
         </field>
+        <field name="lang" type="C" size="255">
+        </field>
     </table>
 </schema>

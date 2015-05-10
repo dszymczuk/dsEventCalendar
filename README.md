@@ -25,10 +25,12 @@ If you choose "One day with time" event you can resize event for more days.
 
 Version
 ----
-3.1.7
+3.2
 
 Changelog
 ----
+3.2
+Support language each block of calendar
 
 3.1.7
 Bug fixes with end date or time ; add minimal date or time in datepicker

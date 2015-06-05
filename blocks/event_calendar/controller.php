@@ -36,11 +36,13 @@ class EventCalendarBlockController extends BlockController
         Loader::library('dsEventCalendar','dsEventCalendar');
         $dsEventCalendar = new dsEventCalendar();
 
-        $json_events = $dsEventCalendar->getEventsFromCalendar($this->calendarID);
+        $json_events = $dsEventCalendar->getEventsFromCalendar($this->calendarID,$this->typeID);
         
 
         $this->set('events', $json_events);
         $this->set('settings',$dsEventCalendar->settingsProvider());
+
+        $this->set('typeID',$this->typeID);
 
 
         if(method_exists($this->getBlockObject(),'getProxyBlock'))

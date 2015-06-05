@@ -62,4 +62,13 @@ class dsEventCalendar
         $types = $db->GetAll("SELECT ECT.*, count(ECE.eventID) as total_types FROM dsEventCalendarTypes AS ECT LEFT JOIN dsEventCalendarEvents AS ECE ON ECE.type = ECT.typeID group by ECT.typeID");
         return $types;
     }
+
+    public function getEventTypesForBlock(){
+        $types = $this->getEventTypes();
+        array_unshift($types,array(
+            'typeID' => 0,
+            'type' => t('All')
+        ));
+        return $types;
+    }
 }

@@ -25,10 +25,13 @@ If you choose "One day with time" event you can resize event for more days.
 
 Version
 ----
-3.2
+3.3
 
 Changelog
 ----
+3.3
+Filter calendar events by single type
+
 3.2
 Support language each block of calendar
 

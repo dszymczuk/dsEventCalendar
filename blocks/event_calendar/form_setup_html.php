@@ -33,5 +33,20 @@ defined('C5_EXECUTE') or die(_("Access Denied."));
                 </select>
             </div>
         </fieldset>
+
+        <fieldset>
+            <label for="typeID"><?php echo t('Select type') ?></label>
+
+
+            <div style="margin-top: 10px;">
+                <select name="typeID" id="typeID">
+                    <?php foreach ($types as $type): ?>
+
+                        <option
+                            value="<?php echo $type['typeID'] ?>" <?php if ($typeID == $type['typeID']) echo "selected" ?>><?php echo $type['type'] ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+        </fieldset>
     </div>
 <?php endif; ?>

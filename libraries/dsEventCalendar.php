@@ -4,7 +4,7 @@ defined('C5_EXECUTE') or die(_("Access Denied."));
 class dsEventCalendar
 {
 
-    public function getEventsFromCalendar($calendarID)
+    public function getEventsFromCalendar($calendarID,$typeID = 0)
     {
         $db = Loader::db();
 
@@ -14,6 +14,10 @@ class dsEventCalendar
         $q .= " ECE.*, ECT.* FROM dsEventCalendarEvents as ECE  ";
         $q .= " LEFT JOIN dsEventCalendarTypes as ECT on ECE.type = ECT.typeID  ";
         $q .= " WHERE calendarID =" . $calendarID;
+
+        if($typeID != 0) {
+            $q .= " AND typeID =". $typeID;
+        }
 
 
         $settings = $db->GetAll("SELECT * FROM dsEventCalendarSettings");
@@ -60,6 +64,15 @@ class dsEventCalendar
     {
         $db = Loader::db();
         $types = $db->GetAll("SELECT ECT.*, count(ECE.eventID) as total_types FROM dsEventCalendarTypes AS ECT LEFT JOIN dsEventCalendarEvents AS ECE ON ECE.type = ECT.typeID group by ECT.typeID");
+        return $types;
+    }
+
+    public function getEventTypesForBlock(){
+        $types = $this->getEventTypes();
+        array_unshift($types,array(
+            'typeID' => 0,
+            'type' => t('All')
+        ));
         return $types;
     }
 }

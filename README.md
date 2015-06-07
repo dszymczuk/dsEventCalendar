@@ -25,10 +25,13 @@ If you choose "One day with time" event you can resize event for more days.
 
 Version
 ----
-3.3
+3.3.1
 
 Changelog
 ----
+3.3.1
+Remove events from calendar
+
 3.3
 Filter calendar events by single type
 

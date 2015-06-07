@@ -75,4 +75,10 @@ class dsEventCalendar
         ));
         return $types;
     }
+
+    public function removeEventFromCalendar($calendarID){
+        $db = Loader::db();
+        $sql = "DELETE FROM dsEventCalendarEvents WHERE calendarID = " . $calendarID;
+        return $db->Execute($sql);
+    }
 }

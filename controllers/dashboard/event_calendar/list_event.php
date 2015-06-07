@@ -177,4 +177,14 @@ class DashboardEventCalendarListEventController extends Controller
 
         }
     }
+
+    public function clearEvents($calendar_id)
+    {
+        if (is_numeric($calendar_id)) {
+            Loader::library('dsEventCalendar','dsEventCalendar');
+            $dsEventCalendar = new dsEventCalendar();
+            $dsEventCalendar->removeEventFromCalendar($calendar_id);
+            $this->redirect("dashboard/event_calendar/list_calendar");
+        }
+    }
 }

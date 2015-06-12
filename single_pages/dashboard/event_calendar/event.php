@@ -169,6 +169,9 @@ $form = Loader::helper('form');
                 dayOfWeekStart: 1,
                 timepicker:false,
                 closeOnDateSelect:true,
+//                scrollMonth: false,
+//                scrollTime: false,
+//                scrollInput: false,
                 onSelectDate: function(ct){
                     var date = new Date(ct);
                     if(allDayEvent) {

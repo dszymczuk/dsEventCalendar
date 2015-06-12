@@ -7,7 +7,7 @@ class dsEventCalendarPackage extends Package
 
     protected $pkgHandle = 'dsEventCalendar';
     protected $appVersionRequired = '5.5.0';
-    protected $pkgVersion = '3.3.1';
+    protected $pkgVersion = '3.3.2';
 
     public function getPackageDescription()
     {
@@ -166,6 +166,36 @@ class dsEventCalendarPackage extends Package
         if($row['count'] == 0)
         {
             $sql = "INSERT INTO dsEventCalendarSettings SET opt= 'timeFormat' , value='HH:mm'";
+            $db->Execute($sql);
+        }
+
+        /**
+         * scrollTime
+         * scrollMonth
+         * scrollInput
+         */
+
+        $sql = "select count(*) as count from dsEventCalendarSettings where opt= 'scrollTime'";
+        $row = $db->GetRow($sql);
+        if($row['count'] == 0)
+        {
+            $sql = "INSERT INTO dsEventCalendarSettings SET opt= 'scrollTime' , value='1'";
+            $db->Execute($sql);
+        }
+
+        $sql = "select count(*) as count from dsEventCalendarSettings where opt= 'scrollMonth'";
+        $row = $db->GetRow($sql);
+        if($row['count'] == 0)
+        {
+            $sql = "INSERT INTO dsEventCalendarSettings SET opt= 'scrollMonth' , value='1'";
+            $db->Execute($sql);
+        }
+
+        $sql = "select count(*) as count from dsEventCalendarSettings where opt= 'scrollInput'";
+        $row = $db->GetRow($sql);
+        if($row['count'] == 0)
+        {
+            $sql = "INSERT INTO dsEventCalendarSettings SET opt= 'scrollInput' , value='1'";
             $db->Execute($sql);
         }
 

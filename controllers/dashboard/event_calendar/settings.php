@@ -17,16 +17,9 @@ class DashboardEventCalendarSettingsController extends Controller
         if (!empty($_POST)) {
 
 
-            /**
-             * scrollTime
-             * scrollMonth
-             * scrollInput
-             */
-
             if (!array_key_exists('scrollTime', $_POST)) {
                 $_POST['scrollTime'] = '0';
             }
-
             if (!array_key_exists('scrollMonth', $_POST)) {
                 $_POST['scrollMonth'] = '0';
             }
@@ -34,9 +27,6 @@ class DashboardEventCalendarSettingsController extends Controller
             if (!array_key_exists('scrollInput', $_POST)) {
                 $_POST['scrollInput'] = '0';
             }
-
-
-            die(var_dump($_POST));
 
             $isSomeValueEmpty = false;
             foreach ($_POST as $key => $value) {

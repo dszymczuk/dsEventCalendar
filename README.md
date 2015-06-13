@@ -29,6 +29,9 @@ Version
 
 Changelog
 ----
+3.3.2
+Add scroll options for date / time picker in dashboard
+
 3.3.1
 Remove events from calendar
 

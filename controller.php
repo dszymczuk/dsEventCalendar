@@ -169,12 +169,6 @@ class dsEventCalendarPackage extends Package
             $db->Execute($sql);
         }
 
-        /**
-         * scrollTime
-         * scrollMonth
-         * scrollInput
-         */
-
         $sql = "select count(*) as count from dsEventCalendarSettings where opt= 'scrollTime'";
         $row = $db->GetRow($sql);
         if($row['count'] == 0)

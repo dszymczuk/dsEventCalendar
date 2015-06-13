@@ -3,9 +3,20 @@ defined('C5_EXECUTE') or die("Access Denied.");
 
 function se($s) {return preg_replace(array ('/"/','/,/','/\n/','/\r/','/:/','/;/','/\\//'), array ('\"','\\,','\\n','','\:','\\;','\\\\'), $s);}
 
-$timezone = "Europe/Berlin";
-date_default_timezone_set($timezone);
- // the header directive tells the web server to tell your browser that this is a calendar file and not a regular web page
+
+$timeZone = "Europe/Warsaw";
+
+if (date_default_timezone_get()) {
+    $timeZone =  date_default_timezone_get();
+}
+
+if (ini_get('date.timezone')) {
+    $timeZone = ini_get('date.timezone');
+}
+
+date_default_timezone_set($timeZone);
+
+// the header directive tells the web server to tell your browser that this is a calendar file and not a regular web page
 header('Content-type: text/calendar; charset=utf-8');
 
 $db = Loader::db();

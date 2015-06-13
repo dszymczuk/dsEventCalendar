@@ -107,6 +107,9 @@ class DashboardEventCalendarEventController extends Controller
         }
 
         $this->set('lang_datepicker', $lang_datepicker_dsECS);
+        $this->set('scrollTime', $scrollTime_dsECS);
+        $this->set('scrollMonth', $scrollMonth_dsECS);
+        $this->set('scrollInput', $scrollInput_dsECS);
 
         array_unshift($types, array(
                 'typeID' => 0,

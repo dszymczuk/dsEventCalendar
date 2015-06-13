@@ -98,6 +98,46 @@
 				</div>
 			</fieldset>
 
+
+            <fieldset class="control-group">
+                <label class="control-label"><?php echo t('Scroll time in datepicker') ?></label>
+                <div class="controls">
+                    <input type="checkbox"
+                           name="scrollTime"
+                           id="scrollTime"
+                           value="1"
+                            <?php echo $scrollTime == '1' ? "checked" : '' ?>
+                        >
+                </div>
+            </fieldset>
+
+            <fieldset class="control-group">
+                <label class="control-label"><?php echo t('Scroll month in datepicker') ?></label>
+                <div class="controls">
+                    <input
+                        type="checkbox"
+                        name="scrollMonth"
+                        id="scrollMonth"
+                        value="1"
+                        <?php echo $scrollMonth == '1' ? "checked" : '' ?>
+                        >
+                </div>
+            </fieldset>
+
+            <fieldset class="control-group">
+                <label class="control-label"><?php echo t('Scroll on input to change date / time (to enable this option you have to enable scroll time or month)') ?></label>
+                <div class="controls">
+                    <input
+                        type="checkbox"
+                        name="scrollInput"
+                        id="scrollInput"
+                        value="1"
+                        <?php echo $scrollInput == '1' ? "checked" : '' ?>>
+                </div>
+            </fieldset>
+
+
+
 			<fieldset class="control-group offset2">
 				<div class="clearfix">
 					<div style="margin-top: 10px;">

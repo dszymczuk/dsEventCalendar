@@ -16,6 +16,18 @@ class DashboardEventCalendarSettingsController extends Controller
  		$db = Loader::db();
         if (!empty($_POST)) {
 
+
+            if (!array_key_exists('scrollTime', $_POST)) {
+                $_POST['scrollTime'] = '0';
+            }
+            if (!array_key_exists('scrollMonth', $_POST)) {
+                $_POST['scrollMonth'] = '0';
+            }
+
+            if (!array_key_exists('scrollInput', $_POST)) {
+                $_POST['scrollInput'] = '0';
+            }
+
             $isSomeValueEmpty = false;
             foreach ($_POST as $key => $value) {
                 if ($value === "" && $key !== "default_name") {

@@ -16,7 +16,7 @@ class dsEventCalendar
         $q .= " WHERE calendarID =" . $calendarID;
 
         if($typeID != 0) {
-            $q .= " AND typeID =". $typeID;
+            $q .= " AND typeID in(".$typeID.")" ;
         }
 
 

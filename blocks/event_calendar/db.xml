@@ -13,5 +13,8 @@
         <field name="typeID" type="C" size="255">
             <default value="0"/>
         </field>
+        <field name="contentHeight" type="C" size="255">
+            <default value="0"/>
+        </field>
     </table>
 </schema>

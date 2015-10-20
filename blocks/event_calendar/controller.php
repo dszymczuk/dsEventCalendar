@@ -67,6 +67,7 @@ class EventCalendarBlockController extends BlockController
         $args['calendarID'] = isset($data['calendarID']) ? intval($data['calendarID']) : 0;
         $args['typeID'] = isset($data['typeID']) ? intval($data['typeID']) : 0;
         $args['lang'] = isset($data['lang']) ? $data['lang'] : 'en-gb';
+        $args['contentHeight'] = isset($data['contentHeight']) ? $data['contentHeight'] : 'auto';
         parent::save($args);
     }
 
@@ -94,6 +95,7 @@ class EventCalendarBlockController extends BlockController
 
         $this->set('langs', $this->lang_list);
         $this->set('lang',$this->lang);
+        $this->set('contentHeight',$this->contentHeight);
 
         Loader::library('dsEventCalendar','dsEventCalendar');
         $dsEventCalendar = new dsEventCalendar();

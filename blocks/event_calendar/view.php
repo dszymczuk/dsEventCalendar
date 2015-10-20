@@ -118,7 +118,8 @@ $c = Page::getCurrentPage();
                 eventLimit: parseInt(settings.eventsInDay)+1,
                 events: events,
                 lang: '<?php echo $lang; ?>',
-                firstDay: settings.startFrom
+                firstDay: settings.startFrom,
+                contentHeight: <?php echo $contentHeight == 'auto' || $contentHeight == '' ? "'auto'" : $contentHeight; ?>
             });
 
             $(".ds-event-modal .btn-close").on('click',function(){

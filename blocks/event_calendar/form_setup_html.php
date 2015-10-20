@@ -7,7 +7,10 @@ defined('C5_EXECUTE') or die(_("Access Denied."));
         <?php echo t('No calendar exist. Add from one from dashboard.') ?>
     </div>
 <?php else: ?>
-    <div style="margin-top: 10px;">
+    <div>
+        <h3>
+            Block settings:
+        </h3>
         <fieldset>
             <label for="calendarID"><?php echo t('Select calendar') ?></label>
 
@@ -48,5 +51,25 @@ defined('C5_EXECUTE') or die(_("Access Denied."));
                 </select>
             </div>
         </fieldset>
+
+        <h3 style="margin-top: 10px;">
+            Calendar settings:
+        </h3>
+
+        <fieldset>
+            <label for="contentHeight"><?php echo t("Will make the calendar's content area a pixel height - default auto (empty)") ?></label>
+
+
+            <div style="margin-top: 10px;">
+                <input
+                    type="number"
+                    name="contentHeight"
+                    class="form-control"
+                    id="contentHeight"
+                    placeholder="auto"
+                    value="<?php echo $contentHeight ?>">
+            </div>
+        </fieldset>
+
     </div>
 <?php endif; ?>

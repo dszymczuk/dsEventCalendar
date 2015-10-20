@@ -6,6 +6,7 @@ $bt->inc('form_setup_html.php',
         'langs' => $langs,
         'calendarID' => null,
         'lang' => null,
-        'types' => $types
+        'types' => $types,
+        'contentHeight' => null
     ));
 ?>

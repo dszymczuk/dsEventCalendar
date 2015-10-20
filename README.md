@@ -25,10 +25,13 @@ If you choose "One day with time" event you can resize event for more days.
 
 Version
 ----
-3.3.3
+3.3.4
 
 Changelog
 ----
+3.3.4
+Add content height (calendar height) as option for block
+
 3.3.3
 Add ICS calendar ; To call calendar use link:
 http://DOMAIN/index.php/tools/packages/dsEventCalendar/event_calendar/ical.php?id=1

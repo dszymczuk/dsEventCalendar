@@ -78,6 +78,7 @@ class EventCalendarBlockController extends BlockController
         $this->set('calendars', $calendars);
 
         $this->set('langs', $this->lang_list);
+        $this->set('lang','en-gb');
 
         Loader::library('dsEventCalendar','dsEventCalendar');
         $dsEventCalendar = new dsEventCalendar();

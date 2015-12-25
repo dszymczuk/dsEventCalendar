@@ -4,7 +4,7 @@ defined('C5_EXECUTE') or die(_("Access Denied."));
 class dsEventCalendar
 {
 
-    public function getEventsFromCalendar($calendarID,$typeID = 0)
+    public function getEventsFromCalendar($calendarID, $typeID = 0)
     {
         $db = Loader::db();
 
@@ -13,10 +13,16 @@ class dsEventCalendar
         $q .= ' IF(ECE.allDayEvent = 1,concat(date(ECE.end),""),ECE.end) AS end_time, ';
         $q .= " ECE.*, ECT.* FROM dsEventCalendarEvents as ECE  ";
         $q .= " LEFT JOIN dsEventCalendarTypes as ECT on ECE.type = ECT.typeID  ";
-        $q .= " WHERE calendarID =" . $calendarID;
+        if ($calendarID != 0) {
+            $q .= " WHERE calendarID =" . $calendarID;
 
-        if($typeID != 0) {
-            $q .= " AND typeID in(".$typeID.")" ;
+            if ($typeID != 0) {
+                $q .= " AND typeID in(" . $typeID . ")";
+            }
+        } else {
+            if ($typeID != 0) {
+                $q .= " WHERE typeID in(" . $typeID . ")";
+            }
         }
 
 
@@ -67,16 +73,18 @@ class dsEventCalendar
         return $types;
     }
 
-    public function getEventTypesForBlock(){
+    public function getEventTypesForBlock()
+    {
         $types = $this->getEventTypes();
-        array_unshift($types,array(
+        array_unshift($types, array(
             'typeID' => 0,
             'type' => t('All')
         ));
         return $types;
     }
 
-    public function removeEventFromCalendar($calendarID){
+    public function removeEventFromCalendar($calendarID)
+    {
         $db = Loader::db();
         $sql = "DELETE FROM dsEventCalendarEvents WHERE calendarID = " . $calendarID;
         return $db->Execute($sql);

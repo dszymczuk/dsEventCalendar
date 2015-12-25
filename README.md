@@ -25,10 +25,14 @@ If you choose "One day with time" event you can resize event for more days.
 
 Version
 ----
-3.3.4
+3.3.5
 
 Changelog
 ----
+3.3.5
+Bug fixes - wrong date on modal ; twice open modal when click on list (PRO)
+Possibility to change events from ALL calendars on calendar view
+
 3.3.4
 Add content height (calendar height) as option for block
 

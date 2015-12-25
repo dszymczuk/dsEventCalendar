@@ -65,7 +65,7 @@ $blue-dark: darken($blue, 5%);
 // Modal window
 //
 .ds-event-modal {
-  p {
+  & > p {
     margin: 0;
     padding: 0;
   }
@@ -85,7 +85,7 @@ $blue-dark: darken($blue, 5%);
     @include display-flex();
   }
 
-  .container {
+  & > .container {
     min-width: 35%;
     max-width: 90%;
     max-height: 80%;
@@ -95,13 +95,13 @@ $blue-dark: darken($blue, 5%);
     text-align: center;
     color: $gray;
     border-radius: 5px;
-    .header {
+    & > .header {
       font-size: 20px;
       padding: $space/4;
       border-bottom: 1px solid $gray-lighter;
 
     }
-    .content {
+    & > .content {
       .time {
         padding-top: $space/4;
         color: darken($gray-light,20%);
@@ -112,7 +112,7 @@ $blue-dark: darken($blue, 5%);
         text-align: justify;
       }
     }
-    .footer {
+    & > .footer {
       border-top: 1px solid $gray-lighter;
       padding: $space/4;
     }

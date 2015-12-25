@@ -101,11 +101,11 @@ $c = Page::getCurrentPage();
                     else
                     {
                         //witout time
+                        end_day = moment(calEvent.end).clone();
                         start_day = calEvent.start.format(settings.formatEvent);
-                        end_day = "";
                         if(calEvent.end != null)
                         {
-                            end_day = " - " + calEvent.end.format(settings.formatEvent);
+                            end_day = " - " + end_day.subtract(1,'day').format(settings.formatEvent);
                         }
                     }
 
